@@ -1,0 +1,609 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Auth & RBAC ────────────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  userRoles     UserRole[]
+  contentPosts  ContentPost[]
+  auditLogs     AuditLog[]
+  contactNotes  ContactMessageNote[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Role {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+
+  userRoles       UserRole[]
+  rolePermissions RolePermission[]
+
+  @@map("roles")
+}
+
+model Permission {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+
+  rolePermissions RolePermission[]
+
+  @@map("permissions")
+}
+
+model RolePermission {
+  id           String @id @default(cuid())
+  roleId       String
+  permissionId String
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+  @@map("role_permissions")
+}
+
+model UserRole {
+  id     String @id @default(cuid())
+  userId String
+  roleId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, roleId])
+  @@map("user_roles")
+}
+
+// ─── Events ─────────────────────────────────────────────────────────────────────
+
+enum EventStatus {
+  DRAFT
+  PUBLISHED
+  CANCELLED
+  COMPLETED
+}
+
+enum EventMode {
+  IN_PERSON
+  ONLINE
+  HYBRID
+}
+
+enum PriceType {
+  FREE
+  FIXED
+  DONATION
+  SLIDING_SCALE
+}
+
+enum RegistrationStatus {
+  PENDING
+  CONFIRMED
+  WAITLISTED
+  CANCELLED
+}
+
+model EventSeries {
+  id            String   @id @default(cuid())
+  slugJa        String   @unique
+  slugEn        String?  @unique
+  titleJa       String
+  titleEn       String?
+  descriptionJa String?
+  descriptionEn String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  events Event[]
+
+  @@map("event_series")
+}
+
+model Event {
+  id              String      @id @default(cuid())
+  seriesId        String?
+  slugJa          String      @unique
+  slugEn          String?     @unique
+  titleJa         String
+  titleEn         String?
+  descriptionJa   String?
+  descriptionEn   String?
+  status          EventStatus @default(DRAFT)
+  mode            EventMode   @default(IN_PERSON)
+  priceType       PriceType   @default(FREE)
+  priceAmount     Int?
+  capacity        Int?
+  beginnerFriendly Boolean    @default(false)
+  startsAt        DateTime
+  endsAt          DateTime
+  registrationOpensAt  DateTime?
+  registrationClosesAt DateTime?
+  venueId         String?
+  onlineUrl       String?
+  imageUrl        String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  series        EventSeries?      @relation(fields: [seriesId], references: [id])
+  venue         Venue?            @relation(fields: [venueId], references: [id])
+  registrations EventRegistration[]
+
+  @@index([status, startsAt])
+  @@map("events")
+}
+
+model Venue {
+  id        String  @id @default(cuid())
+  nameJa    String
+  nameEn    String?
+  addressJa String?
+  addressEn String?
+  latitude  Float?
+  longitude Float?
+
+  events Event[]
+
+  @@map("venues")
+}
+
+model EventRegistration {
+  id              String             @id @default(cuid())
+  eventId         String
+  email           String
+  status          RegistrationStatus @default(PENDING)
+  amountPaid      Int                @default(0)
+  stripeSessionId String?
+  notes           String?
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  event     Event                  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  attendees RegistrationAttendee[]
+
+  @@index([eventId, status])
+  @@map("event_registrations")
+}
+
+model RegistrationAttendee {
+  id             String @id @default(cuid())
+  registrationId String
+  nameJa         String
+  nameEn         String?
+  email          String?
+
+  registration EventRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@map("registration_attendees")
+}
+
+// ─── Content ────────────────────────────────────────────────────────────────────
+
+enum ContentStatus {
+  DRAFT
+  REVIEW
+  APPROVED
+  SCHEDULED
+  PUBLISHED
+  ARCHIVED
+}
+
+enum ContentType {
+  BLOG
+  TEACHING
+  ARTICLE
+  AUDIO
+  VIDEO
+}
+
+model Teacher {
+  id        String  @id @default(cuid())
+  slugJa    String  @unique
+  slugEn    String? @unique
+  nameJa    String
+  nameEn    String?
+  bioJa     String?
+  bioEn     String?
+  imageUrl  String?
+  sortOrder Int     @default(0)
+
+  contentPosts ContentPost[]
+
+  @@map("teachers")
+}
+
+model ContentPost {
+  id            String        @id @default(cuid())
+  slugJa        String        @unique
+  slugEn        String?       @unique
+  titleJa       String
+  titleEn       String?
+  bodyJa        String?
+  bodyEn        String?
+  excerptJa     String?
+  excerptEn     String?
+  type          ContentType   @default(BLOG)
+  status        ContentStatus @default(DRAFT)
+  teacherId     String?
+  authorId      String?
+  imageUrl      String?
+  mediaUrl      String?
+  publishedAt   DateTime?
+  scheduledAt   DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  teacher Teacher? @relation(fields: [teacherId], references: [id])
+  author  User?    @relation(fields: [authorId], references: [id])
+
+  @@index([status, publishedAt])
+  @@index([type])
+  @@map("content_posts")
+}
+
+// ─── Contacts ───────────────────────────────────────────────────────────────────
+
+enum ContactMessageStatus {
+  NEW
+  READ
+  REPLIED
+  ARCHIVED
+}
+
+model ContactMessage {
+  id        String               @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  body      String
+  status    ContactMessageStatus @default(NEW)
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
+
+  notes ContactMessageNote[]
+
+  @@index([status, createdAt])
+  @@map("contact_messages")
+}
+
+model ContactMessageNote {
+  id        String   @id @default(cuid())
+  messageId String
+  authorId  String
+  body      String
+  createdAt DateTime @default(now())
+
+  message ContactMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  author  User           @relation(fields: [authorId], references: [id])
+
+  @@map("contact_message_notes")
+}
+
+// ─── Donations ──────────────────────────────────────────────────────────────────
+
+enum DonationStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+model Donation {
+  id              String         @id @default(cuid())
+  email           String
+  amount          Int
+  currency        String         @default("jpy")
+  status          DonationStatus @default(PENDING)
+  recurring       Boolean        @default(false)
+  stripeSessionId String?
+  stripeSubscriptionId String?
+  donorName       String?
+  message         String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  @@index([status, createdAt])
+  @@index([email])
+  @@map("donations")
+}
+
+// ─── Commerce ───────────────────────────────────────────────────────────────────
+
+model Product {
+  id            String   @id @default(cuid())
+  slugJa        String   @unique
+  slugEn        String?  @unique
+  nameJa        String
+  nameEn        String?
+  descriptionJa String?
+  descriptionEn String?
+  imageUrl      String?
+  active        Boolean  @default(true)
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  variants ProductVariant[]
+
+  @@map("products")
+}
+
+model ProductVariant {
+  id              String   @id @default(cuid())
+  productId       String
+  nameJa          String
+  nameEn          String?
+  sku             String?  @unique
+  priceAmount     Int
+  stockQuantity   Int      @default(0)
+  stripePriceId   String?
+  active          Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  product              Product               @relation(fields: [productId], references: [id], onDelete: Cascade)
+  inventoryAdjustments InventoryAdjustment[]
+  cartItems            CartItem[]
+  orderItems           OrderItem[]
+
+  @@map("product_variants")
+}
+
+model InventoryAdjustment {
+  id        String   @id @default(cuid())
+  variantId String
+  quantity  Int
+  reason    String?
+  createdAt DateTime @default(now())
+
+  variant ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@map("inventory_adjustments")
+}
+
+model Cart {
+  id        String   @id @default(cuid())
+  sessionId String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items CartItem[]
+
+  @@map("carts")
+}
+
+model CartItem {
+  id        String @id @default(cuid())
+  cartId    String
+  variantId String
+  quantity  Int    @default(1)
+
+  cart    Cart           @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  variant ProductVariant @relation(fields: [variantId], references: [id])
+
+  @@unique([cartId, variantId])
+  @@map("cart_items")
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  email           String
+  status          OrderStatus @default(PENDING)
+  totalAmount     Int
+  currency        String      @default("jpy")
+  stripeSessionId String?
+  shippingName    String?
+  shippingAddress String?
+  notes           String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  items OrderItem[]
+
+  @@index([status, createdAt])
+  @@index([email])
+  @@map("orders")
+}
+
+model OrderItem {
+  id          String @id @default(cuid())
+  orderId     String
+  variantId   String
+  quantity    Int
+  unitPrice   Int
+
+  order   Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  variant ProductVariant @relation(fields: [variantId], references: [id])
+
+  @@map("order_items")
+}
+
+// ─── Integrations ───────────────────────────────────────────────────────────────
+
+model StripeEvent {
+  id              String   @id @default(cuid())
+  stripeEventId   String   @unique
+  type            String
+  processed       Boolean  @default(false)
+  createdAt       DateTime @default(now())
+
+  @@map("stripe_events")
+}
+
+model SocialAccount {
+  id             String   @id @default(cuid())
+  platform       String
+  accountName    String
+  accessToken    String
+  refreshToken   String?
+  tokenExpiresAt DateTime?
+  pageId         String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  posts SocialPost[]
+
+  @@map("social_accounts")
+}
+
+model SocialPost {
+  id              String   @id @default(cuid())
+  socialAccountId String
+  contentPostId   String?
+  caption         String?
+  mediaUrl        String?
+  platformPostId  String?
+  status          String   @default("draft")
+  scheduledAt     DateTime?
+  publishedAt     DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  socialAccount SocialAccount @relation(fields: [socialAccountId], references: [id], onDelete: Cascade)
+
+  @@map("social_posts")
+}
+
+// ─── Platform ───────────────────────────────────────────────────────────────────
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  locale    String   @default("ja")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("newsletter_subscribers")
+}
+
+model Redirect {
+  id          String   @id @default(cuid())
+  fromPath    String   @unique
+  toPath      String
+  statusCode  Int      @default(301)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@map("redirects")
+}
+
+model AnalyticsEvent {
+  id        String   @id @default(cuid())
+  event     String
+  path      String?
+  referrer  String?
+  userAgent String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([event, createdAt])
+  @@map("analytics_events")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([entity, entityId])
+  @@index([userId, createdAt])
+  @@map("audit_logs")
+}
+
+model SiteSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+
+  @@map("site_settings")
+}
+
+model MediaAsset {
+  id          String   @id @default(cuid())
+  filename    String
+  url         String
+  mimeType    String
+  sizeBytes   Int
+  altTextJa   String?
+  altTextEn   String?
+  createdAt   DateTime @default(now())
+
+  @@map("media_assets")
+}
