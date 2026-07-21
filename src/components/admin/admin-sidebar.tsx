@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { signOut } from "next-auth/react";
 
 const navItems = [
   { label: "Dashboard", href: "/admin" },
@@ -44,6 +45,12 @@ export function AdminSidebar() {
             </Link>
           );
         })}
+        <button
+          onClick={() => signOut({ callbackUrl: "/admin/login" })}
+          className="mt-4 rounded-md border-t px-3 py-2 text-left text-sm font-medium text-red-600 transition-colors hover:bg-red-50"
+        >
+          Sign Out
+        </button>
       </nav>
     </aside>
   );
