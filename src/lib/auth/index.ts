@@ -3,6 +3,7 @@ import type { Provider } from "next-auth/providers";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
+import { compare } from "bcryptjs";
 import { db } from "@/lib/db";
 
 const providers: Provider[] = [
@@ -10,24 +11,31 @@ const providers: Provider[] = [
     clientId: process.env.AUTH_GOOGLE_ID,
     clientSecret: process.env.AUTH_GOOGLE_SECRET,
   }),
-];
+  Credentials({
+    name: "Email & Password",
+    credentials: {
+      email: { label: "Email", type: "email" },
+      password: { label: "Password", type: "password" },
+    },
+    async authorize(credentials) {
+      if (!credentials?.email || !credentials?.password) return null;
+      const email = (credentials.email as string).toLowerCase().trim();
+      const password = credentials.password as string;
 
-if (process.env.NODE_ENV === "development") {
-  providers.push(
-    Credentials({
-      name: "Dev Login",
-      credentials: {
-        email: { label: "Email", type: "email" },
-      },
-      async authorize(credentials) {
-        if (!credentials?.email) return null;
-        const email = credentials.email as string;
-        const user = await db.user.findUnique({ where: { email } });
-        return user;
-      },
-    })
-  );
-}
+      const user = await db.user.findUnique({
+        where: { email },
+        include: { userRoles: true },
+      });
+      if (!user || !user.passwordHash) return null;
+      if (user.userRoles.length === 0) return null;
+
+      const valid = await compare(password, user.passwordHash);
+      if (!valid) return null;
+
+      return { id: user.id, email: user.email, name: user.name, image: user.image };
+    },
+  }),
+];
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(db),
@@ -37,6 +45,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/admin/login",
   },
   callbacks: {
+    async signIn({ user, account }) {
+      // For Google sign-ins, only allow users who already exist with a role
+      if (account?.provider === "google" && user.email) {
+        const existing = await db.user.findUnique({
+          where: { email: user.email.toLowerCase().trim() },
+          include: { userRoles: true },
+        });
+        if (!existing || existing.userRoles.length === 0) {
+          return false;
+        }
+      }
+      return true;
+    },
     async jwt({ token, user }) {
       if (user?.id) {
         token.id = user.id;

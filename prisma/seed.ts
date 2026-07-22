@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { hash } from "bcryptjs";
 import {
   ALL_PERMISSIONS,
   ROLE_PERMISSIONS,
@@ -53,35 +54,45 @@ async function main() {
 
   console.log(`Seeded ${Object.keys(ROLES).length} roles`);
 
-  if (process.env.NODE_ENV === "development") {
-    console.log("Seeding dev admin user...");
-    const adminUser = await prisma.user.upsert({
-      where: { email: "admin@msbjapan.org" },
-      update: {},
-      create: {
-        email: "admin@msbjapan.org",
-        name: "Admin User",
-        emailVerified: new Date(),
-      },
-    });
+  // Seed admin user from env vars
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  const adminName = process.env.ADMIN_NAME ?? "Admin";
 
-    const adminRole = await prisma.role.findUnique({
-      where: { name: ROLES.ADMINISTRATOR },
-    });
-
-    if (adminRole) {
-      await prisma.userRole.upsert({
-        where: {
-          userId_roleId: { userId: adminUser.id, roleId: adminRole.id },
-        },
-        update: {},
-        create: { userId: adminUser.id, roleId: adminRole.id },
-      });
-    }
-
-    console.log("Dev admin user seeded");
+  if (!adminEmail || !adminPassword) {
+    console.log("Skipping admin user seed (ADMIN_EMAIL / ADMIN_PASSWORD not set)");
+    console.log("Seed completed");
+    return;
   }
 
+  console.log("Seeding admin user...");
+  const passwordHash = await hash(adminPassword, 12);
+  const adminUser = await prisma.user.upsert({
+    where: { email: adminEmail.toLowerCase().trim() },
+    update: { passwordHash },
+    create: {
+      email: adminEmail.toLowerCase().trim(),
+      name: adminName,
+      passwordHash,
+      emailVerified: new Date(),
+    },
+  });
+
+  const adminRole = await prisma.role.findUnique({
+    where: { name: ROLES.ADMINISTRATOR },
+  });
+
+  if (adminRole) {
+    await prisma.userRole.upsert({
+      where: {
+        userId_roleId: { userId: adminUser.id, roleId: adminRole.id },
+      },
+      update: {},
+      create: { userId: adminUser.id, roleId: adminRole.id },
+    });
+  }
+
+  console.log("Admin user seeded");
   console.log("Seed completed");
 }
 

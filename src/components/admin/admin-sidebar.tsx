@@ -16,6 +16,7 @@ const navItems = [
   { label: "Social", href: "/admin/social" },
   { label: "Analytics", href: "/admin/analytics" },
   { label: "Redirects", href: "/admin/redirects" },
+  { label: "Users", href: "/admin/users" },
   { label: "Settings", href: "/admin/settings" },
 ];
 
