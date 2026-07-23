@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale } from "@/lib/i18n/config";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileNav } from "./mobile-nav";
+import { auth } from "@/lib/auth";
 
 type Dictionary = Record<string, Record<string, string>>;
 
@@ -17,7 +18,7 @@ function getNavItems(locale: Locale, dict: Dictionary) {
   ];
 }
 
-export function SiteHeader({
+export async function SiteHeader({
   locale,
   dict,
 }: {
@@ -25,6 +26,7 @@ export function SiteHeader({
   dict: Dictionary;
 }) {
   const navItems = getNavItems(locale, dict);
+  const session = await auth();
 
   return (
     <header className="sticky top-0 z-40 border-b border-charcoal-200 bg-white/95 backdrop-blur-sm">
@@ -62,6 +64,14 @@ export function SiteHeader({
           >
             {dict.common?.donate}
           </Link>
+          {session?.user && (
+            <Link
+              href="/admin"
+              className="hidden rounded-md border border-charcoal-300 px-3 py-2 text-xs font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100 sm:inline-flex"
+            >
+              Admin Dashboard
+            </Link>
+          )}
         </div>
       </div>
     </header>

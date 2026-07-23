@@ -4,15 +4,19 @@ import { getUsers, getRoles } from "@/server/actions/users";
 import { Badge } from "@/components/ui/badge";
 import { UserActions } from "@/components/admin/user-actions";
 import { AddUserForm } from "@/components/admin/add-user-form";
+import { getAdminLocale } from "@/lib/admin-locale";
+import { getLabels } from "@/lib/admin-labels";
 
 export default async function AdminUsersPage() {
   await requirePermission(PERMISSIONS.USERS_MANAGE);
-  const [users, roles] = await Promise.all([getUsers(), getRoles()]);
+  const [users, roles, locale] = await Promise.all([getUsers(), getRoles(), getAdminLocale()]);
+  const l = getLabels(locale);
+  const dateFmt = locale === "en" ? "en-US" : "ja-JP";
 
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Users</h1>
+        <h1 className="text-2xl font-bold">{l.users}</h1>
         <AddUserForm roles={roles} />
       </div>
 
@@ -20,12 +24,12 @@ export default async function AdminUsersPage() {
         <table className="w-full text-sm">
           <thead className="border-b bg-gray-50">
             <tr>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Name</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Email</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Role</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Login</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Created</th>
-              <th className="px-4 py-3 text-right font-medium text-gray-500">Actions</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">{l.name}</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">{l.email}</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">{l.role}</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">{l.login}</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">{l.created}</th>
+              <th className="px-4 py-3 text-right font-medium text-gray-500">{l.actions}</th>
             </tr>
           </thead>
           <tbody className="divide-y">
@@ -49,11 +53,11 @@ export default async function AdminUsersPage() {
                         : "bg-gray-100 text-gray-500"
                     }
                   >
-                    {user.passwordHash ? "Password" : "Google only"}
+                    {user.passwordHash ? l.password : l.googleOnly}
                   </Badge>
                 </td>
                 <td className="px-4 py-3 text-gray-500">
-                  {user.createdAt.toLocaleDateString("ja-JP")}
+                  {user.createdAt.toLocaleDateString(dateFmt)}
                 </td>
                 <td className="px-4 py-3 text-right">
                   <UserActions user={user} roles={roles} />
@@ -63,7 +67,7 @@ export default async function AdminUsersPage() {
           </tbody>
         </table>
         {users.length === 0 && (
-          <p className="py-8 text-center text-gray-500">No users yet.</p>
+          <p className="py-8 text-center text-gray-500">{l.noData}</p>
         )}
       </div>
     </div>

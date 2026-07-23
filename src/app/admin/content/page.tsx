@@ -5,6 +5,8 @@ import { getAllPostsAdmin } from "@/server/queries/content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ContentFilters } from "@/components/admin/content-filters";
+import { getAdminLocale, t } from "@/lib/admin-locale";
+import { getLabels } from "@/lib/admin-labels";
 import type { ContentType, ContentStatus } from "@prisma/client";
 
 const statusColors: Record<string, string> = {
@@ -31,19 +33,23 @@ export default async function AdminContentPage({
 }) {
   await requirePermission(PERMISSIONS.CONTENT_READ);
   const query = await searchParams;
-
-  const posts = await getAllPostsAdmin({
-    type: query.type as ContentType | undefined,
-    status: query.status as ContentStatus | undefined,
-    search: query.search,
-  });
+  const [posts, locale] = await Promise.all([
+    getAllPostsAdmin({
+      type: query.type as ContentType | undefined,
+      status: query.status as ContentStatus | undefined,
+      search: query.search,
+    }),
+    getAdminLocale(),
+  ]);
+  const l = getLabels(locale);
+  const dateFmt = locale === "en" ? "en-US" : "ja-JP";
 
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Content</h1>
+        <h1 className="text-2xl font-bold">{l.content}</h1>
         <Link href="/admin/content/new">
-          <Button>New Post</Button>
+          <Button>{l.newPost}</Button>
         </Link>
       </div>
 
@@ -53,26 +59,25 @@ export default async function AdminContentPage({
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b text-left text-gray-500">
-              <th className="px-4 py-3 font-medium">Title</th>
-              <th className="px-4 py-3 font-medium">Type</th>
-              <th className="px-4 py-3 font-medium">Status</th>
-              <th className="px-4 py-3 font-medium">Author</th>
-              <th className="px-4 py-3 font-medium">Updated</th>
+              <th className="px-4 py-3 font-medium">{l.title}</th>
+              <th className="px-4 py-3 font-medium">{l.type}</th>
+              <th className="px-4 py-3 font-medium">{l.status}</th>
+              <th className="px-4 py-3 font-medium">{l.author}</th>
+              <th className="px-4 py-3 font-medium">{l.updated}</th>
               <th className="px-4 py-3 font-medium"></th>
             </tr>
           </thead>
           <tbody>
             {posts.map((post) => (
               <tr key={post.id} className="border-b last:border-0">
-                <td className="px-4 py-3 font-medium">{post.titleJa}</td>
+                <td className="px-4 py-3 font-medium">
+                  {t(locale, post.titleJa, post.titleEn)}
+                </td>
                 <td className="px-4 py-3 text-gray-600">
                   {typeLabels[post.type] ?? post.type}
                 </td>
                 <td className="px-4 py-3">
-                  <Badge
-                    className={statusColors[post.status] ?? ""}
-                    variant="secondary"
-                  >
+                  <Badge className={statusColors[post.status] ?? ""} variant="secondary">
                     {post.status}
                   </Badge>
                 </td>
@@ -80,14 +85,11 @@ export default async function AdminContentPage({
                   {post.author?.name ?? post.author?.email ?? "—"}
                 </td>
                 <td className="px-4 py-3 text-gray-600">
-                  {post.updatedAt.toLocaleDateString("ja-JP")}
+                  {post.updatedAt.toLocaleDateString(dateFmt)}
                 </td>
                 <td className="px-4 py-3">
-                  <Link
-                    href={`/admin/content/${post.id}`}
-                    className="text-blue-600 hover:underline"
-                  >
-                    Edit
+                  <Link href={`/admin/content/${post.id}`} className="text-blue-600 hover:underline">
+                    {l.edit}
                   </Link>
                 </td>
               </tr>
@@ -95,7 +97,7 @@ export default async function AdminContentPage({
             {posts.length === 0 && (
               <tr>
                 <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
-                  No content posts yet.
+                  {l.noContent}
                 </td>
               </tr>
             )}

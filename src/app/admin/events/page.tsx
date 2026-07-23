@@ -4,6 +4,8 @@ import { PERMISSIONS } from "@/lib/auth/permissions";
 import { getAllEventsAdmin } from "@/server/queries/events";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { getAdminLocale, t } from "@/lib/admin-locale";
+import { getLabels } from "@/lib/admin-labels";
 
 const statusColors: Record<string, string> = {
   DRAFT: "bg-gray-100 text-gray-700",
@@ -14,14 +16,16 @@ const statusColors: Record<string, string> = {
 
 export default async function AdminEventsPage() {
   await requirePermission(PERMISSIONS.EVENTS_MANAGE);
-  const events = await getAllEventsAdmin();
+  const [events, locale] = await Promise.all([getAllEventsAdmin(), getAdminLocale()]);
+  const l = getLabels(locale);
+  const dateFmt = locale === "en" ? "en-US" : "ja-JP";
 
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Events</h1>
+        <h1 className="text-2xl font-bold">{l.events}</h1>
         <Link href="/admin/events/new">
-          <Button>New Event</Button>
+          <Button>{l.newEvent}</Button>
         </Link>
       </div>
 
@@ -29,26 +33,25 @@ export default async function AdminEventsPage() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b text-left text-gray-500">
-              <th className="px-4 py-3 font-medium">Title</th>
-              <th className="px-4 py-3 font-medium">Date</th>
-              <th className="px-4 py-3 font-medium">Status</th>
-              <th className="px-4 py-3 font-medium">Mode</th>
-              <th className="px-4 py-3 font-medium">Registrations</th>
+              <th className="px-4 py-3 font-medium">{l.title}</th>
+              <th className="px-4 py-3 font-medium">{l.date}</th>
+              <th className="px-4 py-3 font-medium">{l.status}</th>
+              <th className="px-4 py-3 font-medium">{l.mode}</th>
+              <th className="px-4 py-3 font-medium">{l.registrations}</th>
               <th className="px-4 py-3 font-medium"></th>
             </tr>
           </thead>
           <tbody>
             {events.map((event) => (
               <tr key={event.id} className="border-b last:border-0">
-                <td className="px-4 py-3 font-medium">{event.titleJa}</td>
+                <td className="px-4 py-3 font-medium">
+                  {t(locale, event.titleJa, event.titleEn)}
+                </td>
                 <td className="px-4 py-3 text-gray-600">
-                  {event.startsAt.toLocaleDateString("ja-JP")}
+                  {event.startsAt.toLocaleDateString(dateFmt)}
                 </td>
                 <td className="px-4 py-3">
-                  <Badge
-                    className={statusColors[event.status] ?? ""}
-                    variant="secondary"
-                  >
+                  <Badge className={statusColors[event.status] ?? ""} variant="secondary">
                     {event.status}
                   </Badge>
                 </td>
@@ -58,22 +61,16 @@ export default async function AdminEventsPage() {
                   {event.capacity ? ` / ${event.capacity}` : ""}
                 </td>
                 <td className="px-4 py-3">
-                  <Link
-                    href={`/admin/events/${event.id}`}
-                    className="text-blue-600 hover:underline"
-                  >
-                    Edit
+                  <Link href={`/admin/events/${event.id}`} className="text-blue-600 hover:underline">
+                    {l.edit}
                   </Link>
                 </td>
               </tr>
             ))}
             {events.length === 0 && (
               <tr>
-                <td
-                  colSpan={6}
-                  className="px-4 py-8 text-center text-gray-500"
-                >
-                  No events yet.
+                <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                  {l.noEvents}
                 </td>
               </tr>
             )}

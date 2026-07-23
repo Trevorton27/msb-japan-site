@@ -1,22 +1,27 @@
 import { getAnalyticsOverview, getAuditLogs } from "@/server/queries/analytics";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { getAdminLocale } from "@/lib/admin-locale";
+import { getLabels } from "@/lib/admin-labels";
 
 export default async function AdminAnalyticsPage() {
-  const [analytics, auditLogs] = await Promise.all([
+  const [analytics, auditLogs, locale] = await Promise.all([
     getAnalyticsOverview(30),
     getAuditLogs(30),
+    getAdminLocale(),
   ]);
+  const l = getLabels(locale);
+  const dateFmt = locale === "en" ? "en-US" : "ja-JP";
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">Analytics & Audit</h1>
+      <h1 className="text-2xl font-bold">{l.analyticsAudit}</h1>
 
       {/* Overview cards */}
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card>
           <CardHeader className="pb-2">
-            <CardDescription>Page Views (30d)</CardDescription>
+            <CardDescription>{l.pageViews30d}</CardDescription>
             <CardTitle className="text-2xl">
               {analytics.totalPageViews.toLocaleString()}
             </CardTitle>
@@ -24,7 +29,7 @@ export default async function AdminAnalyticsPage() {
         </Card>
         <Card>
           <CardHeader className="pb-2">
-            <CardDescription>Total Events (30d)</CardDescription>
+            <CardDescription>{l.totalEvents30d}</CardDescription>
             <CardTitle className="text-2xl">
               {analytics.totalEvents.toLocaleString()}
             </CardTitle>
@@ -32,7 +37,7 @@ export default async function AdminAnalyticsPage() {
         </Card>
         <Card>
           <CardHeader className="pb-2">
-            <CardDescription>Event Types</CardDescription>
+            <CardDescription>{l.eventTypes}</CardDescription>
             <CardTitle className="text-2xl">
               {analytics.eventsByType.length}
             </CardTitle>
@@ -44,11 +49,11 @@ export default async function AdminAnalyticsPage() {
         {/* Events by type */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Events by Type</CardTitle>
+            <CardTitle className="text-lg">{l.eventsByType}</CardTitle>
           </CardHeader>
           <CardContent>
             {analytics.eventsByType.length === 0 ? (
-              <p className="text-sm text-gray-500">No events recorded yet.</p>
+              <p className="text-sm text-gray-500">{l.noEventsRecorded}</p>
             ) : (
               <div className="space-y-2">
                 {analytics.eventsByType.map((item) => (
@@ -68,11 +73,11 @@ export default async function AdminAnalyticsPage() {
         {/* Top pages */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Top Pages</CardTitle>
+            <CardTitle className="text-lg">{l.topPages}</CardTitle>
           </CardHeader>
           <CardContent>
             {analytics.topPages.length === 0 ? (
-              <p className="text-sm text-gray-500">No page views recorded yet.</p>
+              <p className="text-sm text-gray-500">{l.noPageViews}</p>
             ) : (
               <div className="space-y-2">
                 {analytics.topPages.map((item, i) => (
@@ -94,16 +99,16 @@ export default async function AdminAnalyticsPage() {
 
       {/* Audit log */}
       <div className="mt-8">
-        <h2 className="mb-4 text-lg font-semibold">Recent Audit Log</h2>
+        <h2 className="mb-4 text-lg font-semibold">{l.recentAuditLog}</h2>
         <div className="rounded-lg border bg-white">
           <table className="w-full text-sm">
             <thead className="border-b bg-gray-50">
               <tr>
-                <th className="px-4 py-3 text-left font-medium">Time</th>
-                <th className="px-4 py-3 text-left font-medium">User</th>
-                <th className="px-4 py-3 text-left font-medium">Action</th>
-                <th className="px-4 py-3 text-left font-medium">Entity</th>
-                <th className="px-4 py-3 text-left font-medium">ID</th>
+                <th className="px-4 py-3 text-left font-medium">{l.time}</th>
+                <th className="px-4 py-3 text-left font-medium">{l.user}</th>
+                <th className="px-4 py-3 text-left font-medium">{l.action}</th>
+                <th className="px-4 py-3 text-left font-medium">{l.entity}</th>
+                <th className="px-4 py-3 text-left font-medium">{l.id}</th>
               </tr>
             </thead>
             <tbody className="divide-y">
@@ -113,14 +118,14 @@ export default async function AdminAnalyticsPage() {
                     colSpan={5}
                     className="px-4 py-8 text-center text-gray-500"
                   >
-                    No audit log entries yet.
+                    {l.noAuditLogs}
                   </td>
                 </tr>
               ) : (
                 auditLogs.map((log) => (
                   <tr key={log.id} className="hover:bg-gray-50">
                     <td className="whitespace-nowrap px-4 py-2 text-gray-600">
-                      {log.createdAt.toLocaleString("ja-JP")}
+                      {log.createdAt.toLocaleString(dateFmt)}
                     </td>
                     <td className="px-4 py-2">
                       {log.user?.name ?? log.user?.email ?? "System"}

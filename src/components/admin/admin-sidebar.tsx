@@ -2,26 +2,39 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSyncExternalStore } from "react";
 import { cn } from "@/lib/utils";
 import { signOut } from "next-auth/react";
-
-const navItems = [
-  { label: "Dashboard", href: "/admin" },
-  { label: "Events", href: "/admin/events" },
-  { label: "Contacts", href: "/admin/contacts" },
-  { label: "Content", href: "/admin/content" },
-  { label: "Donations", href: "/admin/donations" },
-  { label: "Products", href: "/admin/products" },
-  { label: "Orders", href: "/admin/orders" },
-  { label: "Social", href: "/admin/social" },
-  { label: "Analytics", href: "/admin/analytics" },
-  { label: "Redirects", href: "/admin/redirects" },
-  { label: "Users", href: "/admin/users" },
-  { label: "Settings", href: "/admin/settings" },
-];
+import { getLabels } from "@/lib/admin-labels";
+import {
+  subscribeAdminLocale,
+  getAdminLocaleSnapshot,
+  getAdminLocaleServerSnapshot,
+} from "@/lib/admin-locale-store";
 
 export function AdminSidebar() {
   const pathname = usePathname();
+  const locale = useSyncExternalStore(
+    subscribeAdminLocale,
+    getAdminLocaleSnapshot,
+    getAdminLocaleServerSnapshot
+  );
+  const l = getLabels(locale);
+
+  const navItems = [
+    { label: l.dashboard, href: "/admin" },
+    { label: l.events, href: "/admin/events" },
+    { label: l.contacts, href: "/admin/contacts" },
+    { label: l.content, href: "/admin/content" },
+    { label: l.donations, href: "/admin/donations" },
+    { label: l.products, href: "/admin/products" },
+    { label: l.orders, href: "/admin/orders" },
+    { label: l.social, href: "/admin/social" },
+    { label: l.analytics, href: "/admin/analytics" },
+    { label: l.redirects, href: "/admin/redirects" },
+    { label: l.users, href: "/admin/users" },
+    { label: l.settings, href: "/admin/settings" },
+  ];
 
   return (
     <aside className="w-56 shrink-0 border-r bg-white">
@@ -50,7 +63,7 @@ export function AdminSidebar() {
           onClick={() => signOut({ callbackUrl: "/admin/login" })}
           className="mt-4 rounded-md border-t px-3 py-2 text-left text-sm font-medium text-red-600 transition-colors hover:bg-red-50"
         >
-          Sign Out
+          {l.signOut}
         </button>
       </nav>
     </aside>
