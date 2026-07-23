@@ -13,6 +13,7 @@ function getNavItems(locale: Locale, dict: Dictionary) {
     { label: dict.common?.centres ?? "", href: `/${locale}/centres` },
     { label: dict.common?.teachers ?? "", href: `/${locale}/teachers` },
     { label: dict.common?.events ?? "", href: `/${locale}/events` },
+    { label: dict.common?.blog ?? "", href: `/${locale}/blog` },
     { label: dict.common?.start ?? "", href: `/${locale}/start` },
     { label: dict.common?.contact ?? "", href: `/${locale}/contact` },
   ];
