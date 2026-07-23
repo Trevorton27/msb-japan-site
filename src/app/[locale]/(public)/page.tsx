@@ -127,16 +127,6 @@ export default async function HomePage({
                 </CardHeader>
               </Card>
             </Link>
-            <Link href={`/${locale}/centres#tashi-choling`}>
-              <Card className="h-full transition-shadow hover:shadow-md">
-                <CardHeader>
-                  <CardTitle>{dict.centres?.tashiCholing}</CardTitle>
-                  <CardDescription>
-                    {dict.centres?.tashiCholingDesc}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
           </div>
         </div>
       </section>

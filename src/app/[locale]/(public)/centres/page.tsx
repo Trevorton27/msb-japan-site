@@ -53,7 +53,7 @@ export default async function CentresPage({
                 <span className="font-semibold text-charcoal-900">
                   {dict.centres?.location}:
                 </span>{" "}
-                {locale === "ja" ? "東京都" : "Tokyo"}
+                {locale === "ja" ? "京都府" : "Kyoto Prefecture"}
               </p>
               <p>
                 <span className="font-semibold text-charcoal-900">
@@ -67,29 +67,6 @@ export default async function CentresPage({
           </CardContent>
         </Card>
 
-        <Card id="tashi-choling" className="scroll-mt-24">
-          <CardHeader>
-            <CardTitle className="text-2xl">
-              {dict.centres?.tashiCholing}
-            </CardTitle>
-            <CardDescription className="text-base">
-              {dict.centres?.tashiCholingDesc}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Separator className="mb-4" />
-            <div className="space-y-3 text-sm text-charcoal-600">
-              <p>
-                <span className="font-semibold text-charcoal-900">
-                  {dict.centres?.activities}:
-                </span>{" "}
-                {locale === "ja"
-                  ? "集中リトリート、瞑想合宿"
-                  : "Intensive retreats, meditation residencies"}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );
