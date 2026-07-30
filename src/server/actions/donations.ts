@@ -5,7 +5,9 @@ import { donationSchema } from "@/lib/validation/schemas";
 import type { DonationValues } from "@/lib/validation/schemas";
 import { createDonationCheckoutSession } from "@/lib/stripe/checkout";
 
-export async function createDonation(data: DonationValues & { locale: string }) {
+export async function createDonation(
+  data: DonationValues & { locale: string }
+) {
   const parsed = donationSchema.parse(data);
 
   const { url, sessionId } = await createDonationCheckoutSession({
@@ -14,6 +16,7 @@ export async function createDonation(data: DonationValues & { locale: string }) 
     email: parsed.email,
     donorName: parsed.donorName,
     message: parsed.message,
+    designation: parsed.designation,
     locale: data.locale,
   });
 
@@ -22,6 +25,7 @@ export async function createDonation(data: DonationValues & { locale: string }) 
       email: parsed.email,
       amount: parsed.amount,
       recurring: parsed.recurring,
+      designation: parsed.designation,
       donorName: parsed.donorName ?? null,
       message: parsed.message ?? null,
       stripeSessionId: sessionId,

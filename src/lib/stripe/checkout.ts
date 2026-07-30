@@ -10,8 +10,18 @@ interface CreateDonationCheckoutParams {
   email: string;
   donorName?: string;
   message?: string;
+  designation?: "GENERAL" | "LIFE_RELEASE" | "DRUPCHO";
   locale: string;
 }
+
+const DESIGNATION_LABELS: Record<
+  "GENERAL" | "LIFE_RELEASE" | "DRUPCHO",
+  { ja: string; en: string }
+> = {
+  GENERAL: { ja: "寄付", en: "Donation" },
+  LIFE_RELEASE: { ja: "放生会 お志", en: "Life-Release Offering" },
+  DRUPCHO: { ja: "ドゥプチュ供養 お志", en: "Drupchö Offering" },
+};
 
 export async function createDonationCheckoutSession({
   amount,
@@ -19,13 +29,16 @@ export async function createDonationCheckoutSession({
   email,
   donorName,
   message,
+  designation = "GENERAL",
   locale,
 }: CreateDonationCheckoutParams) {
   const metadata: Record<string, string> = {
     type: "donation",
     donorName: donorName ?? "",
     message: message ?? "",
+    designation,
   };
+  const label = DESIGNATION_LABELS[designation] ?? DESIGNATION_LABELS.GENERAL;
 
   const successUrl = `${APP_URL}/${locale}/donate/thank-you?session_id={CHECKOUT_SESSION_ID}`;
   const cancelUrl = `${APP_URL}/${locale}/donate`;
@@ -41,8 +54,8 @@ export async function createDonationCheckoutSession({
             product_data: {
               name:
                 locale === "ja"
-                  ? "マンガラ・シュリー・ブーティ・ジャパン 月額寄付"
-                  : "MSB Japan Monthly Donation",
+                  ? `マンガラ・シュリー・ブーティ・ジャパン 月額${label.ja}`
+                  : `MSB Japan Monthly ${label.en}`,
             },
             unit_amount: amount,
             recurring: { interval: "month" },

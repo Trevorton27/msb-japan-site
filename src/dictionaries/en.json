@@ -76,7 +76,10 @@
     "registerWaitlisted": "You have been added to the waitlist.",
     "registerError": "Registration failed. Please try again.",
     "donation": "By Donation",
-    "slidingScale": "Sliding Scale"
+    "slidingScale": "Sliding Scale",
+    "registeredCount": "{count} registered",
+    "waitlistNotice": "This event is full. New registrations will be added to the waitlist.",
+    "joinWaitlist": "Join waitlist"
   },
   "home": {
     "heroTitle": "Tibetan Buddhist Wisdom & Practice",
@@ -188,7 +191,13 @@
     "processing": "Processing...",
     "error": "An error occurred. Please try again.",
     "thankYou": "Thank You for Your Donation",
-    "thankYouMessage": "Your generous support means a lot to us. A confirmation email has been sent."
+    "thankYouMessage": "Your generous support means a lot to us. A confirmation email has been sent.",
+    "designation": "Designation",
+    "designationGeneral": "General fund",
+    "designationLifeRelease": "Life-release ceremony (from ¥2,000 per unit)",
+    "designationDrupcho": "Drupchö sponsorship (from ¥2,000 per unit)",
+    "prayerRequest": "Prayer request",
+    "prayerRequestHint": "Please include specific wishes and your name. Requests are read aloud and prayed for during the ceremony."
   },
   "shop": {
     "title": "Shop",

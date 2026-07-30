@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "next-dev",
+      "runtimeExecutable": "./node_modules/.bin/next",
+      "runtimeArgs": [
+        "dev",
+        "--turbopack"
+      ],
+      "port": 3000,
+      "autoPort": true
+    },
+    {
+      "name": "next-prod-verify",
+      "runtimeExecutable": "./node_modules/.bin/next",
+      "runtimeArgs": [
+        "start",
+        "-p",
+        "3100"
+      ],
+      "port": 3100
+    }
+  ]
+}

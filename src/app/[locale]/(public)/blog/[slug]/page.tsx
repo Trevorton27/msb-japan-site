@@ -5,6 +5,7 @@ import type { Locale } from "@/lib/i18n/config";
 import { isValidLocale } from "@/lib/i18n/config";
 import { notFound } from "next/navigation";
 import { getPostBySlug } from "@/server/queries/content";
+import { PostBody } from "@/components/public/post-body";
 
 export async function generateMetadata({
   params,
@@ -39,14 +40,14 @@ export default async function BlogDetailPage({
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
       <Link
         href={`/${locale}/blog`}
-        className="text-sm text-charcoal-500 hover:text-charcoal-900"
+        className="text-charcoal-500 hover:text-charcoal-900 text-sm"
       >
         &larr; {dict.common?.blog}
       </Link>
 
-      <h1 className="mt-4 text-3xl font-bold text-charcoal-900">{title}</h1>
+      <h1 className="text-charcoal-900 mt-4 text-3xl font-bold">{title}</h1>
 
-      <div className="mt-3 flex flex-wrap items-center gap-2 text-sm text-charcoal-500">
+      <div className="text-charcoal-500 mt-3 flex flex-wrap items-center gap-2 text-sm">
         {post.teacher && (
           <span>
             {locale === "en" && post.teacher.nameEn
@@ -64,11 +65,7 @@ export default async function BlogDetailPage({
         )}
       </div>
 
-      {body && (
-        <div className="prose mt-8 max-w-none whitespace-pre-wrap text-charcoal-600 leading-relaxed">
-          {body}
-        </div>
-      )}
+      {body && <PostBody body={body} />}
     </div>
   );
 }

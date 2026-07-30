@@ -8,6 +8,8 @@ import { createDonation } from "@/server/actions/donations";
 
 const PRESET_AMOUNTS = [1000, 3000, 5000, 10000, 30000, 50000];
 
+type Designation = "GENERAL" | "LIFE_RELEASE" | "DRUPCHO";
+
 interface DonationFormProps {
   locale: string;
   dict: {
@@ -23,6 +25,12 @@ interface DonationFormProps {
     donate: string;
     processing: string;
     error: string;
+    designation: string;
+    designationGeneral: string;
+    designationLifeRelease: string;
+    designationDrupcho: string;
+    prayerRequest: string;
+    prayerRequestHint: string;
   };
 }
 
@@ -30,12 +38,12 @@ export function DonationForm({ locale, dict }: DonationFormProps) {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(5000);
   const [customAmount, setCustomAmount] = useState("");
   const [recurring, setRecurring] = useState(false);
+  const [designation, setDesignation] = useState<Designation>("GENERAL");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const amount =
-    selectedAmount ??
-    (customAmount ? parseInt(customAmount, 10) : 0);
+    selectedAmount ?? (customAmount ? parseInt(customAmount, 10) : 0);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -50,6 +58,7 @@ export function DonationForm({ locale, dict }: DonationFormProps) {
         email: fd.get("email") as string,
         amount,
         recurring,
+        designation,
         donorName: (fd.get("donorName") as string) || undefined,
         message: (fd.get("message") as string) || undefined,
         locale,
@@ -106,7 +115,7 @@ export function DonationForm({ locale, dict }: DonationFormProps) {
               className={`rounded-lg border px-3 py-3 text-sm font-medium transition-colors ${
                 selectedAmount === preset
                   ? "border-burgundy-600 bg-burgundy-50 text-burgundy-700"
-                  : "border-gray-200 bg-white text-charcoal-700 hover:border-gray-300"
+                  : "text-charcoal-700 border-gray-200 bg-white hover:border-gray-300"
               }`}
               onClick={() => {
                 setSelectedAmount(preset);
@@ -119,11 +128,26 @@ export function DonationForm({ locale, dict }: DonationFormProps) {
         </div>
       </div>
 
+      {/* Designation */}
+      <div>
+        <Label htmlFor="designation">{dict.designation}</Label>
+        <select
+          id="designation"
+          value={designation}
+          onChange={(e) => setDesignation(e.target.value as Designation)}
+          className="mt-1 w-full rounded-md border bg-white px-3 py-2 text-sm"
+        >
+          <option value="GENERAL">{dict.designationGeneral}</option>
+          <option value="LIFE_RELEASE">{dict.designationLifeRelease}</option>
+          <option value="DRUPCHO">{dict.designationDrupcho}</option>
+        </select>
+      </div>
+
       {/* Custom amount */}
       <div>
         <Label htmlFor="customAmount">{dict.customAmount}</Label>
         <div className="relative mt-1">
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-charcoal-500">
+          <span className="text-charcoal-500 absolute top-1/2 left-3 -translate-y-1/2 text-sm">
             ¥
           </span>
           <Input
@@ -146,20 +170,35 @@ export function DonationForm({ locale, dict }: DonationFormProps) {
       <div className="space-y-3">
         <div>
           <Label htmlFor="email">{dict.email}</Label>
-          <Input id="email" name="email" type="email" required className="mt-1" />
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            required
+            className="mt-1"
+          />
         </div>
         <div>
           <Label htmlFor="donorName">
             {dict.name}{" "}
-            <span className="text-xs text-charcoal-400">({dict.nameOptional})</span>
+            <span className="text-charcoal-400 text-xs">
+              ({dict.nameOptional})
+            </span>
           </Label>
           <Input id="donorName" name="donorName" className="mt-1" />
         </div>
         <div>
           <Label htmlFor="message">
-            {dict.message}{" "}
-            <span className="text-xs text-charcoal-400">({dict.messageOptional})</span>
+            {designation === "GENERAL" ? dict.message : dict.prayerRequest}{" "}
+            <span className="text-charcoal-400 text-xs">
+              ({dict.messageOptional})
+            </span>
           </Label>
+          {designation !== "GENERAL" && (
+            <p className="text-charcoal-500 mt-1 text-xs">
+              {dict.prayerRequestHint}
+            </p>
+          )}
           <textarea
             id="message"
             name="message"
@@ -175,7 +214,7 @@ export function DonationForm({ locale, dict }: DonationFormProps) {
       <Button
         type="submit"
         disabled={loading || amount < 100}
-        className="w-full bg-burgundy-600 hover:bg-burgundy-700"
+        className="bg-burgundy-600 hover:bg-burgundy-700 w-full"
         size="lg"
       >
         {loading

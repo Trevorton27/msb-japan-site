@@ -349,6 +349,12 @@ enum DonationStatus {
   REFUNDED
 }
 
+enum DonationDesignation {
+  GENERAL
+  LIFE_RELEASE
+  DRUPCHO
+}
+
 model Donation {
   id              String         @id @default(cuid())
   email           String
@@ -356,6 +362,7 @@ model Donation {
   currency        String         @default("jpy")
   status          DonationStatus @default(PENDING)
   recurring       Boolean        @default(false)
+  designation     DonationDesignation @default(GENERAL)
   stripeSessionId String?
   stripeSubscriptionId String?
   donorName       String?
@@ -396,6 +403,7 @@ model ProductVariant {
   nameEn          String?
   sku             String?  @unique
   priceAmount     Int
+  digital         Boolean  @default(false)
   stockQuantity   Int      @default(0)
   stripePriceId   String?
   active          Boolean  @default(true)

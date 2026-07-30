@@ -16,7 +16,8 @@ export async function generateMetadata({
   if (!isValidLocale(locale)) return {};
   const product = await getProductBySlug(slug, locale as "ja" | "en");
   if (!product) return {};
-  const name = locale === "en" && product.nameEn ? product.nameEn : product.nameJa;
+  const name =
+    locale === "en" && product.nameEn ? product.nameEn : product.nameJa;
   return { title: `${name} — MSB Japan` };
 }
 
@@ -32,7 +33,8 @@ export default async function ProductDetailPage({
   if (!product) notFound();
 
   const dict = await getDictionary(locale as Locale);
-  const name = locale === "en" && product.nameEn ? product.nameEn : product.nameJa;
+  const name =
+    locale === "en" && product.nameEn ? product.nameEn : product.nameJa;
   const description =
     locale === "en" && product.descriptionEn
       ? product.descriptionEn
@@ -45,7 +47,7 @@ export default async function ProductDetailPage({
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
       <Link
         href={`/${locale}/shop`}
-        className="text-sm text-charcoal-500 hover:text-charcoal-900"
+        className="text-charcoal-500 hover:text-charcoal-900 text-sm"
       >
         &larr; {dict.common?.shop}
       </Link>
@@ -60,22 +62,24 @@ export default async function ProductDetailPage({
         )}
 
         <div>
-          <h1 className="text-2xl font-bold text-charcoal-900">{name}</h1>
+          <h1 className="text-charcoal-900 text-2xl font-bold">{name}</h1>
 
           {description && (
-            <p className="mt-4 whitespace-pre-wrap text-charcoal-600">
+            <p className="text-charcoal-600 mt-4 whitespace-pre-wrap">
               {description}
             </p>
           )}
 
           <div className="mt-8 space-y-4">
-            <h2 className="text-sm font-semibold text-charcoal-700">
+            <h2 className="text-charcoal-700 text-sm font-semibold">
               {locale === "ja" ? "オプション" : "Options"}
             </h2>
 
             {product.variants.map((variant) => {
               const variantName =
-                locale === "en" && variant.nameEn ? variant.nameEn : variant.nameJa;
+                locale === "en" && variant.nameEn
+                  ? variant.nameEn
+                  : variant.nameJa;
 
               return (
                 <div
@@ -83,17 +87,28 @@ export default async function ProductDetailPage({
                   className="flex items-center justify-between rounded-lg border p-4"
                 >
                   <div>
-                    <p className="font-medium text-charcoal-900">{variantName}</p>
-                    <p className="font-mono text-sm text-burgundy-600">
+                    <p className="text-charcoal-900 font-medium">
+                      {variantName}
+                    </p>
+                    {variant.digital && (
+                      <span className="bg-saffron-500/15 text-saffron-600 mt-1 inline-block rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap">
+                        {locale === "ja"
+                          ? "デジタル（ダウンロード）"
+                          : "Digital download"}
+                      </span>
+                    )}
+                    <p className="text-burgundy-600 font-mono text-sm">
                       ¥{variant.priceAmount.toLocaleString()}
                     </p>
-                    <p className="text-xs text-charcoal-400">
-                      {variant.stockQuantity > 0
-                        ? locale === "ja"
-                          ? `在庫: ${variant.stockQuantity}`
-                          : `In stock: ${variant.stockQuantity}`
-                        : outOfStockLabel}
-                    </p>
+                    {!variant.digital && (
+                      <p className="text-charcoal-400 text-xs">
+                        {variant.stockQuantity > 0
+                          ? locale === "ja"
+                            ? `在庫: ${variant.stockQuantity}`
+                            : `In stock: ${variant.stockQuantity}`
+                          : outOfStockLabel}
+                      </p>
+                    )}
                   </div>
                   <AddToCartButton
                     variantId={variant.id}
@@ -109,7 +124,7 @@ export default async function ProductDetailPage({
           <div className="mt-6">
             <Link
               href={`/${locale}/shop/cart`}
-              className="text-sm font-medium text-burgundy-600 hover:text-burgundy-700"
+              className="text-burgundy-600 hover:text-burgundy-700 text-sm font-medium"
             >
               {locale === "ja" ? "カートを見る →" : "View Cart →"}
             </Link>

@@ -1,11 +1,22 @@
-import { getAllDonationsAdmin, getDonationStats } from "@/server/queries/donations";
+import {
+  getAllDonationsAdmin,
+  getDonationStats,
+} from "@/server/queries/donations";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { DonationFilters } from "@/components/admin/donation-filters";
 import { getAdminLocale } from "@/lib/admin-locale";
 import { getLabels } from "@/lib/admin-labels";
 
-const statusVariant: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
+const statusVariant: Record<
+  string,
+  "default" | "secondary" | "destructive" | "outline"
+> = {
   COMPLETED: "default",
   PENDING: "secondary",
   FAILED: "destructive",
@@ -21,7 +32,12 @@ export default async function AdminDonationsPage({
   const [donations, stats, locale] = await Promise.all([
     getAllDonationsAdmin({
       status: params.status || undefined,
-      recurring: params.type === "recurring" ? true : params.type === "one-time" ? false : undefined,
+      recurring:
+        params.type === "recurring"
+          ? true
+          : params.type === "one-time"
+            ? false
+            : undefined,
     }),
     getDonationStats(),
     getAdminLocale(),
@@ -55,7 +71,9 @@ export default async function AdminDonationsPage({
         <Card>
           <CardHeader className="pb-2">
             <CardDescription>{l.totalAmount}</CardDescription>
-            <CardTitle className="text-2xl">¥{stats.totalAmount.toLocaleString()}</CardTitle>
+            <CardTitle className="text-2xl">
+              ¥{stats.totalAmount.toLocaleString()}
+            </CardTitle>
           </CardHeader>
         </Card>
       </div>
@@ -72,7 +90,9 @@ export default async function AdminDonationsPage({
               <th className="px-4 py-3 text-left font-medium">{l.donor}</th>
               <th className="px-4 py-3 text-left font-medium">{l.email}</th>
               <th className="px-4 py-3 text-right font-medium">{l.amount}</th>
-              <th className="px-4 py-3 text-left font-medium">{l.donationType}</th>
+              <th className="px-4 py-3 text-left font-medium">
+                {l.donationType}
+              </th>
               <th className="px-4 py-3 text-left font-medium">{l.status}</th>
               <th className="px-4 py-3 text-left font-medium">{l.message}</th>
             </tr>
@@ -80,26 +100,37 @@ export default async function AdminDonationsPage({
           <tbody className="divide-y">
             {donations.length === 0 ? (
               <tr>
-                <td colSpan={7} className="px-4 py-8 text-center text-gray-500">{l.noDonations}</td>
+                <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
+                  {l.noDonations}
+                </td>
               </tr>
             ) : (
               donations.map((donation) => (
                 <tr key={donation.id} className="hover:bg-gray-50">
-                  <td className="whitespace-nowrap px-4 py-3">
+                  <td className="px-4 py-3 whitespace-nowrap">
                     {donation.createdAt.toLocaleDateString(dateFmt)}
                   </td>
                   <td className="px-4 py-3">{donation.donorName ?? "—"}</td>
                   <td className="px-4 py-3">{donation.email}</td>
-                  <td className="whitespace-nowrap px-4 py-3 text-right font-mono">
+                  <td className="px-4 py-3 text-right font-mono whitespace-nowrap">
                     ¥{donation.amount.toLocaleString()}
                   </td>
                   <td className="px-4 py-3">
                     <Badge variant="outline">
                       {donation.recurring ? l.monthly : l.oneTime}
                     </Badge>
+                    {donation.designation !== "GENERAL" && (
+                      <Badge variant="secondary" className="ml-1">
+                        {donation.designation === "LIFE_RELEASE"
+                          ? "放生会"
+                          : "ドゥプチュ"}
+                      </Badge>
+                    )}
                   </td>
                   <td className="px-4 py-3">
-                    <Badge variant={statusVariant[donation.status] ?? "secondary"}>
+                    <Badge
+                      variant={statusVariant[donation.status] ?? "secondary"}
+                    >
                       {donation.status}
                     </Badge>
                   </td>

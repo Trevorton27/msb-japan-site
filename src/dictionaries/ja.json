@@ -76,7 +76,10 @@
     "registerWaitlisted": "キャンセル待ちとして登録されました。",
     "registerError": "登録に失敗しました。もう一度お試しください。",
     "donation": "お布施",
-    "slidingScale": "スライディングスケール"
+    "slidingScale": "スライディングスケール",
+    "registeredCount": "{count}名登録済み",
+    "waitlistNotice": "このイベントは満席です。ご登録いただくとキャンセル待ちリストに追加されます。",
+    "joinWaitlist": "キャンセル待ちに登録"
   },
   "home": {
     "heroTitle": "チベット仏教の智慧と実践",
@@ -188,7 +191,13 @@
     "processing": "処理中...",
     "error": "エラーが発生しました。もう一度お試しください。",
     "thankYou": "ご寄付ありがとうございます",
-    "thankYouMessage": "温かいご支援に心より感謝いたします。確認メールをお送りしました。"
+    "thankYouMessage": "温かいご支援に心より感謝いたします。確認メールをお送りしました。",
+    "designation": "お志の指定",
+    "designationGeneral": "一般寄付",
+    "designationLifeRelease": "放生会（1口2,000円から）",
+    "designationDrupcho": "ドゥプチュ供養（1口2,000円から）",
+    "prayerRequest": "祈願文",
+    "prayerRequestHint": "具体的な内容と共にご自分のお名前を添えてください。寄せられた祈願文は法会で読み上げられ祈念されます。"
   },
   "shop": {
     "title": "ショップ",

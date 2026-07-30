@@ -59,4 +59,46 @@ describe("donationSchema", () => {
       expect(result.data.recurring).toBe(false);
     }
   });
+
+  it("defaults designation to the general fund", () => {
+    const result = donationSchema.safeParse({
+      email: "donor@example.com",
+      amount: 3000,
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.designation).toBe("GENERAL");
+    }
+  });
+
+  it("accepts a life-release offering with a prayer request", () => {
+    const result = donationSchema.safeParse({
+      email: "donor@example.com",
+      amount: 2000,
+      designation: "LIFE_RELEASE",
+      message: "父の一日も早い病気からの回復を祈念します。田中一郎",
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.designation).toBe("LIFE_RELEASE");
+    }
+  });
+
+  it("accepts a drupcho offering", () => {
+    const result = donationSchema.safeParse({
+      email: "donor@example.com",
+      amount: 4000,
+      designation: "DRUPCHO",
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects an unknown designation", () => {
+    const result = donationSchema.safeParse({
+      email: "donor@example.com",
+      amount: 2000,
+      designation: "BUILDING_FUND",
+    });
+    expect(result.success).toBe(false);
+  });
 });

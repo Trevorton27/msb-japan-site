@@ -46,6 +46,17 @@ export default async function DonatePage({
           donate: "寄付する",
           processing: "処理中...",
           error: "エラーが発生しました。もう一度お試しください。",
+          designation: dict.donate?.designation ?? "お志の指定",
+          designationGeneral: dict.donate?.designationGeneral ?? "一般寄付",
+          designationLifeRelease:
+            dict.donate?.designationLifeRelease ?? "放生会（1口2,000円から）",
+          designationDrupcho:
+            dict.donate?.designationDrupcho ??
+            "ドゥプチュ供養（1口2,000円から）",
+          prayerRequest: dict.donate?.prayerRequest ?? "祈願文",
+          prayerRequestHint:
+            dict.donate?.prayerRequestHint ??
+            "具体的な内容と共にご自分のお名前を添えてください。",
         }
       : {
           amount: "Amount",
@@ -60,15 +71,27 @@ export default async function DonatePage({
           donate: "Donate",
           processing: "Processing...",
           error: "An error occurred. Please try again.",
+          designation: dict.donate?.designation ?? "Designation",
+          designationGeneral: dict.donate?.designationGeneral ?? "General fund",
+          designationLifeRelease:
+            dict.donate?.designationLifeRelease ??
+            "Life-release ceremony (from ¥2,000 per unit)",
+          designationDrupcho:
+            dict.donate?.designationDrupcho ??
+            "Drupchö sponsorship (from ¥2,000 per unit)",
+          prayerRequest: dict.donate?.prayerRequest ?? "Prayer request",
+          prayerRequestHint:
+            dict.donate?.prayerRequestHint ??
+            "Please include specific wishes and your name.",
         };
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
       <div className="mb-10 text-center">
-        <h1 className="text-3xl font-bold text-charcoal-900">
+        <h1 className="text-charcoal-900 text-3xl font-bold">
           {dict.home?.donateCta}
         </h1>
-        <p className="mt-4 text-charcoal-600">{dict.home?.donateDesc}</p>
+        <p className="text-charcoal-600 mt-4">{dict.home?.donateDesc}</p>
       </div>
 
       <DonationForm locale={locale} dict={donateDict} />

@@ -18,7 +18,8 @@ export async function generateMetadata({
   if (!isValidLocale(locale)) return {};
   const event = await getEventBySlug(slug, locale as "ja" | "en");
   if (!event) return {};
-  const title = locale === "en" && event.titleEn ? event.titleEn : event.titleJa;
+  const title =
+    locale === "en" && event.titleEn ? event.titleEn : event.titleJa;
   return { title: `${title} — MSB Japan` };
 }
 
@@ -35,7 +36,8 @@ export default async function EventDetailPage({
 
   const dict = await getDictionary(locale as Locale);
 
-  const title = locale === "en" && event.titleEn ? event.titleEn : event.titleJa;
+  const title =
+    locale === "en" && event.titleEn ? event.titleEn : event.titleJa;
   const description =
     locale === "en" && event.descriptionEn
       ? event.descriptionEn
@@ -78,15 +80,17 @@ export default async function EventDetailPage({
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
       <Link
         href={`/${locale}/events`}
-        className="text-sm text-charcoal-500 hover:text-charcoal-900"
+        className="text-charcoal-500 hover:text-charcoal-900 text-sm"
       >
         &larr; {dict.events?.title}
       </Link>
 
-      <h1 className="mt-4 text-3xl font-bold text-charcoal-900">{title}</h1>
+      <h1 className="text-charcoal-900 mt-4 text-3xl font-bold">{title}</h1>
 
       <div className="mt-3 flex flex-wrap gap-2">
-        <Badge variant="secondary">{modeLabels[event.mode] ?? event.mode}</Badge>
+        <Badge variant="secondary">
+          {modeLabels[event.mode] ?? event.mode}
+        </Badge>
         {event.beginnerFriendly && (
           <Badge className="bg-saffron-500 text-white">
             {dict.events?.beginnerFriendly}
@@ -104,7 +108,7 @@ export default async function EventDetailPage({
       {/* Details */}
       <div className="space-y-3 text-sm">
         <div>
-          <span className="font-semibold text-charcoal-900">
+          <span className="text-charcoal-900 font-semibold">
             {dict.events?.date}:
           </span>{" "}
           {event.startsAt.toLocaleDateString(dtLocale, dateOptions)} —{" "}
@@ -116,19 +120,19 @@ export default async function EventDetailPage({
 
         {event.venue && (
           <div>
-            <span className="font-semibold text-charcoal-900">
+            <span className="text-charcoal-900 font-semibold">
               {dict.events?.location}:
             </span>{" "}
             {locale === "en" && event.venue.nameEn
               ? event.venue.nameEn
               : event.venue.nameJa}
             {event.venue.addressJa && locale === "ja" && (
-              <span className="ml-1 text-charcoal-500">
+              <span className="text-charcoal-500 ml-1">
                 ({event.venue.addressJa})
               </span>
             )}
             {event.venue.addressEn && locale === "en" && (
-              <span className="ml-1 text-charcoal-500">
+              <span className="text-charcoal-500 ml-1">
                 ({event.venue.addressEn})
               </span>
             )}
@@ -137,22 +141,47 @@ export default async function EventDetailPage({
 
         {event.capacity && (
           <div>
-            <span className="font-semibold text-charcoal-900">
-              {dict.events?.capacity}:
-            </span>{" "}
-            {isFull
-              ? dict.events?.full
-              : (dict.events?.spotsLeft?.replace(
+            <div className="flex items-center justify-between">
+              <span className="text-charcoal-900 font-semibold">
+                {dict.events?.capacity}:
+              </span>
+              <span
+                className={
+                  isFull ? "text-burgundy-600 font-medium" : "text-charcoal-600"
+                }
+              >
+                {isFull
+                  ? dict.events?.full
+                  : (dict.events?.spotsLeft?.replace(
+                      "{count}",
+                      String(spotsLeft)
+                    ) ?? `${spotsLeft} spots left`)}
+              </span>
+            </div>
+            <div className="mt-2 flex items-center gap-3">
+              <div className="bg-ivory-100 h-2 flex-1 overflow-hidden rounded-full">
+                <div
+                  className={`h-full rounded-full ${isFull ? "bg-burgundy-500" : "bg-saffron-500"}`}
+                  style={{
+                    width: `${Math.min(100, Math.round((confirmedCount / event.capacity) * 100))}%`,
+                  }}
+                />
+              </div>
+              <span className="text-charcoal-500 text-xs whitespace-nowrap">
+                {(dict.events?.registeredCount ?? "{count} registered").replace(
                   "{count}",
-                  String(spotsLeft)
-                ) ?? `${spotsLeft} spots left`)}
+                  String(confirmedCount)
+                )}{" "}
+                / {event.capacity}
+              </span>
+            </div>
           </div>
         )}
       </div>
 
       {/* Description */}
       {description && (
-        <div className="mt-6 whitespace-pre-wrap text-charcoal-600 leading-relaxed">
+        <div className="text-charcoal-600 mt-6 leading-relaxed whitespace-pre-wrap">
           {description}
         </div>
       )}
@@ -161,7 +190,7 @@ export default async function EventDetailPage({
       <div className="mt-6">
         <a
           href={`/api/events/${event.id}/calendar`}
-          className="text-sm text-burgundy-500 hover:underline"
+          className="text-burgundy-500 text-sm hover:underline"
         >
           {dict.events?.addToCalendar}
         </a>
@@ -171,31 +200,41 @@ export default async function EventDetailPage({
 
       {/* Registration */}
       <section>
-        <h2 className="mb-4 text-xl font-semibold text-charcoal-900">
+        <h2 className="text-charcoal-900 mb-4 text-xl font-semibold">
           {dict.events?.register}
         </h2>
 
         {!regOpen ? (
           <p className="text-charcoal-500">{dict.events?.registrationClosed}</p>
         ) : (
-          <RegistrationForm
-            eventId={event.id}
-            labels={{
-              email: dict.contact?.email ?? "Email",
-              attendeeName: dict.events?.attendeeName ?? "Name",
-              attendeeEmail: dict.events?.attendeeEmail ?? "Email",
-              addAttendee: dict.events?.addAttendee ?? "Add",
-              removeAttendee: dict.events?.removeAttendee ?? "Remove",
-              registrationNotes: dict.events?.registrationNotes ?? "Notes",
-              register: dict.events?.register ?? "Register",
-              registerSuccess:
-                dict.events?.registerSuccess ?? "Registration confirmed.",
-              registerWaitlisted:
-                dict.events?.registerWaitlisted ?? "Added to waitlist.",
-              registerError:
-                dict.events?.registerError ?? "Registration failed.",
-            }}
-          />
+          <>
+            {isFull && (
+              <p className="border-saffron-500/40 bg-ivory-100 text-charcoal-600 mb-4 rounded-md border px-4 py-3 text-sm">
+                {dict.events?.waitlistNotice ??
+                  "This event is full. New registrations will be added to the waitlist."}
+              </p>
+            )}
+            <RegistrationForm
+              eventId={event.id}
+              labels={{
+                email: dict.contact?.email ?? "Email",
+                attendeeName: dict.events?.attendeeName ?? "Name",
+                attendeeEmail: dict.events?.attendeeEmail ?? "Email",
+                addAttendee: dict.events?.addAttendee ?? "Add",
+                removeAttendee: dict.events?.removeAttendee ?? "Remove",
+                registrationNotes: dict.events?.registrationNotes ?? "Notes",
+                registerSuccess:
+                  dict.events?.registerSuccess ?? "Registration confirmed.",
+                registerWaitlisted:
+                  dict.events?.registerWaitlisted ?? "Added to waitlist.",
+                registerError:
+                  dict.events?.registerError ?? "Registration failed.",
+                register: isFull
+                  ? (dict.events?.joinWaitlist ?? "Join waitlist")
+                  : (dict.events?.register ?? "Register"),
+              }}
+            />
+          </>
         )}
       </section>
     </div>
