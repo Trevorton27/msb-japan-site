@@ -10,13 +10,26 @@ export function SiteFooter({
   locale: Locale;
   dict: Dictionary;
 }) {
-  const footerLinks = [
+  const navLinks = [
     { label: dict.footer?.aboutLink ?? "", href: `/${locale}/about` },
     { label: dict.footer?.centresLink ?? "", href: `/${locale}/centres` },
     { label: dict.footer?.teachersLink ?? "", href: `/${locale}/teachers` },
     { label: dict.footer?.eventsLink ?? "", href: `/${locale}/events` },
     { label: dict.footer?.contactLink ?? "", href: `/${locale}/contact` },
     { label: dict.footer?.donateLink ?? "", href: `/${locale}/donate` },
+  ];
+
+  const resourceLinks = [
+    { label: dict.footer?.startLink ?? "", href: `/${locale}/start` },
+    { label: dict.footer?.teachingsLink ?? "", href: `/${locale}/teachings` },
+    { label: dict.footer?.blogLink ?? "", href: `/${locale}/blog` },
+    { label: dict.footer?.programsLink ?? "", href: `/${locale}/programs` },
+    { label: dict.footer?.shopLink ?? "", href: `/${locale}/shop` },
+  ];
+
+  const legalLinks = [
+    { label: dict.footer?.privacyLink ?? "", href: `/${locale}/privacy` },
+    { label: dict.footer?.tokushoho ?? "", href: `/${locale}/tokushoho` },
   ];
 
   return (
@@ -37,7 +50,7 @@ export function SiteFooter({
               {dict.common?.siteName}
             </h3>
             <ul className="mt-3 space-y-2">
-              {footerLinks.map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -55,22 +68,16 @@ export function SiteFooter({
               {dict.common?.learnMore}
             </h3>
             <ul className="mt-3 space-y-2">
-              <li>
-                <Link
-                  href={`/${locale}/start`}
-                  className="text-sm text-charcoal-500 transition-colors hover:text-charcoal-900"
-                >
-                  {dict.common?.start}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}/teachings`}
-                  className="text-sm text-charcoal-500 transition-colors hover:text-charcoal-900"
-                >
-                  {dict.common?.teachings}
-                </Link>
-              </li>
+              {resourceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-charcoal-500 transition-colors hover:text-charcoal-900"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -79,22 +86,16 @@ export function SiteFooter({
               {dict.footer?.privacyLink}
             </h3>
             <ul className="mt-3 space-y-2">
-              <li>
-                <Link
-                  href={`/${locale}/privacy`}
-                  className="text-sm text-charcoal-500 transition-colors hover:text-charcoal-900"
-                >
-                  {dict.footer?.privacyLink}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}/tokushoho`}
-                  className="text-sm text-charcoal-500 transition-colors hover:text-charcoal-900"
-                >
-                  {dict.footer?.tokushoho}
-                </Link>
-              </li>
+              {legalLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-charcoal-500 transition-colors hover:text-charcoal-900"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

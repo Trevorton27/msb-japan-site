@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { auth } from "./index";
 import type { PermissionKey, RoleName } from "./permissions";
 
@@ -9,7 +10,7 @@ export async function getCurrentUser() {
 export async function requireAuth() {
   const user = await getCurrentUser();
   if (!user) {
-    throw new Error("Unauthorized");
+    redirect("/admin/login");
   }
   return user;
 }

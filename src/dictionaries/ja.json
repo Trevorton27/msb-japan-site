@@ -25,7 +25,9 @@
     "teachers": "指導者",
     "readMore": "続きを読む",
     "viewAll": "すべて見る",
-    "newsletter": "ニュースレター"
+    "newsletter": "ニュースレター",
+    "resources": "リソース",
+    "programs": "プログラム"
   },
   "auth": {
     "signIn": "サインイン",
@@ -79,7 +81,10 @@
     "slidingScale": "スライディングスケール",
     "registeredCount": "{count}名登録済み",
     "waitlistNotice": "このイベントは満席です。ご登録いただくとキャンセル待ちリストに追加されます。",
-    "joinWaitlist": "キャンセル待ちに登録"
+    "joinWaitlist": "キャンセル待ちに登録",
+    "viewList": "リスト",
+    "viewCalendar": "カレンダー",
+    "today": "今日"
   },
   "home": {
     "heroTitle": "チベット仏教の智慧と実践",
@@ -173,7 +178,9 @@
     "startTitle": "はじめての方へ — MSB Japan",
     "startDescription": "マンガラ・シュリー・ブーティ・ジャパンへの参加方法のご案内",
     "eventsTitle": "イベント — MSB Japan",
-    "eventsDescription": "瞑想会、法話、リトリートなどのイベント情報"
+    "eventsDescription": "瞑想会、法話、リトリートなどのイベント情報",
+    "programsTitle": "プログラム — MSB Japan",
+    "programsDescription": "マンガラ・シュリー・ブーティ・ジャパンの学びと実践のプログラム"
   },
   "donate": {
     "title": "活動を支援する",
@@ -219,6 +226,19 @@
     "shippingName": "お届け先氏名",
     "shippingAddress": "お届け先住所"
   },
+  "programs": {
+    "title": "プログラム",
+    "description": "マンガラ・シュリー・ブーティ・ジャパンが提供する学びと実践のプログラムです。",
+    "meditationTitle": "瞑想会",
+    "meditationDesc": "すべてのレベルの方を対象とした定期的なガイド付き瞑想会です。",
+    "studyGroupTitle": "学習会",
+    "studyGroupDesc": "チベット仏教の経典や教えを日本語で共に学びます。",
+    "retreatsTitle": "リトリート",
+    "retreatsDesc": "年間を通じて開催される集中的な実践リトリートです。",
+    "onlineTitle": "オンラインプログラム",
+    "onlineDesc": "どこからでも教えと実践のセッションに参加できます。",
+    "noPrograms": "現在登録されているプログラムはありません。ニュースレターに登録して最新情報をお受け取りください。"
+  },
   "footer": {
     "aboutLink": "私たちについて",
     "centresLink": "センター",
@@ -226,6 +246,11 @@
     "eventsLink": "イベント",
     "contactLink": "お問い合わせ",
     "donateLink": "ご寄付",
+    "shopLink": "ショップ",
+    "blogLink": "ブログ",
+    "teachingsLink": "教え",
+    "startLink": "はじめての方へ",
+    "programsLink": "プログラム",
     "privacyLink": "プライバシーポリシー",
     "tokushoho": "特定商取引法に基づく表記",
     "copyright": "Mangala Shri Bhuti Japan",

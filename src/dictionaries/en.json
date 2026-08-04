@@ -25,7 +25,9 @@
     "teachers": "Teachers",
     "readMore": "Read More",
     "viewAll": "View All",
-    "newsletter": "Newsletter"
+    "newsletter": "Newsletter",
+    "resources": "Resources",
+    "programs": "Programs"
   },
   "auth": {
     "signIn": "Sign In",
@@ -79,7 +81,10 @@
     "slidingScale": "Sliding Scale",
     "registeredCount": "{count} registered",
     "waitlistNotice": "This event is full. New registrations will be added to the waitlist.",
-    "joinWaitlist": "Join waitlist"
+    "joinWaitlist": "Join waitlist",
+    "viewList": "List",
+    "viewCalendar": "Calendar",
+    "today": "Today"
   },
   "home": {
     "heroTitle": "Tibetan Buddhist Wisdom & Practice",
@@ -173,7 +178,9 @@
     "startTitle": "New Visitors — MSB Japan",
     "startDescription": "How to get involved with Mangala Shri Bhuti Japan",
     "eventsTitle": "Events — MSB Japan",
-    "eventsDescription": "Meditation sessions, dharma talks, retreats, and more"
+    "eventsDescription": "Meditation sessions, dharma talks, retreats, and more",
+    "programsTitle": "Programs — MSB Japan",
+    "programsDescription": "Ongoing study and practice programs at Mangala Shri Bhuti Japan"
   },
   "donate": {
     "title": "Support Our Activities",
@@ -219,6 +226,19 @@
     "shippingName": "Shipping Name",
     "shippingAddress": "Shipping Address"
   },
+  "programs": {
+    "title": "Programs",
+    "description": "Ongoing study and practice programs offered by Mangala Shri Bhuti Japan.",
+    "meditationTitle": "Meditation Sessions",
+    "meditationDesc": "Regular guided meditation sessions for all levels.",
+    "studyGroupTitle": "Study Groups",
+    "studyGroupDesc": "Study Tibetan Buddhist texts and teachings together in Japanese.",
+    "retreatsTitle": "Retreats",
+    "retreatsDesc": "Intensive practice retreats held at various times throughout the year.",
+    "onlineTitle": "Online Programs",
+    "onlineDesc": "Participate in teachings and practice sessions from anywhere.",
+    "noPrograms": "No programs are currently listed. Please check back or subscribe to our newsletter for updates."
+  },
   "footer": {
     "aboutLink": "About",
     "centresLink": "Centres",
@@ -226,6 +246,11 @@
     "eventsLink": "Events",
     "contactLink": "Contact",
     "donateLink": "Donate",
+    "shopLink": "Shop",
+    "blogLink": "Blog",
+    "teachingsLink": "Teachings",
+    "startLink": "New Visitors",
+    "programsLink": "Programs",
     "privacyLink": "Privacy Policy",
     "tokushoho": "Specified Commercial Transactions",
     "copyright": "Mangala Shri Bhuti Japan",

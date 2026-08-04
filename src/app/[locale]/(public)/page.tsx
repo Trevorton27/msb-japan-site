@@ -42,8 +42,13 @@ export default async function HomePage({
   return (
     <>
       {/* Hero */}
-      <section className="bg-charcoal-900 px-4 py-24 text-center text-white sm:py-32">
-        <div className="mx-auto max-w-3xl">
+      <section className="relative flex min-h-[60vw] items-center justify-center overflow-hidden px-4 py-16 text-center text-white sm:min-h-0 sm:py-40">
+        <div
+          className="absolute inset-0 bg-cover bg-top"
+          style={{ backgroundImage: "url('/images/guruRinpochedMtFuji.png')" }}
+        />
+        <div className="absolute inset-0 bg-charcoal-900/60" />
+        <div className="relative mx-auto max-w-3xl">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             {dict.home?.heroTitle}
           </h1>

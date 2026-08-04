@@ -41,7 +41,7 @@ export default async function AboutPage({
         {dict.about?.title}
       </h1>
 
-      <section className="mt-12">
+      <section id="mission" className="mt-12 scroll-mt-20">
         <h2 className="text-xl font-semibold text-charcoal-900">
           {dict.about?.missionTitle}
         </h2>
@@ -50,7 +50,7 @@ export default async function AboutPage({
         </p>
       </section>
 
-      <section className="mt-12">
+      <section id="history" className="mt-12 scroll-mt-20">
         <h2 className="text-xl font-semibold text-charcoal-900">
           {dict.about?.historyTitle}
         </h2>
@@ -59,7 +59,7 @@ export default async function AboutPage({
         </p>
       </section>
 
-      <section className="mt-12">
+      <section id="values" className="mt-12 scroll-mt-20">
         <h2 className="text-xl font-semibold text-charcoal-900">
           {dict.about?.valuesTitle}
         </h2>

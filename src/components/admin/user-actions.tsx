@@ -148,6 +148,8 @@ function Modal({ children, onClose }: { children: React.ReactNode; onClose: () =
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10" onClick={onClose}>
       <div
+        role="dialog"
+        aria-modal="true"
         className="w-full max-w-sm rounded-lg border bg-white p-6 shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
