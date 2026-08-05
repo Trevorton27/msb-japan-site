@@ -44,7 +44,7 @@ export default async function HomePage({
       {/* Hero */}
       <section className="relative flex min-h-[60vw] items-center justify-center overflow-hidden px-4 py-16 text-center text-white sm:min-h-0 sm:py-40">
         <div
-          className="absolute inset-0 bg-cover bg-top"
+          className="absolute inset-0 bg-cover bg-center sm:bg-top"
           style={{ backgroundImage: "url('/images/guruRinpochedMtFuji.png')" }}
         />
         <div className="absolute inset-0 bg-charcoal-900/60" />

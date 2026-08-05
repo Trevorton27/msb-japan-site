@@ -30,8 +30,8 @@ function getNavItems(
       label: dict.common?.about ?? "",
       href: `/${locale}/about`,
       children: [
-        { label: dict.about?.missionTitle ?? "", href: `/${locale}/about#mission` },
-        { label: dict.about?.historyTitle ?? "", href: `/${locale}/about#history` },
+        { label: dict.common?.vision ?? "", href: `/${locale}/vision` },
+        { label: dict.about?.historyTitle ?? "", href: `/${locale}/history` },
         { label: dict.about?.valuesTitle ?? "", href: `/${locale}/about#values` },
         { label: dict.common?.start ?? "", href: `/${locale}/start` },
       ],
