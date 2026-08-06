@@ -7,6 +7,7 @@ import { requirePermission } from "@/lib/auth/rbac";
 import { PERMISSIONS } from "@/lib/auth/permissions";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
+import { sendContactFormNotification } from "@/lib/email";
 
 const RATE_LIMIT_MAP = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_MAX = 5;
@@ -44,12 +45,28 @@ export async function submitContactForm(data: ContactFormValues) {
     data: {
       name: parsed.name,
       email: parsed.email,
+      phone: parsed.phone,
       subject: parsed.subject,
       body: parsed.body,
     },
   });
 
-  // TODO: Send notification email via Resend
+  try {
+    const adminEmail = process.env.ADMIN_EMAIL ?? process.env.BREVO_SENDER_EMAIL!;
+    await sendContactFormNotification(
+      {
+        name: parsed.name,
+        email: parsed.email,
+        phone: parsed.phone,
+        subject: parsed.subject,
+        message: parsed.body,
+      },
+      adminEmail,
+    );
+  } catch (err) {
+    console.error("Failed to send contact notification email:", err);
+    // Don't fail the submission if email fails — message is already saved
+  }
 
   return { success: true };
 }

@@ -11,6 +11,7 @@ const blankAsUndefined = (schema: z.ZodString) =>
 export const contactFormSchema = z.object({
   name: z.string().min(1, "Name is required").max(100),
   email: z.string().email("Invalid email address"),
+  phone: blankAsUndefined(z.string().max(30)),
   subject: z.string().max(200).optional(),
   body: z.string().min(1, "Message is required").max(5000),
 });

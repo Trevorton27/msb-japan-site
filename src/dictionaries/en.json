@@ -37,12 +37,15 @@
   },
   "contact": {
     "title": "Contact Us",
+    "subtitle": "Please feel free to reach out using the form below.",
     "name": "Name",
     "email": "Email",
+    "phone": "Phone Number",
     "subject": "Subject",
     "message": "Message",
-    "send": "Send",
-    "success": "Your message has been sent successfully.",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Your message has been sent successfully. We'll get back to you soon.",
     "error": "Failed to send. Please try again."
   },
   "events": {

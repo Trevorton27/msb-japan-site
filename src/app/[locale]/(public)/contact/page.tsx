@@ -31,9 +31,7 @@ export default async function ContactPage({
         {dict.contact?.title}
       </h1>
       <p className="mt-4 text-charcoal-600">
-        {locale === "ja"
-          ? "ご質問・ご相談がございましたら、以下のフォームよりお気軽にお問い合わせください。"
-          : "Please feel free to reach out using the form below."}
+        {dict.contact?.subtitle}
       </p>
 
       <div className="mt-8">
@@ -41,9 +39,11 @@ export default async function ContactPage({
           labels={{
             name: dict.contact?.name ?? "Name",
             email: dict.contact?.email ?? "Email",
+            phone: dict.contact?.phone ?? "Phone",
             subject: dict.contact?.subject ?? "Subject",
             message: dict.contact?.message ?? "Message",
             send: dict.contact?.send ?? "Send",
+            sending: dict.contact?.sending ?? "Sending...",
             success: dict.contact?.success ?? "Sent.",
             error: dict.contact?.error ?? "Failed.",
           }}
