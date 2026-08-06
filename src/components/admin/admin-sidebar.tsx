@@ -37,7 +37,7 @@ export function AdminSidebar() {
   ];
 
   return (
-    <aside className="w-56 shrink-0 border-r bg-white">
+    <aside className="w-56 shrink-0 border-r bg-white dark:border-gray-700 dark:bg-gray-800">
       <nav className="flex flex-col gap-1 p-3">
         {navItems.map((item) => {
           const isActive =
@@ -51,8 +51,8 @@ export function AdminSidebar() {
               className={cn(
                 "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-gray-100 text-gray-900"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  ? "bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-gray-100"
+                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100"
               )}
             >
               {item.label}
@@ -61,7 +61,7 @@ export function AdminSidebar() {
         })}
         <button
           onClick={() => signOut({ callbackUrl: "/admin/login" })}
-          className="mt-4 rounded-md border-t px-3 py-2 text-left text-sm font-medium text-red-600 transition-colors hover:bg-red-50"
+          className="mt-4 rounded-md border-t px-3 py-2 text-left text-sm font-medium text-red-600 transition-colors hover:bg-red-50 dark:border-gray-700 dark:text-red-400 dark:hover:bg-red-900/30"
         >
           {l.signOut}
         </button>

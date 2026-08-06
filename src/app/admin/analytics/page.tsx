@@ -18,6 +18,7 @@ import {
   getTopCountries,
   getDeviceTypes,
 } from "@/lib/analytics/vercel";
+import { CurrentVisitors } from "@/components/admin/current-visitors";
 
 export default async function AdminAnalyticsPage() {
   const locale = await getAdminLocale();
@@ -47,13 +48,26 @@ export default async function AdminAnalyticsPage() {
     <div>
       <h1 className="text-2xl font-bold">{l.analyticsAudit}</h1>
 
+      {/* ─── Current Visitors (live) ────────────────────────────────── */}
+      <section className="mt-6">
+        <CurrentVisitors
+          labels={{
+            currentVisitors: l.currentVisitors,
+            path: l.path,
+            lastSeen: l.lastSeen,
+            noActiveVisitors: l.noActiveVisitors,
+            onlineNow: l.onlineNow,
+          }}
+        />
+      </section>
+
       {/* ─── Vercel Web Analytics ─────────────────────────────────── */}
       <section className="mt-8">
         <h2 className="mb-4 text-lg font-semibold">{l.webAnalytics}</h2>
 
         {!vercelConfigured ? (
           <Card>
-            <CardContent className="py-8 text-center text-sm text-gray-500">
+            <CardContent className="py-8 text-center text-sm text-gray-500 dark:text-gray-400">
               {l.vercelNotConfigured}
             </CardContent>
           </Card>
@@ -88,7 +102,7 @@ export default async function AdminAnalyticsPage() {
                 <CardContent>
                   <div className="max-h-64 overflow-y-auto">
                     <table className="w-full text-sm">
-                      <thead className="sticky top-0 border-b bg-gray-50">
+                      <thead className="sticky top-0 border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
                         <tr>
                           <th className="px-3 py-2 text-left font-medium">
                             {l.date}
@@ -101,10 +115,10 @@ export default async function AdminAnalyticsPage() {
                           </th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y">
+                      <tbody className="divide-y dark:divide-gray-700">
                         {dailyTraffic.map((row) => (
-                          <tr key={row.date} className="hover:bg-gray-50">
-                            <td className="px-3 py-1.5 text-gray-600">
+                          <tr key={row.date} className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <td className="px-3 py-1.5 text-gray-600 dark:text-gray-400">
                               {new Date(row.date).toLocaleDateString(dateFmt)}
                             </td>
                             <td className="px-3 py-1.5 text-right">
@@ -136,7 +150,7 @@ export default async function AdminAnalyticsPage() {
                           key={i}
                           className="flex items-center justify-between text-sm"
                         >
-                          <span className="truncate font-mono text-gray-700">
+                          <span className="truncate font-mono text-gray-700 dark:text-gray-300">
                             {row.path}
                           </span>
                           <div className="ml-2 flex gap-2">
@@ -167,7 +181,7 @@ export default async function AdminAnalyticsPage() {
                           key={i}
                           className="flex items-center justify-between text-sm"
                         >
-                          <span className="truncate text-gray-700">
+                          <span className="truncate text-gray-700 dark:text-gray-300">
                             {row.referrer || l.direct}
                           </span>
                           <Badge variant="secondary">{row.visitors} vis</Badge>
@@ -191,7 +205,7 @@ export default async function AdminAnalyticsPage() {
                           key={i}
                           className="flex items-center justify-between text-sm"
                         >
-                          <span className="text-gray-700">{row.country}</span>
+                          <span className="text-gray-700 dark:text-gray-300">{row.country}</span>
                           <Badge variant="secondary">{row.visitors} vis</Badge>
                         </div>
                       ))}
@@ -213,7 +227,7 @@ export default async function AdminAnalyticsPage() {
                           key={i}
                           className="flex items-center justify-between text-sm"
                         >
-                          <span className="capitalize text-gray-700">
+                          <span className="capitalize text-gray-700 dark:text-gray-300">
                             {row.device}
                           </span>
                           <Badge variant="secondary">{row.visitors} vis</Badge>
@@ -266,7 +280,7 @@ export default async function AdminAnalyticsPage() {
             </CardHeader>
             <CardContent>
               {analytics.eventsByType.length === 0 ? (
-                <p className="text-sm text-gray-500">{l.noEventsRecorded}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{l.noEventsRecorded}</p>
               ) : (
                 <div className="space-y-2">
                   {analytics.eventsByType.map((item) => (
@@ -274,7 +288,7 @@ export default async function AdminAnalyticsPage() {
                       key={item.event}
                       className="flex items-center justify-between text-sm"
                     >
-                      <span className="font-mono text-gray-700">
+                      <span className="font-mono text-gray-700 dark:text-gray-300">
                         {item.event}
                       </span>
                       <Badge variant="secondary">{item.count}</Badge>
@@ -291,7 +305,7 @@ export default async function AdminAnalyticsPage() {
             </CardHeader>
             <CardContent>
               {analytics.topPages.length === 0 ? (
-                <p className="text-sm text-gray-500">{l.noPageViews}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{l.noPageViews}</p>
               ) : (
                 <div className="space-y-2">
                   {analytics.topPages.map((item, i) => (
@@ -299,7 +313,7 @@ export default async function AdminAnalyticsPage() {
                       key={i}
                       className="flex items-center justify-between text-sm"
                     >
-                      <span className="truncate font-mono text-gray-700">
+                      <span className="truncate font-mono text-gray-700 dark:text-gray-300">
                         {item.path}
                       </span>
                       <Badge variant="secondary">{item.count}</Badge>
@@ -315,9 +329,9 @@ export default async function AdminAnalyticsPage() {
       {/* ─── Audit Log ────────────────────────────────────────────── */}
       <section className="mt-10">
         <h2 className="mb-4 text-lg font-semibold">{l.recentAuditLog}</h2>
-        <div className="rounded-lg border bg-white">
+        <div className="rounded-lg border bg-white dark:border-gray-700 dark:bg-gray-800">
           <table className="w-full text-sm">
-            <thead className="border-b bg-gray-50">
+            <thead className="border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
               <tr>
                 <th className="px-4 py-3 text-left font-medium">{l.time}</th>
                 <th className="px-4 py-3 text-left font-medium">{l.user}</th>
@@ -326,20 +340,20 @@ export default async function AdminAnalyticsPage() {
                 <th className="px-4 py-3 text-left font-medium">{l.id}</th>
               </tr>
             </thead>
-            <tbody className="divide-y">
+            <tbody className="divide-y dark:divide-gray-700">
               {auditLogs.length === 0 ? (
                 <tr>
                   <td
                     colSpan={5}
-                    className="px-4 py-8 text-center text-gray-500"
+                    className="px-4 py-8 text-center text-gray-500 dark:text-gray-400"
                   >
                     {l.noAuditLogs}
                   </td>
                 </tr>
               ) : (
                 auditLogs.map((log) => (
-                  <tr key={log.id} className="hover:bg-gray-50">
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-600">
+                  <tr key={log.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                    <td className="whitespace-nowrap px-4 py-2 text-gray-600 dark:text-gray-400">
                       {log.createdAt.toLocaleString(dateFmt)}
                     </td>
                     <td className="px-4 py-2">
@@ -348,7 +362,7 @@ export default async function AdminAnalyticsPage() {
                     <td className="px-4 py-2">
                       <Badge variant="outline">{log.action}</Badge>
                     </td>
-                    <td className="px-4 py-2 font-mono text-gray-600">
+                    <td className="px-4 py-2 font-mono text-gray-600 dark:text-gray-400">
                       {log.entity}
                     </td>
                     <td className="px-4 py-2 font-mono text-xs text-gray-400">

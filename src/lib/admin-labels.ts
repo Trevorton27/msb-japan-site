@@ -140,6 +140,11 @@ const labels = {
     device: "デバイス",
     direct: "(直接)",
     vercelNotConfigured: "Vercel アナリティクスが設定されていません。VERCEL_API_TOKEN を .env.local に設定してください。",
+    currentVisitors: "現在の訪問者",
+    onlineNow: "オンライン",
+    noActiveVisitors: "現在アクティブな訪問者はいません。",
+    path: "パス",
+    lastSeen: "最終確認",
 
     // Redirects
     from: "元パス",
@@ -284,6 +289,11 @@ const labels = {
     device: "Device",
     direct: "(direct)",
     vercelNotConfigured: "Vercel Analytics not configured. Set VERCEL_API_TOKEN in .env.local.",
+    currentVisitors: "Current Visitors",
+    onlineNow: "online",
+    noActiveVisitors: "No active visitors right now.",
+    path: "Path",
+    lastSeen: "Last Seen",
 
     from: "From",
     to: "To",
