@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { submitContactForm } from "@/server/actions/contacts";
 
 interface ContactFormProps {
+  locale: string;
   labels: {
     name: string;
     email: string;
@@ -20,7 +21,7 @@ interface ContactFormProps {
   };
 }
 
-export function ContactForm({ labels }: ContactFormProps) {
+export function ContactForm({ locale, labels }: ContactFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<{
     success: boolean;
@@ -41,7 +42,7 @@ export function ContactForm({ labels }: ContactFormProps) {
         phone: (formData.get("phone") as string) || undefined,
         subject: (formData.get("subject") as string) || undefined,
         body: formData.get("body") as string,
-      });
+      }, locale);
       setResult(res);
       if (res.success) {
         (e.target as HTMLFormElement).reset();

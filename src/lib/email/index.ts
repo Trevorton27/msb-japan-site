@@ -53,6 +53,26 @@ export async function sendTemplateEmail(options: SendTemplateEmailOptions) {
 
 // Pre-built email functions for common use cases
 
+const ackEmailContent: Record<string, {
+  subject: string;
+  greeting: (name: string) => string;
+  body: string;
+  regards: string;
+}> = {
+  ja: {
+    subject: "お問い合わせを受け付けました",
+    greeting: (name) => `${name} 様`,
+    body: "お問い合わせいただきありがとうございます。内容を確認の上、折り返しご連絡いたします。",
+    regards: "敬具",
+  },
+  en: {
+    subject: "We received your message",
+    greeting: (name) => `Hi ${name},`,
+    body: "Thank you for reaching out. We have received your message and will get back to you soon.",
+    regards: "Best regards,",
+  },
+};
+
 export async function sendContactFormNotification(
   formData: {
     name: string;
@@ -62,11 +82,13 @@ export async function sendContactFormNotification(
     message: string;
   },
   adminEmail: string,
+  locale: string = "en",
 ) {
   const subjectLine = formData.subject
     ? `Contact: ${formData.subject} (from ${formData.name})`
     : `New Contact Form Submission from ${formData.name}`;
 
+  // Admin notification is always in English
   await sendEmail({
     to: [{ email: adminEmail }],
     subject: subjectLine,
@@ -75,6 +97,7 @@ export async function sendContactFormNotification(
       <p><strong>From:</strong> ${formData.name} (${formData.email})</p>
       ${formData.phone ? `<p><strong>Phone:</strong> ${formData.phone}</p>` : ""}
       ${formData.subject ? `<p><strong>Subject:</strong> ${formData.subject}</p>` : ""}
+      <p><strong>Locale:</strong> ${locale}</p>
       <hr />
       <p>${formData.message.replace(/\n/g, "<br />")}</p>
     `,
@@ -82,14 +105,17 @@ export async function sendContactFormNotification(
     tags: ["contact-form"],
   });
 
+  // Acknowledgment email in the user's language
+  const ack = ackEmailContent[locale] ?? ackEmailContent["en"]!;
+
   await sendEmail({
     to: [{ email: formData.email, name: formData.name }],
-    subject: "We received your message",
+    subject: ack.subject,
     htmlContent: `
-      <p>Hi ${formData.name},</p>
-      <p>Thank you for reaching out. We have received your message and will get back to you soon.</p>
+      <p>${ack.greeting(formData.name)}</p>
+      <p>${ack.body}</p>
       <br />
-      <p>Best regards,</p>
+      <p>${ack.regards}</p>
       <p>${defaultSender.name}</p>
     `,
     tags: ["contact-form-ack"],

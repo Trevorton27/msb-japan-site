@@ -30,7 +30,7 @@ function checkRateLimit(ip: string): boolean {
   return true;
 }
 
-export async function submitContactForm(data: ContactFormValues) {
+export async function submitContactForm(data: ContactFormValues, locale: string = "en") {
   const parsed = contactFormSchema.parse(data);
 
   const headersList = await headers();
@@ -62,6 +62,7 @@ export async function submitContactForm(data: ContactFormValues) {
         message: parsed.body,
       },
       adminEmail,
+      locale,
     );
   } catch (err) {
     console.error("Failed to send contact notification email:", err);

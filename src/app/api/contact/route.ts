@@ -58,6 +58,7 @@ export async function POST(request: Request) {
 
     try {
       const adminEmail = process.env.ADMIN_EMAIL ?? process.env.BREVO_SENDER_EMAIL!;
+      const locale = typeof body.locale === "string" ? body.locale : "en";
       await sendContactFormNotification(
         {
           name: parsed.data.name,
@@ -67,6 +68,7 @@ export async function POST(request: Request) {
           message: parsed.data.body,
         },
         adminEmail,
+        locale,
       );
     } catch (err) {
       console.error("Failed to send contact notification email:", err);

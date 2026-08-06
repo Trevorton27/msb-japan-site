@@ -36,6 +36,7 @@ export default async function ContactPage({
 
       <div className="mt-8">
         <ContactForm
+          locale={locale}
           labels={{
             name: dict.contact?.name ?? "Name",
             email: dict.contact?.email ?? "Email",

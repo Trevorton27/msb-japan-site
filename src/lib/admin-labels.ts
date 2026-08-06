@@ -127,6 +127,20 @@ const labels = {
     id: "ID",
     noAuditLogs: "監査ログはまだありません。",
 
+    // Vercel Web Analytics
+    webAnalytics: "Web アナリティクス",
+    visitors: "訪問者",
+    pageViews: "ページビュー",
+    dailyTraffic: "日別トラフィック",
+    topReferrers: "上位リファラー",
+    topCountries: "上位の国",
+    deviceTypes: "デバイス種別",
+    referrer: "リファラー",
+    country: "国",
+    device: "デバイス",
+    direct: "(直接)",
+    vercelNotConfigured: "Vercel アナリティクスが設定されていません。VERCEL_API_TOKEN を .env.local に設定してください。",
+
     // Redirects
     from: "元パス",
     to: "先パス",
@@ -256,6 +270,20 @@ const labels = {
     entity: "Entity",
     id: "ID",
     noAuditLogs: "No audit log entries yet.",
+
+    // Vercel Web Analytics
+    webAnalytics: "Web Analytics",
+    visitors: "Visitors",
+    pageViews: "Page Views",
+    dailyTraffic: "Daily Traffic",
+    topReferrers: "Top Referrers",
+    topCountries: "Top Countries",
+    deviceTypes: "Device Types",
+    referrer: "Referrer",
+    country: "Country",
+    device: "Device",
+    direct: "(direct)",
+    vercelNotConfigured: "Vercel Analytics not configured. Set VERCEL_API_TOKEN in .env.local.",
 
     from: "From",
     to: "To",
