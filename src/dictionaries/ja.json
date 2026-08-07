@@ -313,23 +313,10 @@
     "noPrograms": "現在登録されているプログラムはありません。ニュースレターに登録して最新情報をお受け取りください。"
   },
   "footer": {
-    "aboutLink": "私たちについて",
-    "centresLink": "センターと瞑想室",
-    "teachersLink": "指導者と法統",
-    "eventsLink": "カレンダーとイベント",
-    "contactLink": "お問い合わせ",
-    "donateLink": "ご寄付",
-    "shopLink": "書籍と出版物",
-    "blogLink": "法話ブログ",
-    "teachingsLink": "教え",
-    "startLink": "参加するには",
-    "programsLink": "プログラムと学び",
-    "gatheringsLink": "週例集会",
-    "lifeReleaseLink": "放生会",
-    "prayerRequestsLink": "祈願のお申し込み",
+    "organizationInfo": "団体概要",
+    "bylaws": "定款・規約",
     "privacyLink": "プライバシーポリシー",
-    "tokushoho": "特定商取引法に基づく表記",
-    "copyright": "Mangala Shri Bhuti Japan",
-    "tagline": "チベット仏教の智慧と実践"
+    "msbMainSite": "MSB 本部サイト（米国）",
+    "copyright": "MSB Japan. All Rights Reserved."
   }
 }

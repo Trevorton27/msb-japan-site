@@ -313,23 +313,10 @@
     "noPrograms": "No programs are currently listed. Please check back or subscribe to our newsletter for updates."
   },
   "footer": {
-    "aboutLink": "About Us",
-    "centresLink": "Centres & Shrine Rooms",
-    "teachersLink": "Teachers & Lineage",
-    "eventsLink": "Calendar & Events",
-    "contactLink": "Contact Us",
-    "donateLink": "Donate",
-    "shopLink": "Books & Publications",
-    "blogLink": "Dharma Blog",
-    "teachingsLink": "Teachings",
-    "startLink": "How to Join",
-    "programsLink": "Programs & Study",
-    "gatheringsLink": "Weekly Gatherings",
-    "lifeReleaseLink": "Life Release",
-    "prayerRequestsLink": "Prayer Requests",
+    "organizationInfo": "Organization Info",
+    "bylaws": "Bylaws & Articles of Incorporation",
     "privacyLink": "Privacy Policy",
-    "tokushoho": "Specified Commercial Transactions",
-    "copyright": "Mangala Shri Bhuti Japan",
-    "tagline": "Tibetan Buddhist Wisdom & Practice"
+    "msbMainSite": "MSB Main Site (US)",
+    "copyright": "MSB Japan. All Rights Reserved."
   }
 }
