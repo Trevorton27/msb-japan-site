@@ -30,30 +30,48 @@ function getNavItems(
       label: dict.common?.about ?? "",
       href: `/${locale}/about`,
       children: [
-        { label: dict.common?.vision ?? "", href: `/${locale}/vision` },
-        { label: dict.about?.historyTitle ?? "", href: `/${locale}/history` },
-        { label: dict.about?.valuesTitle ?? "", href: `/${locale}/about#values` },
-        { label: dict.common?.start ?? "", href: `/${locale}/start` },
+        { label: dict.common?.teachersAndLineage ?? "", href: `/${locale}/teachers` },
+        { label: dict.common?.visionAndMission ?? "", href: `/${locale}/vision` },
+        { label: dict.common?.ourHistory ?? "", href: `/${locale}/history` },
+        { label: dict.common?.centresAndShrineRooms ?? "", href: `/${locale}/centres` },
+        ...teacherLinks,
       ],
     },
-    { label: dict.common?.centres ?? "", href: `/${locale}/centres` },
     {
-      label: dict.common?.teachers ?? "",
-      href: `/${locale}/teachers`,
-      children: teacherLinks,
+      label: dict.common?.programsAndStudy ?? "",
+      href: `/${locale}/programs`,
+      children: [
+        { label: dict.common?.publicPrograms ?? "", href: `/${locale}/programs` },
+        { label: dict.common?.weeklyGatherings ?? "", href: `/${locale}/gatherings` },
+        { label: dict.common?.memberPrograms ?? "", href: `/${locale}/member-programs` },
+      ],
     },
     {
       label: dict.common?.resources ?? "",
       href: undefined as unknown as string,
       children: [
-        { label: dict.common?.teachings ?? "", href: `/${locale}/teachings` },
-        { label: dict.common?.blog ?? "", href: `/${locale}/blog` },
+        { label: dict.common?.dharmaBlog ?? "", href: `/${locale}/blog` },
+        { label: dict.common?.foundationalTeachings ?? "", href: `/${locale}/teachings` },
+        { label: dict.common?.booksAndPublications ?? "", href: `/${locale}/shop` },
       ],
     },
-    { label: dict.common?.programs ?? "", href: `/${locale}/programs` },
-    { label: dict.common?.events ?? "", href: `/${locale}/events` },
-    { label: dict.common?.shop ?? "", href: `/${locale}/shop` },
-    { label: dict.common?.contact ?? "", href: `/${locale}/contact` },
+    {
+      label: dict.common?.compassionateActivity ?? "",
+      href: undefined as unknown as string,
+      children: [
+        { label: dict.common?.lifeRelease ?? "", href: `/${locale}/life-release` },
+        { label: dict.common?.prayerRequests ?? "", href: `/${locale}/prayer-requests` },
+      ],
+    },
+    { label: dict.common?.calendarAndEvents ?? "", href: `/${locale}/events` },
+    {
+      label: dict.common?.contactAndJoin ?? "",
+      href: `/${locale}/contact`,
+      children: [
+        { label: dict.common?.howToJoin ?? "", href: `/${locale}/start` },
+        { label: dict.common?.contact ?? "", href: `/${locale}/contact` },
+      ],
+    },
   ];
 }
 

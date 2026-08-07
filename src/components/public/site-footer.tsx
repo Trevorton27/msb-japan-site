@@ -12,19 +12,22 @@ export function SiteFooter({
 }) {
   const navLinks = [
     { label: dict.footer?.aboutLink ?? "", href: `/${locale}/about` },
-    { label: dict.footer?.centresLink ?? "", href: `/${locale}/centres` },
     { label: dict.footer?.teachersLink ?? "", href: `/${locale}/teachers` },
+    { label: dict.footer?.centresLink ?? "", href: `/${locale}/centres` },
     { label: dict.footer?.eventsLink ?? "", href: `/${locale}/events` },
     { label: dict.footer?.contactLink ?? "", href: `/${locale}/contact` },
     { label: dict.footer?.donateLink ?? "", href: `/${locale}/donate` },
   ];
 
   const resourceLinks = [
-    { label: dict.footer?.startLink ?? "", href: `/${locale}/start` },
-    { label: dict.footer?.teachingsLink ?? "", href: `/${locale}/teachings` },
-    { label: dict.footer?.blogLink ?? "", href: `/${locale}/blog` },
     { label: dict.footer?.programsLink ?? "", href: `/${locale}/programs` },
+    { label: dict.footer?.gatheringsLink ?? "", href: `/${locale}/gatherings` },
+    { label: dict.footer?.blogLink ?? "", href: `/${locale}/blog` },
+    { label: dict.footer?.teachingsLink ?? "", href: `/${locale}/teachings` },
     { label: dict.footer?.shopLink ?? "", href: `/${locale}/shop` },
+    { label: dict.footer?.startLink ?? "", href: `/${locale}/start` },
+    { label: dict.footer?.lifeReleaseLink ?? "", href: `/${locale}/life-release` },
+    { label: dict.footer?.prayerRequestsLink ?? "", href: `/${locale}/prayer-requests` },
   ];
 
   const legalLinks = [
