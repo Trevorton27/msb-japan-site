@@ -3,73 +3,102 @@ import type { Locale } from "@/lib/i18n/config";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileNav } from "./mobile-nav";
 import { NavDropdown } from "./nav-dropdown";
+import type { DropdownChild } from "./nav-dropdown";
 import { auth } from "@/lib/auth";
 import { getTeachers } from "@/server/queries/content";
 
 type Dictionary = Record<string, Record<string, string>>;
 
-interface DropdownLink {
-  label: string;
-  href: string;
-}
-
 interface NavItem {
   label: string;
   href: string;
-  children?: DropdownLink[];
+  children?: DropdownChild[];
 }
 
 function getNavItems(
   locale: Locale,
   dict: Dictionary,
-  teacherLinks: DropdownLink[]
+  teacherLinks: { label: string; href: string }[]
 ): NavItem[] {
+  const c = dict.common ?? {};
   return [
-    { label: dict.common?.home ?? "", href: `/${locale}` },
     {
-      label: dict.common?.about ?? "",
+      label: c.about ?? "",
       href: `/${locale}/about`,
       children: [
-        { label: dict.common?.teachersAndLineage ?? "", href: `/${locale}/teachers` },
-        { label: dict.common?.visionAndMission ?? "", href: `/${locale}/vision` },
-        { label: dict.common?.ourHistory ?? "", href: `/${locale}/history` },
-        { label: dict.common?.centresAndShrineRooms ?? "", href: `/${locale}/centres` },
-        ...teacherLinks,
+        {
+          label: c.teachersAndLineage ?? "",
+          href: `/${locale}/teachers`,
+          children: teacherLinks,
+        },
+        {
+          label: c.visionAndMission ?? "",
+          href: `/${locale}/vision`,
+          children: [
+            { label: c.vision ?? "", href: `/${locale}/vision` },
+            { label: c.visionForJapan ?? "", href: `/${locale}/vision#japan` },
+            { label: c.sangha ?? "", href: `/${locale}/vision#sangha` },
+          ],
+        },
+        { label: c.ourHistory ?? "", href: `/${locale}/history` },
+        {
+          label: c.centresAndShrineRooms ?? "",
+          href: `/${locale}/centres`,
+          children: [
+            { label: c.kyoto ?? "", href: `/${locale}/centres#kyoto` },
+            { label: c.izu ?? "", href: `/${locale}/centres#izu` },
+          ],
+        },
       ],
     },
     {
-      label: dict.common?.programsAndStudy ?? "",
+      label: c.programsAndStudy ?? "",
       href: `/${locale}/programs`,
       children: [
-        { label: dict.common?.publicPrograms ?? "", href: `/${locale}/programs` },
-        { label: dict.common?.weeklyGatherings ?? "", href: `/${locale}/gatherings` },
-        { label: dict.common?.memberPrograms ?? "", href: `/${locale}/member-programs` },
+        {
+          label: c.publicPrograms ?? "",
+          href: `/${locale}/programs`,
+          children: [
+            { label: c.lineageCourses ?? "", href: `/${locale}/programs#lineage-courses` },
+            { label: c.onlineStudyGroup ?? "", href: `/${locale}/programs#online-study-group` },
+          ],
+        },
+        {
+          label: c.weeklyGatherings ?? "",
+          href: `/${locale}/gatherings`,
+          children: [
+            { label: c.theNyington ?? "", href: `/${locale}/gatherings#nyington` },
+            { label: c.localStudy ?? "", href: `/${locale}/gatherings#local-study` },
+          ],
+        },
+        {
+          label: c.memberPrograms ?? "",
+          href: `/${locale}/member-programs`,
+          children: [
+            { label: c.ngondro ?? "", href: `/${locale}/member-programs#ngondro` },
+            { label: c.shedra ?? "", href: `/${locale}/member-programs#shedra` },
+            { label: c.nss ?? "", href: `/${locale}/member-programs#nss` },
+          ],
+        },
       ],
     },
     {
-      label: dict.common?.resources ?? "",
+      label: c.resources ?? "",
       href: undefined as unknown as string,
       children: [
-        { label: dict.common?.dharmaBlog ?? "", href: `/${locale}/blog` },
-        { label: dict.common?.foundationalTeachings ?? "", href: `/${locale}/teachings` },
-        { label: dict.common?.booksAndPublications ?? "", href: `/${locale}/shop` },
+        { label: c.dharmaBlog ?? "", href: `/${locale}/blog` },
+        { label: c.foundationalTeachings ?? "", href: `/${locale}/teachings` },
+        { label: c.videos ?? "", href: `/${locale}/teachings#videos` },
+        { label: c.booksAndPublications ?? "", href: `/${locale}/shop` },
       ],
     },
+    { label: c.calendarAndEvents ?? "", href: `/${locale}/events` },
     {
-      label: dict.common?.compassionateActivity ?? "",
-      href: undefined as unknown as string,
-      children: [
-        { label: dict.common?.lifeRelease ?? "", href: `/${locale}/life-release` },
-        { label: dict.common?.prayerRequests ?? "", href: `/${locale}/prayer-requests` },
-      ],
-    },
-    { label: dict.common?.calendarAndEvents ?? "", href: `/${locale}/events` },
-    {
-      label: dict.common?.contactAndJoin ?? "",
+      label: c.contactAndJoin ?? "",
       href: `/${locale}/contact`,
       children: [
-        { label: dict.common?.howToJoin ?? "", href: `/${locale}/start` },
-        { label: dict.common?.contact ?? "", href: `/${locale}/contact` },
+        { label: c.howToJoin ?? "", href: `/${locale}/start` },
+        { label: c.contact ?? "", href: `/${locale}/contact` },
       ],
     },
   ];
@@ -84,7 +113,7 @@ export async function SiteHeader({
 }) {
   const [session, teachers] = await Promise.all([auth(), getTeachers()]);
 
-  const teacherLinks: DropdownLink[] = teachers.map((t) => {
+  const teacherLinks = teachers.map((t) => {
     const name = locale === "en" && t.nameEn ? t.nameEn : t.nameJa;
     const anchor = locale === "en" && t.slugEn ? t.slugEn : t.slugJa;
     return { label: name, href: `/${locale}/teachers#${anchor}` };
@@ -111,7 +140,7 @@ export async function SiteHeader({
         </div>
 
         <nav className="hidden items-center gap-1 md:flex">
-          {navItems.slice(1).map((item) =>
+          {navItems.map((item) =>
             item.children ? (
               <NavDropdown
                 key={item.label}

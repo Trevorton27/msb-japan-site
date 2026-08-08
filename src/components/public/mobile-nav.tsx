@@ -9,10 +9,16 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 
-interface NavItem {
+interface NavChild {
   label: string;
   href: string;
   children?: { label: string; href: string }[];
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  children?: NavChild[];
 }
 
 export function MobileNav({
@@ -61,7 +67,7 @@ export function MobileNav({
           />
         </svg>
       </SheetTrigger>
-      <SheetContent side="left" className="w-72">
+      <SheetContent side="left" className="w-72 overflow-y-auto">
         <SheetTitle className="text-lg font-semibold">{siteName}</SheetTitle>
         <nav className="mt-6 flex flex-col gap-1">
           {items.map((item) => (
@@ -108,16 +114,40 @@ export function MobileNav({
                   </div>
                   {expandedItems.has(item.label) && (
                     <div className="ml-4 flex flex-col gap-0.5 border-l border-charcoal-200 pl-3">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setOpen(false)}
-                          className="rounded-md px-3 py-1.5 text-sm text-charcoal-500 transition-colors hover:bg-ivory-100 hover:text-charcoal-900"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                      {item.children.map((child) =>
+                        child.children && child.children.length > 0 ? (
+                          <div key={child.href}>
+                            <Link
+                              href={child.href}
+                              onClick={() => setOpen(false)}
+                              className="block rounded-md px-3 py-1.5 text-sm font-medium text-charcoal-500 transition-colors hover:bg-ivory-100 hover:text-charcoal-900"
+                            >
+                              {child.label}
+                            </Link>
+                            <div className="ml-3 flex flex-col gap-0.5 border-l border-charcoal-100 pl-2">
+                              {child.children.map((grandchild) => (
+                                <Link
+                                  key={grandchild.href}
+                                  href={grandchild.href}
+                                  onClick={() => setOpen(false)}
+                                  className="rounded-md px-3 py-1 text-xs text-charcoal-400 transition-colors hover:bg-ivory-100 hover:text-charcoal-900"
+                                >
+                                  {grandchild.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ) : (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setOpen(false)}
+                            className="rounded-md px-3 py-1.5 text-sm text-charcoal-500 transition-colors hover:bg-ivory-100 hover:text-charcoal-900"
+                          >
+                            {child.label}
+                          </Link>
+                        )
+                      )}
                     </div>
                   )}
                 </>

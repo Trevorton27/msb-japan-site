@@ -617,3 +617,50 @@ model MediaAsset {
 
   @@map("media_assets")
 }
+
+// ─── Books ───────────────────────────────────────────────────────────────────
+
+model Book {
+  id            String   @id @default(cuid())
+  slugJa        String   @unique
+  slugEn        String?  @unique
+  titleJa       String
+  titleEn       String?
+  authorJa      String?
+  authorEn      String?
+  descriptionJa String?
+  descriptionEn String?
+  imageUrl      String?
+  purchaseUrl   String?
+  active        Boolean  @default(false)
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([active, sortOrder])
+  @@map("books")
+}
+
+// ─── Dharma Centers ──────────────────────────────────────────────────────────
+
+model DharmaCenter {
+  id            String   @id @default(cuid())
+  slugJa        String   @unique
+  slugEn        String?  @unique
+  nameJa        String
+  nameEn        String?
+  locationJa    String?
+  locationEn    String?
+  country       String?
+  descriptionJa String?
+  descriptionEn String?
+  imageUrl      String?
+  websiteUrl    String?
+  active        Boolean  @default(false)
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([active, sortOrder])
+  @@map("dharma_centers")
+}

@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 
-interface DropdownLink {
+export interface DropdownChild {
   label: string;
   href: string;
+  children?: { label: string; href: string }[];
 }
 
 export function NavDropdown({
@@ -15,11 +16,13 @@ export function NavDropdown({
 }: {
   label: string;
   href?: string;
-  items: DropdownLink[];
+  items: DropdownChild[];
 }) {
   const [open, setOpen] = useState(false);
 
-  const sharedClassName =
+  const hasGroups = items.some((i) => i.children && i.children.length > 0);
+
+  const triggerClass =
     "flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-charcoal-600 transition-colors hover:bg-ivory-100 hover:text-charcoal-900";
 
   const chevron = (
@@ -45,27 +48,57 @@ export function NavDropdown({
       onMouseLeave={() => setOpen(false)}
     >
       {href ? (
-        <Link href={href} className={sharedClassName}>
+        <Link href={href} className={triggerClass}>
           {label}
           {chevron}
         </Link>
       ) : (
-        <button type="button" className={sharedClassName}>
+        <button type="button" className={triggerClass}>
           {label}
           {chevron}
         </button>
       )}
       {open && (
-        <div className="absolute left-0 top-full z-50 mt-1 min-w-[180px] rounded-md border border-charcoal-200 bg-white py-1 shadow-lg">
-          {items.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="block px-4 py-2 text-sm text-charcoal-600 transition-colors hover:bg-ivory-100 hover:text-charcoal-900"
-            >
-              {item.label}
-            </Link>
-          ))}
+        <div
+          className={`absolute left-0 top-full z-50 mt-1 rounded-md border border-charcoal-200 bg-white py-1 shadow-lg ${hasGroups ? "min-w-[220px]" : "min-w-[180px]"}`}
+        >
+          {items.map((item, idx) => {
+            const isGroup = item.children && item.children.length > 0;
+            const addDivider = idx > 0 && isGroup;
+            return (
+              <div
+                key={item.href}
+                className={addDivider ? "mt-1 border-t border-charcoal-100 pt-1" : ""}
+              >
+                {isGroup ? (
+                  <>
+                    <Link
+                      href={item.href}
+                      className="block px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-charcoal-400 transition-colors hover:text-charcoal-700"
+                    >
+                      {item.label}
+                    </Link>
+                    {item.children!.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="block px-6 py-1.5 text-sm text-charcoal-600 transition-colors hover:bg-ivory-100 hover:text-charcoal-900"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="block px-4 py-2 text-sm text-charcoal-600 transition-colors hover:bg-ivory-100 hover:text-charcoal-900"
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

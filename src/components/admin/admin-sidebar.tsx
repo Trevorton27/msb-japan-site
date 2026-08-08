@@ -31,6 +31,8 @@ export function AdminSidebar() {
     { label: l.orders, href: "/admin/orders" },
     { label: l.social, href: "/admin/social" },
     { label: l.analytics, href: "/admin/analytics" },
+    { label: l.books, href: "/admin/books" },
+    { label: l.centers, href: "/admin/centers" },
     { label: l.redirects, href: "/admin/redirects" },
     { label: l.users, href: "/admin/users" },
     { label: l.settings, href: "/admin/settings" },

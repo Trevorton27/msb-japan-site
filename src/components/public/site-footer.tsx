@@ -45,7 +45,7 @@ export function SiteFooter({
         </nav>
 
         <p className="mt-6 text-center text-sm text-charcoal-500">
-          &copy; {new Date().getFullYear()} {dict.footer?.copyright}
+          &copy; {dict.footer?.copyright}
         </p>
       </div>
     </footer>
