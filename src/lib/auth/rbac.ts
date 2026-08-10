@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "./index";
 import type { PermissionKey, RoleName } from "./permissions";
+import { PERMISSIONS } from "./permissions";
 
 export async function getCurrentUser() {
   const session = await auth();
@@ -31,4 +32,14 @@ export async function hasPermission(permission: PermissionKey) {
 export async function hasRole(role: RoleName) {
   const user = await getCurrentUser();
   return user?.roles.includes(role) ?? false;
+}
+
+/** Guards member portal routes and server actions. */
+export async function requireMember() {
+  return requirePermission(PERMISSIONS.MEMBER_CONTENT);
+}
+
+/** Non-throwing check for conditional member UI rendering. */
+export async function canAccessMemberContent(): Promise<boolean> {
+  return hasPermission(PERMISSIONS.MEMBER_CONTENT);
 }

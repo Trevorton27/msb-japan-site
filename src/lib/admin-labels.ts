@@ -162,6 +162,23 @@ const labels = {
     created: "作成日",
     password: "パスワード",
     googleOnly: "Google のみ",
+
+    // Members
+    members: "会員管理",
+    memberResources: "会員リソース",
+    memberAnnouncements: "お知らせ管理",
+    grantMember: "会員権限を付与",
+    revokeMember: "会員権限を削除",
+    isMember: "会員",
+    notMember: "非会員",
+    newResource: "新規リソース",
+    newAnnouncement: "新規お知らせ",
+    resourceType: "リソース種類",
+    featured: "注目",
+    pinned: "固定",
+    noMembers: "会員はいません。",
+    noMemberResources: "会員リソースはまだありません。",
+    noMemberAnnouncements: "お知らせはまだありません。",
   },
   en: {
     dashboard: "Dashboard",
@@ -311,6 +328,23 @@ const labels = {
     created: "Created",
     password: "Password",
     googleOnly: "Google only",
+
+    // Members
+    members: "Members",
+    memberResources: "Member Resources",
+    memberAnnouncements: "Announcements",
+    grantMember: "Grant Member Access",
+    revokeMember: "Revoke Member Access",
+    isMember: "Member",
+    notMember: "Not a member",
+    newResource: "New Resource",
+    newAnnouncement: "New Announcement",
+    resourceType: "Resource Type",
+    featured: "Featured",
+    pinned: "Pinned",
+    noMembers: "No members yet.",
+    noMemberResources: "No member resources yet.",
+    noMemberAnnouncements: "No announcements yet.",
   },
 } as const;
 

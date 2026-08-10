@@ -35,6 +35,9 @@ export function AdminSidebar() {
     { label: l.centers, href: "/admin/centers" },
     { label: l.redirects, href: "/admin/redirects" },
     { label: l.users, href: "/admin/users" },
+    { label: l.members, href: "/admin/members" },
+    { label: l.memberResources, href: "/admin/member-resources" },
+    { label: l.memberAnnouncements, href: "/admin/member-announcements" },
     { label: l.settings, href: "/admin/settings" },
   ];
 

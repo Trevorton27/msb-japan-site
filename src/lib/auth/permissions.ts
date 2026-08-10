@@ -13,6 +13,7 @@ export const PERMISSIONS = {
   ANALYTICS_READ: "analytics.read",
   USERS_MANAGE: "users.manage",
   SETTINGS_MANAGE: "settings.manage",
+  MEMBER_CONTENT: "member.content",
 } as const;
 
 export type PermissionKey =
@@ -27,6 +28,7 @@ export const ROLES = {
   EVENT_COORDINATOR: "Event Coordinator",
   COMMERCE_MANAGER: "Commerce Manager",
   ANALYST: "Analyst",
+  MEMBER: "Member",
 } as const;
 
 export type RoleName = (typeof ROLES)[keyof typeof ROLES];
@@ -57,5 +59,8 @@ export const ROLE_PERMISSIONS: Record<RoleName, PermissionKey[]> = {
     PERMISSIONS.ANALYTICS_READ,
     PERMISSIONS.CONTENT_READ,
     PERMISSIONS.DONATIONS_READ,
+  ],
+  [ROLES.MEMBER]: [
+    PERMISSIONS.MEMBER_CONTENT,
   ],
 };

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n/config";
-
-type Dictionary = Record<string, Record<string, string>>;
+import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 export function SiteFooter({
   locale,

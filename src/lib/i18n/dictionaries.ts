@@ -1,9 +1,10 @@
 import type { Locale } from "./config";
+import type enJson from "@/dictionaries/en.json";
 
-type Dictionary = Record<string, Record<string, string>>;
+export type Dictionary = typeof enJson;
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
-  ja: () => import("@/dictionaries/ja.json").then((m) => m.default),
+  ja: () => import("@/dictionaries/ja.json").then((m) => m.default as unknown as Dictionary),
   en: () => import("@/dictionaries/en.json").then((m) => m.default),
 };
 

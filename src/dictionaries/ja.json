@@ -344,5 +344,99 @@
     "privacyLink": "プライバシーポリシー",
     "msbMainSite": "MSB 本部サイト（米国）",
     "copyright": "MSB Japan. All Rights Reserved."
+  },
+  "members": {
+    "nav": {
+      "dashboard": "ホーム",
+      "study": "実践・学習",
+      "events": "イベント・リトリート",
+      "sangha": "サンガ",
+      "account": "マイページ",
+      "portal": "会員ポータル"
+    },
+    "dashboard": {
+      "welcome": "ようこそ",
+      "nextEvent": "次のイベント",
+      "featuredStudy": "おすすめの学習",
+      "announcements": "お知らせ",
+      "upcomingEvents": "今後のイベント",
+      "recentResources": "最新のリソース",
+      "joinZoom": "Zoomに参加",
+      "viewDetails": "詳細を見る",
+      "viewAll": "すべて見る",
+      "noUpcomingEvents": "今後のイベントはありません。",
+      "noAnnouncements": "現在お知らせはありません。",
+      "noResources": "リソースはまだありません。",
+      "online": "オンライン",
+      "inPerson": "対面",
+      "hybrid": "ハイブリッド"
+    },
+    "study": {
+      "title": "実践・学習",
+      "description": "会員向けの学習・実践リソースです。",
+      "filter": "種類で絞り込む",
+      "allTypes": "すべての種類",
+      "download": "ダウンロード",
+      "open": "リソースを開く",
+      "noResources": "リソースはまだありません。",
+      "article": "記事",
+      "pdf": "PDF",
+      "audio": "音声",
+      "video": "動画",
+      "link": "リンク",
+      "practiceText": "実践テキスト",
+      "courseMaterial": "コース教材",
+      "retreatMaterial": "リトリート資料"
+    },
+    "events": {
+      "title": "イベント・リトリート",
+      "description": "会員向けの今後のイベントとリトリートです。",
+      "registered": "登録済み",
+      "register": "登録する",
+      "cancelRegistration": "登録をキャンセル",
+      "joinMeeting": "オンライン会議に参加",
+      "registering": "登録中...",
+      "cancelling": "キャンセル中...",
+      "noEvents": "現在今後のイベントはありません。",
+      "registrationSuccess": "このイベントに登録しました。",
+      "cancellationSuccess": "登録をキャンセルしました。",
+      "error": "エラーが発生しました。もう一度お試しください。"
+    },
+    "sangha": {
+      "title": "サンガ",
+      "description": "コミュニティのお知らせと更新情報です。",
+      "announcements": "お知らせ",
+      "pinned": "固定",
+      "noAnnouncements": "現在お知らせはありません。"
+    },
+    "account": {
+      "title": "マイページ",
+      "profile": "プロフィール",
+      "membership": "会員情報",
+      "registrations": "登録中のイベント",
+      "language": "言語設定",
+      "memberSince": "会員登録日",
+      "noRegistrations": "イベント登録はまだありません。",
+      "status": "ステータス",
+      "memberStatus": "アクティブ会員",
+      "name": "お名前",
+      "email": "メールアドレス"
+    },
+    "unauthorized": {
+      "title": "会員エリア",
+      "message": "このページはMSB会員専用です。アクセス権が必要な場合はMSBまでお問い合わせください。",
+      "contact": "MSBに連絡する"
+    },
+    "signIn": {
+      "title": "会員ログイン",
+      "subtitle": "MSB会員エリアにアクセスするにはログインしてください",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "signIn": "ログイン",
+      "signingIn": "ログイン中...",
+      "signInWithGoogle": "Googleでログイン",
+      "error": "メールアドレスまたはパスワードが正しくありません。",
+      "accessDenied": "アクセスが拒否されました。会員アクセスをご希望の場合はMSBにお問い合わせください。"
+    }
   }
 }

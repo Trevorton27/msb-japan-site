@@ -344,5 +344,99 @@
     "privacyLink": "Privacy Policy",
     "msbMainSite": "MSB Main Site (US)",
     "copyright": "MSB Japan All Rights Reserved."
+  },
+  "members": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "study": "Practice & Study",
+      "events": "Events & Retreats",
+      "sangha": "Sangha",
+      "account": "My Account",
+      "portal": "Members Portal"
+    },
+    "dashboard": {
+      "welcome": "Welcome back",
+      "nextEvent": "Next Event",
+      "featuredStudy": "Featured Study",
+      "announcements": "Announcements",
+      "upcomingEvents": "Upcoming Events",
+      "recentResources": "Recent Resources",
+      "joinZoom": "Join Zoom",
+      "viewDetails": "View Details",
+      "viewAll": "View All",
+      "noUpcomingEvents": "No upcoming events.",
+      "noAnnouncements": "No announcements at this time.",
+      "noResources": "No resources available yet.",
+      "online": "Online",
+      "inPerson": "In Person",
+      "hybrid": "Hybrid"
+    },
+    "study": {
+      "title": "Practice & Study",
+      "description": "Member resources for study and practice.",
+      "filter": "Filter by type",
+      "allTypes": "All Types",
+      "download": "Download",
+      "open": "Open Resource",
+      "noResources": "No resources available yet.",
+      "article": "Article",
+      "pdf": "PDF",
+      "audio": "Audio",
+      "video": "Video",
+      "link": "Link",
+      "practiceText": "Practice Text",
+      "courseMaterial": "Course Material",
+      "retreatMaterial": "Retreat Material"
+    },
+    "events": {
+      "title": "Events & Retreats",
+      "description": "Upcoming events and retreats for members.",
+      "registered": "Registered",
+      "register": "Register",
+      "cancelRegistration": "Cancel Registration",
+      "joinMeeting": "Join Online Meeting",
+      "registering": "Registering...",
+      "cancelling": "Cancelling...",
+      "noEvents": "No upcoming events at this time.",
+      "registrationSuccess": "You are registered for this event.",
+      "cancellationSuccess": "Your registration has been cancelled.",
+      "error": "An error occurred. Please try again."
+    },
+    "sangha": {
+      "title": "Sangha",
+      "description": "Community announcements and updates.",
+      "announcements": "Announcements",
+      "pinned": "Pinned",
+      "noAnnouncements": "No announcements at this time."
+    },
+    "account": {
+      "title": "My Account",
+      "profile": "Profile",
+      "membership": "Membership",
+      "registrations": "My Registrations",
+      "language": "Language Preference",
+      "memberSince": "Member since",
+      "noRegistrations": "No event registrations yet.",
+      "status": "Status",
+      "memberStatus": "Active Member",
+      "name": "Name",
+      "email": "Email"
+    },
+    "unauthorized": {
+      "title": "Members Area",
+      "message": "This area is available to MSB members. Please contact MSB if you believe you should have access.",
+      "contact": "Contact MSB"
+    },
+    "signIn": {
+      "title": "Member Sign In",
+      "subtitle": "Sign in to access the MSB members area",
+      "email": "Email",
+      "password": "Password",
+      "signIn": "Sign In",
+      "signingIn": "Signing in...",
+      "signInWithGoogle": "Sign in with Google",
+      "error": "Invalid email or password.",
+      "accessDenied": "Access denied. Please contact MSB to request member access."
+    }
   }
 }

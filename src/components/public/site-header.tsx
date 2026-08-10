@@ -1,13 +1,12 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileNav } from "./mobile-nav";
 import { NavDropdown } from "./nav-dropdown";
 import type { DropdownChild } from "./nav-dropdown";
 import { auth } from "@/lib/auth";
 import { getTeachers } from "@/server/queries/content";
-
-type Dictionary = Record<string, Record<string, string>>;
 
 interface NavItem {
   label: string;
