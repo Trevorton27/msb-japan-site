@@ -7,12 +7,12 @@ import {
 } from "@/lib/auth/permissions";
 
 describe("RBAC permissions", () => {
-  it("defines 14 permissions", () => {
-    expect(ALL_PERMISSIONS).toHaveLength(14);
+  it("defines 15 permissions", () => {
+    expect(ALL_PERMISSIONS).toHaveLength(15);
   });
 
-  it("defines 6 roles", () => {
-    expect(Object.keys(ROLES)).toHaveLength(6);
+  it("defines 7 roles", () => {
+    expect(Object.keys(ROLES)).toHaveLength(7);
   });
 
   it("Administrator has all permissions", () => {
@@ -30,6 +30,19 @@ describe("RBAC permissions", () => {
     const analystPerms = ROLE_PERMISSIONS[ROLES.ANALYST];
     expect(analystPerms).toContain(PERMISSIONS.ANALYTICS_READ);
     expect(analystPerms).not.toContain(PERMISSIONS.CONTENT_EDIT);
+  });
+
+  it("Member has only member.content permission", () => {
+    const memberPerms = ROLE_PERMISSIONS[ROLES.MEMBER];
+    expect(memberPerms).toEqual([PERMISSIONS.MEMBER_CONTENT]);
+  });
+
+  it("Administrator has member.content permission", () => {
+    expect(ROLE_PERMISSIONS[ROLES.ADMINISTRATOR]).toContain(PERMISSIONS.MEMBER_CONTENT);
+  });
+
+  it("Editor does not have member.content permission", () => {
+    expect(ROLE_PERMISSIONS[ROLES.EDITOR]).not.toContain(PERMISSIONS.MEMBER_CONTENT);
   });
 
   it("all permission keys use dot notation", () => {
