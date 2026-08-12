@@ -162,6 +162,12 @@ export async function SiteHeader({
         <div className="flex items-center gap-3">
           <LanguageSwitcher locale={locale} />
           <Link
+            href={`/${locale}/members`}
+            className="hidden rounded-md border border-charcoal-300 px-3 py-2 text-sm font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100 sm:inline-flex"
+          >
+            {dict.members?.nav?.portal ?? "Members"}
+          </Link>
+          <Link
             href={`/${locale}/donate`}
             className="hidden rounded-md bg-burgundy-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-burgundy-600 sm:inline-flex"
           >

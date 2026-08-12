@@ -1,13 +1,13 @@
 # MSB Japan Site
 
-Bilingual (Japanese/English) website for MSB Japan built with Next.js 16, featuring a full admin dashboard, event management, e-commerce, donations, and content publishing.
+Bilingual (Japanese/English) website for MSB Japan built with Next.js 16, featuring a public site, members portal, full admin dashboard, event management, e-commerce, donations, and content publishing.
 
 ## Tech Stack
 
 - **Framework:** Next.js 16 (App Router, Turbopack)
 - **Language:** TypeScript
 - **Database:** Neon PostgreSQL via Prisma 7 (driver adapter)
-- **Auth:** NextAuth v5 (credentials + Google OAuth, RBAC with 6 roles)
+- **Auth:** NextAuth v5 (credentials + Google OAuth, RBAC with 7 roles)
 - **Styling:** Tailwind CSS 4 + custom UI components (Base UI / shadcn pattern)
 - **Payments:** Stripe (donations + e-commerce checkout)
 - **Email:** Brevo (transactional emails — contact form, donation/order notifications)
@@ -28,7 +28,7 @@ cp .env.sample .env.local
 # Push database schema
 pnpm db:push
 
-# Seed admin user
+# Seed admin user, roles, permissions, and sample content
 pnpm db:seed
 
 # Start dev server
@@ -56,19 +56,39 @@ src/
 ├── app/
 │   ├── [locale]/(public)/    # Public pages (ja/en)
 │   │   ├── about/
+│   │   ├── blog/
+│   │   ├── bylaws/           # Bylaws & Articles of Incorporation
+│   │   ├── centres/
 │   │   ├── contact/          # Contact form with Brevo email
 │   │   ├── donate/
 │   │   ├── events/
+│   │   ├── gatherings/       # Weekly Gatherings
 │   │   ├── history/
-│   │   ├── shop/
+│   │   ├── life-release/     # Life Release (tsethar)
+│   │   ├── member-programs/  # Member Programs
+│   │   ├── organization-info/
+│   │   ├── prayer-requests/  # Prayer Requests
+│   │   ├── privacy/
+│   │   ├── programs/
+│   │   ├── shop/             # Books & Publications
+│   │   ├── start/            # How to Join / Get Involved
 │   │   ├── teachers/
+│   │   ├── teachings/
+│   │   ├── tokushoho/
 │   │   └── vision/
-│   ├── admin/                # Admin dashboard (auth-protected)
+│   ├── [locale]/(members)/   # Members portal (auth-protected)
+│   │   └── members/
+│   │       ├── account/      # Profile & membership info
+│   │       ├── events/       # Member events & retreats
+│   │       ├── sangha/       # Community announcements
+│   │       └── study/        # Practice & study resources
+│   ├── admin/                # Admin dashboard (role-protected)
 │   │   ├── analytics/        # Vercel Web Analytics + custom events + audit log
 │   │   ├── contacts/
 │   │   ├── content/
 │   │   ├── donations/
 │   │   ├── events/
+│   │   ├── members/          # Member management
 │   │   ├── orders/
 │   │   ├── products/
 │   │   ├── redirects/
@@ -82,6 +102,7 @@ src/
 │       └── social/
 ├── components/
 │   ├── admin/
+│   ├── members/              # Members portal components
 │   ├── public/
 │   └── ui/                   # Shared UI components
 ├── lib/
@@ -100,9 +121,46 @@ src/
 └── dictionaries/             # i18n JSON files (ja.json, en.json)
 ```
 
+## Navigation Structure
+
+```
+├── About Us
+│   ├── Teachers & Lineage
+│   ├── Vision & Mission
+│   ├── Our History
+│   └── Centres & Shrine Rooms
+├── Programs & Study
+│   ├── Public Programs
+│   ├── Weekly Gatherings
+│   └── Member Programs
+├── Resources
+│   ├── Dharma Blog & Messages
+│   ├── Foundational Teachings & Guided Meditations
+│   ├── Videos
+│   └── Books & Publications
+├── Calendar & Events
+└── Contact & Join
+    ├── How to Join / Get Involved
+    └── Contact Us
+```
+
+Footer: Organization Info · Bylaws & Articles of Incorporation · Privacy Policy · MSB Main Site (US)
+
 ## i18n
 
 The site supports Japanese (`ja`, default) and English (`en`). Public pages are routed under `/[locale]/`. Translations are stored in `src/dictionaries/` as JSON files.
+
+## Members Portal
+
+Authenticated members can access `/{locale}/members` with:
+
+- **Dashboard** — upcoming events, announcements, recent resources
+- **Practice & Study** — articles, PDFs, audio, video, practice texts, course materials
+- **Events & Retreats** — member-only event registration with Zoom links
+- **Sangha** — community announcements
+- **My Account** — profile, membership info, event registrations
+
+Access requires the `member.content` permission (Member or Administrator role). A "Members Portal" link appears in the site header.
 
 ## Email (Brevo)
 
@@ -127,12 +185,13 @@ Two analytics systems run in parallel:
 
 | Role | Access |
 |---|---|
-| Administrator | Full access |
+| Administrator | Full access (includes member portal) |
 | Editor | Content management |
 | Translator | Translation workflows |
 | Event Coordinator | Event management |
 | Commerce Manager | Products, orders, donations |
 | Analyst | Read-only analytics and reports |
+| Member | Members portal access |
 
 ## Scripts
 
