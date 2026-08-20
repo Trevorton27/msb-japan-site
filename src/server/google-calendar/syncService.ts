@@ -339,11 +339,9 @@ function convertToGoogleCalendarEvent(
     location,
     start: {
       dateTime: event.startsAt.toISOString(),
-      timeZone: "Asia/Tokyo",
     },
     end: {
       dateTime: event.endsAt.toISOString(),
-      timeZone: "Asia/Tokyo",
     },
     source: {
       title: "MSB Japan",
