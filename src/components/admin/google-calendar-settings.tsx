@@ -139,13 +139,13 @@ export function GoogleCalendarSettings({ labels }: Props) {
 
   return (
     <div className="rounded-lg border bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-      <h2 className="mb-4 text-lg font-semibold">{labels.title}</h2>
+      <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">{labels.title}</h2>
 
       {status?.connected ? (
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <div className="h-3 w-3 rounded-full bg-green-500" />
-            <p className="text-sm font-medium">{labels.connected}</p>
+            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{labels.connected}</p>
           </div>
 
           {status.lastSync && (
@@ -157,13 +157,13 @@ export function GoogleCalendarSettings({ labels }: Props) {
 
           {syncResult && (
             <div className="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm dark:border-blue-800 dark:bg-blue-900/20">
-              <p className="mb-1 font-medium">{labels.syncComplete}</p>
-              <p>
+              <p className="mb-1 font-medium text-gray-900 dark:text-gray-100">{labels.syncComplete}</p>
+              <p className="text-gray-700 dark:text-gray-300">
                 {labels.total}: {syncResult.total} | {labels.created}:{" "}
                 {syncResult.created} | {labels.updated}: {syncResult.updated}
               </p>
               {syncResult.failed > 0 && (
-                <p className="text-red-600">
+                <p className="text-red-600 dark:text-red-400">
                   {labels.failed}: {syncResult.failed}
                 </p>
               )}
@@ -199,7 +199,7 @@ export function GoogleCalendarSettings({ labels }: Props) {
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <div className="h-3 w-3 rounded-full bg-gray-400" />
-            <p className="text-sm font-medium">{labels.notConnected}</p>
+            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{labels.notConnected}</p>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400">
             {labels.connectDescription}
