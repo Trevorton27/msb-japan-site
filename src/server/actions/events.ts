@@ -5,6 +5,10 @@ import { requirePermission } from "@/lib/auth/rbac";
 import { PERMISSIONS } from "@/lib/auth/permissions";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
+import {
+  syncEventToAllRelevantUsers,
+  deleteEventFromAllRelevantUsers,
+} from "@/server/google-calendar/syncService";
 
 const eventSchema = z.object({
   slugJa: z.string().min(1).max(200),
@@ -52,7 +56,12 @@ export async function createEvent(data: EventFormValues) {
       seriesId: parsed.seriesId || null,
       venueId: parsed.venueId || null,
     },
+    include: { venue: true },
   });
+
+  if (event.status === "PUBLISHED") {
+    syncEventToAllRelevantUsers(event).catch(console.error);
+  }
 
   revalidatePath("/admin/events");
   return { success: true, id: event.id };
@@ -63,7 +72,7 @@ export async function updateEvent(id: string, data: EventFormValues) {
 
   const parsed = eventSchema.parse(data);
 
-  await db.event.update({
+  const updatedEvent = await db.event.update({
     where: { id },
     data: {
       ...parsed,
@@ -80,7 +89,14 @@ export async function updateEvent(id: string, data: EventFormValues) {
       seriesId: parsed.seriesId || null,
       venueId: parsed.venueId || null,
     },
+    include: { venue: true },
   });
+
+  if (updatedEvent.status === "PUBLISHED") {
+    syncEventToAllRelevantUsers(updatedEvent).catch(console.error);
+  } else {
+    deleteEventFromAllRelevantUsers(updatedEvent).catch(console.error);
+  }
 
   revalidatePath("/admin/events");
   revalidatePath(`/ja/events`);
@@ -90,6 +106,15 @@ export async function updateEvent(id: string, data: EventFormValues) {
 
 export async function deleteEvent(id: string) {
   await requirePermission(PERMISSIONS.EVENTS_MANAGE);
+
+  const event = await db.event.findUnique({
+    where: { id },
+    include: { venue: true },
+  });
+
+  if (event) {
+    deleteEventFromAllRelevantUsers(event).catch(console.error);
+  }
 
   await db.event.delete({ where: { id } });
 

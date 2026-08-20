@@ -27,6 +27,15 @@ model User {
   contactNotes             ContactMessageNote[]
   memberEventRegistrations MemberEventRegistration[]
 
+  // Google Calendar sync
+  googleAccessToken          String?
+  googleRefreshToken         String?
+  googleTokenExpiry          DateTime?
+  googleCalendarSyncEnabled  Boolean  @default(false)
+  googleCalendarId           String?
+  googleCalendarLastSync     DateTime?
+  googleCalendarEvents       UserGoogleCalendarEvent[]
+
   @@map("users")
 }
 
@@ -191,6 +200,7 @@ model Event {
   venue                Venue?                    @relation(fields: [venueId], references: [id])
   registrations        EventRegistration[]
   memberRegistrations  MemberEventRegistration[]
+  googleCalendarEvents UserGoogleCalendarEvent[]
 
   @@index([status, startsAt])
   @@map("events")
@@ -725,6 +735,27 @@ model MemberEventRegistration {
 
   @@unique([userId, eventId])
   @@map("member_event_registrations")
+}
+
+// ─── Google Calendar Sync ────────────────────────────────────────────────────
+
+model UserGoogleCalendarEvent {
+  id               String   @id @default(cuid())
+  userId           String
+  eventId          String
+  googleEventId    String
+  googleCalendarId String   @default("primary")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@index([userId])
+  @@index([eventId])
+  @@index([googleEventId])
+  @@map("user_google_calendar_events")
 }
 
 model MemberAnnouncement {
