@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { disconnectGoogleCalendar } from "@/server/google-calendar/tokenManager";
+import { removeAllSyncedEvents } from "@/server/google-calendar/syncService";
 
 export async function GET() {
   try {
@@ -38,7 +39,7 @@ export async function GET() {
   }
 }
 
-export async function DELETE() {
+export async function DELETE(request: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
@@ -46,6 +47,11 @@ export async function DELETE() {
         { success: false, error: "Unauthorized" },
         { status: 401 }
       );
+    }
+
+    const { searchParams } = new URL(request.url);
+    if (searchParams.get("removeEvents") === "true") {
+      await removeAllSyncedEvents(session.user.id);
     }
 
     await disconnectGoogleCalendar(session.user.id);

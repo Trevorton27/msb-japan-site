@@ -30,7 +30,8 @@ export default async function AdminSettingsPage() {
           updated: "更新",
           failed: "失敗",
           disconnectConfirm:
-            "Google カレンダーを切断しますか？同期済みのイベントは Google カレンダーに残ります。",
+            "Google カレンダーを切断しますか？",
+          removeEventsOption: "同期済みイベントも削除",
         }
       : {
           title: "Google Calendar Integration",
@@ -49,8 +50,8 @@ export default async function AdminSettingsPage() {
           created: "Created",
           updated: "Updated",
           failed: "Failed",
-          disconnectConfirm:
-            "Disconnect Google Calendar? Synced events will remain in your Google Calendar.",
+          disconnectConfirm: "Disconnect Google Calendar?",
+          removeEventsOption: "Also remove synced events",
         };
 
   return (

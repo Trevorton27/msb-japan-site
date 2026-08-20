@@ -248,6 +248,48 @@ export async function deleteEventFromAllRelevantUsers(
   }
 }
 
+export async function removeAllSyncedEvents(userId: string): Promise<void> {
+  const mappings = await db.userGoogleCalendarEvent.findMany({
+    where: { userId },
+  });
+  if (mappings.length === 0) return;
+
+  const user = await db.user.findUnique({
+    where: { id: userId },
+    select: { googleCalendarSyncEnabled: true, googleCalendarId: true },
+  });
+
+  if (user?.googleCalendarSyncEnabled) {
+    const calendarId = user.googleCalendarId || "primary";
+    const accessToken = await getValidAccessToken(userId);
+    const tokens = await getDecryptedTokens(userId);
+
+    if (tokens) {
+      const client = createGoogleCalendarClient(
+        accessToken,
+        tokens.refreshToken
+      );
+
+      const BATCH_SIZE = 10;
+      for (let i = 0; i < mappings.length; i += BATCH_SIZE) {
+        const batch = mappings.slice(i, i + BATCH_SIZE);
+        await Promise.allSettled(
+          batch.map((m) =>
+            retryWithBackoff(() =>
+              client.deleteEvent(calendarId, m.googleEventId)
+            ).catch(() => {})
+          )
+        );
+        if (i + BATCH_SIZE < mappings.length) {
+          await new Promise((resolve) => setTimeout(resolve, 100));
+        }
+      }
+    }
+  }
+
+  await db.userGoogleCalendarEvent.deleteMany({ where: { userId } });
+}
+
 async function getEventsVisibleToUser(): Promise<EventWithVenue[]> {
   return db.event.findMany({
     where: {

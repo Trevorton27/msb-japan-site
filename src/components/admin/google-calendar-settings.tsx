@@ -36,6 +36,7 @@ interface Props {
     updated: string;
     failed: string;
     disconnectConfirm: string;
+    removeEventsOption: string;
   };
 }
 
@@ -44,6 +45,7 @@ export function GoogleCalendarSettings({ labels }: Props) {
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
   const [disconnecting, setDisconnecting] = useState(false);
+  const [removeEvents, setRemoveEvents] = useState(true);
   const [syncResult, setSyncResult] = useState<BatchSyncResult | null>(null);
 
   useEffect(() => {
@@ -83,7 +85,8 @@ export function GoogleCalendarSettings({ labels }: Props) {
     if (!confirm(labels.disconnectConfirm)) return;
     try {
       setDisconnecting(true);
-      const res = await fetch("/api/google-calendar/token", {
+      const params = removeEvents ? "?removeEvents=true" : "";
+      const res = await fetch(`/api/google-calendar/token${params}`, {
         method: "DELETE",
       });
       const data = await res.json();
@@ -171,13 +174,25 @@ export function GoogleCalendarSettings({ labels }: Props) {
             <Button onClick={handleSync} disabled={syncing}>
               {syncing ? labels.syncing : labels.syncNow}
             </Button>
-            <Button
-              variant="destructive"
-              onClick={handleDisconnect}
-              disabled={disconnecting}
-            >
-              {disconnecting ? labels.disconnecting : labels.disconnect}
-            </Button>
+            <div className="flex items-center gap-3">
+              <Button
+                variant="destructive"
+                onClick={handleDisconnect}
+                disabled={disconnecting}
+              >
+                {disconnecting ? labels.disconnecting : labels.disconnect}
+              </Button>
+              <label className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
+                <input
+                  type="checkbox"
+                  checked={removeEvents}
+                  onChange={(e) => setRemoveEvents(e.target.checked)}
+                  disabled={disconnecting}
+                  className="rounded"
+                />
+                {labels.removeEventsOption}
+              </label>
+            </div>
           </div>
         </div>
       ) : (
