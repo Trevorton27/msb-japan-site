@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { google } from "googleapis";
 import { auth } from "@/lib/auth";
 import crypto from "crypto";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
@@ -30,10 +30,14 @@ export async function GET() {
       process.env.GOOGLE_REDIRECT_URI
     );
 
+    const { searchParams } = new URL(request.url);
+    const returnTo = searchParams.get("returnTo") || "/admin/settings";
+
     const state = Buffer.from(
       JSON.stringify({
         state: crypto.randomBytes(32).toString("hex"),
         userId: session.user.id,
+        returnTo,
       })
     ).toString("base64");
 

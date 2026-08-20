@@ -7,7 +7,7 @@ import {
 import { batchSyncEvents } from "@/server/google-calendar/syncService";
 
 export async function GET(request: NextRequest) {
-  const settingsUrl = "/admin/settings";
+  let settingsUrl = "/admin/settings";
 
   try {
     const { searchParams } = new URL(request.url);
@@ -21,6 +21,7 @@ export async function GET(request: NextRequest) {
         Buffer.from(state || "", "base64").toString()
       );
       userId = decoded.userId;
+      if (decoded.returnTo) settingsUrl = decoded.returnTo;
       if (!userId) throw new Error("No userId in state");
     } catch {
       return NextResponse.redirect(

@@ -54,6 +54,7 @@ export function EventForm({ initialData }: EventFormProps) {
       venueId: (formData.get("venueId") as string) || undefined,
       onlineUrl: (formData.get("onlineUrl") as string) || undefined,
       imageUrl: (formData.get("imageUrl") as string) || undefined,
+      recurrenceRule: (formData.get("recurrenceRule") as string) || undefined,
     };
 
     try {
@@ -190,6 +191,70 @@ export function EventForm({ initialData }: EventFormProps) {
               defaultValue={initialData?.registrationClosesAt}
             />
           </div>
+        </div>
+
+        <div>
+          <Label htmlFor="recurrenceRule">Recurrence</Label>
+          <select
+            id="recurrencePreset"
+            className="mt-1 w-full rounded-md border px-3 py-2 text-sm"
+            defaultValue={
+              initialData?.recurrenceRule
+                ? ["RRULE:FREQ=WEEKLY", "RRULE:FREQ=WEEKLY;INTERVAL=2", "RRULE:FREQ=MONTHLY"].includes(
+                    initialData.recurrenceRule
+                  )
+                  ? initialData.recurrenceRule
+                  : "custom"
+                : ""
+            }
+            onChange={(e) => {
+              const input = document.getElementById("recurrenceRule") as HTMLInputElement;
+              if (e.target.value === "custom") {
+                input.value = initialData?.recurrenceRule ?? "RRULE:FREQ=WEEKLY;COUNT=10";
+                input.style.display = "block";
+              } else {
+                input.value = e.target.value;
+                input.style.display = "none";
+              }
+            }}
+          >
+            <option value="">None (single event)</option>
+            <option value="RRULE:FREQ=WEEKLY">Weekly</option>
+            <option value="RRULE:FREQ=WEEKLY;INTERVAL=2">Bi-weekly</option>
+            <option value="RRULE:FREQ=MONTHLY">Monthly</option>
+            <option value="custom">Custom RRULE...</option>
+          </select>
+          <input
+            id="recurrenceRule"
+            name="recurrenceRule"
+            type="hidden"
+            defaultValue={initialData?.recurrenceRule ?? ""}
+          />
+          <input
+            id="recurrenceRuleCustom"
+            placeholder="e.g. RRULE:FREQ=WEEKLY;COUNT=10;BYDAY=SA"
+            className="mt-2 w-full rounded-md border px-3 py-2 text-sm"
+            style={{
+              display:
+                initialData?.recurrenceRule &&
+                !["RRULE:FREQ=WEEKLY", "RRULE:FREQ=WEEKLY;INTERVAL=2", "RRULE:FREQ=MONTHLY"].includes(
+                  initialData.recurrenceRule
+                )
+                  ? "block"
+                  : "none",
+            }}
+            defaultValue={
+              initialData?.recurrenceRule &&
+              !["RRULE:FREQ=WEEKLY", "RRULE:FREQ=WEEKLY;INTERVAL=2", "RRULE:FREQ=MONTHLY"].includes(
+                initialData.recurrenceRule
+              )
+                ? initialData.recurrenceRule
+                : ""
+            }
+            onChange={(e) => {
+              (document.getElementById("recurrenceRule") as HTMLInputElement).value = e.target.value;
+            }}
+          />
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">

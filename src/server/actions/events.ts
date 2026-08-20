@@ -31,6 +31,7 @@ const eventSchema = z.object({
   onlineUrl: z.string().url().optional().or(z.literal("")),
   imageUrl: z.string().url().optional().or(z.literal("")),
   seriesId: z.string().optional(),
+  recurrenceRule: z.string().optional(),
 });
 
 export type EventFormValues = z.infer<typeof eventSchema>;
@@ -55,6 +56,7 @@ export async function createEvent(data: EventFormValues) {
       imageUrl: parsed.imageUrl || null,
       seriesId: parsed.seriesId || null,
       venueId: parsed.venueId || null,
+      recurrenceRule: parsed.recurrenceRule || null,
     },
     include: { venue: true },
   });
@@ -88,6 +90,7 @@ export async function updateEvent(id: string, data: EventFormValues) {
       imageUrl: parsed.imageUrl || null,
       seriesId: parsed.seriesId || null,
       venueId: parsed.venueId || null,
+      recurrenceRule: parsed.recurrenceRule || null,
     },
     include: { venue: true },
   });

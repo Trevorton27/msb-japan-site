@@ -38,9 +38,10 @@ interface Props {
     disconnectConfirm: string;
     removeEventsOption: string;
   };
+  returnTo?: string;
 }
 
-export function GoogleCalendarSettings({ labels }: Props) {
+export function GoogleCalendarSettings({ labels, returnTo }: Props) {
   const [status, setStatus] = useState<GoogleCalendarStatus | null>(null);
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
@@ -78,7 +79,10 @@ export function GoogleCalendarSettings({ labels }: Props) {
   };
 
   const handleConnect = () => {
-    window.location.href = "/api/google-calendar/auth";
+    const params = returnTo
+      ? `?returnTo=${encodeURIComponent(returnTo)}`
+      : "";
+    window.location.href = `/api/google-calendar/auth${params}`;
   };
 
   const handleDisconnect = async () => {

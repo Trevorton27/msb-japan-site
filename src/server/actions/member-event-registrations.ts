@@ -1,7 +1,8 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { requireMember } from "@/lib/auth/rbac";
+import { requireMember, requirePermission } from "@/lib/auth/rbac";
+import { PERMISSIONS } from "@/lib/auth/permissions";
 import { revalidatePath } from "next/cache";
 
 export async function registerForMemberEvent(eventId: string) {
@@ -38,6 +39,47 @@ export async function cancelMemberEventRegistration(eventId: string) {
     data: { status: "CANCELLED" },
   });
 
+  revalidatePath("/members/events");
+  return { success: true };
+}
+
+export async function adminRegisterMember(eventId: string, userId: string) {
+  await requirePermission(PERMISSIONS.EVENTS_MANAGE);
+
+  const existing = await db.memberEventRegistration.findUnique({
+    where: { userId_eventId: { userId, eventId } },
+  });
+
+  if (existing) {
+    if (existing.status === "CANCELLED") {
+      await db.memberEventRegistration.update({
+        where: { id: existing.id },
+        data: { status: "REGISTERED" },
+      });
+    }
+  } else {
+    await db.memberEventRegistration.create({
+      data: { userId, eventId, status: "REGISTERED" },
+    });
+  }
+
+  revalidatePath(`/admin/events/${eventId}`);
+  revalidatePath("/members/events");
+  return { success: true };
+}
+
+export async function adminRemoveMemberRegistration(
+  eventId: string,
+  userId: string
+) {
+  await requirePermission(PERMISSIONS.EVENTS_MANAGE);
+
+  await db.memberEventRegistration.updateMany({
+    where: { userId, eventId },
+    data: { status: "CANCELLED" },
+  });
+
+  revalidatePath(`/admin/events/${eventId}`);
   revalidatePath("/members/events");
   return { success: true };
 }

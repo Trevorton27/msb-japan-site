@@ -55,6 +55,10 @@ export async function getEventById(id: string) {
         include: { attendees: true },
         orderBy: { createdAt: "desc" },
       },
+      memberRegistrations: {
+        include: { user: { select: { id: true, name: true, email: true } } },
+        orderBy: { createdAt: "desc" },
+      },
     },
   });
 }
@@ -63,7 +67,14 @@ export async function getAllEventsAdmin() {
   return db.event.findMany({
     include: {
       venue: true,
-      _count: { select: { registrations: true } },
+      _count: {
+        select: {
+          registrations: true,
+          memberRegistrations: {
+            where: { status: { not: "CANCELLED" } },
+          },
+        },
+      },
     },
     orderBy: { startsAt: "desc" },
   });

@@ -173,7 +173,7 @@ export async function batchSyncEvents(
     errors: [],
   };
 
-  const events = await getEventsVisibleToUser();
+  const events = await getEventsVisibleToUser(userId);
   result.total = events.length;
 
   const existingMappings = await db.userGoogleCalendarEvent.findMany({
@@ -290,12 +290,54 @@ export async function removeAllSyncedEvents(userId: string): Promise<void> {
   await db.userGoogleCalendarEvent.deleteMany({ where: { userId } });
 }
 
-async function getEventsVisibleToUser(): Promise<EventWithVenue[]> {
-  return db.event.findMany({
-    where: {
-      status: "PUBLISHED",
-      startsAt: { gt: new Date() },
+async function getEventsVisibleToUser(
+  userId: string
+): Promise<EventWithVenue[]> {
+  // Check if user has events.manage permission (admin/event coordinator)
+  const userWithRoles = await db.user.findUnique({
+    where: { id: userId },
+    include: {
+      userRoles: {
+        include: {
+          role: {
+            include: {
+              rolePermissions: { include: { permission: true } },
+            },
+          },
+        },
+      },
     },
+  });
+
+  const permissions = new Set(
+    userWithRoles?.userRoles.flatMap((ur) =>
+      ur.role.rolePermissions.map((rp) => rp.permission.key)
+    ) ?? []
+  );
+
+  if (permissions.has("events.manage")) {
+    // Admins/event coordinators see all published future events
+    return db.event.findMany({
+      where: { status: "PUBLISHED", startsAt: { gt: new Date() } },
+      include: { venue: true },
+      orderBy: { startsAt: "asc" },
+    });
+  }
+
+  // Members only see events they're registered for
+  const registrations = await db.memberEventRegistration.findMany({
+    where: {
+      userId,
+      status: { in: ["REGISTERED", "WAITLISTED"] },
+      event: { status: "PUBLISHED", startsAt: { gt: new Date() } },
+    },
+    select: { eventId: true },
+  });
+
+  if (registrations.length === 0) return [];
+
+  return db.event.findMany({
+    where: { id: { in: registrations.map((r) => r.eventId) } },
     include: { venue: true },
     orderBy: { startsAt: "asc" },
   });
@@ -306,10 +348,39 @@ async function getUsersWhoShouldSeeEvent(
 ): Promise<Array<{ id: string }>> {
   if (event.status !== "PUBLISHED") return [];
 
-  return db.user.findMany({
-    where: { googleCalendarSyncEnabled: true },
+  // Get admins/event coordinators with sync enabled
+  const adminUsers = await db.user.findMany({
+    where: {
+      googleCalendarSyncEnabled: true,
+      userRoles: {
+        some: {
+          role: {
+            rolePermissions: {
+              some: { permission: { key: "events.manage" } },
+            },
+          },
+        },
+      },
+    },
     select: { id: true },
   });
+
+  // Get members registered for this event with sync enabled
+  const memberRegistrations = await db.memberEventRegistration.findMany({
+    where: {
+      eventId: event.id,
+      status: { in: ["REGISTERED", "WAITLISTED"] },
+      user: { googleCalendarSyncEnabled: true },
+    },
+    select: { userId: true },
+  });
+
+  const userIds = new Set([
+    ...adminUsers.map((u) => u.id),
+    ...memberRegistrations.map((r) => r.userId),
+  ]);
+
+  return Array.from(userIds).map((id) => ({ id }));
 }
 
 /** Strip the trailing Z from an ISO string so Google treats it as the specified timeZone. */
@@ -355,6 +426,10 @@ function convertToGoogleCalendarEvent(
       url: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/events`,
     },
   };
+
+  if (event.recurrenceRule) {
+    googleEvent.recurrence = [event.recurrenceRule];
+  }
 
   const colorMap: Record<EventMode, string> = {
     IN_PERSON: "9", // Blue

@@ -4,6 +4,8 @@ import { getEventById } from "@/server/queries/events";
 import { notFound } from "next/navigation";
 import { EventForm } from "@/components/admin/event-form";
 import { Badge } from "@/components/ui/badge";
+import { db } from "@/lib/db";
+import { MemberRegistrationManager } from "@/components/admin/member-registration-manager";
 
 export default async function EditEventPage({
   params,
@@ -42,6 +44,7 @@ export default async function EditEventPage({
     onlineUrl: event.onlineUrl ?? undefined,
     imageUrl: event.imageUrl ?? undefined,
     seriesId: event.seriesId ?? undefined,
+    recurrenceRule: event.recurrenceRule ?? undefined,
   };
 
   const confirmedCount = event.registrations.filter(
@@ -50,6 +53,30 @@ export default async function EditEventPage({
   const waitlistedCount = event.registrations.filter(
     (r) => r.status === "WAITLISTED"
   ).length;
+  const memberRegisteredCount = event.memberRegistrations.filter(
+    (r) => r.status === "REGISTERED"
+  ).length;
+  const memberWaitlistedCount = event.memberRegistrations.filter(
+    (r) => r.status === "WAITLISTED"
+  ).length;
+
+  // Get all members for the registration manager
+  const members = await db.user.findMany({
+    where: {
+      userRoles: { some: { role: { name: "Member" } } },
+    },
+    select: { id: true, name: true, email: true },
+    orderBy: { name: "asc" },
+  });
+
+  const currentMemberRegistrations = event.memberRegistrations
+    .filter((r) => r.status !== "CANCELLED")
+    .map((r) => ({
+      id: r.id,
+      userId: r.userId,
+      userName: r.user.name ?? r.user.email,
+      status: r.status,
+    }));
 
   return (
     <div>
@@ -62,15 +89,24 @@ export default async function EditEventPage({
         <h2 className="mb-2 text-sm font-semibold text-gray-500">
           Registrations
         </h2>
-        <div className="flex gap-6 text-sm">
+        <div className="flex flex-wrap gap-6 text-sm">
           <span>
-            Confirmed: <strong>{confirmedCount}</strong>
+            Public Confirmed: <strong>{confirmedCount}</strong>
           </span>
           <span>
-            Waitlisted: <strong>{waitlistedCount}</strong>
+            Public Waitlisted: <strong>{waitlistedCount}</strong>
           </span>
           <span>
-            Total: <strong>{event.registrations.length}</strong>
+            Members Registered: <strong>{memberRegisteredCount}</strong>
+          </span>
+          <span>
+            Members Waitlisted: <strong>{memberWaitlistedCount}</strong>
+          </span>
+          <span>
+            Total:{" "}
+            <strong>
+              {event.registrations.length + memberRegisteredCount + memberWaitlistedCount}
+            </strong>
           </span>
           {event.capacity && (
             <span>
@@ -79,6 +115,12 @@ export default async function EditEventPage({
           )}
         </div>
       </div>
+
+      <MemberRegistrationManager
+        eventId={event.id}
+        members={members}
+        registrations={currentMemberRegistrations}
+      />
 
       <EventForm initialData={initialData} />
     </div>

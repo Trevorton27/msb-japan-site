@@ -57,7 +57,7 @@ export default async function AdminEventsPage() {
                 </td>
                 <td className="px-4 py-3 text-gray-600">{event.mode}</td>
                 <td className="px-4 py-3 text-gray-600">
-                  {event._count.registrations}
+                  {event._count.registrations + event._count.memberRegistrations}
                   {event.capacity ? ` / ${event.capacity}` : ""}
                 </td>
                 <td className="px-4 py-3">
