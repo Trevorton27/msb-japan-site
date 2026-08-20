@@ -312,6 +312,11 @@ async function getUsersWhoShouldSeeEvent(
   });
 }
 
+/** Strip the trailing Z from an ISO string so Google treats it as the specified timeZone. */
+function toLocalISOString(date: Date): string {
+  return date.toISOString().replace("Z", "");
+}
+
 function convertToGoogleCalendarEvent(
   event: EventWithVenue
 ): calendar_v3.Schema$Event {
@@ -338,10 +343,12 @@ function convertToGoogleCalendarEvent(
     description,
     location,
     start: {
-      dateTime: event.startsAt.toISOString(),
+      dateTime: toLocalISOString(event.startsAt),
+      timeZone: "Asia/Tokyo",
     },
     end: {
-      dateTime: event.endsAt.toISOString(),
+      dateTime: toLocalISOString(event.endsAt),
+      timeZone: "Asia/Tokyo",
     },
     source: {
       title: "MSB Japan",
