@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import {
@@ -13,23 +14,27 @@ interface Member {
   id: string;
   name: string | null;
   email: string;
+  isSanghaMember: boolean;
 }
 
 interface Registration {
   id: string;
   userId: string;
   userName: string;
+  userEmail: string;
   status: string;
 }
 
 interface Props {
   eventId: string;
+  eventVisibility: "PUBLIC" | "PRIVATE";
   members: Member[];
   registrations: Registration[];
 }
 
 export function MemberRegistrationManager({
   eventId,
+  eventVisibility,
   members,
   registrations,
 }: Props) {
@@ -38,7 +43,9 @@ export function MemberRegistrationManager({
   const [adding, setAdding] = useState(false);
 
   const registeredUserIds = new Set(registrations.map((r) => r.userId));
-  const availableMembers = members.filter((m) => !registeredUserIds.has(m.id));
+  const availableMembers = members
+    .filter((m) => !registeredUserIds.has(m.id))
+    .filter((m) => eventVisibility !== "PRIVATE" || m.isSanghaMember);
 
   const handleAdd = async () => {
     if (!selectedMemberId) return;
@@ -82,7 +89,15 @@ export function MemberRegistrationManager({
               key={reg.id}
               className="flex items-center justify-between rounded border px-3 py-2 text-sm"
             >
-              <span>{reg.userName}</span>
+              <div className="flex items-center gap-2">
+                <Link
+                  href={`/admin/users/${reg.userId}`}
+                  className="text-blue-600 hover:underline"
+                >
+                  {reg.userName}
+                </Link>
+                <span className="text-xs text-gray-500">{reg.userEmail}</span>
+              </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-500">{reg.status}</span>
                 <button

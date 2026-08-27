@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/dharma-message",
+      "schedule": "0 15 * * 0"
+    }
+  ]
+}

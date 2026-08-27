@@ -10,6 +10,7 @@ export async function getPublishedEvents(filters?: {
 }) {
   const where: Record<string, unknown> = {
     status: "PUBLISHED",
+    visibility: "PUBLIC",
   };
 
   if (filters?.mode) {
@@ -77,6 +78,28 @@ export async function getAllEventsAdmin() {
       },
     },
     orderBy: { startsAt: "desc" },
+  });
+}
+
+export async function getEventDetailsById(id: string) {
+  return db.event.findUnique({
+    where: { id },
+    include: {
+      venue: true,
+      series: true,
+      registrations: {
+        include: {
+          attendees: true,
+        },
+        orderBy: { createdAt: "desc" },
+      },
+      memberRegistrations: {
+        include: {
+          user: { select: { id: true, name: true, email: true } },
+        },
+        orderBy: { createdAt: "desc" },
+      },
+    },
   });
 }
 

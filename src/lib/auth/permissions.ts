@@ -29,6 +29,7 @@ export const ROLES = {
   COMMERCE_MANAGER: "Commerce Manager",
   ANALYST: "Analyst",
   MEMBER: "Member",
+  STREAM_WATCHER: "Stream Watcher",
 } as const;
 
 export type RoleName = (typeof ROLES)[keyof typeof ROLES];
@@ -61,6 +62,9 @@ export const ROLE_PERMISSIONS: Record<RoleName, PermissionKey[]> = {
     PERMISSIONS.DONATIONS_READ,
   ],
   [ROLES.MEMBER]: [
+    PERMISSIONS.MEMBER_CONTENT,
+  ],
+  [ROLES.STREAM_WATCHER]: [
     PERMISSIONS.MEMBER_CONTENT,
   ],
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { updateUserRole, resetUserPassword, deleteUser } from "@/server/actions/users";
 import { Button } from "@/components/ui/button";
 
@@ -57,6 +58,11 @@ export function UserActions({ user, roles }: { user: User; roles: Role[] }) {
   return (
     <>
       <div className="flex justify-end gap-1">
+        <Link href={`/admin/users/${user.id}`}>
+          <Button variant="ghost" size="xs">
+            Profile
+          </Button>
+        </Link>
         <Button variant="ghost" size="xs" onClick={() => setShowRoleEdit(true)}>
           Role
         </Button>

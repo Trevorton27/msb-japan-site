@@ -45,6 +45,7 @@ export default async function EditEventPage({
     imageUrl: event.imageUrl ?? undefined,
     seriesId: event.seriesId ?? undefined,
     recurrenceRule: event.recurrenceRule ?? undefined,
+    visibility: event.visibility,
   };
 
   const confirmedCount = event.registrations.filter(
@@ -65,7 +66,7 @@ export default async function EditEventPage({
     where: {
       userRoles: { some: { role: { name: "Member" } } },
     },
-    select: { id: true, name: true, email: true },
+    select: { id: true, name: true, email: true, isSanghaMember: true },
     orderBy: { name: "asc" },
   });
 
@@ -75,6 +76,7 @@ export default async function EditEventPage({
       id: r.id,
       userId: r.userId,
       userName: r.user.name ?? r.user.email,
+      userEmail: r.user.email,
       status: r.status,
     }));
 
@@ -118,6 +120,7 @@ export default async function EditEventPage({
 
       <MemberRegistrationManager
         eventId={event.id}
+        eventVisibility={event.visibility}
         members={members}
         registrations={currentMemberRegistrations}
       />

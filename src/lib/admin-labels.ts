@@ -179,6 +179,7 @@ const labels = {
     noMembers: "会員はいません。",
     noMemberResources: "会員リソースはまだありません。",
     noMemberAnnouncements: "お知らせはまだありません。",
+    dharmaMessages: "法話メッセージ",
   },
   en: {
     dashboard: "Dashboard",
@@ -345,6 +346,7 @@ const labels = {
     noMembers: "No members yet.",
     noMemberResources: "No member resources yet.",
     noMemberAnnouncements: "No announcements yet.",
+    dharmaMessages: "Dharma Messages",
   },
 } as const;
 

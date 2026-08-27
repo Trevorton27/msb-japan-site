@@ -32,6 +32,7 @@ const eventSchema = z.object({
   imageUrl: z.string().url().optional().or(z.literal("")),
   seriesId: z.string().optional(),
   recurrenceRule: z.string().optional(),
+  visibility: z.enum(["PUBLIC", "PRIVATE"]).default("PUBLIC"),
 });
 
 export type EventFormValues = z.infer<typeof eventSchema>;

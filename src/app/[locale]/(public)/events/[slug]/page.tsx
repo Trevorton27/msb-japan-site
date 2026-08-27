@@ -17,7 +17,7 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   if (!isValidLocale(locale)) return {};
   const event = await getEventBySlug(slug, locale as "ja" | "en");
-  if (!event) return {};
+  if (!event || event.visibility === "PRIVATE") return {};
   const title =
     locale === "en" && event.titleEn ? event.titleEn : event.titleJa;
   return { title: `${title} — MSB Japan` };
@@ -33,6 +33,7 @@ export default async function EventDetailPage({
 
   const event = await getEventBySlug(slug, locale as "ja" | "en");
   if (!event) notFound();
+  if (event.visibility === "PRIVATE") notFound();
 
   const dict = await getDictionary(locale as Locale);
 

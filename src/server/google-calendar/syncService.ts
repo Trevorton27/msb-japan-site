@@ -317,6 +317,8 @@ async function getEventsVisibleToUser(
     ) ?? []
   );
 
+  const isSanghaMember = userWithRoles?.isSanghaMember ?? false;
+
   if (permissions.has("events.manage")) {
     // Admins/event coordinators see all published future events
     return db.event.findMany({
@@ -326,12 +328,15 @@ async function getEventsVisibleToUser(
     });
   }
 
+  // For non-sangha members, filter out PRIVATE events
+  const visibilityFilter = isSanghaMember ? {} : { visibility: "PUBLIC" as const };
+
   // Members only see events they're registered for
   const registrations = await db.memberEventRegistration.findMany({
     where: {
       userId,
       status: { in: ["REGISTERED", "WAITLISTED"] },
-      event: { status: "PUBLISHED", startsAt: { gt: new Date() } },
+      event: { status: "PUBLISHED", startsAt: { gt: new Date() }, ...visibilityFilter },
     },
     select: { eventId: true },
   });
@@ -367,12 +372,17 @@ async function getUsersWhoShouldSeeEvent(
     select: { id: true },
   });
 
+  // For PRIVATE events, only sync to members who are also sangha members
+  const memberFilter = event.visibility === "PRIVATE"
+    ? { googleCalendarSyncEnabled: true, isSanghaMember: true }
+    : { googleCalendarSyncEnabled: true };
+
   // Get members registered for this event with sync enabled
   const memberRegistrations = await db.memberEventRegistration.findMany({
     where: {
       eventId: event.id,
       status: { in: ["REGISTERED", "WAITLISTED"] },
-      user: { googleCalendarSyncEnabled: true },
+      user: memberFilter,
     },
     select: { userId: true },
   });

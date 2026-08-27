@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { generateICS } from "@/lib/calendar";
 import { NextResponse } from "next/server";
+import { auth } from "@/lib/auth";
 
 export async function GET(
   _request: Request,
@@ -15,6 +16,21 @@ export async function GET(
 
   if (!event) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
+  // PRIVATE events require auth + isSanghaMember
+  if (event.visibility === "PRIVATE") {
+    const session = await auth();
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+    }
+    const user = await db.user.findUnique({
+      where: { id: session.user.id },
+      select: { isSanghaMember: true },
+    });
+    if (!user?.isSanghaMember) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
   }
 
   const ics = generateICS({

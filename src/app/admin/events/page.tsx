@@ -36,6 +36,7 @@ export default async function AdminEventsPage() {
               <th className="px-4 py-3 font-medium">{l.title}</th>
               <th className="px-4 py-3 font-medium">{l.date}</th>
               <th className="px-4 py-3 font-medium">{l.status}</th>
+              <th className="px-4 py-3 font-medium">{locale === "en" ? "Visibility" : "公開範囲"}</th>
               <th className="px-4 py-3 font-medium">{l.mode}</th>
               <th className="px-4 py-3 font-medium">{l.registrations}</th>
               <th className="px-4 py-3 font-medium"></th>
@@ -55,21 +56,38 @@ export default async function AdminEventsPage() {
                     {event.status}
                   </Badge>
                 </td>
+                <td className="px-4 py-3">
+                  <Badge
+                    variant="secondary"
+                    className={
+                      event.visibility === "PRIVATE"
+                        ? "bg-purple-100 text-purple-700"
+                        : "bg-gray-100 text-gray-600"
+                    }
+                  >
+                    {event.visibility === "PRIVATE" ? "Private" : "Public"}
+                  </Badge>
+                </td>
                 <td className="px-4 py-3 text-gray-600">{event.mode}</td>
                 <td className="px-4 py-3 text-gray-600">
                   {event._count.registrations + event._count.memberRegistrations}
                   {event.capacity ? ` / ${event.capacity}` : ""}
                 </td>
                 <td className="px-4 py-3">
-                  <Link href={`/admin/events/${event.id}`} className="text-blue-600 hover:underline">
-                    {l.edit}
-                  </Link>
+                  <div className="flex gap-3">
+                    <Link href={`/admin/events/${event.id}/details`} className="text-blue-600 hover:underline">
+                      {l.view}
+                    </Link>
+                    <Link href={`/admin/events/${event.id}`} className="text-blue-600 hover:underline">
+                      {l.edit}
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))}
             {events.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
                   {l.noEvents}
                 </td>
               </tr>

@@ -55,6 +55,7 @@ export function EventForm({ initialData }: EventFormProps) {
       onlineUrl: (formData.get("onlineUrl") as string) || undefined,
       imageUrl: (formData.get("imageUrl") as string) || undefined,
       recurrenceRule: (formData.get("recurrenceRule") as string) || undefined,
+      visibility: formData.get("visibility") as EventFormValues["visibility"],
     };
 
     try {
@@ -286,7 +287,7 @@ export function EventForm({ initialData }: EventFormProps) {
       <fieldset className="space-y-4 rounded-lg border p-4">
         <legend className="px-2 text-sm font-semibold">Pricing & Status</legend>
 
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-4">
           <div>
             <Label htmlFor="status">Status *</Label>
             <select
@@ -299,6 +300,18 @@ export function EventForm({ initialData }: EventFormProps) {
               <option value="PUBLISHED">Published</option>
               <option value="CANCELLED">Cancelled</option>
               <option value="COMPLETED">Completed</option>
+            </select>
+          </div>
+          <div>
+            <Label htmlFor="visibility">Visibility *</Label>
+            <select
+              id="visibility"
+              name="visibility"
+              className="mt-1 w-full rounded-md border px-3 py-2 text-sm"
+              defaultValue={initialData?.visibility ?? "PUBLIC"}
+            >
+              <option value="PUBLIC">Public</option>
+              <option value="PRIVATE">Private - Sangha Members Only</option>
             </select>
           </div>
           <div>

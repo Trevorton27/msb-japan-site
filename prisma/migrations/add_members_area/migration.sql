@@ -1,6 +1,3 @@
-npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
-Loaded Prisma config from prisma/prisma.config.ts.
-
 -- CreateEnum
 CREATE TYPE "ResourceType" AS ENUM ('ARTICLE', 'PDF', 'AUDIO', 'VIDEO', 'LINK', 'PRACTICE_TEXT', 'COURSE_MATERIAL', 'RETREAT_MATERIAL');
 

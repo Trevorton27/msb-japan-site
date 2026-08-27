@@ -12,6 +12,22 @@ import {
 export async function registerForMemberEvent(eventId: string) {
   const user = await requireMember();
 
+  // Check visibility: PRIVATE events require isSanghaMember
+  const event = await db.event.findUnique({
+    where: { id: eventId },
+    select: { visibility: true },
+  });
+  if (!event) return { success: false, error: "Event not found" };
+  if (event.visibility === "PRIVATE") {
+    const fullUser = await db.user.findUnique({
+      where: { id: user.id },
+      select: { isSanghaMember: true },
+    });
+    if (!fullUser?.isSanghaMember) {
+      return { success: false, error: "This event is only available to Sangha members." };
+    }
+  }
+
   const existing = await db.memberEventRegistration.findUnique({
     where: { userId_eventId: { userId: user.id, eventId } },
   });
@@ -52,6 +68,21 @@ export async function cancelMemberEventRegistration(eventId: string) {
 
 export async function adminRegisterMember(eventId: string, userId: string) {
   await requirePermission(PERMISSIONS.EVENTS_MANAGE);
+
+  // Check visibility: PRIVATE events require isSanghaMember
+  const event = await db.event.findUnique({
+    where: { id: eventId },
+    select: { visibility: true },
+  });
+  if (event?.visibility === "PRIVATE") {
+    const targetUser = await db.user.findUnique({
+      where: { id: userId },
+      select: { isSanghaMember: true },
+    });
+    if (!targetUser?.isSanghaMember) {
+      return { success: false, error: "This user is not a Sangha member and cannot be registered for private events." };
+    }
+  }
 
   const existing = await db.memberEventRegistration.findUnique({
     where: { userId_eventId: { userId, eventId } },

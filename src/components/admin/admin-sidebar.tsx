@@ -38,6 +38,7 @@ export function AdminSidebar() {
     { label: l.members, href: "/admin/members" },
     { label: l.memberResources, href: "/admin/member-resources" },
     { label: l.memberAnnouncements, href: "/admin/member-announcements" },
+    { label: l.dharmaMessages, href: "/admin/dharma-messages" },
     { label: l.settings, href: "/admin/settings" },
   ];
 

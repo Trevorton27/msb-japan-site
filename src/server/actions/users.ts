@@ -19,6 +19,24 @@ export async function getUsers() {
   });
 }
 
+export async function getUserById(id: string) {
+  await requirePermission(PERMISSIONS.USERS_MANAGE);
+
+  return db.user.findUnique({
+    where: { id },
+    include: {
+      userRoles: { include: { role: true } },
+      memberEventRegistrations: {
+        where: { status: { not: "CANCELLED" } },
+        include: {
+          event: { select: { id: true, titleJa: true, titleEn: true, startsAt: true, status: true } },
+        },
+        orderBy: { createdAt: "desc" },
+      },
+    },
+  });
+}
+
 export async function getRoles() {
   await requirePermission(PERMISSIONS.USERS_MANAGE);
 
@@ -87,6 +105,20 @@ export async function resetUserPassword(userId: string, newPassword: string) {
   });
 
   revalidatePath("/admin/users");
+  return { success: true };
+}
+
+export async function toggleSanghaMember(userId: string, value: boolean) {
+  await requirePermission(PERMISSIONS.USERS_MANAGE);
+
+  await db.user.update({
+    where: { id: userId },
+    data: { isSanghaMember: value },
+  });
+
+  revalidatePath("/admin/users");
+  revalidatePath(`/admin/users/${userId}`);
+  revalidatePath("/admin/members");
   return { success: true };
 }
 

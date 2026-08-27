@@ -3,6 +3,7 @@ import { PERMISSIONS } from "@/lib/auth/permissions";
 import { getAllUsersWithMemberStatus } from "@/server/actions/members";
 import { Badge } from "@/components/ui/badge";
 import { MemberAccessActions } from "@/components/admin/member-access-actions";
+import { SanghaMemberToggle } from "@/components/admin/sangha-member-toggle";
 import { getAdminLocale } from "@/lib/admin-locale";
 import { getLabels } from "@/lib/admin-labels";
 
@@ -36,6 +37,9 @@ export default async function AdminMembersPage() {
               <th className="px-4 py-3 text-left font-medium text-gray-500">
                 {locale === "en" ? "Member Access" : "会員アクセス"}
               </th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">
+                {locale === "en" ? "Sangha Member" : "サンガ会員"}
+              </th>
               <th className="px-4 py-3 text-left font-medium text-gray-500">{l.created}</th>
               <th className="px-4 py-3 text-right font-medium text-gray-500">{l.actions}</th>
             </tr>
@@ -63,6 +67,9 @@ export default async function AdminMembersPage() {
                   >
                     {user.isMember ? l.isMember : l.notMember}
                   </Badge>
+                </td>
+                <td className="px-4 py-3">
+                  <SanghaMemberToggle userId={user.id} isSanghaMember={user.isSanghaMember} />
                 </td>
                 <td className="px-4 py-3 text-gray-500">
                   {user.createdAt.toLocaleDateString(dateFmt)}

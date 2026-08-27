@@ -38,6 +38,7 @@ export async function getAllUsersWithMemberStatus() {
       isMember: memberRole
         ? u.userRoles.some((ur) => ur.roleId === memberRole.id)
         : false,
+      isSanghaMember: u.isSanghaMember,
     }))
   );
 }

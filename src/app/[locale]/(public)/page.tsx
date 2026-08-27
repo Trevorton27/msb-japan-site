@@ -14,6 +14,7 @@ import { NewsletterForm } from "@/components/public/newsletter-form";
 import { getPublishedEvents } from "@/server/queries/events";
 import { getPublishedBooks } from "@/server/queries/books";
 import { getPublishedCenters } from "@/server/queries/centers";
+import { getCurrentDharmaMessage } from "@/server/queries/dharma-messages";
 import { BookSlider } from "@/components/public/book-slider";
 
 export async function generateMetadata({
@@ -43,10 +44,11 @@ export default async function HomePage({
 
   const dict = await getDictionary(locale as Locale);
 
-  const [upcomingEvents, books, centers] = await Promise.all([
+  const [upcomingEvents, books, centers, dharmaMessage] = await Promise.all([
     getPublishedEvents({ upcoming: true }),
     getPublishedBooks(),
     getPublishedCenters(),
+    getCurrentDharmaMessage(),
   ]);
   const nextEvent = upcomingEvents[0] ?? null;
 
@@ -228,11 +230,26 @@ export default async function HomePage({
           </h2>
           <div className="mx-auto mt-3 h-0.5 w-20 bg-saffron-500" />
           <blockquote className="mt-8 text-base leading-relaxed text-[#1e3560]">
-            {dict.home?.weeklyDharmaQuote}
+            {dharmaMessage
+              ? (locale === "en" && dharmaMessage.quoteEn
+                  ? dharmaMessage.quoteEn
+                  : dharmaMessage.quoteJa)
+              : dict.home?.weeklyDharmaQuote}
           </blockquote>
           <p className="mt-6 text-xs font-bold uppercase tracking-widest text-[#1e3560]">
-            {dict.home?.weeklyDharmaAttribution}
+            {dharmaMessage
+              ? (locale === "en" && dharmaMessage.attributionEn
+                  ? dharmaMessage.attributionEn
+                  : dharmaMessage.attributionJa)
+              : dict.home?.weeklyDharmaAttribution}
           </p>
+          {dharmaMessage?.sourceJa && (
+            <p className="mt-2 text-xs text-[#1e3560]/60">
+              {locale === "en" && dharmaMessage.sourceEn
+                ? dharmaMessage.sourceEn
+                : dharmaMessage.sourceJa}
+            </p>
+          )}
         </div>
       </section>
 
