@@ -43,8 +43,10 @@ export async function syncEventToGoogleCalendar(
 
     const calendarId = user.googleCalendarId || "primary";
     const accessToken = await getValidAccessToken(userId);
-    const tokens = await getDecryptedTokens(userId);
-    if (!tokens) throw new Error("No tokens available");
+    // Re-fetch tokens after potential refresh to get the current refresh token
+    const freshTokens = await getDecryptedTokens(userId);
+    if (!freshTokens) throw new Error("No tokens available");
+    const tokens = freshTokens;
 
     const client = createGoogleCalendarClient(accessToken, tokens.refreshToken);
     const googleEvent = convertToGoogleCalendarEvent(event);

@@ -5,16 +5,16 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-ivory-50: #faf8f5;
-  --color-ivory-100: #f5f0ea;
-  --color-charcoal-200: #d4d0cc;
-  --color-charcoal-500: #6b6560;
-  --color-charcoal-600: #524e4a;
-  --color-charcoal-900: #2c2825;
-  --color-burgundy-500: #8b3a3a;
-  --color-burgundy-600: #723030;
-  --color-saffron-500: #c4942a;
-  --color-saffron-600: #a57d22;
+  --color-ivory-50: var(--ivory-50);
+  --color-ivory-100: var(--ivory-100);
+  --color-charcoal-200: var(--charcoal-200);
+  --color-charcoal-500: var(--charcoal-500);
+  --color-charcoal-600: var(--charcoal-600);
+  --color-charcoal-900: var(--charcoal-900);
+  --color-burgundy-500: var(--burgundy-500);
+  --color-burgundy-600: var(--burgundy-600);
+  --color-saffron-500: var(--saffron-500);
+  --color-saffron-600: var(--saffron-600);
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -119,6 +119,16 @@ body {
 }
 
 :root {
+  --ivory-50: #faf8f5;
+  --ivory-100: #f5f0ea;
+  --charcoal-200: #d4d0cc;
+  --charcoal-500: #6b6560;
+  --charcoal-600: #524e4a;
+  --charcoal-900: #2c2825;
+  --burgundy-500: #8b3a3a;
+  --burgundy-600: #723030;
+  --saffron-500: #c4942a;
+  --saffron-600: #a57d22;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -154,6 +164,16 @@ body {
 }
 
 .dark {
+  --ivory-50: #2c2825;
+  --ivory-100: #3a3533;
+  --charcoal-200: #524e4a;
+  --charcoal-500: #a09890;
+  --charcoal-600: #c4bdb5;
+  --charcoal-900: #f5f0ea;
+  --burgundy-500: #d4736e;
+  --burgundy-600: #e08a85;
+  --saffron-500: #d4a84a;
+  --saffron-600: #c4942a;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
