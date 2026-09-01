@@ -180,6 +180,9 @@ const labels = {
     noMemberResources: "会員リソースはまだありません。",
     noMemberAnnouncements: "お知らせはまだありません。",
     dharmaMessages: "法話メッセージ",
+    videos: "動画",
+    newVideo: "新規動画",
+    noVideos: "動画はまだありません。",
   },
   en: {
     dashboard: "Dashboard",
@@ -347,6 +350,9 @@ const labels = {
     noMemberResources: "No member resources yet.",
     noMemberAnnouncements: "No announcements yet.",
     dharmaMessages: "Dharma Messages",
+    videos: "Videos",
+    newVideo: "New Video",
+    noVideos: "No videos yet.",
   },
 } as const;
 
