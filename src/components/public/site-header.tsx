@@ -87,7 +87,7 @@ function getNavItems(
       children: [
         { label: c.dharmaBlog ?? "", href: `/${locale}/blog` },
         { label: c.foundationalTeachings ?? "", href: `/${locale}/teachings` },
-        { label: c.videos ?? "", href: `/${locale}/teachings#videos` },
+        { label: c.videos ?? "", href: `/${locale}/videos` },
         { label: c.booksAndPublications ?? "", href: `/${locale}/shop` },
       ],
     },

@@ -4,11 +4,20 @@ import { db } from "@/lib/db";
 import { requirePermission } from "@/lib/auth/rbac";
 import { PERMISSIONS } from "@/lib/auth/permissions";
 
-/** Returns the most recently published dharma message (for homepage). */
+/** Returns the current dharma message for the homepage.
+ *  Prefers the most recently cron-published message (has publishedAt).
+ *  Falls back to the first published message by sortOrder if none have been cron-triggered yet. */
 export async function getCurrentDharmaMessage() {
-  return db.dharmaMessage.findFirst({
+  const cronPublished = await db.dharmaMessage.findFirst({
     where: { published: true, publishedAt: { not: null } },
     orderBy: { publishedAt: "desc" },
+  });
+  if (cronPublished) return cronPublished;
+
+  // Fallback: show the first published message even before the cron runs
+  return db.dharmaMessage.findFirst({
+    where: { published: true },
+    orderBy: { sortOrder: "asc" },
   });
 }
 
