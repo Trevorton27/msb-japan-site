@@ -121,24 +121,29 @@ export async function SiteHeader({
   const navItems = getNavItems(locale, dict, teacherLinks);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-charcoal-200 bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4">
-          <MobileNav
-            items={navItems}
-            siteName={dict.common?.siteNameShort ?? ""}
-            donateLabel={dict.common?.donate ?? ""}
-            donateHref={`/${locale}/donate`}
-          />
-          <Link
-            href={`/${locale}`}
-            className="text-lg font-semibold text-charcoal-900"
-          >
-            {dict.common?.siteNameShort}
+    <header className="sticky top-0 z-40 border-b border-charcoal-200 bg-[#ede9dc]/95 backdrop-blur-sm">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Logo row */}
+        <div className="relative flex items-center justify-center py-4">
+          <div className="absolute left-0 flex items-center md:hidden">
+            <MobileNav
+              items={navItems}
+              siteName={dict.common?.siteNameShort ?? ""}
+              donateLabel={dict.common?.donate ?? ""}
+              donateHref={`/${locale}/donate`}
+            />
+          </div>
+          <Link href={`/${locale}`}>
+            <img
+              src="/images/msbLogo.png"
+              alt={dict.common?.siteNameShort ?? "MSB"}
+              className="h-24 w-auto"
+            />
           </Link>
         </div>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        {/* Nav row */}
+        <nav className="hidden items-center justify-center gap-1 border-t border-charcoal-100 py-2 md:flex">
           {navItems.map((item) =>
             item.children ? (
               <NavDropdown
@@ -157,31 +162,30 @@ export async function SiteHeader({
               </Link>
             )
           )}
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <LanguageSwitcher locale={locale} />
-          <Link
-            href={`/${locale}/members`}
-            className="hidden rounded-md border border-charcoal-300 px-3 py-2 text-sm font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100 sm:inline-flex"
-          >
-            {dict.members?.nav?.portal ?? "Members"}
-          </Link>
-          <Link
-            href={`/${locale}/donate`}
-            className="hidden rounded-md bg-burgundy-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-burgundy-600 sm:inline-flex"
-          >
-            {dict.common?.donate}
-          </Link>
-          {session?.user && (
+          <div className="ml-auto flex items-center gap-3">
+            <LanguageSwitcher locale={locale} />
             <Link
-              href="/admin"
-              className="hidden rounded-md border border-charcoal-300 px-3 py-2 text-xs font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100 sm:inline-flex"
+              href={`/${locale}/members`}
+              className="rounded-md border border-charcoal-300 px-3 py-2 text-sm font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100"
             >
-              Admin Dashboard
+              {dict.members?.nav?.portal ?? "Members"}
             </Link>
-          )}
-        </div>
+            <Link
+              href={`/${locale}/donate`}
+              className="rounded-md bg-burgundy-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-burgundy-600"
+            >
+              {dict.common?.donate}
+            </Link>
+            {session?.user && (
+              <Link
+                href="/admin"
+                className="rounded-md border border-charcoal-300 px-3 py-2 text-xs font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100"
+              >
+                Admin Dashboard
+              </Link>
+            )}
+          </div>
+        </nav>
       </div>
     </header>
   );

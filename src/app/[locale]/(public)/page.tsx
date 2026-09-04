@@ -87,7 +87,7 @@ export default async function HomePage({
       <section className="relative flex min-h-[60vw] items-center justify-center overflow-hidden px-4 py-16 text-center text-white sm:min-h-0 sm:py-40">
         <div
           className="absolute inset-0 bg-cover bg-center sm:bg-top"
-          style={{ backgroundImage: "url('/images/guruRinpochedMtFuji.png')" }}
+          style={{ backgroundImage: "url('/images/rinpocheHeaderImage.png')" }}
         />
         <div className="absolute inset-0 bg-charcoal-900/60" />
         <div className="relative mx-auto max-w-3xl">
@@ -336,12 +336,12 @@ export default async function HomePage({
           <div className="mx-auto max-w-5xl">
             <div className="mb-10 text-center">
               <h2 className="text-3xl font-semibold text-[#1e3560]">
-                {locale === "ja" ? "世界の法輪センター" : "Dharma Centers Worldwide"}
+                {locale === "ja" ? "日本の法輪センター" : "Dharma Centers in Japan"}
               </h2>
               <div className="mx-auto mt-3 h-0.5 w-20 bg-saffron-500" />
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {centers.map((center) => {
+            <div className="grid gap-6 sm:grid-cols-2">
+              {centers.slice(0, 2).map((center) => {
                 const name =
                   locale === "en" && center.nameEn
                     ? center.nameEn

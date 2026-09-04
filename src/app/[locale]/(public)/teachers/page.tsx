@@ -48,6 +48,11 @@ export default async function TeachersPage({
           const anchor =
             locale === "en" && teacher.slugEn ? teacher.slugEn : teacher.slugJa;
 
+          const imageUrl =
+            teacher.slugJa === "dzigar-kongtrul-rinpoche"
+              ? "/images/rinpocheIntro.png"
+              : teacher.imageUrl;
+
           return (
             <Card key={teacher.id} id={anchor} className="scroll-mt-24">
               <CardHeader>
@@ -56,9 +61,9 @@ export default async function TeachersPage({
               <CardContent>
                 <Separator className="mb-4" />
                 <div className="flex flex-col gap-6 sm:flex-row">
-                  {teacher.imageUrl && (
+                  {imageUrl && (
                     <img
-                      src={teacher.imageUrl}
+                      src={imageUrl}
                       alt={name}
                       className="h-40 w-40 flex-shrink-0 rounded-lg object-cover"
                     />
