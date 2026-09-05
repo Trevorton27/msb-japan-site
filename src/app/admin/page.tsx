@@ -13,6 +13,12 @@ export default async function AdminDashboard() {
     redirect("/admin/login");
   }
 
+  // Members without admin roles go to the member dashboard
+  const roles = session.user.roles ?? [];
+  if (roles.length === 1 && roles[0] === "Member") {
+    redirect("/ja/members");
+  }
+
   const [
     eventCount,
     contactCount,
