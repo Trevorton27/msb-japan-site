@@ -61,10 +61,10 @@ export default async function EditEventPage({
     (r) => r.status === "WAITLISTED"
   ).length;
 
-  // Get all members for the registration manager
+  // Get all users with any role for the registration manager
   const members = await db.user.findMany({
     where: {
-      userRoles: { some: { role: { name: "Member" } } },
+      userRoles: { some: {} },
     },
     select: { id: true, name: true, email: true, isSanghaMember: true },
     orderBy: { name: "asc" },

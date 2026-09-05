@@ -60,7 +60,7 @@ export function NavDropdown({
       )}
       {open && (
         <div
-          className={`absolute left-0 top-full z-50 mt-1 rounded-md border border-charcoal-200 bg-white py-1 shadow-lg ${hasGroups ? "min-w-[220px]" : "min-w-[180px]"}`}
+          className={`absolute left-0 top-full z-50 mt-1 rounded-md border border-charcoal-200 bg-[#ede9dc] py-1 shadow-lg ${hasGroups ? "min-w-[220px]" : "min-w-[180px]"}`}
         >
           {items.map((item, idx) => {
             const isGroup = item.children && item.children.length > 0;

@@ -79,7 +79,7 @@ export function MemberRegistrationManager({
   return (
     <div className="mb-8 rounded-lg border bg-white p-4">
       <h2 className="mb-3 text-sm font-semibold text-gray-500">
-        Member Registrations
+        User Registrations
       </h2>
 
       {registrations.length > 0 && (
@@ -120,7 +120,7 @@ export function MemberRegistrationManager({
               onChange={(e) => setSelectedMemberId(e.target.value)}
               className="w-full rounded-md border px-3 py-2 text-sm"
             >
-              <option value="">Select a member...</option>
+              <option value="">Select a user...</option>
               {availableMembers.map((m) => (
                 <option key={m.id} value={m.id}>
                   {m.name ?? m.email} ({m.email})
@@ -133,13 +133,13 @@ export function MemberRegistrationManager({
             disabled={!selectedMemberId || adding}
             size="sm"
           >
-            {adding ? "Adding..." : "Add Member"}
+            {adding ? "Adding..." : "Add User"}
           </Button>
         </div>
       )}
 
       {availableMembers.length === 0 && registrations.length === 0 && (
-        <p className="text-sm text-gray-500">No members available.</p>
+        <p className="text-sm text-gray-500">No users available.</p>
       )}
     </div>
   );
