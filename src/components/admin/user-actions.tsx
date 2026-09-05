@@ -2,7 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { updateUserRole, resetUserPassword, deleteUser } from "@/server/actions/users";
+import {
+  updateUserRole,
+  resetUserPassword,
+  deleteUser,
+  adminSyncUserCalendar,
+  adminDisconnectUserCalendar,
+} from "@/server/actions/users";
 import { Button } from "@/components/ui/button";
 
 type Role = { id: string; name: string };
@@ -11,6 +17,8 @@ type User = {
   name: string | null;
   email: string;
   passwordHash: string | null;
+  googleCalendarSyncEnabled: boolean;
+  googleCalendarLastSync: Date | null;
   userRoles: { id: string; role: Role }[];
 };
 
@@ -18,6 +26,8 @@ export function UserActions({ user, roles }: { user: User; roles: Role[] }) {
   const [showRoleEdit, setShowRoleEdit] = useState(false);
   const [showPasswordReset, setShowPasswordReset] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const [showCalendarDisconnect, setShowCalendarDisconnect] = useState(false);
+  const [removeEvents, setRemoveEvents] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
 
@@ -42,6 +52,28 @@ export function UserActions({ user, roles }: { user: User; roles: Role[] }) {
     } else {
       setError(result.error ?? "Failed to reset password.");
     }
+  }
+
+  async function handleSync() {
+    setPending(true);
+    setError("");
+    const result = await adminSyncUserCalendar(user.id);
+    setPending(false);
+    if (!result.success) {
+      setError(result.error ?? "Sync failed.");
+    }
+  }
+
+  async function handleDisconnect() {
+    setPending(true);
+    setError("");
+    const result = await adminDisconnectUserCalendar(user.id, removeEvents);
+    setPending(false);
+    if (!result.success) {
+      setError(result.error ?? "Disconnect failed.");
+    }
+    setShowCalendarDisconnect(false);
+    setRemoveEvents(false);
   }
 
   async function handleDelete() {
@@ -69,6 +101,16 @@ export function UserActions({ user, roles }: { user: User; roles: Role[] }) {
         <Button variant="ghost" size="xs" onClick={() => setShowPasswordReset(true)}>
           Password
         </Button>
+        {user.googleCalendarSyncEnabled && (
+          <>
+            <Button variant="ghost" size="xs" onClick={handleSync} disabled={pending}>
+              {pending ? "Syncing..." : "Sync Cal"}
+            </Button>
+            <Button variant="ghost" size="xs" onClick={() => setShowCalendarDisconnect(true)}>
+              Disconnect Cal
+            </Button>
+          </>
+        )}
         <Button variant="destructive" size="xs" onClick={() => setShowDelete(true)}>
           Delete
         </Button>
@@ -127,6 +169,31 @@ export function UserActions({ user, roles }: { user: User; roles: Role[] }) {
               </Button>
             </div>
           </form>
+        </Modal>
+      )}
+
+      {showCalendarDisconnect && (
+        <Modal onClose={() => setShowCalendarDisconnect(false)}>
+          <h3 className="mb-3 font-semibold">Disconnect Calendar — {user.email}</h3>
+          <p className="mb-4 text-sm text-gray-600">
+            This will remove the Google Calendar connection for this user.
+          </p>
+          <label className="mb-4 flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={removeEvents}
+              onChange={(e) => setRemoveEvents(e.target.checked)}
+            />
+            Also remove synced events from their Google Calendar
+          </label>
+          <div className="flex justify-end gap-2">
+            <Button variant="outline" onClick={() => setShowCalendarDisconnect(false)}>
+              Cancel
+            </Button>
+            <Button variant="destructive" onClick={handleDisconnect} disabled={pending}>
+              {pending ? "Disconnecting..." : "Disconnect"}
+            </Button>
+          </div>
         </Modal>
       )}
 

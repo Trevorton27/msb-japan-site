@@ -29,6 +29,7 @@ export default async function AdminUsersPage() {
               <th className="px-4 py-3 text-left font-medium text-gray-500">{l.role}</th>
               <th className="px-4 py-3 text-left font-medium text-gray-500">{l.login}</th>
               <th className="px-4 py-3 text-left font-medium text-gray-500">{l.created}</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Calendar</th>
               <th className="px-4 py-3 text-right font-medium text-gray-500">{l.actions}</th>
             </tr>
           </thead>
@@ -58,6 +59,15 @@ export default async function AdminUsersPage() {
                 </td>
                 <td className="px-4 py-3 text-gray-500">
                   {user.createdAt.toLocaleDateString(dateFmt)}
+                </td>
+                <td className="px-4 py-3">
+                  {user.googleCalendarSyncEnabled ? (
+                    <Badge variant="secondary" className="bg-green-100 text-green-700">
+                      Connected
+                    </Badge>
+                  ) : (
+                    <span className="text-xs text-gray-400">—</span>
+                  )}
                 </td>
                 <td className="px-4 py-3 text-right">
                   <UserActions user={user} roles={roles} />

@@ -5,6 +5,8 @@ import { requirePermission } from "@/lib/auth/rbac";
 import { PERMISSIONS } from "@/lib/auth/permissions";
 import { hash } from "bcryptjs";
 import { revalidatePath } from "next/cache";
+import { disconnectGoogleCalendar } from "@/server/google-calendar/tokenManager";
+import { batchSyncEvents, removeAllSyncedEvents } from "@/server/google-calendar/syncService";
 
 export async function getUsers() {
   await requirePermission(PERMISSIONS.USERS_MANAGE);
@@ -16,7 +18,16 @@ export async function getUsers() {
       },
     },
     orderBy: { createdAt: "desc" },
-  });
+  }) as Promise<Array<{
+    id: string;
+    name: string | null;
+    email: string;
+    passwordHash: string | null;
+    createdAt: Date;
+    googleCalendarSyncEnabled: boolean;
+    googleCalendarLastSync: Date | null;
+    userRoles: { id: string; role: { id: string; name: string } }[];
+  }>>;
 }
 
 export async function getUserById(id: string) {
@@ -133,4 +144,45 @@ export async function deleteUser(userId: string) {
 
   revalidatePath("/admin/users");
   return { success: true };
+}
+
+export async function adminSyncUserCalendar(userId: string) {
+  await requirePermission(PERMISSIONS.USERS_MANAGE);
+
+  const user = await db.user.findUnique({
+    where: { id: userId },
+    select: { googleCalendarSyncEnabled: true },
+  });
+
+  if (!user?.googleCalendarSyncEnabled) {
+    return { success: false, error: "User has no Google Calendar connected." };
+  }
+
+  try {
+    const result = await batchSyncEvents(userId);
+    revalidatePath("/admin/users");
+    revalidatePath(`/admin/users/${userId}`);
+    return { success: true, result };
+  } catch {
+    return { success: false, error: "Sync failed. The user may need to reconnect." };
+  }
+}
+
+export async function adminDisconnectUserCalendar(
+  userId: string,
+  removeEvents: boolean
+) {
+  await requirePermission(PERMISSIONS.USERS_MANAGE);
+
+  try {
+    if (removeEvents) {
+      await removeAllSyncedEvents(userId);
+    }
+    await disconnectGoogleCalendar(userId);
+    revalidatePath("/admin/users");
+    revalidatePath(`/admin/users/${userId}`);
+    return { success: true };
+  } catch {
+    return { success: false, error: "Failed to disconnect calendar." };
+  }
 }
