@@ -62,6 +62,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async jwt({ token, user }) {
       if (user?.id) {
         token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
         const userRoles = await db.userRole.findMany({
           where: { userId: user.id },
           include: {
@@ -88,6 +90,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
+        session.user.name = (token.name as string) ?? null;
+        session.user.email = (token.email as string) ?? "";
         session.user.roles = (token.roles as string[]) ?? [];
         session.user.permissions = (token.permissions as string[]) ?? [];
       }
