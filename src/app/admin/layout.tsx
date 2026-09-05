@@ -38,6 +38,11 @@ export default async function AdminLayout({
               MSB Japan Admin
             </Link>
             <div className="flex items-center gap-3">
+              {isLoggedIn && (
+                <span className="text-sm text-gray-600 dark:text-gray-300">
+                  {session.user.name ?? session.user.email}
+                </span>
+              )}
               {isLoggedIn && <AdminLocaleToggle />}
               <ThemeToggle />
               <Link

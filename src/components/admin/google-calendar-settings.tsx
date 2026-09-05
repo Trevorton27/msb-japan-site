@@ -16,6 +16,7 @@ interface BatchSyncResult {
   created: number;
   updated: number;
   failed: number;
+  errors: Array<{ eventId: string; error: string }>;
 }
 
 interface Props {
@@ -167,9 +168,20 @@ export function GoogleCalendarSettings({ labels, returnTo }: Props) {
                 {syncResult.created} | {labels.updated}: {syncResult.updated}
               </p>
               {syncResult.failed > 0 && (
-                <p className="text-red-600 dark:text-red-400">
-                  {labels.failed}: {syncResult.failed}
-                </p>
+                <div>
+                  <p className="text-red-600 dark:text-red-400">
+                    {labels.failed}: {syncResult.failed}
+                  </p>
+                  {syncResult.errors?.length > 0 && (
+                    <ul className="mt-1 space-y-1">
+                      {syncResult.errors.map((err, i) => (
+                        <li key={i} className="text-xs text-red-600 dark:text-red-400">
+                          {err.error}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               )}
             </div>
           )}
