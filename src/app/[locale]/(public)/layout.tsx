@@ -4,7 +4,7 @@ import { isValidLocale } from "@/lib/i18n/config";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/public/site-header";
 import { SiteFooter } from "@/components/public/site-footer";
-import { AnalyticsTracker } from "@/components/public/analytics-tracker";
+
 
 export default async function PublicLayout({
   children,
@@ -26,7 +26,7 @@ export default async function PublicLayout({
       <SiteHeader locale={locale as Locale} dict={dict} />
       <main className="flex-1">{children}</main>
       <SiteFooter locale={locale as Locale} dict={dict} />
-      <AnalyticsTracker />
+
     </>
   );
 }

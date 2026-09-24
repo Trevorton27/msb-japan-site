@@ -1,4 +1,4 @@
-import { getAnalyticsOverview, getAuditLogs } from "@/server/queries/analytics";
+import { getAuditLogs } from "@/server/queries/analytics";
 import {
   Card,
   CardHeader,
@@ -18,7 +18,6 @@ import {
   getTopCountries,
   getDeviceTypes,
 } from "@/lib/analytics/vercel";
-import { CurrentVisitors } from "@/components/admin/current-visitors";
 
 export default async function AdminAnalyticsPage() {
   const locale = await getAdminLocale();
@@ -26,8 +25,7 @@ export default async function AdminAnalyticsPage() {
   const dateFmt = locale === "en" ? "en-US" : "ja-JP";
   const vercelConfigured = isVercelAnalyticsConfigured();
 
-  const [analytics, auditLogs, vercelData] = await Promise.all([
-    getAnalyticsOverview(30),
+  const [auditLogs, vercelData] = await Promise.all([
     getAuditLogs(30),
     vercelConfigured
       ? Promise.all([
@@ -37,7 +35,7 @@ export default async function AdminAnalyticsPage() {
           getTopReferrers(30, 10),
           getTopCountries(30, 10),
           getDeviceTypes(30),
-        ])
+        ]).catch(() => null)
       : null,
   ]);
 
@@ -48,27 +46,20 @@ export default async function AdminAnalyticsPage() {
     <div>
       <h1 className="text-2xl font-bold">{l.analyticsAudit}</h1>
 
-      {/* ─── Current Visitors (live) ────────────────────────────────── */}
-      <section className="mt-6">
-        <CurrentVisitors
-          labels={{
-            currentVisitors: l.currentVisitors,
-            path: l.path,
-            lastSeen: l.lastSeen,
-            noActiveVisitors: l.noActiveVisitors,
-            onlineNow: l.onlineNow,
-          }}
-        />
-      </section>
-
       {/* ─── Vercel Web Analytics ─────────────────────────────────── */}
-      <section className="mt-8">
+      <section className="mt-6">
         <h2 className="mb-4 text-lg font-semibold">{l.webAnalytics}</h2>
 
         {!vercelConfigured ? (
           <Card>
             <CardContent className="py-8 text-center text-sm text-gray-500 dark:text-gray-400">
               {l.vercelNotConfigured}
+            </CardContent>
+          </Card>
+        ) : !vercelData ? (
+          <Card>
+            <CardContent className="py-8 text-center text-sm text-gray-500 dark:text-gray-400">
+              Analytics data is temporarily unavailable. Please try again later.
             </CardContent>
           </Card>
         ) : (
@@ -240,90 +231,6 @@ export default async function AdminAnalyticsPage() {
             </div>
           </>
         )}
-      </section>
-
-      {/* ─── Custom Event Analytics (from DB) ─────────────────────── */}
-      <section className="mt-10">
-        <h2 className="mb-4 text-lg font-semibold">{l.eventsByType}</h2>
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>{l.pageViews30d}</CardDescription>
-              <CardTitle className="text-2xl">
-                {analytics.totalPageViews.toLocaleString()}
-              </CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>{l.totalEvents30d}</CardDescription>
-              <CardTitle className="text-2xl">
-                {analytics.totalEvents.toLocaleString()}
-              </CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>{l.eventTypes}</CardDescription>
-              <CardTitle className="text-2xl">
-                {analytics.eventsByType.length}
-              </CardTitle>
-            </CardHeader>
-          </Card>
-        </div>
-
-        <div className="mt-4 grid gap-4 lg:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">{l.eventsByType}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {analytics.eventsByType.length === 0 ? (
-                <p className="text-sm text-gray-500 dark:text-gray-400">{l.noEventsRecorded}</p>
-              ) : (
-                <div className="space-y-2">
-                  {analytics.eventsByType.map((item) => (
-                    <div
-                      key={item.event}
-                      className="flex items-center justify-between text-sm"
-                    >
-                      <span className="font-mono text-gray-700 dark:text-gray-300">
-                        {item.event}
-                      </span>
-                      <Badge variant="secondary">{item.count}</Badge>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">{l.topPages}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {analytics.topPages.length === 0 ? (
-                <p className="text-sm text-gray-500 dark:text-gray-400">{l.noPageViews}</p>
-              ) : (
-                <div className="space-y-2">
-                  {analytics.topPages.map((item, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center justify-between text-sm"
-                    >
-                      <span className="truncate font-mono text-gray-700 dark:text-gray-300">
-                        {item.path}
-                      </span>
-                      <Badge variant="secondary">{item.count}</Badge>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </div>
       </section>
 
       {/* ─── Audit Log ────────────────────────────────────────────── */}

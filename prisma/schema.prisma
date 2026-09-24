@@ -588,18 +588,6 @@ model Redirect {
   @@map("redirects")
 }
 
-model AnalyticsEvent {
-  id        String   @id @default(cuid())
-  event     String
-  path      String?
-  referrer  String?
-  userAgent String?
-  metadata  Json?
-  createdAt DateTime @default(now())
-
-  @@index([event, createdAt])
-  @@map("analytics_events")
-}
 
 model AuditLog {
   id        String   @id @default(cuid())
