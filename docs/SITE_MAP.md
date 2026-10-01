@@ -10,6 +10,11 @@ All routes are prefixed with `/{locale}` (ja/en) unless noted otherwise.
 | `/about` | About MSB Japan | Public |
 | `/start` | Getting started guide for newcomers | Public |
 | `/teachers` | Teacher profiles | Public |
+| `/lineage` | Lineage & Teachers landing page (outline §3) | Public |
+| `/lineage/buddhism` | What is Buddhism (outline §3-2) | Public |
+| `/lineage/tibetan-buddhism` | Tibetan Buddhism (outline §3-3) | Public |
+| `/lineage/nyingma` | Nyingma (outline §3-4) | Public |
+| `/lineage/longchen-nyingtik` | Longchen Nyingtik lineage (outline §3-5) | Public |
 | `/teachings` | Published teachings list | Public |
 | `/teachings/[slug]` | Individual teaching page | Public |
 | `/events` | Upcoming public events | Public |
@@ -37,6 +42,23 @@ All routes are prefixed with `/{locale}` (ja/en) unless noted otherwise.
 | `/tokushoho` | Specified commercial transactions | Public |
 | `/bylaws` | Organization bylaws | Public |
 | `/organization-info` | Organization information | Public |
+
+## Public Navigation
+
+The header nav follows the 10 sections of the content outline (`docs/content-update/PLAN.md`):
+
+1. Home → `/`
+2. About Us → `/about` — Vision (`/vision#vision`), Vision for Japan (`/vision#japan`), Sangha (`/vision#sangha`), Our Centers (`/centres`), Support & Donations (`/donate`), Organization Overview (`/organization-info`)
+3. Lineage & Teachers → `/lineage` — Teachers (`/teachers`), What is Buddhism, Tibetan Buddhism, Nyingma, Longchen Nyingtik (`/lineage/*`)
+4. Programs → `/programs` — `#teachings-retreats`, `#in-person`, `#online-lineage-course`, `#tsok`, `#compassionate-activity`
+5. Resources (no landing page) — MSBJ Link (`/teachings/msbj-link`), Dharma Articles (`/blog`), Video & Audio Teachings Archive (`/videos`)
+6. Store / Publications → `/shop`
+7. Calendar → `/events`
+8. Donate → `/donate` (header button)
+9. Member Portal → `/members` (header button)
+10. Contact → `/contact`
+
+Not in the main nav but still routed: `/start`, `/gatherings`, `/member-programs`, `/prayer-requests`, `/history`, `/teachings`.
 
 ## Members Area
 

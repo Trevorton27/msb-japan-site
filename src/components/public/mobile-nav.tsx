@@ -26,11 +26,15 @@ export function MobileNav({
   siteName,
   donateLabel,
   donateHref,
+  membersLabel,
+  membersHref,
 }: {
   items: NavItem[];
   siteName: string;
   donateLabel: string;
   donateHref: string;
+  membersLabel: string;
+  membersHref: string;
 }) {
   const [open, setOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
@@ -163,7 +167,14 @@ export function MobileNav({
             </div>
           ))}
 
-          <div className="mt-4 border-t border-charcoal-200 pt-4">
+          <div className="mt-4 flex flex-col gap-2 border-t border-charcoal-200 pt-4">
+            <Link
+              href={membersHref}
+              onClick={() => setOpen(false)}
+              className="block rounded-md border border-charcoal-300 px-3 py-2 text-center text-base font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100"
+            >
+              {membersLabel}
+            </Link>
             <Link
               href={donateHref}
               onClick={() => setOpen(false)}

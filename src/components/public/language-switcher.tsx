@@ -14,7 +14,8 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
   function handleClick(e: React.MouseEvent) {
     e.preventDefault();
     document.cookie = `NEXT_LOCALE=${otherLocale};path=/;max-age=31536000`;
-    router.push(switchedPath);
+    // usePathname() omits the hash, so carry the current anchor across.
+    router.push(switchedPath + window.location.hash);
   }
 
   return (

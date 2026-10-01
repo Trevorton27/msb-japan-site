@@ -202,7 +202,7 @@ export default async function VisionPage({
       </div>
 
       {/* Page title */}
-      <h1 className="text-charcoal-900 text-4xl font-bold tracking-tight text-center">
+      <h1 id="vision" className="text-charcoal-900 scroll-mt-48 text-4xl font-bold tracking-tight text-center">
         {t.pageTitle}
       </h1>
 
@@ -230,7 +230,7 @@ export default async function VisionPage({
       </section>
 
       {/* Vision for Japan */}
-      <section className="mt-16 border-t border-charcoal-200 pt-12">
+      <section id="japan" className="mt-16 scroll-mt-48 border-t border-charcoal-200 pt-12">
         <div className="relative mb-8 aspect-[3/2] overflow-hidden rounded-lg">
           <Image
             src="/images/legacy/113185931.webp"
@@ -266,7 +266,7 @@ export default async function VisionPage({
       </section>
 
       {/* Sangha */}
-      <section className="mt-16 border-t border-charcoal-200 pt-12">
+      <section id="sangha" className="mt-16 scroll-mt-48 border-t border-charcoal-200 pt-12">
         <div className="relative mb-8 aspect-[3/2] overflow-hidden rounded-lg">
           <Image
             src="/images/legacy/monksResting.png"

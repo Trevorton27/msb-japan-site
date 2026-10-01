@@ -1,8 +1,8 @@
 /**
  * Tests: 14.1 – 14.13  Navigation & i18n
  *
- * Covers middleware locale redirects, desktop Teachers dropdown,
- * mobile nav sub-items, and the language switcher.
+ * Covers middleware locale redirects, desktop Lineage dropdown,
+ * mobile nav sub-items, and the language switcher (incl. anchors).
  */
 import { test, expect } from "@playwright/test";
 
@@ -47,48 +47,42 @@ test.describe("Middleware – locale redirects (14.1 – 14.3)", () => {
   });
 });
 
-test.describe("Desktop nav – Teachers dropdown (14.4 – 14.6)", () => {
+test.describe("Desktop nav – Lineage dropdown (14.4 – 14.6)", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/en");
     await page.setViewportSize({ width: 1280, height: 800 });
   });
 
-  test("14.4 Teachers dropdown appears on hover", async ({ page }) => {
-    const teachersLink = page.getByRole("navigation").getByText(/teachers/i).first();
-    await teachersLink.hover();
-    // Dropdown should appear — a div with multiple links inside
-    const dropdown = page.locator("[onmouseenter] + *, [data-dropdown], .absolute").filter({
-      has: page.getByRole("link"),
-    }).first();
-    // Alternatively, look for visible anchor links that contain teacher names
-    // The dropdown renders as the TeachersDropdown component
-    const dropdownVisible = await page
-      .locator(".absolute a")
-      .first()
-      .isVisible({ timeout: 3_000 })
-      .catch(() => false);
-    expect(dropdownVisible).toBeTruthy();
+  test("14.4 Lineage dropdown appears on hover", async ({ page }) => {
+    const lineageLink = page
+      .getByRole("navigation")
+      .getByRole("link", { name: /^lineage & teachers$/i })
+      .first();
+    await lineageLink.hover();
+    const dropdown = page.locator(".absolute");
+    await expect(dropdown.getByRole("link", { name: /^teachers$/i })).toBeVisible({
+      timeout: 3_000,
+    });
+    await expect(dropdown.getByRole("link", { name: /^nyingma$/i })).toBeVisible();
   });
 
-  test("14.5 teacher link in dropdown navigates to /teachers#slug", async ({ page }) => {
-    const teachersLink = page.getByRole("navigation").getByText(/teachers/i).first();
-    await teachersLink.hover();
-
-    // Click the first teacher link in the dropdown
-    const firstTeacherLink = page.locator(".absolute a").first();
-    const teacherHref = await firstTeacherLink.getAttribute("href").catch(() => null);
-    test.skip(!teacherHref, "No teacher links found in dropdown");
-    expect(teacherHref).toMatch(/\/teachers#/);
-
-    await firstTeacherLink.click();
-    await expect(page).toHaveURL(/\/teachers#/);
-  });
-
-  test("14.6 clicking the Teachers label navigates to /teachers", async ({ page }) => {
-    // The label itself is a link to /teachers
-    const teachersLink = page.getByRole("navigation").getByRole("link", { name: /^teachers$/i });
-    await teachersLink.click();
+  test("14.5 Teachers link in the Lineage dropdown navigates to /teachers", async ({ page }) => {
+    const lineageLink = page
+      .getByRole("navigation")
+      .getByRole("link", { name: /^lineage & teachers$/i })
+      .first();
+    await lineageLink.hover();
+    await page.locator(".absolute").getByRole("link", { name: /^teachers$/i }).click();
     await expect(page).toHaveURL(/\/en\/teachers$/);
+  });
+
+  test("14.6 clicking the Lineage label navigates to /lineage", async ({ page }) => {
+    await page
+      .getByRole("navigation")
+      .getByRole("link", { name: /^lineage & teachers$/i })
+      .first()
+      .click();
+    await expect(page).toHaveURL(/\/en\/lineage$/);
   });
 });
 
@@ -101,39 +95,35 @@ test.describe("Mobile nav (14.7 – 14.10)", () => {
   test("14.7 hamburger button opens the nav sheet", async ({ page }) => {
     const hamburger = page.getByRole("button", { name: /open menu/i });
     await hamburger.click();
-    // Sheet should be open — Teachers link visible
-    await expect(page.getByRole("link", { name: /teachers/i })).toBeVisible({ timeout: 3_000 });
+    // Sheet should be open — Lineage link visible
+    await expect(page.getByRole("link", { name: /^lineage & teachers$/i })).toBeVisible({
+      timeout: 3_000,
+    });
   });
 
-  test("14.8 tapping the Teachers chevron expands sub-items", async ({ page }) => {
+  test("14.8 tapping the Lineage chevron expands sub-items", async ({ page }) => {
     const hamburger = page.getByRole("button", { name: /open menu/i });
     await hamburger.click();
 
-    // Click the expand button next to Teachers
-    const expandBtn = page.getByRole("button", { name: /expand teachers/i });
+    const expandBtn = page.getByRole("button", { name: /expand lineage/i });
     await expandBtn.click();
 
-    // At least one teacher sub-item link should appear
     // Sub-items are links inside the indented section (ml-4, border-l)
     const subLinks = page.locator(".border-l a");
-    await expect(subLinks.first()).toBeVisible({ timeout: 3_000 });
+    await expect(subLinks.getByText(/^teachers$/i)).toBeVisible({ timeout: 3_000 });
   });
 
-  test("14.9 tapping a teacher sub-item navigates and closes the sheet", async ({ page }) => {
+  test("14.9 tapping the Teachers sub-item navigates and closes the sheet", async ({ page }) => {
     const hamburger = page.getByRole("button", { name: /open menu/i });
     await hamburger.click();
 
-    const expandBtn = page.getByRole("button", { name: /expand teachers/i });
+    const expandBtn = page.getByRole("button", { name: /expand lineage/i });
     await expandBtn.click();
 
-    const subLink = page.locator(".border-l a").first();
-    const href = await subLink.getAttribute("href").catch(() => null);
-    test.skip(!href, "No teacher sub-links found");
-
-    await subLink.click();
+    await page.locator(".border-l a").getByText(/^teachers$/i).click();
     // Sheet should close (hamburger visible again)
     await expect(page.getByRole("button", { name: /open menu/i })).toBeVisible({ timeout: 3_000 });
-    await expect(page).toHaveURL(/\/teachers/);
+    await expect(page).toHaveURL(/\/en\/teachers$/);
   });
 
   test("14.10 Donate button at bottom of mobile nav navigates to /donate", async ({ page }) => {
@@ -146,7 +136,7 @@ test.describe("Mobile nav (14.7 – 14.10)", () => {
   });
 });
 
-test.describe("Language switcher (14.11 – 14.12)", () => {
+test.describe("Language switcher (14.11 – 14.12b)", () => {
   test("14.11 switching from ja to en updates locale in URL and renders English content", async ({
     page,
   }) => {
@@ -166,6 +156,15 @@ test.describe("Language switcher (14.11 – 14.12)", () => {
     const cookies = await context.cookies();
     const localeCookie = cookies.find((c) => c.name === "NEXT_LOCALE");
     expect(localeCookie?.value).toBe("en");
+  });
+});
+
+test.describe("Language switcher – anchors (14.12b)", () => {
+  test("14.12b switching locale keeps the path and the #anchor", async ({ page }) => {
+    await page.goto("/en/vision#sangha");
+    await page.getByRole("link", { name: "日本語に切り替え" }).click();
+    await expect(page).toHaveURL(`${BASE}/ja/vision#sangha`);
+    await expect(page.locator("#sangha")).toBeInViewport();
   });
 });
 

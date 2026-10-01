@@ -6,7 +6,6 @@ import { MobileNav } from "./mobile-nav";
 import { NavDropdown } from "./nav-dropdown";
 import type { DropdownChild } from "./nav-dropdown";
 import { auth } from "@/lib/auth";
-import { getTeachers } from "@/server/queries/content";
 
 interface NavItem {
   label: string;
@@ -14,92 +13,61 @@ interface NavItem {
   children?: DropdownChild[];
 }
 
-function getNavItems(
-  locale: Locale,
-  dict: Dictionary,
-  teacherLinks: { label: string; href: string }[]
-): NavItem[] {
+function getNavItems(locale: Locale, dict: Dictionary): NavItem[] {
   const c = dict.common ?? {};
+  const l = (path: string) => `/${locale}${path}`;
+  const postSlug = (ja: string, en: string) => (locale === "en" ? en : ja);
   return [
+    { label: c.home ?? "", href: l("") },
     {
       label: c.about ?? "",
-      href: `/${locale}/about`,
+      href: l("/about"),
       children: [
-        {
-          label: c.teachersAndLineage ?? "",
-          href: `/${locale}/teachers`,
-          children: teacherLinks,
-        },
-        {
-          label: c.visionAndMission ?? "",
-          href: `/${locale}/vision`,
-          children: [
-            { label: c.vision ?? "", href: `/${locale}/vision` },
-            { label: c.visionForJapan ?? "", href: `/${locale}/vision#japan` },
-            { label: c.sangha ?? "", href: `/${locale}/vision#sangha` },
-          ],
-        },
-        { label: c.ourHistory ?? "", href: `/${locale}/history` },
-        {
-          label: c.centresAndShrineRooms ?? "",
-          href: `/${locale}/centres`,
-          children: [
-            { label: c.kyoto ?? "", href: `/${locale}/centres#kyoto` },
-            { label: c.izu ?? "", href: `/${locale}/centres#izu` },
-          ],
-        },
+        { label: c.vision ?? "", href: l("/vision#vision") },
+        { label: c.visionForJapan ?? "", href: l("/vision#japan") },
+        { label: c.sangha ?? "", href: l("/vision#sangha") },
+        { label: c.ourCenters ?? "", href: l("/centres") },
+        { label: c.supportAndDonations ?? "", href: l("/donate") },
+        { label: c.organizationOverview ?? "", href: l("/organization-info") },
       ],
     },
     {
-      label: c.programsAndStudy ?? "",
-      href: `/${locale}/programs`,
+      label: c.lineage ?? "",
+      href: l("/lineage"),
       children: [
-        {
-          label: c.publicPrograms ?? "",
-          href: `/${locale}/programs`,
-          children: [
-            { label: c.lineageCourses ?? "", href: `/${locale}/programs#lineage-courses` },
-            { label: c.onlineStudyGroup ?? "", href: `/${locale}/programs#online-study-group` },
-          ],
-        },
-        {
-          label: c.weeklyGatherings ?? "",
-          href: `/${locale}/gatherings`,
-          children: [
-            { label: c.theNyington ?? "", href: `/${locale}/gatherings#nyington` },
-            { label: c.localStudy ?? "", href: `/${locale}/gatherings#local-study` },
-          ],
-        },
-        {
-          label: c.memberPrograms ?? "",
-          href: `/${locale}/member-programs`,
-          children: [
-            { label: c.ngondro ?? "", href: `/${locale}/member-programs#ngondro` },
-            { label: c.shedra ?? "", href: `/${locale}/member-programs#shedra` },
-            { label: c.nss ?? "", href: `/${locale}/member-programs#nss` },
-          ],
-        },
+        { label: c.teachers ?? "", href: l("/teachers") },
+        { label: c.whatIsBuddhism ?? "", href: l("/lineage/buddhism") },
+        { label: c.tibetanBuddhism ?? "", href: l("/lineage/tibetan-buddhism") },
+        { label: c.nyingma ?? "", href: l("/lineage/nyingma") },
+        { label: c.longchenNyingtik ?? "", href: l("/lineage/longchen-nyingtik") },
+      ],
+    },
+    {
+      label: c.programs ?? "",
+      href: l("/programs"),
+      children: [
+        { label: c.teachingsAndRetreats ?? "", href: l("/programs#teachings-retreats") },
+        { label: c.inPersonGatherings ?? "", href: l("/programs#in-person") },
+        { label: c.onlineLineageCourse ?? "", href: l("/programs#online-lineage-course") },
+        { label: c.tsokOffering ?? "", href: l("/programs#tsok") },
+        { label: c.compassionateActivity ?? "", href: l("/programs#compassionate-activity") },
       ],
     },
     {
       label: c.resources ?? "",
       href: undefined as unknown as string,
       children: [
-        { label: c.dharmaBlog ?? "", href: `/${locale}/blog` },
-        { label: c.foundationalTeachings ?? "", href: `/${locale}/teachings` },
-        { label: c.videos ?? "", href: `/${locale}/videos` },
-        { label: c.booksAndPublications ?? "", href: `/${locale}/shop` },
+        {
+          label: c.msbjLink ?? "",
+          href: l(`/teachings/${postSlug("msbj-link", "msbj-link-en")}`),
+        },
+        { label: c.dharmaArticles ?? "", href: l("/blog") },
+        { label: c.videoAudioArchive ?? "", href: l("/videos") },
       ],
     },
-    { label: c.calendarAndEvents ?? "", href: `/${locale}/events` },
-    {
-      label: c.contactAndJoin ?? "",
-      href: `/${locale}/contact`,
-      children: [
-        { label: c.howToJoin ?? "", href: `/${locale}/start` },
-        { label: c.contact ?? "", href: `/${locale}/contact` },
-      ],
-    },
+    { label: c.storeAndPublications ?? "", href: l("/shop") },
+    { label: c.calendar ?? "", href: l("/events") },
+    { label: c.contact ?? "", href: l("/contact") },
   ];
 }
 
@@ -110,15 +78,8 @@ export async function SiteHeader({
   locale: Locale;
   dict: Dictionary;
 }) {
-  const [session, teachers] = await Promise.all([auth(), getTeachers()]);
-
-  const teacherLinks = teachers.map((t) => {
-    const name = locale === "en" && t.nameEn ? t.nameEn : t.nameJa;
-    const anchor = locale === "en" && t.slugEn ? t.slugEn : t.slugJa;
-    return { label: name, href: `/${locale}/teachers#${anchor}` };
-  });
-
-  const navItems = getNavItems(locale, dict, teacherLinks);
+  const session = await auth();
+  const navItems = getNavItems(locale, dict);
 
   return (
     <header className="sticky top-0 z-40 border-b border-charcoal-200 bg-[#ede9dc]/95 backdrop-blur-sm">
@@ -131,6 +92,8 @@ export async function SiteHeader({
               siteName={dict.common?.siteNameShort ?? ""}
               donateLabel={dict.common?.donate ?? ""}
               donateHref={`/${locale}/donate`}
+              membersLabel={dict.members?.nav?.portal ?? ""}
+              membersHref={`/${locale}/members`}
             />
           </div>
           <Link href={`/${locale}`}>
@@ -143,7 +106,7 @@ export async function SiteHeader({
         </div>
 
         {/* Nav row */}
-        <nav className="hidden items-center justify-center gap-1 border-t border-charcoal-100 py-2 md:flex">
+        <nav className="hidden flex-wrap items-center justify-center gap-1 border-t border-charcoal-100 py-2 md:flex">
           {navItems.map((item) =>
             item.children ? (
               <NavDropdown
