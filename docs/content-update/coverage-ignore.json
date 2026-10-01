@@ -1,0 +1,6 @@
+[
+  { "line": 350, "reason": "Footer JA label has an editorial note in parentheses; render label only: 団体概要 (or 法人概要 if merged)" },
+  { "line": 351, "reason": "Footer JA label has an editorial note in parentheses; render label only: 定款・規約" },
+  { "line": 352, "reason": "Footer JA label has an editorial note in brackets; render label only: プライバシーポリシー" },
+  { "line": 353, "reason": "Footer JA label; render as: MSB本部サイト（米国）" }
+]

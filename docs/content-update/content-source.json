@@ -1,0 +1,1841 @@
+{
+  "_meta": {
+    "source": "docs/content-update/source-outline-v11.txt (from 260915oka_website_outline_v8_JP_v11_1_.docx, gray-shaded text removed)",
+    "howToUse": "Each block pairs a run of Japanese lines with the English run that follows it. Text is verbatim from the source. editorialNotes are instructions to the builder, never rendered. Blocks flagged needsReview must be checked against the source before use."
+  },
+  "sections": [
+    {
+      "id": "1",
+      "slug": "home",
+      "headingJa": "ホーム（Home）",
+      "headingEn": "Home",
+      "startLine": 2,
+      "blocks": [
+        {
+          "ja": [
+            "リンポチェの言葉",
+            "「結局のところ、伝統的なものであれ形式にとらわれないものであれ、あらゆる教えの目的は一つである。それは自己重視（我執）を減らし、真理があらわになるスペースをもたらすことにある。」",
+            "――ズィガー・コントゥル・リンポチェ"
+          ],
+          "en": [
+            "“In the end, all teachings—traditional or informal—have one aim: to help reduce self-importance and make room for the truth.”",
+            "DZIGAR KONGTRUL RINPOCHE"
+          ],
+          "sourceLines": [
+            4,
+            8
+          ],
+          "needsReview": "ja/en line counts differ — confirm pairing"
+        },
+        {
+          "ja": [
+            "今後のプログラム（直近イベントのピックアップ）"
+          ],
+          "en": [
+            "Upcoming Programs"
+          ],
+          "sourceLines": [
+            9,
+            10
+          ]
+        },
+        {
+          "ja": [
+            "亀岡の緑に囲まれた静かな場所で、一日座禅会（1時間の座禅を5セッション）を行います。1セッション毎に瞑想ホールで歩き禅を行い、昼食後には庭掃除など、修行を兼ねた作務を行います。瞑想や座禅に興味がある方なら、どなたでもご参加いただけます。1セッションからの部分的な参加も受け付けています。"
+          ],
+          "en": [
+            "Join us for a one-day meditation retreat (five one-hour sitting sessions) in a quiet setting in Kameoka, Kyoto. Each session is followed by walking meditation in the meditation hall. After lunch, we practice mindful work such as garden cleaning as part of the retreat. Anyone interested in meditation is welcome to join, and partial attendance, even at a single session, is accepted."
+          ],
+          "sourceLines": [
+            13,
+            14
+          ]
+        },
+        {
+          "ja": [
+            "プログラムと活動"
+          ],
+          "en": [
+            "Programs & Activities"
+          ],
+          "sourceLines": [
+            15,
+            16
+          ]
+        },
+        {
+          "ja": [
+            "「学習、修行、奉仕により育まれる文化は、弟子たちの利己心をすり減らし、利他的な人間へと成長させる」――ズィガー・コントゥル・リンポチェ"
+          ],
+          "en": [
+            "“Together, this culture of study, practice and service molds students into people who are, if it could be said in a word, more selfless than when they entered the path.”",
+            "— Dzigar Kongtrul Rinpoche"
+          ],
+          "sourceLines": [
+            17,
+            20
+          ],
+          "needsReview": "ja/en line counts differ — confirm pairing"
+        },
+        {
+          "ja": [
+            "マンガラ・シュリ・ブティ・サンガでは、様々な修学コースを学びながら、ロジョン（心の訓練）や一連の修行階梯を実践し、最終的にリトリート（隠遁修行）で伝授されるゾクチェンの教えを頂点とする道を歩むことになります。サンガへの奉仕活動も、個人の資質を高める重要な要素とされています。"
+          ],
+          "en": [
+            "The path we follow in Mangala Shri Bhuti culminates in the teachings on Dzogchen, which are only transmitted and practiced in retreat. All students orient their study and practice toward eventually receiving these teachings directly from Kongtrul Rinpoche, undertaking a progression of practices and mind training along with a comprehensive course of study. Service is also highly emphasized as an aspect of students' development and is a central ethos of our organization."
+          ],
+          "sourceLines": [
+            21,
+            22
+          ]
+        },
+        {
+          "ja": [
+            "オンライン系譜コース：ニンマ派の法脈に沿った基礎的な瞑想技法、仏教の主要なトピックに関する学習・修行コース",
+            "勉強会：定期的にオンライン・対面の勉強会を開催",
+            "一日座禅会：毎月、京都での一日座禅会を開催",
+            "供養行：年次供養行",
+            "放生会：年次放生会"
+          ],
+          "en": [
+            "Online Lineage Course: Foundational meditation techniques and other key topics relating to the Buddhist path, as pursued within the Nyingma lineage.",
+            "Study Group: Regular study gatherings, both online and in person.",
+            "One-Day Meditation Retreat: A monthly one-day retreat held at Tashi Gachil in Kameoka, Kyoto.",
+            "Tsok Offering: A bimonthly feast offering practice.",
+            "Life Release: An annual life-release ceremony."
+          ],
+          "sourceLines": [
+            23,
+            32
+          ]
+        },
+        {
+          "ja": [
+            "法話と学習リソース"
+          ],
+          "en": [
+            "Teachings & Learning Resources"
+          ],
+          "sourceLines": [
+            34,
+            35
+          ]
+        },
+        {
+          "ja": [
+            "ズィガー・コントゥル・リンポチェおよびマンガラ・シュリ・ブティの伝統に基づく書籍・学習教材で学びを深めることができます。"
+          ],
+          "en": [
+            "Deepen your study with books and other learning materials drawn from teachings by Dzigar Kongtrul Rinpoche and others in the Mangala Shri Bhuti tradition."
+          ],
+          "sourceLines": [
+            36,
+            37
+          ]
+        },
+        {
+          "ja": [
+            "MSBJリンク：リンポチェの短編法話集",
+            "ダルマ・アーティクル：リンポチェの法話やMSBJの活動報告",
+            "ビデオ法話：字幕付きビデオ法話",
+            "書籍"
+          ],
+          "en": [
+            "MSBJ Link: A collection of Rinpoche's short teachings.",
+            "Dharma Articles: Rinpoche's teachings and MSBJ activity reports.",
+            "Video Teachings: Video teachings with subtitles.",
+            "Books"
+          ],
+          "sourceLines": [
+            38,
+            45
+          ]
+        },
+        {
+          "ja": [
+            "活動拠点"
+          ],
+          "en": [
+            "Our Centers"
+          ],
+          "sourceLines": [
+            46,
+            47
+          ]
+        },
+        {
+          "ja": [
+            "タシ・ガチル（京都）",
+            "タシ・チョリン（伊豆）"
+          ],
+          "en": [
+            "Tashi Gachil (Kameoka, Kyoto)",
+            "Tashi Choling (Izu)"
+          ],
+          "sourceLines": [
+            48,
+            51
+          ]
+        },
+        {
+          "ja": [
+            "（参考・米国側拠点：コロラド／バーモント／クレストン）"
+          ],
+          "en": [
+            "(Reference — MSB centers in the U.S.: Colorado / Vermont / Crestone)"
+          ],
+          "sourceLines": [
+            52,
+            53
+          ]
+        },
+        {
+          "ja": [
+            "はじめての方へ：マンガラ・シュリ・ブティ・ジャパンの活動について、初めてお越しの方向けのご案内です。",
+            "今後のイベント：瞑想会、法話、リトリートなどのイベント情報をご覧ください。",
+            "教えのライブラリ：チベット仏教の教えに関する記事、音声、動画をご覧いただけます。"
+          ],
+          "en": [
+            "For Beginners: An introduction to Mangala Shri Bhuti Japan's activities for first-time visitors.",
+            "Upcoming Events: See information on meditation gatherings, teachings, and retreats.",
+            "Teaching Archives: Browse articles, audio recordings, and videos on the Tibetan Buddhist teachings."
+          ],
+          "sourceLines": [
+            55,
+            60
+          ]
+        },
+        {
+          "ja": [
+            "活動を支援する"
+          ],
+          "en": [
+            "Support Our Activities"
+          ],
+          "sourceLines": [
+            61,
+            62
+          ]
+        },
+        {
+          "ja": [
+            "マンガラ・シュリ・ブティ・ジャパンの活動は、皆さまのご寄付により支えられています。"
+          ],
+          "en": [
+            "The activities of Mangala Shri Bhuti Japan are sustained by your generous donations."
+          ],
+          "sourceLines": [
+            63,
+            64
+          ]
+        },
+        {
+          "ja": [
+            "ニュースレター登録"
+          ],
+          "en": [
+            "Newsletter Signup"
+          ],
+          "sourceLines": [
+            67,
+            68
+          ]
+        },
+        {
+          "ja": [
+            "イベント情報や最新のお知らせをメールでお届けします。"
+          ],
+          "en": [
+            "Receive event information and the latest news by email."
+          ],
+          "sourceLines": [
+            69,
+            70
+          ]
+        }
+      ],
+      "editorialNotes": [
+        {
+          "line": 11,
+          "text": "例）一日座禅会（9月）／2026年9月13日"
+        },
+        {
+          "line": 12,
+          "text": "e.g., One-Day Meditation Retreat (September) / September 13, 2026"
+        },
+        {
+          "line": 18,
+          "text": "［EN: MSB公式サイトより抜粋・編集　出典: mangalashribhuti.org/about/vision-of-msb/］"
+        },
+        {
+          "line": 33,
+          "text": "（各項目に「詳しく見る›」リンク）"
+        },
+        {
+          "line": 54,
+          "text": "導線バナー（3つ）"
+        },
+        {
+          "line": 65,
+          "text": "→ボタン「寄付する」"
+        },
+        {
+          "line": 66,
+          "text": "→ Button: “Donate”"
+        },
+        {
+          "line": 71,
+          "text": "［EN: 新規英訳（MSBJ独自コンテンツ／要ネイティブチェック）］"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "slug": "about",
+      "headingJa": "MSBJについて（About Us）",
+      "headingEn": "About Us",
+      "startLine": 72,
+      "blocks": [
+        {
+          "ja": [
+            "ビジョン"
+          ],
+          "en": [
+            "Vision"
+          ],
+          "sourceLines": [
+            75,
+            76
+          ]
+        },
+        {
+          "ja": [
+            "「物事に対する先入観に疑問を投げかけ、あらゆる体験を調べ上げる」"
+          ],
+          "en": [
+            "“The Buddhist teachings ask us to examine all aspects of our experience and to question our preconceptions and habitual beliefs.”"
+          ],
+          "sourceLines": [
+            77,
+            78
+          ]
+        },
+        {
+          "ja": [
+            "このような考察を通じて、私たちは「幸せを得たい。苦しみから逃れたい」という生きとし生けるものに共通する根源的な願いに気づくようになります。そして、生きとし生けるものに具わる仏性をあらわにすることが人生の目的となり、自他の利益のために悟りの道を歩むことが人生の最優先事項となっていく。マンガラ・シュリ・ブティでは、この理念に基づき、「生きとし生けるものが真の幸せを得て、苦しみから解放される支えとなること」を活動目的とします。"
+          ],
+          "en": [
+            "Through this examination we become aware of the fundamental wish for happiness which we and all beings share, and the desire to be free from suffering that accompanies it. Our life acquires a clarity of purpose: to uncover the buddhanature that is our natural inheritance as human beings. Following a path to liberation becomes our utmost priority, for our own and others' benefit. Mangala Shri Bhuti is founded upon these principles, and the evolution of our organization has had one core purpose: to bring beings liberation from suffering."
+          ],
+          "sourceLines": [
+            79,
+            80
+          ]
+        },
+        {
+          "ja": [
+            "サンガ"
+          ],
+          "en": [
+            "Sangha"
+          ],
+          "sourceLines": [
+            81,
+            82
+          ]
+        },
+        {
+          "ja": [
+            "「仏法に調和した文化を築く」"
+          ],
+          "en": [
+            "“Building a culture in harmony with the Dharma.”"
+          ],
+          "sourceLines": [
+            83,
+            84
+          ]
+        },
+        {
+          "ja": [
+            "サンガとは、仏教の理念に根ざした共同体を指し、その起源は釈尊の時代にまで遡ります。サンガの目的は、仏法に調和した文化を築くことにあります。そのためには、教えを聞き熟考しながら、自分の習慣的な思い込みや考え方、行動を見つめ直し、真理に即したものへと変えていく必要があります。サンガの一員になることは、仏法を共に学び、他者と関わりながら道の理解を深めていく大きな支えとなります。"
+          ],
+          "en": [
+            "A sangha is a community rooted in Buddhist principles, tracing its origin back to the time of the Buddha. The purpose of a sangha is to build a culture in harmony with the Dharma. To cultivate such a culture, we must listen to and reflect on the teachings, reexamine our habitual assumptions, views, and behavior, and transform them so that they gradually come to align with the truth. Becoming part of a sangha is a great support for learning the Dharma together and deepening our understanding of the path through our connections with others."
+          ],
+          "sourceLines": [
+            85,
+            86
+          ]
+        },
+        {
+          "ja": [
+            "私たち日本のサンガは25年以上にわたり、仏法を学び、修行し、導師・法脈との結縁を深めながら、奉仕や組織運営に携わることを通じて、布が少しずつ染料に染まっていくように仏教文化を吸収してきました。"
+          ],
+          "en": [
+            "For more than 25 years, our sangha in Japan has absorbed Buddhist culture little by little—much as cloth is gradually dyed—through studying and practicing the Dharma, deepening our connection with our teacher and lineage, and taking part in service and the running of our organization."
+          ],
+          "sourceLines": [
+            87,
+            88
+          ]
+        },
+        {
+          "ja": [
+            "コントゥル・リンポチェは、このアプローチを特に重視されています。喜びも困難も伴う他者との共同作業は、道の進み具合を測る目安であると同時に、修行者としての成長に欠かせない要素だからです。"
+          ],
+          "en": [
+            "Kongtrul Rinpoche places particular emphasis on this approach, because working together with others—with all its joys and difficulties—serves both as a measure of our progress on the path and as an essential element of our growth as practitioners."
+          ],
+          "sourceLines": [
+            89,
+            90
+          ]
+        },
+        {
+          "ja": [
+            "リンポチェは、「サンガにおける共同作業とは、目的地を同じとする者たちが1隻の船に乗り込み、共に輪廻の大海を航海するようなものだ」と述べています。"
+          ],
+          "en": [
+            "Rinpoche has said that “working together within the sangha is like a group of people bound for the same destination boarding a single boat and sailing together across the great ocean of samsara.”"
+          ],
+          "sourceLines": [
+            91,
+            92
+          ]
+        },
+        {
+          "ja": [
+            "活動拠点"
+          ],
+          "en": [
+            "Our Centers"
+          ],
+          "sourceLines": [
+            93,
+            94
+          ]
+        },
+        {
+          "ja": [
+            "タシ・ガチル（Tashi Gachil）（京都センター）"
+          ],
+          "en": [
+            "Tashi Gachil (Kyoto Center)"
+          ],
+          "sourceLines": [
+            95,
+            96
+          ]
+        },
+        {
+          "ja": [
+            "京都府亀岡市の田園風景が残る地域に位置する、築100年を超える古民家。MSBJのメイン・センターとして、年に一度リンポチェをお迎えしての法話会や、月一回の勉強会・座禅会を開催しています。タシ・ガチル（“Auspicious Coil of Joy”）は、「吉祥なる歓喜の円環」を意味します。"
+          ],
+          "en": [
+            "A farmhouse over 100 years old, located amid the rural scenery of Kameoka City, Kyoto Prefecture. As MSBJ's main center, Tashi Gachil hosts teaching gatherings with Rinpoche and other lineage teachers, as well as monthly study groups and meditation retreats. The name Tashi Gachil means “Auspicious Coil of Joy.”"
+          ],
+          "sourceLines": [
+            97,
+            98
+          ]
+        },
+        {
+          "ja": [
+            "タシ・チョリン（Tashi Choling）（南伊豆リトリート・センター）"
+          ],
+          "en": [
+            "Tashi Choling (Minami-Izu Retreat Center)"
+          ],
+          "sourceLines": [
+            99,
+            100
+          ]
+        },
+        {
+          "ja": [
+            "南伊豆の海近くの高台に位置する、自然豊かな山荘。敷地内の能舞台にて、座禅会やドゥルプチュ（集中的な供養行）を行っています。タシ・チョリン（\"Auspicious Place of Dharma\"）は、吉祥なる仏法の地を意味します。"
+          ],
+          "en": [
+            "A mountain lodge surrounded by nature, set on a high bluff overlooking the sea in Minami-Izu. Meditation retreats and drupchö (intensive tsok practice) are held in its practice hall, originally a Noh stage.",
+            "Tashi Choling, means “Auspicious Place of Dharma.”"
+          ],
+          "sourceLines": [
+            101,
+            103
+          ],
+          "needsReview": "ja/en line counts differ — confirm pairing"
+        },
+        {
+          "ja": [
+            "（参考・米国側拠点：コロラド／バーモント／クレストン）"
+          ],
+          "en": [
+            "(Reference — MSB centers in the U.S.: Colorado / Vermont / Crestone)"
+          ],
+          "sourceLines": [
+            104,
+            105
+          ]
+        },
+        {
+          "ja": [
+            "サポート・寄付（新設）"
+          ],
+          "en": [
+            "Support & Donations (New)"
+          ],
+          "sourceLines": [
+            106,
+            107
+          ]
+        },
+        {
+          "ja": [
+            "マンガラ・シュリ・ブティ・ジャパンの活動は、皆さまのご寄付により支えられています。"
+          ],
+          "en": [
+            "The activities of Mangala Shri Bhuti Japan are sustained by your generous donations."
+          ],
+          "sourceLines": [
+            109,
+            110
+          ]
+        },
+        {
+          "ja": [
+            "法人概要"
+          ],
+          "en": [
+            "Organization Overview"
+          ],
+          "sourceLines": [
+            111,
+            112
+          ]
+        },
+        {
+          "ja": [
+            "一般社団法人マンガラ・シュリ・ブティ・ジャパンとは"
+          ],
+          "en": [
+            "About Mangala Shri Bhuti Japan (General Incorporated Association)"
+          ],
+          "sourceLines": [
+            113,
+            114
+          ]
+        },
+        {
+          "ja": [
+            "マンガラ・シュリ・ブティ・ジャパン（MSBJ）は、ズィガー・コントゥル・リンポチェの指導の下、ニンマ派ロンチェン・ニンティクの法脈を学ぶサンガ（僧伽：仏の道を共に学ぶ集合体）です。"
+          ],
+          "en": [
+            "Mangala Shri Bhuti Japan (MSBJ) is a sangha community that studies and practices the Buddhist path together under the guidance of Dzigar Kongtrul Rinpoche in accordance with the Longchen Nyingtik lineage of the Nyingma school of Tibetan Buddhism."
+          ],
+          "sourceLines": [
+            115,
+            116
+          ]
+        },
+        {
+          "ja": [
+            "リンポチェが初来日された2001年4月に、米国 Mangala Shri Bhutiの日本支部（任意団体）として設立されました。その後、毎年リンポチェをお迎えし、伝統的な仏典を題材にしながら、継続して法話会を開催しています。"
+          ],
+          "en": [
+            "MSBJ was established in April 2001, when Rinpoche first visited Japan, as an unincorporated Japan chapter of Mangala Shri Bhuti in the U.S. Since then, we have continued to hold annual teaching gatherings with Rinpoche and other lineage teachers, drawing on traditional Buddhist texts."
+          ],
+          "sourceLines": [
+            117,
+            118
+          ]
+        },
+        {
+          "ja": [
+            "また法話を聞いて終わるのではなく、日常生活でその教えを実践し、個人の体験に基づいて理解を深められるよう毎月、勉強会と座禅会を開催しています。"
+          ],
+          "en": [
+            "Beyond reading and listening to the teachings, we hold monthly study groups and meditation retreats so that members can put the teachings into practice in daily life and deepen their understanding through personal experience."
+          ],
+          "sourceLines": [
+            119,
+            120
+          ]
+        },
+        {
+          "ja": [
+            "2015年11月2日、サンガの公益性をより高め、その活動を将来に継承していくために一般社団法人化しました。"
+          ],
+          "en": [
+            "On November 2, 2015, MSBJ became a General Incorporated Association in order to further our ability to benefit the sangha and to ensure that its activities are carried forward into the future."
+          ],
+          "sourceLines": [
+            121,
+            122
+          ]
+        },
+        {
+          "ja": [
+            "法人概要・沿革はこちら"
+          ],
+          "en": [
+            "Organization details and history: see here"
+          ],
+          "sourceLines": [
+            123,
+            124
+          ]
+        }
+      ],
+      "editorialNotes": [
+        {
+          "line": 74,
+          "text": "サブメニュー：ビジョン／日本のビジョン／サンガ／活動拠点／サポート・寄付／法人概要"
+        },
+        {
+          "line": 108,
+          "text": "活動を支援するための導線を新設。"
+        }
+      ]
+    },
+    {
+      "id": "2-1",
+      "slug": "vision-for-japan",
+      "headingJa": "日本のビジョン（Vision for Japan）",
+      "headingEn": "Vision for Japan",
+      "startLine": 125,
+      "blocks": [
+        {
+          "ja": [
+            "「日本仏教の再興」"
+          ],
+          "en": [
+            "“The Revival of Buddhism in Japan”"
+          ],
+          "sourceLines": [
+            127,
+            128
+          ]
+        },
+        {
+          "ja": [
+            "知性の高まった現代の日本において仏教が本当の意味で根付くには、信心だけに頼るのではなく、教えを論理的に理解し、自ら実践し、体験を通して確信を深めていくことが大切です。同時に、日本人が受け継いできた文化や徳性を、その背後にある智慧とともに次の世代へつなげていく道筋を示します。"
+          ],
+          "en": [
+            "For Buddhism to truly take root in today's intellectually sophisticated Japan, it is not enough to rely on faith alone: the teachings must be both understood logically and put into practice, to deepen conviction through direct experience. This interview extract points toward a way of passing on the culture and virtues Japanese people have inherited—together with the wisdom behind them—to the next generation."
+          ],
+          "sourceLines": [
+            130,
+            131
+          ]
+        },
+        {
+          "ja": [
+            "新しいアプローチ"
+          ],
+          "en": [
+            "A New Approach"
+          ],
+          "sourceLines": [
+            132,
+            133
+          ]
+        },
+        {
+          "ja": [
+            "日本では近年、教育水準とともに知的水準も高まり、信心だけに頼る従来のアプローチでは仏教を広めにくくなっています。仏教において信心は知性よりも尊い徳性とされますが、知的な心にとって、論理を欠いた信仰は危うく古めかしいものに映りがちです。しかし本来、仏教はきわめて論理的な教えです。恐らくこれまでの日本では、より多くの人を救うために、論理よりも信心を中心に教えが広められ、論理的な側面は読解力を備えた僧侶や一部の階層の人々の間でのみ学ばれてきたのでしょう。"
+          ],
+          "en": [
+            "In recent years, as education levels have risen in Japan, so has the general level of intellectual sophistication, making it harder to spread Buddhism through the conventional approach of relying on faith alone. In Buddhism, faith is considered a virtue even higher than intellect, but to an intellectual mind, faith that lacks logic can seem precarious and old-fashioned. Yet Buddhism is, in fact, an extremely logical teaching. Perhaps in Japan until now, in order to reach as many people as possible, the teachings were spread with an emphasis on faith rather than logic, while the logical dimension was studied only among literate monks and a limited stratum of society."
+          ],
+          "sourceLines": [
+            134,
+            135
+          ]
+        },
+        {
+          "ja": [
+            "しかし時代は変わり、今では誰もが、かつての僧侶に匹敵する語学力・読解力を身につけています。これまで一部の人に限られていた教えを、誰もが学べる時代になったのです。だからこそ、過去の形をそのまま伝えるのではなく、今の時代に合わせてわかりやすく説き明かす必要があります。また、概念として理解するだけでなく、自ら実践し、体験を通してその恩恵を確かめることで信を深めていく――このプロセスこそが、確信に満ちた信心を養う道となるでしょう。"
+          ],
+          "en": [
+            "But times have changed, and today everyone possesses language and reading ability comparable to that of monks in the past. Teachings once limited to a select few can now be learned by anyone. This is precisely why we must explain the teachings clearly, in ways suited to our times, rather than simply passing on their traditional form. It is also essential to deepen our faith not merely through conceptual understanding, but through putting the teachings into practice and confirming their benefit through direct experience—this process is the path to a faith filled with conviction."
+          ],
+          "sourceLines": [
+            136,
+            137
+          ]
+        },
+        {
+          "ja": [
+            "日本の課題"
+          ],
+          "en": [
+            "Challenges Facing Japan"
+          ],
+          "sourceLines": [
+            138,
+            139
+          ]
+        },
+        {
+          "ja": [
+            "西洋の物質主義が押し寄せたことで、多くの日本人が自国の文化やルーツを見失いかけています。そのルーツを体現してきた戦前生まれの世代は高齢となり、あと何年かでこの世を去っていくでしょう。一方、若い世代の多くはそのルーツを受け継がず、西洋の物質主義に追従し、利己的な傾向を強めています。しかし、長年培われてきた日本人の美徳は、「利己心を減らし利他心を養うことで、自他ともに幸せになれる」という正しい因果に裏付けられたものです。若い世代は、しばらくの間はハリウッド映画に描かれるような一時的な幸せを追い求めるかもしれませんが、その先に待つ苦しみから、いずれ必ず道を探し始めるはずです。しかしその頃には、文化やルーツを伝えられる人がほとんど残っていない恐れがあります。そうなれば、何が正しく何が誤りかを見極める拠り所を失い、人々の心は大きな混乱に包まれてしまうでしょう。"
+          ],
+          "en": [
+            "As Western materialism has swept in, many Japanese people are at risk of losing touch with their own culture and roots. The generation born before the war, who embodied these roots, has grown old and will pass away within a matter of years. Meanwhile, much of the younger generation has not inherited these roots, and instead follows Western materialism, growing increasingly self-centered. Yet the virtues Japanese people have cultivated over many generations are grounded in a sound principle of cause and effect: that by reducing self-centeredness and cultivating altruism, both oneself and others come to benefit. The younger generation may, for a time, chase the fleeting happiness portrayed in Hollywood films, but the suffering that inevitably follows will eventually lead them to search for a path once again. By then, however, there may be almost no one left who can pass on this culture and these roots. If that happens, people will lose the very reference point for discerning right from wrong, and society will be engulfed in great confusion."
+          ],
+          "sourceLines": [
+            140,
+            141
+          ]
+        },
+        {
+          "ja": [
+            "これは日本だけの問題ではありません。ユダヤ教社会も同様に、物質主義による文化喪失の危機に直面しています。チベットも例外ではなく、中国による侵攻以降、チベット国内でも亡命先のチベット人社会でも、特に若い世代が自国の文化やルーツを軽んじ、西洋の物質主義に追従し始めています。世界中で、独自の文化やルーツが失われつつあるのです。"
+          ],
+          "en": [
+            "This is not a problem unique to Japan. Jewish communities face a similar crisis of cultural loss driven by materialism. In Tibet since the Chinese invasion, and among exiled Tibetan communities, as well, the younger generation has begun to disregard its own culture and roots and to follow Western materialism. Around the world, distinct cultures and roots are being lost."
+          ],
+          "sourceLines": [
+            142,
+            143
+          ]
+        },
+        {
+          "ja": [
+            "興味深いのは、西洋の科学者や心理学者といった知識人たちが、逆に仏教の智慧に目を向け始めていることです。研究を重ねる中で、仏教の教えが自分たちの分野にも役立つことに気づき、その論理性や哲学に意義を見出す知性派が増えています。一方で、東洋の知識人の多くは、いまだ西洋のスタイルを追いかける傾向にあります。なんとも興味深い現象ですが、この流れを見れば、東洋の人々もいつか自分たちのルーツへ目を向け始めるのではないでしょうか。"
+          ],
+          "en": [
+            "Many Western intellectuals—scientists and psychologists among them—have begun to turn with interest toward Buddhist wisdom. Through their research, a growing number of these intellectually-minded people are discovering that Buddhist teachings are useful in their own fields, and have begun to find meaning in Buddhist logic and philosophy, even as many Eastern intellectuals continue to follow Western styles of thought. It is a curious phenomenon, but if we follow the present trend, perhaps people in the East, too, will eventually turn their attention back to their own roots."
+          ],
+          "sourceLines": [
+            144,
+            145
+          ]
+        },
+        {
+          "ja": [
+            "日本での仏教再興プロセス"
+          ],
+          "en": [
+            "The Process of Reviving Buddhism in Japan"
+          ],
+          "sourceLines": [
+            146,
+            147
+          ]
+        },
+        {
+          "ja": [
+            "日本人は、謙虚さ、忍耐、礼儀正しさ、思いやりといった仏教的な徳性をすでに数多く身につけており、寺院参拝や右遶、五体投地、供養といった仏教的な慣習も生活の中に息づいています。これらは修行を支える大きな土台となりますが、単なる道徳的な習わしとして行うだけでは、力を発揮しません。しかも、こうした行いに対する信も、以前ほど篤いものではなくなっています。だからこそ今、これらの文化や慣習が本当は何を意味し、どのような利益をもたらすのかを、正しく知る必要があるのです。"
+          ],
+          "en": [
+            "Japanese people already possess many Buddhist virtues, such as humility, patience, courtesy, and consideration for others, and Buddhist customs—temple visits, circumambulation, prostration, and offerings—remain part of everyday life. These provide a strong foundation for practice, but carried out merely as moral habit, they lose their power. Moreover, faith in these practices is not as strong as it once was. This is precisely why we now need to correctly understand what these customs and culture truly mean, and what benefit they actually bring."
+          ],
+          "sourceLines": [
+            148,
+            149
+          ]
+        },
+        {
+          "ja": [
+            "きまりや道徳としてただ身につけるのではなく、何が幸せをもたらす正しい行いで、何が苦しみをもたらす誤った行いかを論理的に理解し、信を深めながら心を正しい方向へ導いていく――そうした心の取り組み方が求められています。喫煙や薬物への依存も同じで、その先に待つ結果への確信がなければ、人はついその習慣に手を伸ばしてしまいます。自分の心についても同様に、何が有益で何が有害かを学び、納得し、確信を得ない限り、苦しみをもたらす習慣的な行いに、なすすべなく流されてしまうのです。今の時代に求められているのは、教えを聞き、心から納得し、知性を高めることで、心を正しい方向へ導くこと。そうして幸せや心の平穏を体験できれば、その充足感から自然と正しい行いへ向かい、少しずつ心の闇を晴らしていけるでしょう。"
+          ],
+          "en": [
+            "What is needed is not simply adopting Buddhist teachings as rules or morals, but logically understanding which actions bring happiness and which bring suffering, deepening our faith, and guiding our minds in the right direction. The same is true of addiction to smoking or drugs: without real conviction about the consequences that lie ahead, people keep reaching for the habit. Unless we learn what is truly beneficial and what is harmful to our own minds, and come to a genuine, convinced understanding of this, we will be swept along helplessly by habitual actions that bring suffering. What our era calls for is to hear the teachings, become genuinely convinced from the heart, and raise our intelligence so as to guide the mind in the right direction. Once we experience happiness and peace of mind as a result, that sense of fulfillment will naturally draw us toward right action, gradually clearing away the darkness in our minds."
+          ],
+          "sourceLines": [
+            150,
+            151
+          ]
+        },
+        {
+          "ja": [
+            "ただし、仏法の真髄は慣習や文化そのものの中にあるのではありません。それは瞑想を通じて知性と智慧を高め、心に直接向き合うことで覚られるものです。茶道、華道、武道など、日本には素晴らしい文化がありますが、これらの道を築いた祖師たちは皆、座禅にも精通していたはずです。今の時代も同じように、形骸化した慣習や文化だけを伝えるのではなく、その背後に息づく智慧を共に受け継いでいく必要があります。そうすれば文化と仏法は互いに支え合うものとなり、この混乱した社会の中でも、人々はより健全で意義深い人生を送れるようになるでしょう。"
+          ],
+          "en": [
+            "That said, the essence of the Dharma does not lie in customs or culture themselves. It is realized through meditation, by raising our intelligence and wisdom and engaging directly with the mind. Japan is home to wonderful traditions such as the tea ceremony, flower arranging, and the martial arts, and the founders of these paths must all have been well versed in zazen as well. In the same way, today we must not simply hand down hollowed-out customs and culture, but pass on together the wisdom that lives behind them. If we do so, culture and the Dharma will support one another, and even amid this confused society, people will be able to live healthier, more meaningful lives."
+          ],
+          "sourceLines": [
+            152,
+            153
+          ]
+        },
+        {
+          "ja": [
+            "――ズィガー・コントゥル・リンポチェへのインタビュー（2001年11月25日）の抄訳"
+          ],
+          "en": [],
+          "sourceLines": [
+            154,
+            154
+          ],
+          "needsReview": "no counterpart in other language"
+        }
+      ],
+      "editorialNotes": [
+        {
+          "line": 129,
+          "text": "※ズィガー・コントゥル・リンポチェへのインタビュー（2001年11月25日）からの抄訳です。"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "slug": "lineage",
+      "headingJa": "法脈（Lineage & Teachers）",
+      "headingEn": "Lineage & Teachers",
+      "startLine": 155,
+      "blocks": [
+        {
+          "ja": [
+            "「精神の道とは、精神修行と日常生活を融合させることにある」"
+          ],
+          "en": [
+            "“A Spiritual Life in Modern Times”"
+          ],
+          "sourceLines": [
+            159,
+            160
+          ]
+        },
+        {
+          "ja": [
+            "リンポチェは自らの人生においても、仏教を説き、法脈・家族・弟子に誠実に関わり、ときにはアーティストとして抽象画の製作に情熱を注ぎながら、その一方で自立心を保ち、リトリート（隠遁修行）に喜びを見出して自ら道を歩むという揺るぎない決意を堅持することに努めています。これらを取り残すことなく実践し、修行と日常生活を融合させています。修行と日常を融合するとは、心の本性を離れることなく、人生の喜びや困難など、あらゆる体験に、柔軟かつ勇敢に、そして探求心を持って取り組むことを意味します。"
+          ],
+          "en": [
+            "Kongtrul Rinpoche's life defines what it means to be a spiritual person in modern times. Whether through his teaching, his passion as an abstract painter, his steadfast dedication to his lineage and students, or in his joy in solitude, he shows what it means to have an unshakable determination to engage in the spiritual path. Weaving his ancient spiritual heritage with the many threads of our modern culture, Rinpoche is known for his uncompromising integrity, deep conviction in altruism, and insistence that all beings, whatever their background, can awaken to their own enlightened nature."
+          ],
+          "sourceLines": [
+            161,
+            162
+          ]
+        }
+      ],
+      "editorialNotes": [
+        {
+          "line": 157,
+          "text": "本セクションは5ページで構成します：3-1 指導者／3-2 仏教とは／3-3 チベット仏教／3-4 ニンマ派／3-5 ロンチェン・ニンティク系譜"
+        },
+        {
+          "line": 158,
+          "text": "導入（法脈ランディングページ本文）"
+        }
+      ]
+    },
+    {
+      "id": "3-1",
+      "slug": "teachers",
+      "headingJa": "指導者（Teachers）",
+      "headingEn": "Teachers",
+      "startLine": 163,
+      "blocks": [
+        {
+          "ja": [
+            "ズィガー・コントゥル・リンポチェ"
+          ],
+          "en": [
+            "Dzigar Kongtrul Rinpoche"
+          ],
+          "sourceLines": [
+            165,
+            166
+          ]
+        },
+        {
+          "ja": [
+            "チベット仏教ニンマ派に属するロンチェン・ニンティク系譜の師、ジャムゴン・コントゥル・ロドゥ・タイェの化身（トゥルク）"
+          ],
+          "en": [
+            "A Nyingma lineage-holder of the Longchen Nyingtik tradition, recognized as the reincarnation of Jamgon Kongtrul Lodro Thaye."
+          ],
+          "sourceLines": [
+            167,
+            168
+          ]
+        },
+        {
+          "ja": [
+            "ズィガー・コントゥル・リンポチェは1964年、北インドのヒマチェル・プラデッシュ州で、チベット人の両親のもとに生まれました。幼少時にジャムゴン・コントゥル・ロドゥ・タイェの化身（トゥルク）として認定され、僧院で仏教教義全般を修めるとともに、根本ラマであるディルゴ・ケンツェ・リンポチェからニンマ派、とりわけロンチェン・ニンティクの教えを伝授されました。ほかにも、トゥルク・ウジェン・リンポチェ、ニョシュル・ケン・リンポチェ、高僧ケンポ・リンチェンのもとで広く仏法を学んでいます。"
+          ],
+          "en": [
+            "Venerable Dzigar Kongtrul Rinpoche was born in 1964 in the Northern Indian province of Himachal Pradesh to Tibetan parents. Recognized in childhood as an incarnation of Jamgon Kongtrul Lodro Thaye, he was raised in a monastic environment and received extensive training in all aspects of Buddhist doctrine—in particular the teachings of the Nyingma lineage, and especially the Longchen Nyingtik, from his root teacher, Kyabje Dilgo Khyentse Rinpoche. Rinpoche also studied extensively under Tulku Urgyen Rinpoche, Nyoshul Khen Rinpoche, and the great scholar Khenpo Rinchen."
+          ],
+          "sourceLines": [
+            169,
+            170
+          ]
+        },
+        {
+          "ja": [
+            "1989年に妻子とともに米国へ移住し、1990年からはコロラド州ボールダーのナロパ大学で5年間、仏教哲学を教えました。この時期に、根本ラマであるケンツェ・リンポチェのサンスクリット名を冠した「マンガラ・シュリ・ブティ・サンガ」を設立しています。マンガラ・シュリ・ブティは現在、世界7カ国14カ所のセンターに240人の生徒を擁し、ニンマ派ロンチェン・ニンティク法脈の智慧を伝承・実践する活動を続けています。コントゥル・リンポチェは米国コロラド州を拠点に、北米、南米、欧州、アジアなど世界各地で精力的に法を説いています。"
+          ],
+          "en": [
+            "In 1989 Kongtrul Rinpoche moved to the United States with his family, and from 1990 taught Buddhist philosophy for five years at Naropa University in Boulder, Colorado. During this time he founded Mangala Shri Bhuti Sangha, named after the Sanskrit name of his root teacher, Kyabje Dilgo Khyentse Rinpoche. Mangala Shri Bhuti today has 240 students across 14 centers in 7 countries, and continues its work of transmitting and practicing the wisdom of the Nyingma Longchen Nyingtik lineage. Based in Colorado, U.S.A., Kongtrul Rinpoche teaches actively around the world, traveling throughout North and South America, Europe, and Asia."
+          ],
+          "sourceLines": [
+            171,
+            172
+          ]
+        },
+        {
+          "ja": [
+            "リンポチェの法話は、仏教を概念だけの理解にとどめず、困難な状況でどのように心に取り組めばよいかを、論理的かつ現代に即した形でわかりやすく説くことで世界各地で知られています。また、教えが表面的なものにならないよう、伝統的な仏教古典を学ぶことも重視しており、日本を含む世界各地で「シェダ」と呼ばれる伝統的な仏教学習プログラムを実施しています。近年は「現代における菩薩（MDB, Modern Day Bodhisattva）」という理念を提唱し、日々の生活の中で自己愛着を減らし利他心を強めることで、自らが灯火となり、家族や職場から少しずつその灯りを他者へ灯していく――そうした草の根的な菩薩の活動の大切さを説いています。"
+          ],
+          "en": [
+            "Rinpoche's teachings are known worldwide for going beyond a merely conceptual understanding of Buddhism, explaining in an accessible contemporary way how to work with the mind in difficult situations. To keep the teachings from becoming superficial, he also emphasizes study of the classical Buddhist texts, and runs traditional shedra programs in Japan and elsewhere around the world. In recent years he has proposed the concept of the “Modern Day Bodhisattva (MDB),” teaching the importance of grassroots bodhisattva activity in which each person works with their own mind in daily life, reducing self-attachment and strengthening altruism, so as to become a light that gradually spreads, family by family, and workplace by workplace, to others."
+          ],
+          "sourceLines": [
+            173,
+            174
+          ]
+        },
+        {
+          "ja": [
+            "弟子の一人であるペマ・チョドロンは、米国で多くの仏教書を手がけるベストセラー作家で、現在もリンポチェの指導のもと、コロラドのリトリートセンターでリトリートを行っています。またリンポチェの妻で修行者でもあるエリザベス・マチス・ナムギャルは、『The Power of an Open Question』の著者です。リンポチェは、『チベットの生と死の書』の著者ソギャル・リンポチェが率いるフランスのサンガ「リクパ」にも毎年招かれ、法話を行っています。"
+          ],
+          "en": [
+            "One of Rinpoche’s students, Pema Chodron, is a bestselling author of numerous Buddhist books in the U.S. and continues to do retreat at Rinpoche's Colorado retreat center under his guidance. Rinpoche's wife and fellow practitioner, Elizabeth Mattis Namgyel, is the author of The Power of an Open Question. Rinpoche is also invited each year to teach at Rigpa, the French sangha founded by Sogyal Rinpoche, author of The Tibetan Book of Living and Dying."
+          ],
+          "sourceLines": [
+            175,
+            176
+          ]
+        },
+        {
+          "ja": [
+            "リンポチェは抽象画家としても活動しており、創作のプロセスを瞑想修行と重ね合わせながら、アートを通じて仏教を伝えています。詳細は英語版ウェブサイトをご参照ください。"
+          ],
+          "en": [
+            "Rinpoche is also active as an abstract painter, relating the creative process to meditation practice, conveying the teachings of Buddhism through art. For more, please see his art website."
+          ],
+          "sourceLines": [
+            177,
+            178
+          ]
+        },
+        {
+          "ja": [
+            "「瞑想修行で最も重要なのは、五感を通じて認識する外側の事象と、思考や感情など内面の事象を、良い悪いの分別なく、自由に現れるのに任せることができるかにある。瞑想のプロセスを通じて、一見、脅かすように思えるものを拒絶したり、一見、頼りになりそうなものを引き寄せようとせず、何の手も加えることなく、現れてくる事象をあるがままに観じるとき、心の本来の裸のままの完全な状態を体験することになる。アートも同じで、美しい、醜い、「こうあるべき、こうあるべきでない」といった概念を被せることなく、心の本来のエネルギーを表現できるとき、そのような作品は見る者に、生来の無為で自然な目覚めた状態を体験させることができる」",
+            "（ズィガー・コントゥル・リンポチェの書籍、『Natural Vitality』より）"
+          ],
+          "en": [
+            "“What matters most in meditation practice is whether we can let outer phenomena perceived through the five senses, and inner phenomena such as thoughts and emotions, arise freely, without dividing them into good or bad. Through the process of meditation, when we neither reject what appears threatening nor try to draw in what appears reliable, but simply witness whatever arises just as it is, without adding anything, we come to experience the mind's naked, complete, original state. It is the same with art: when we can express the mind's natural energy without overlaying concepts of beautiful or ugly, of how things should or should not be, such work allows the viewer to experience an innate, effortless, natural state of wakefulness.”",
+            "(From Natural Vitality by Dzigar Kongtrul Rinpoche)"
+          ],
+          "sourceLines": [
+            179,
+            182
+          ]
+        },
+        {
+          "ja": [
+            "弟子としてのコントゥル・リンポチェ"
+          ],
+          "en": [
+            "Kongtrul Rinpoche on the Disciple-Teacher Relationship"
+          ],
+          "sourceLines": [
+            183,
+            184
+          ]
+        },
+        {
+          "ja": [
+            "「私自身も、私の根本ラマであるディルゴ・ケンツェ・リンポチェにお会いするときはいつも、彼の落ち着きと、明晰さ、広大さから、自分の利己心が浮き彫りにされているような感覚を覚えた。自分では重要なことだと思って話してみると、自己中心的な心が見透かされているような気になったものだ。これは師弟間で交わされる無言のコミュニケーションであり、私が師から学んだ方便の一つでもある。",
+            "この種のやりとりは、他の人との間でも起こっていた。完全に心を取り乱し、錯乱状態になった人が、彼の存在に触れるだけで、すぐさま落ち着きを取り戻したこともあった。これが「師を鏡とする」の意味するところだ。師は私たちの心がどのように行き詰まっているかを映し出すだけでなく、同時に心の本来の健全さも示してくれる。これこそが師弟関係を築く最大の目的だと言えるだろう。」",
+            "――『心の鏡を見つめる』（ズィガー・コントゥル・リンポチェ著、PRAJNA PRESS）からの引用"
+          ],
+          "en": [
+            "“When I was in the presence of my teacher, Dilgo Khyentse Rinpoche, the very evenness, clarity, and spaciousness of his mind naturally exposed my self-importance. I knew he could always see through my self-absorption, no matter how significant or complex I thought my story was. This was an unspoken understanding we had as teacher and student. This kind of communication was one of the ways I learned from him.",
+            "I saw this kind of interaction take place with others too. Sometimes people whose minds were wild—really crazy—would become immediately tamed by his presence. This is what is meant by the teacher as mirror: the teacher is the mirror that reflects not only how we are stuck but our basic sanity as well. This is the main purpose of the teacher-student relationship.”",
+            "— from It's Up to You: The Practice of Self-Reflection on the Buddhist Path by Dzigar Kongtrul Rinpoche, Shambhala Publications: 2005"
+          ],
+          "sourceLines": [
+            185,
+            190
+          ]
+        },
+        {
+          "ja": [
+            "ディルゴ・ケンツェ・リンポチェ"
+          ],
+          "en": [
+            "Dilgo Khyentse Rinpoche"
+          ],
+          "sourceLines": [
+            191,
+            192
+          ]
+        },
+        {
+          "ja": [
+            "リメ（チベット仏教の超宗派）運動の偉大な指導者、ジャムヤン・ケンツェ・ワンポの化身"
+          ],
+          "en": [
+            "An incarnation of the great rimé, or non-sectarian, master Jamyang Khyentse Wangpo."
+          ],
+          "sourceLines": [
+            193,
+            194
+          ]
+        },
+        {
+          "ja": [
+            "コントゥル・リンポチェの精神の父であり根本ラマでもあるディルゴ・ケンツェ・リンポチェは、リメ（チベット仏教の超宗派）運動の偉大な指導者、ジャムヤン・ケンツェ・ワンポの化身でした。その深い学識と理解、絶えることのない慈愛、威厳ある佇まいは、いまも多くの人々の心に鮮やかに刻まれています。コントゥル・リンポチェのサンガ「マンガラ・シュリ・ブティ」は、ケンツェ・リンポチェのサンスクリット名を冠したものです。"
+          ],
+          "en": [
+            "His Holiness Dilgo Khyentse Rinpoche was Kongtrul Rinpoche's spiritual father and root teacher. An incarnation of the great rimé, or non-sectarian, master Jamyang Khyentse Wangpo, he is remembered for his scholarship, realization, unceasing warmth and kindness, and his majestic presence. Kongtrul Rinpoche took His Holiness' Sanskrit name, Mangala Shri Bhuti, as the namesake for our organization."
+          ],
+          "sourceLines": [
+            195,
+            196
+          ]
+        },
+        {
+          "ja": [
+            "ディルゴ・ケンツェ・リンポチェについて詳しくは、公式ウェブサイトまたは伝記『The Spirit of Tibet』（Matthieu Ricard著）をご覧ください。"
+          ],
+          "en": [
+            "For more information about His Holiness, please visit www.shechen.org. We also highly recommend the biography of His Holiness, The Spirit of Tibet, written by his close student, Matthieu Ricard."
+          ],
+          "sourceLines": [
+            197,
+            198
+          ]
+        },
+        {
+          "ja": [
+            "ドゥンセ・ジャンパル・ノルブ"
+          ],
+          "en": [
+            "Dungse Jampal Norbu"
+          ],
+          "sourceLines": [
+            200,
+            201
+          ]
+        },
+        {
+          "ja": [
+            "チベット仏教ニンマ派に属するロンチェン・ニンティク系譜の師、ズィガー・コントゥル・リンポチェの息子であり、法脈の継承者"
+          ],
+          "en": [
+            "Dzigar Kongtrul Rinpoche's son and Dharma Heir within the Longchen Nyingtik lineage of the Nyingma school."
+          ],
+          "sourceLines": [
+            202,
+            203
+          ]
+        },
+        {
+          "ja": [
+            "ズィガー・コントゥル・リンポチェのご子息であり、法脈の後継者であるドゥンセ・ジャンパル・ノルブ氏（ドゥンセ・ラ）は、アジアに長く滞在し旅を重ねてきたものの、幼少期の大半はコロラドで過ごしました。「いつから仏教を学んでいるのか」と尋ねられれば、彼はおそらく「生まれてすぐ」と答えるでしょう。父コントゥル・リンポチェのもとで、ときにはクレストンの山々を歩きながら、またインドで列車を共にしながら、さまざまな教えや伝授を授かってきたからです。"
+          ],
+          "en": [
+            "Dungse Jampal Norbu is Dzigar Kongtrul Rinpoche's son and Dharma Heir. Dungse la has lived and traveled extensively in Asia, but spent much of his youth in Colorado. If you were to ask Dungse la how long he has been studying the Buddhist path, he would say, “Since I was born.” Under his father's wing he received many teachings and transmissions, sometimes while the two were walking in the mountains of Crestone or riding a train in India."
+          ],
+          "sourceLines": [
+            204,
+            205
+          ]
+        },
+        {
+          "ja": [
+            "コントゥル・リンポチェは、ドゥンセ・ラがまだ幼いころ、根本ラマであるキャブジェ・ディルゴ・ケンツェ・リンポチェから、ドゥンセ・ラを法脈の継承者として育てるよう託されました。その後ドゥンセ・ラは、インドや米国でのシェダ（伝統的な学習課程）をはじめ、コントゥル・リンポチェからさまざまな導きを受け、現在はコロラド州のリトリートセンター『ロンチェン・ジグメ・サムテン・リン』で毎年百日間のリトリートを行いながら、世界各地で法話を説いています。法話のテーマは「仏教の教えがいかに日常生活に役立つか」。自身の体験に根ざした語り口は、聴く者にまったく新しい視点をもたらし、智慧とユーモアに満ちています。"
+          ],
+          "en": [
+            "When Dungse la was still an infant, Kyabje Dilgo Khyentse Rinpoche instructed Kongtrul Rinpoche to train Dungse la to uphold and continue Kongtrul Rinpoche's lineage, particularly that of Mangala Shri Bhuti. With the foundation of his life-long guidance and education from Kongtrul Rinpoche, Dungse la also teaches widely and engages in an annual 100-day retreat at Longchen Jigme Samten Ling. Dungse la's anecdotal style and first-hand curiosity about how Buddhism relates to actual experience imbue his teaching with a fresh perspective, and reveal a natural wisdom and humor."
+          ],
+          "sourceLines": [
+            206,
+            207
+          ]
+        },
+        {
+          "ja": [
+            "キャブジェ・ディルゴ・ケンツェ・リンポチェは涅槃に入る三週間前、ドゥンセ・ラの将来について記した手紙をコントゥル・リンポチェに手渡しました。"
+          ],
+          "en": [
+            "Kyabje Dilgo Khyentse Rinpoche communicated his vision for Dungse la in a letter to Kongtrul Rinpoche, given just three weeks before His Holiness' parinirvana."
+          ],
+          "sourceLines": [
+            208,
+            209
+          ]
+        },
+        {
+          "ja": [
+            "「コントゥルラ、お前のロンチェン・ニンティクの前行とその一連の修行を実践しようとする気持ちはとても素晴らしい。トゥクドゥプ・ジュンチ・コルチャンを毎日欠かさず行じるように。米国に仏法を学ぶ基盤を設立できるなら、それも素晴らしいことだ。",
+            "お前の父の故郷やお前の先代の僧院を何度も訪れ、よく見て回るといい。そこでシェダ（修学）やドゥプダ（修行）の伝統を再興できるのならそれも素晴らしい。そうすれば僧院も安泰だろう。",
+            "お前の息子については、僧侶でもンガッパ（在家行者）でもいい、お前の受け継いだ法脈を守る師となるように育てることだ。これには大きな利益がある。それが実現するよう、この年老いた父は決して忘れることなく、祈りを捧げている。どうか加持と加護があらんことを。」"
+          ],
+          "en": [
+            "“Kongtrul la, Your intention to practice Longchen Nyingtik Preliminaries as well as the cycles of the Longchen Nyingtik is very excellent. Practice Thukdrup Junchi Kolchang everyday.",
+            "It would be excellent if you could establish a center of buddhadharma in America.You should go to your father's homeland and your predecessor's monastery quite often, to have a look around. There, establishing the shedra and drupdra – the study and practice lineages – would be wonderful. So in the end, the monastery is more stable.",
+            "Your son, whether he becomes a monk or a ngakpa, in either case, you must intend him to become a Buddhist teacher who could hold your Dharma lineage. This will be excellent. For this to happen my blessings and protection – I the old father – without ever forgetting, am making prayers.”"
+          ],
+          "sourceLines": [
+            210,
+            215
+          ]
+        },
+        {
+          "ja": [
+            "コントゥル・リンポチェは次のように述べています。"
+          ],
+          "en": [
+            "Kongtrul Rinpoche describes their exchange, which occurred just three weeks before His Holiness' parinirvana:"
+          ],
+          "sourceLines": [
+            216,
+            217
+          ]
+        },
+        {
+          "ja": [
+            "「この手紙は、私が根本ラマであるケンツェ・リンポチェに最後にお会いしたときに頂いたものである。それは彼の最後のリトリートの最中のことで、彼は言葉を一言も発することなく突然この手紙をしたため、私に手渡してくれたのだ。私と妻のエリザベスは、その時以来、この師の最後の言葉を心に留め、ドゥンセ・ラとも話し合いながら、その助言の実現に努めてきた。",
+            "ドゥンセ・ラはこれまでに何人もの偉大なラマから彼らの師の化身（トゥルク）と認定されているが、私にとっては彼をケンツェ・リンポチェの伝統に則って訓練していくことが最優先と考えている。ドゥンセ・ラが示してきたように、まず正式な学びを修め、リトリートを重ねながら、自らの成長と悟りに深い情熱と責任感をもって歩んでいる姿を見ると、私は父としてではなく一人の師として、この法脈に対する自分の責任を、時が来たとき彼に委ねることに大きな安心を感じている。」"
+          ],
+          "en": [
+            "“This is what my root teacher, Kyabje Dilgo Khyentse Rinpoche, spontaneously wrote from his last retreat in my final meeting with him, during his practice session while he was not speaking. Although Dungse la was recognized by several important masters as the reincarnation of a teacher from their tradition, his training in Khyentse Rinpoche's tradition and fulfilling my Guru's command has been the priority.",
+            "In this day and age, for someone to find the interest and deep discipline that Dungse la has shown to follow up first with his formal studies and then personal retreats, with immense heart and responsibility over his own growth and realization, I feel, not as a father, but as a teacher, very secure to hand over and place in his care my responsibilities for this lineage, when the time comes.”"
+          ],
+          "sourceLines": [
+            218,
+            221
+          ]
+        }
+      ],
+      "editorialNotes": [
+        {
+          "line": 199,
+          "text": "※根本ラマ：弟子に心の本性を伝達してくれる導師"
+        }
+      ]
+    },
+    {
+      "id": "3-2",
+      "slug": "what-is-buddhism",
+      "headingJa": "仏教とは（What is Buddhism）",
+      "headingEn": "What is Buddhism",
+      "startLine": 222,
+      "blocks": [
+        {
+          "ja": [
+            "仏教は、約2500年前（紀元前5世紀）、インドの王子ゴータマ・シッダールタがガヤの菩提樹の下で悟りを開き、その後サルナートの鹿野苑で自らの体験に基づいたシンプルな教えを説いたことに始まるとされています。その悟りがあまりに深甚であったことから、彼は「目覚めた者」、すなわちブッダとして知られるようになりました。ブッダの教え「仏法」は、物事の真理を意味し、日々の体験や心に直接向き合うことで苦しみを離れる、きわめて実践的な方法を説き明かしています。"
+          ],
+          "en": [
+            "Buddhism is said to have begun about 2,500 years ago (5th century BCE), when the Indian prince Siddhartha Gautama attained enlightenment beneath the Bodhi tree in Bodh Gaya, and later taught a simple set of teachings at the Deer Park in Sarnath, based on his own experience. Because his enlightenment was so profound, he became known as “the Awakened One,” the Buddha. The Buddha's teaching, the Dharma, means the truth of things, and reveals an extremely practical method for freeing ourselves from suffering by engaging directly with our everyday experience and our mind."
+          ],
+          "sourceLines": [
+            224,
+            225
+          ]
+        },
+        {
+          "ja": [
+            "ブッダが自らの身体・心・現象世界を調べることで見出した真理は、宗教や哲学、心理学というよりも、「生きるための指針」「悟りへの旅」と呼ぶほうがふさわしいかもしれません。彼は「生きとし生けるものには本来、智慧・慈悲・力が具わっているが、一時的な汚れに覆われているために苦しみを体験している」と説き、その汚れを取り除いて本来の徳性を顕わにする道を示しました。この悟りへの旅は、エゴの固定観念や良し悪しの分別を離れ、物事をあるがままに見て、その本性にくつろぐことを目指すものです。そのためブッダは、人それぞれの資質や目的に応じてさまざまな教えを説きましたが、それらは大きく3つに分けられます。"
+          ],
+          "en": [
+            "The truth the Buddha discovered by examining his own body, mind, and the phenomenal world might be better described as “a guide for living” or “a journey to awakening” than as a religion, philosophy, or psychology. He taught that “all sentient beings inherently possess wisdom, compassion, and capability, but experience suffering because these are obscured by temporary defilements,” and showed a path for removing those defilements and revealing our innate qualities. This journey to awakening aims to release fixed ideas of ego and judgments of good and bad, to see things as they are, and to rest in their true nature. Because of this, the Buddha taught in many different ways suited to people's differing capacities and aims, which are broadly grouped into three."
+          ],
+          "sourceLines": [
+            226,
+            227
+          ]
+        },
+        {
+          "ja": [
+            "上座部仏教：ブッダの根本的な教えで、個人の解脱を目指す乗り物（小乗とも呼ばれる）",
+            "大乗仏教：生きとし生けるものへの慈悲と、物事の究極の本性を分析、理解することを重視する、生きとし生けるものの悟りを目指す乗り物",
+            "金剛乗（密教）：目的は大乗と同じだが、そこにすみやかに行き着くための様々な方便を有する乗り物"
+          ],
+          "en": [
+            "Theravada: The Buddha's foundational teachings, a vehicle aimed at individual liberation (also called the Hinayana).",
+            "Mahayana: A vehicle aimed at the awakening of all sentient beings, emphasizing compassion for all beings together with analysis and understanding of the ultimate nature of things.",
+            "Vajrayana (Tantric Buddhism): Shares the same aim as the Mahayana, but offers a variety of skillful means to reach it swiftly."
+          ],
+          "sourceLines": [
+            228,
+            233
+          ]
+        },
+        {
+          "ja": [
+            "インドに始まった仏教は、その後アジアの多くの国々へ、近年ではさらに西洋へと広まりました。現在、上座部仏教は主に東南アジア（スリランカ、ミャンマー、タイ）、大乗仏教は東アジア（日本、中国、韓国）、金剛乗はネパール、チベット、ブータン、日本で実践されています。"
+          ],
+          "en": [
+            "Buddhism, which began in India, later spread across many countries in Asia and, in recent times, to the West as well. Today, Theravada is practiced mainly in Southeast Asia (Sri Lanka, Myanmar, Thailand), Mahayana in East Asia (Japan, China, Korea), and Vajrayana in Nepal, Tibet, Bhutan, and Japan."
+          ],
+          "sourceLines": [
+            234,
+            235
+          ]
+        }
+      ],
+      "editorialNotes": []
+    },
+    {
+      "id": "3-3",
+      "slug": "tibetan-buddhism",
+      "headingJa": "チベット仏教（Tibetan Buddhism）",
+      "headingEn": "Tibetan Buddhism",
+      "startLine": 236,
+      "blocks": [
+        {
+          "ja": [
+            "チベット仏教は、上座部・大乗・金剛乗という3つの乗り物すべてを取り入れ、これを仏教の実践と教学における段階的な道として捉えている点に特徴があります。"
+          ],
+          "en": [
+            "Tibetan Buddhism is distinctive in that it comprehensively incorporates all three vehicles—Theravada, Mahayana, and Vajrayana—and regards them together as a graduated path of Buddhist practice and study."
+          ],
+          "sourceLines": [
+            238,
+            239
+          ]
+        },
+        {
+          "ja": [
+            "チベットに仏教が初めて伝わったのは7世紀のことです。チベット統一を果たしたソンツェン・ガンポ王が、ネパールと唐から嫁いだ2人の王妃の勧めで仏教に帰依し、首都ラサにトゥルナン寺を建立しました。次のティソン・デツェン王の代には仏教が国教と定められ、インドのナーランダー大僧院からシャーンタラクシタとパドマサンバヴァを招いてサムイェー寺を建立、顕密（大乗顕教と金剛乗密教）の仏典がチベット語に翻訳されました。その後、王朝の滅亡とともに仏教は一時衰退しますが、11世紀にインドから入国したアティーシャらによって再興がなされました。"
+          ],
+          "en": [
+            "Buddhism first reached Tibet in the 7th century. King Songtsen Gampo, who unified Tibet, took refuge in Buddhism at the urging of his two wives—princesses from Nepal and Tang China—and built Trulnang Temple in the capital, Lhasa. Under the next king, Trisong Detsen, Buddhism was established as the state religion; Shantarakshita and Padmasambhava were invited from Nalanda Monastery in India to build Samye Monastery, and the sutras of both the Mahayana and Vajrayana were translated into Tibetan. Buddhism later declined for a time following the fall of the dynasty, but was revived in the 11th century by Atisha and others who came from India."
+          ],
+          "sourceLines": [
+            240,
+            241
+          ]
+        },
+        {
+          "ja": [
+            "チベット仏教の特徴は、後期密教の教えを幅広く受け入れて独自に消化した点、そして顕教においては中観派の思想を含むインド大乗仏教の系譜を継承・保全してきた点にあります。また顕教では、存在や認識をめぐる教学・論争を通じて、論理的思考力と正確な概念知を養うことが重視されています。その思想の骨格をなす重要な論書には、シャーンティデーヴァ『入菩薩行論』(Bodhisattvacaryāvatāra)、マイトレーヤ『究竟一乗宝性論』(Uttaratantra Shastra)、『現観荘厳論』(Abhisamayalamkara) などがあり、ほかにもアティーシャらが説いたロジョン（心の修行）の教えが全宗派で重んじられています。"
+          ],
+          "en": [
+            "Tibetan Buddhism is characterized by its broad adoption and independent assimilation of the later tantric teachings, and, on the sutra side, by its preservation of the lineage of Indian Mahayana Buddhism, including Madhyamaka thought. In its sutra tradition it also places great emphasis on cultivating logical reasoning and precise conceptual understanding through scholastic study and debate on questions of existence and perception. Key treatises forming the backbone of this thought include Shantideva's Bodhisattvacharyavatara (The Way of the Bodhisattva), Maitreya's Uttaratantra Shastra and Abhisamayalamkara, along with the Lojong (mind training) teachings of Atisha and others, which are valued across all schools."
+          ],
+          "sourceLines": [
+            242,
+            243
+          ]
+        },
+        {
+          "ja": [
+            "現在は大きく、ニンマ派、カギュ派、ゲルク派、サキャ派の4つの宗派に分かれています。"
+          ],
+          "en": [
+            "Today, Tibetan Buddhism is broadly divided into four schools: Nyingma, Kagyu, Gelug, and Sakya."
+          ],
+          "sourceLines": [
+            244,
+            245
+          ]
+        }
+      ],
+      "editorialNotes": []
+    },
+    {
+      "id": "3-4",
+      "slug": "nyingma",
+      "headingJa": "ニンマ派（Nyingma）",
+      "headingEn": "Nyingma",
+      "startLine": 246,
+      "blocks": [
+        {
+          "ja": [
+            "ニンマ派は、パドマサンバヴァ（グル・リンポチェ）を宗祖とし、タントラと埋蔵教典（テルマ）に依拠する宗派で、「ゾクチェン」（ゾクパ・チェンポ、大いなる完成）を最奥義とします。ニンマ派の中にも、カンドゥ・ニンティクやビィマ・ニンティク、ロンチェン・ニンティクなどいくつかの系譜が存在します。"
+          ],
+          "en": [
+            "The Nyingma school traces its founder to Padmasambhava (Guru Rinpoche) and relies on the tantras and the terma (revealed treasure) teachings, with Dzogchen (“the Great Perfection”) as its ultimate teaching. Within the Nyingma school there are several lineages, including Khandro Nyingtik, Vima Nyingtik, and Longchen Nyingtik."
+          ],
+          "sourceLines": [
+            249,
+            250
+          ]
+        }
+      ],
+      "editorialNotes": [
+        {
+          "line": 248,
+          "text": "［EN: 新規英訳（MSBJ独自コンテンツ／要ネイティブチェック）］"
+        }
+      ]
+    },
+    {
+      "id": "3-5",
+      "slug": "longchen-nyingtik",
+      "headingJa": "ロンチェン・ニンティク系譜（Longchen Nyingtik）",
+      "headingEn": "Longchen Nyingtik",
+      "startLine": 251,
+      "blocks": [
+        {
+          "ja": [
+            "ロンチェン・ニンティクは、18世紀の埋蔵経発掘者（テルトン）、持明者ジグメ・リンパによって発見された埋蔵経（テルマ）に依拠する法脈です。サーダナ（成就法）、教説、真髄の秘訣からなるこれらの埋蔵経を、ジグメ・リンパはグル・パドマサンバヴァ、ダーキニ・イェシェ・ツォギャル、一切智者ロンチェン・ラブジャムをはじめとする数多くの導師のビジョンから直接授かりました。ジグメ・リンパは、8世紀にグル・パドマサンバヴァをチベットに招き、最初の僧院サムイェーを建立させて仏法を根付かせた法王ティソン・デツェンの化身とされています。"
+          ],
+          "en": [
+            "The Longchen Nyingtik Lineage is based upon the terma revelations of the 18th century treasure revealer, Rigdzin Jigme Lingpa. These revelations, composed of various sadhanas, teachings and pith instructions, were received by Jigme Lingpa through multiple visionary experiences, in which he directly encountered Guru Padmasambhava, Khandro Yeshe Tsogyal, Omniscient Longchen Rabjam and many other masters. Jigme Lingpa was a reincarnation of the 8th century Dharma King Trisong Detsen, who, in order to firmly establish the Dharma in Tibet, invited Guru Padmasambhava to Tibet to help complete and consecrate Samye, Tibet's first monastery."
+          ],
+          "sourceLines": [
+            254,
+            255
+          ]
+        },
+        {
+          "ja": [
+            "グル・リンポチェは多くの埋蔵経を王や弟子たちの心相続に埋蔵し、後にその教えを広めるのに最適な状況が整った時、彼らの化身によって発掘されるよう封印しました。ジグメ・リンパは、そうした心の埋蔵経の発掘者として、ロンチェン・ニンティクの数々のサダナ（成就法）を見出したのです。"
+          ],
+          "en": [
+            "During the king's reign, Guru Rinpoche implanted many treasure teachings directly into the king's and other main disciples' mental continuums, to be revealed by their subsequent incarnations when the time was appropriate for their practice and dissemination. Jigme Lingpa discovered many of the Longchen Nyingtik sadhanas in this manner as mind treasures."
+          ],
+          "sourceLines": [
+            256,
+            257
+          ]
+        },
+        {
+          "ja": [
+            "この体系は、ニンティク、あるいはアティ・ヨーガの最深の教え「ゾクチェン（大いなる完成）」の名でも知られています。教えが初めて地上にもたらされたのは、ジグメ・リンパがサムイェー近郊の洞窟サムイェー・チンプで3年間のリトリートを行っていたときのことでした。14世紀のアティ・ヨーガ導師、一切智者ロンチェン・ラブジャムへの一途な献身により、彼は3度にわたってロンチェンパの智法身のビジョンに出会います。この体験を通じて、水が器から器へと注がれるように、ロンチェンパの教えとアティ・ヨーガの悟り「ゾクチェン」のすべてが、ジグメ・リンパの心に伝授されました。"
+          ],
+          "en": [
+            "The Longchen Nyingtik tradition is perhaps most well known for its cycle of nyingtik, or innermost essence teachings on Atiyoga, the Great Perfection. Jigme Lingpa received these teachings during the course of a three-year retreat he undertook at Samye Chimphu, the great retreat complex of meditation caves near Samye. Due to his single-pointed devotion to the 14th century Atiyoga master, Omniscient Longchen Rabjam (“Longchenpa”), Jigme Lingpa was able to meet Longchenpa's wisdom body in three successive visions. Through this experience, he received the entirety of Longchenpa's teachings and realization of Atiyoga, the Great Perfection, like water being poured from one vessel into another."
+          ],
+          "sourceLines": [
+            258,
+            259
+          ]
+        },
+        {
+          "ja": [
+            "導師（ラマ）への揺るぎない献身を勝義諦（究極の真理）を了解する最も重要な手段と位置づけるこれらの教えは、今日もなお、この体系の深遠な心髄であり続けています。ロンチェン・ニンティクは現存するニンマ派の法脈の中でも特に広く実践されている伝統のひとつで、その深さと本質的な価値ゆえに、チベット仏教四派の多くの導師や僧院で実践されています。"
+          ],
+          "en": [
+            "These teachings became the profound heart core of the Longchen Nyingtik lineage, which is characterized even today by its reliance on unwavering devotion to the guru as the primary means of realizing the absolute truth. The Longchen Nyingtik remains even today as one of the most widely practiced of the numerous existent Nyingma lineages. It is practiced by many masters and monasteries of all four main schools of Tibetan Buddhism, primarily due to its profound and essential nature."
+          ],
+          "sourceLines": [
+            260,
+            261
+          ]
+        },
+        {
+          "ja": [
+            "参考文献：『Masters of Meditation and Miracle』（Tulku Thöndup著）"
+          ],
+          "en": [
+            "For further reading about the Longchen Nyingtik lineage, consult Tulku Thöndup's Masters of Meditation and Miracles."
+          ],
+          "sourceLines": [
+            262,
+            263
+          ]
+        }
+      ],
+      "editorialNotes": [
+        {
+          "line": 253,
+          "text": "［EN: MSB公式サイトより抜粋・編集　出典: mangalashribhuti.org/dzigar-kongtrul-rinpoche/lineage/］"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "slug": "programs",
+      "headingJa": "プログラム（Programs）",
+      "headingEn": "Programs",
+      "startLine": 264,
+      "blocks": [
+        {
+          "ja": [
+            "「学習、修行、奉仕により育まれる文化は、弟子たちの利己心をすり減らし、利他的な人間へと成長させる」"
+          ],
+          "en": [
+            "“Together, this culture of study, practice and service molds students into people who are, if it could be said in a word, more selfless than when they entered the path.”"
+          ],
+          "sourceLines": [
+            269,
+            270
+          ]
+        },
+        {
+          "ja": [
+            "マンガラ・シュリ・ブティ・サンガでは、さまざまな修学コースを通じて学びながら、ロジョン（心の訓練）や一連の修行階梯を実践し、最終的にリトリートで伝授されるゾクチェンの教えを頂点とする道を歩んでいきます。サンガへの奉仕活動もまた、個人の資質を高めるうえで欠かせない要素です。学び・修行・奉仕によって育まれるこの文化が、弟子たちの利己心を少しずつ手放させ、利他的な人間へと成長させていきます。"
+          ],
+          "en": [
+            "In Mangala Shri Bhuti, students learn through a variety of study courses while practicing Lojong (mind training) and a progression of practices, walking a path that culminates in the teachings on Dzogchen, transmitted only in retreat. Service to the sangha is likewise an essential element in developing one's own qualities. Together, this culture of study, practice and service molds students into people who are, if it could be said in a word, more selfless than when they entered the path."
+          ],
+          "sourceLines": [
+            271,
+            272
+          ]
+        },
+        {
+          "ja": [
+            "法話会・リトリート"
+          ],
+          "en": [
+            "Teachings & Retreats"
+          ],
+          "sourceLines": [
+            273,
+            274
+          ]
+        },
+        {
+          "ja": [
+            "年次法話会"
+          ],
+          "en": [
+            "Annual Teaching"
+          ],
+          "sourceLines": [
+            275,
+            276
+          ]
+        },
+        {
+          "ja": [
+            "年に一回、ズィガー・コントゥル・リンポチェまたはドゥンセ・ジャンパル・ノルブ師による法話会を開催しています。"
+          ],
+          "en": [
+            "Once a year, we hold a teaching gathering led by either Dzigar Kongtrul Rinpoche or Dungse Jampal Norbu."
+          ],
+          "sourceLines": [
+            277,
+            278
+          ]
+        },
+        {
+          "ja": [
+            "また、毎年夏に米国で行われているニンマ・サマー・セミナーを日本でも開催しています（録画と日本語の同時通訳）。"
+          ],
+          "en": [
+            "We also hold the Nyingma Summer Seminar in Japan each year, in parallel with the U.S. program (recorded, with simultaneous Japanese interpretation)."
+          ],
+          "sourceLines": [
+            279,
+            280
+          ]
+        },
+        {
+          "ja": [
+            "対面の集い"
+          ],
+          "en": [
+            "In-Person Gatherings"
+          ],
+          "sourceLines": [
+            282,
+            283
+          ]
+        },
+        {
+          "ja": [
+            "勉強会"
+          ],
+          "en": [
+            "Study Group"
+          ],
+          "sourceLines": [
+            284,
+            285
+          ]
+        },
+        {
+          "ja": [
+            "月に一回、京都のタシ・ガチルで勉強会を開催しています。ここでは、教えを概念だけの理解に留めず、日常生活で体験に根ざして理解を深め、そこで得た個人的な体験を共有し、互いにインスピレーションを与え合うような場を提供することを目的としています。仏教への関心の有無にかかわらず、心に取り組むことに関心がある方なら、どなたでもご参加いただけます。"
+          ],
+          "en": [
+            "We hold a monthly study group at Tashi Gachil in Kameoka, Kyoto. Its aim is to move beyond a purely conceptual understanding of the teachings, deepening our understanding through experience in daily life, and providing a space to share what we discover personally and inspire one another. Anyone interested in working with their mind is welcome to join, whether or not they are already interested in Buddhism."
+          ],
+          "sourceLines": [
+            286,
+            287
+          ]
+        },
+        {
+          "ja": [
+            "座禅会"
+          ],
+          "en": [
+            "One-Day Meditation Retreat"
+          ],
+          "sourceLines": [
+            288,
+            289
+          ]
+        },
+        {
+          "ja": [
+            "現代の忙しい生活の中、長い時間じっくりと座り、心を見つめる機会を持つことは難しくなっています。そのような中、毎月1回、亀岡市の緑に囲まれた静かな場所で、一日座禅会（1時間の座禅を5セッション）を行っています。参加者の多くは、長時間座ることで、座禅会が終わった後もしばらくは心の習慣的な反応に流されない心の強さを味わえると感じています。瞑想や座禅に興味がある方なら、どなたでもご参加いただけます。全てのセッションに参加できなくても、1セッションからの部分的な参加も受け付けています。"
+          ],
+          "en": [
+            "In the busyness of modern life, it has become difficult to find long stretches of time to sit and look inward. To address this, we hold a monthly one-day meditation retreat (five one-hour sitting sessions) in a quiet, green setting in Kameoka City. Many participants find that after sitting for an extended period, they carry a strength of mind that is less easily swept away by habitual reactions, even after the retreat ends. Anyone interested in meditation is welcome, and partial attendance for even a single session is also accepted."
+          ],
+          "sourceLines": [
+            290,
+            291
+          ]
+        },
+        {
+          "ja": [
+            "オンライン系譜コース"
+          ],
+          "en": [
+            "Online Lineage Course"
+          ],
+          "sourceLines": [
+            292,
+            293
+          ]
+        },
+        {
+          "ja": [
+            "教えをいかに日常に融合させるか。日々の生活をいかに道の糧とするか。仏教の道をその階梯に沿って歩むにはどうすればよいか。金剛乗の教えや修行を、日常生活を送りながら続けていくにはどうすればよいか。このような切実な問いに応える選択肢として、マンガラ・シュリ・ブティではオンライン系譜コースを開催しています。"
+          ],
+          "en": [
+            "How can we bring the teachings into daily life? How can everyday experience nourish us along the path? How can we then progress through the stages of the Buddhist path, become a student under a single teacher, and continue Vajrayana teachings and practice while living an ordinary life? As one way of meeting these heartfelt questions, Mangala Shri Bhuti offers an Online Lineage Course."
+          ],
+          "sourceLines": [
+            294,
+            295
+          ]
+        },
+        {
+          "ja": [
+            "ウェブ・カンファレンスZoomを活用し、地理的に離れている方でもご参加いただけるオンライン系譜コースは、コントゥル・リンポチェが世界各地で説かれた法話の中から、各テーマに最適なものを選んでまとめ、それを基に学習・熟考・瞑想（聞思修）を進めていきます。2週毎にオンラインで開催し、それぞれの体験や気づいた点などを、互いに共有し、その理解をさらに深めていくプログラムとなっています。"
+          ],
+          "en": [
+            "Held over Zoom so that participants can join regardless of location, the Online Lineage Course draws on Kongtrul Rinpoche's teachings from around the world, selecting and organizing material suited to each theme as the basis for study, contemplation, and meditation. Sessions are held online every two weeks, giving participants a chance to share their experiences and insights with one another and deepen their understanding together."
+          ],
+          "sourceLines": [
+            296,
+            297
+          ]
+        },
+        {
+          "ja": [
+            "供養行"
+          ],
+          "en": [
+            "Tsok Offering"
+          ],
+          "sourceLines": [
+            298,
+            299
+          ]
+        },
+        {
+          "ja": [
+            "月に2回、亀岡市のタシ・ガチルでツォクを行っています。リンポチェから灌頂を受けた方のみ参加できます。"
+          ],
+          "en": [
+            "Twice a month, we hold a tsok (feast offering) practice at Tashi Gachil in Kameoka City. Open only to those who have received empowerment from Rinpoche."
+          ],
+          "sourceLines": [
+            300,
+            301
+          ]
+        },
+        {
+          "ja": [
+            "慈悲の活動"
+          ],
+          "en": [
+            "Compassionate Activity"
+          ],
+          "sourceLines": [
+            302,
+            303
+          ]
+        },
+        {
+          "ja": [
+            "放生会"
+          ],
+          "en": [
+            "Life Release"
+          ],
+          "sourceLines": [
+            304,
+            305
+          ]
+        },
+        {
+          "ja": [
+            "年に1回、コントゥル・リンポチェまたはドゥンセ・ジャンパル・ノルブ師とともに、南伊豆の海にて放生会（魚介の放生）を行っています。直接ご参加できない方のために、お志を受け付けております。（放生会：供養のために、捕らえた生き物を池や野に放す法会）詳しい日程はスケジュールページをご覧ください。"
+          ],
+          "en": [
+            "Once a year, together with Kongtrul Rinpoche or Dungse Jampal Norbu, we hold a life-release ceremony (tsetar) in the sea off Minami-Izu, releasing fish and other sea creatures back into the wild. For those unable to attend in person, we accept donations toward this practice. (Life release is a ceremony in which captured creatures are released into a pond or the wild as an act of merit.) Please see the schedule page for the exact date."
+          ],
+          "sourceLines": [
+            306,
+            307
+          ]
+        },
+        {
+          "ja": [
+            "志：1口2,000円から"
+          ],
+          "en": [
+            "Suggested donation: from ¥2,000 per share"
+          ],
+          "sourceLines": [
+            308,
+            309
+          ]
+        }
+      ],
+      "editorialNotes": [
+        {
+          "line": 266,
+          "text": "サブメニュー：対面の集い／年次法話会・リトリート／オンライン・トレーニング／供養行／慈悲の活動"
+        },
+        {
+          "line": 267,
+          "text": "※本ページでは各プログラムの目的・内容を恒常的に紹介します。具体的な開催日程は「7. スケジュール」ページをご覧ください。"
+        },
+        {
+          "line": 268,
+          "text": "導入"
+        },
+        {
+          "line": 281,
+          "text": "会員プログラム（既存会員向け）：心の本性の口訣／前行リトリート／シェダ／ドゥプチュ"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "slug": "resources",
+      "headingJa": "学習リソース（Resources）",
+      "headingEn": "Resources",
+      "startLine": 310,
+      "blocks": [
+        {
+          "ja": [
+            "MSBJリンク"
+          ],
+          "en": [
+            "MSBJ Link"
+          ],
+          "sourceLines": [
+            313,
+            314
+          ]
+        },
+        {
+          "ja": [
+            "『MSBJリンク』は、1996年から2000年にかけてリンポチェの法話を週一回、電話を介して配信していたプログラム、『パーソナルリンク』の要約を邦訳したものです。『パーソナルリンク』は、リンポチェの法話をライブ配信することで、忙しい生活の中でも仏法に触れる機会を提供する目的で行われていました。現在は、『Link』と名を変え、週1回（英語）ポッドキャストで配信しています。"
+          ],
+          "en": [
+            "“MSBJ Link” is a Japanese translation of summaries from “Personal Link,” a program that delivered Rinpoche's teachings by phone once a week from 1996 to 2000, offering a way to connect with the Dharma even amid a busy life. The program continues today, in English, as the weekly “LINK” podcast."
+          ],
+          "sourceLines": [
+            315,
+            316
+          ]
+        },
+        {
+          "ja": [
+            "ダルマ・アーティクル"
+          ],
+          "en": [
+            "Dharma Articles"
+          ],
+          "sourceLines": [
+            317,
+            318
+          ]
+        },
+        {
+          "ja": [
+            "ズィガー・コントゥル・リンポチェの法話や、最近のMSBJの活動に関する記事を掲載します。"
+          ],
+          "en": [
+            "Articles on Dzigar Kongtrul Rinpoche's teachings and MSBJ's recent activities."
+          ],
+          "sourceLines": [
+            319,
+            320
+          ]
+        },
+        {
+          "ja": [
+            "ビデオ・音声法話アーカイブ"
+          ],
+          "en": [
+            "Video & Audio Teachings Archive"
+          ],
+          "sourceLines": [
+            321,
+            322
+          ]
+        },
+        {
+          "ja": [
+            "リンポチェのビデオ法話（日本語キャプションあり）です。"
+          ],
+          "en": [
+            "Video teachings by Rinpoche, with Japanese captions."
+          ],
+          "sourceLines": [
+            323,
+            324
+          ]
+        },
+        {
+          "ja": [
+            "ガイド付き瞑想（新設）"
+          ],
+          "en": [
+            "Guided Meditations (New)"
+          ],
+          "sourceLines": [
+            325,
+            326
+          ]
+        }
+      ],
+      "editorialNotes": [
+        {
+          "line": 312,
+          "text": "サブメニュー：MSBJリンク／ダルマ・アーティクル／ビデオ・音声法話アーカイブ／ガイド付き瞑想"
+        },
+        {
+          "line": 327,
+          "text": "実践の入り口となるコンテンツを新規作成予定。"
+        },
+        {
+          "line": 328,
+          "text": "書籍・出版物（参照）"
+        },
+        {
+          "line": 329,
+          "text": "下記「6. ストア・出版物」を参照。"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "slug": "store",
+      "headingJa": "ストア・出版物（Store / Publications）",
+      "headingEn": "Store / Publications",
+      "startLine": 330,
+      "blocks": [],
+      "editorialNotes": [
+        {
+          "line": 332,
+          "text": "現在は「お知らせ」等に分散している翻訳書籍や音声（MP3）の販売を、一つの独立したメニューとしてまとめます。"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "slug": "calendar",
+      "headingJa": "スケジュール（Calendar）",
+      "headingEn": "Calendar",
+      "startLine": 333,
+      "blocks": [
+        {
+          "ja": [
+            "瞑想会、法話、リトリートなどのイベント情報を一覧できるカレンダーページ。"
+          ],
+          "en": [
+            "A calendar page listing information on meditation gatherings, teachings, retreats, and other events."
+          ],
+          "sourceLines": [
+            336,
+            337
+          ]
+        }
+      ],
+      "editorialNotes": [
+        {
+          "line": 335,
+          "text": "※「4. プログラム」で紹介する各プログラムの実施日程を、カレンダー形式で一覧できるページです（新しいイベント追加のたびに更新）。"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "slug": "donate",
+      "headingJa": "ご寄付（Donation）",
+      "headingEn": "Donate",
+      "startLine": 338,
+      "blocks": [
+        {
+          "ja": [
+            "寄付のお願い"
+          ],
+          "en": [
+            "Support Our Activities"
+          ],
+          "sourceLines": [
+            340,
+            341
+          ]
+        }
+      ],
+      "editorialNotes": []
+    },
+    {
+      "id": "9",
+      "slug": "member-portal",
+      "headingJa": "会員ポータル（Member Portal）",
+      "headingEn": "Member Portal",
+      "startLine": 342,
+      "blocks": [],
+      "editorialNotes": [
+        {
+          "line": 344,
+          "text": "※会員専用ページ（要ログイン）。本構成案は公開コンテンツを対象としているため詳細は範囲外とし、必要要件は別途プロダクト要件として整理します。"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "slug": "contact",
+      "headingJa": "お問い合わせ（Contact）",
+      "headingEn": "Contact",
+      "startLine": 345,
+      "blocks": [],
+      "editorialNotes": [
+        {
+          "line": 347,
+          "text": "お問い合わせ先。"
+        },
+        {
+          "line": 348,
+          "text": "Contact information."
+        }
+      ]
+    },
+    {
+      "id": "footer",
+      "slug": "footer",
+      "headingJa": "フッター",
+      "headingEn": "Footer",
+      "startLine": 349,
+      "blocks": [
+        {
+          "ja": [
+            "団体概要（→ MSBJについて／法人概要 と統合可）",
+            "定款・規約（MSBJについて＞法人概要ページからもここへリンク。定款情報はここに一本化）",
+            "プライバシーポリシー　【本構成案には未掲載。新規追加の要否を確認】",
+            "MSB本部サイト（米国）へのリンク"
+          ],
+          "en": [
+            "Organization Overview",
+            "Bylaws",
+            "Privacy Policy",
+            "MSB Headquarters Site (U.S.)"
+          ],
+          "sourceLines": [
+            350,
+            357
+          ]
+        }
+      ],
+      "editorialNotes": []
+    }
+  ]
+}
