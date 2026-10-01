@@ -15,14 +15,7 @@ import { getPublishedEvents } from "@/server/queries/events";
 import { getPublishedBooks } from "@/server/queries/books";
 import { getCurrentDharmaMessage } from "@/server/queries/dharma-messages";
 import { BookSlider } from "@/components/public/book-slider";
-
-/** Outline list items are written "Label：text" (JA) or "Label: text" (EN). */
-function splitListItem(item: string): { label: string; sep: string; text: string } {
-  const match = item.match(/^(.+?)(：|: )(.*)$/);
-  return match
-    ? { label: match[1] ?? item, sep: match[2] ?? "", text: match[3] ?? "" }
-    : { label: item, sep: "", text: "" };
-}
+import { splitListItem } from "@/lib/content/list-item";
 
 function LinkedList({
   items,
