@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
 import { isValidLocale } from "@/lib/i18n/config";
@@ -27,53 +28,47 @@ export default async function AboutPage({
   const { locale } = await params;
   if (!isValidLocale(locale)) notFound();
   const dict = await getDictionary(locale as Locale);
+  const c = dict.common;
+  const a = dict.about;
 
-  const values = [
-    { title: dict.about?.studyTitle, text: dict.about?.studyText },
-    { title: dict.about?.practiceTitle, text: dict.about?.practiceText },
-    { title: dict.about?.communityTitle, text: dict.about?.communityText },
-    { title: dict.about?.serviceTitle, text: dict.about?.serviceText },
+  const sections = [
+    { title: c.vision, lead: [a.visionLead], href: `/${locale}/vision#vision` },
+    { title: c.visionForJapan, lead: [a.visionForJapanLead], href: `/${locale}/vision#japan` },
+    { title: c.sangha, lead: [a.sanghaLead], href: `/${locale}/vision#sangha` },
+    {
+      title: c.ourCenters,
+      lead: [...a.centersList, a.centersReference],
+      href: `/${locale}/centres`,
+    },
+    { title: c.supportAndDonations, lead: [a.supportText], href: `/${locale}/donate` },
+    {
+      title: c.organizationOverview,
+      lead: [a.organizationLead],
+      href: `/${locale}/organization-info`,
+    },
   ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold text-charcoal-900">
-        {dict.about?.title}
-      </h1>
+      <h1 className="text-3xl font-bold text-charcoal-900">{a.title}</h1>
 
-      <section id="mission" className="mt-12 scroll-mt-20">
-        <h2 className="text-xl font-semibold text-charcoal-900">
-          {dict.about?.missionTitle}
-        </h2>
-        <p className="mt-4 text-charcoal-600 leading-relaxed">
-          {dict.about?.missionText}
-        </p>
-      </section>
-
-      <section id="history" className="mt-12 scroll-mt-20">
-        <h2 className="text-xl font-semibold text-charcoal-900">
-          {dict.about?.historyTitle}
-        </h2>
-        <p className="mt-4 text-charcoal-600 leading-relaxed">
-          {dict.about?.historyText}
-        </p>
-      </section>
-
-      <section id="values" className="mt-12 scroll-mt-20">
-        <h2 className="text-xl font-semibold text-charcoal-900">
-          {dict.about?.valuesTitle}
-        </h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          {values.map((v) => (
-            <Card key={v.title}>
+      <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        {sections.map((section) => (
+          <Link key={section.href} href={section.href} className="group">
+            <Card className="h-full transition-shadow group-hover:shadow-md">
               <CardHeader>
-                <CardTitle className="text-burgundy-500">{v.title}</CardTitle>
-                <CardDescription>{v.text}</CardDescription>
+                <CardTitle className="text-burgundy-500">{section.title}</CardTitle>
+                {section.lead.map((line) => (
+                  <CardDescription key={line}>{line}</CardDescription>
+                ))}
+                <p className="mt-2 text-xs font-semibold text-burgundy-600">
+                  {c.learnMore} ›
+                </p>
               </CardHeader>
             </Card>
-          ))}
-        </div>
-      </section>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

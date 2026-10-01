@@ -15,7 +15,10 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isValidLocale(locale)) return {};
   const dict = await getDictionary(locale);
-  return { title: `${dict.common?.blog} — MSB Japan` };
+  return {
+    title: `${dict.common.dharmaArticles} — MSB Japan`,
+    description: dict.resources.dharmaArticlesIntro,
+  };
 }
 
 export default async function BlogPage({
@@ -32,8 +35,9 @@ export default async function BlogPage({
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold text-charcoal-900">
-        {dict.common?.blog}
+        {dict.common.dharmaArticles}
       </h1>
+      <p className="mt-2 text-charcoal-600">{dict.resources.dharmaArticlesIntro}</p>
 
       {posts.length === 0 ? (
         <p className="mt-8 text-charcoal-500">

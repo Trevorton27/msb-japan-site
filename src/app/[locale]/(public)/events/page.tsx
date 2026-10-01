@@ -76,6 +76,7 @@ export default async function EventsPage({
       <h1 className="text-3xl font-bold text-charcoal-900">
         {dict.events?.title}
       </h1>
+      <p className="mt-4 text-charcoal-600">{dict.events.description}</p>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
         <EventFilters

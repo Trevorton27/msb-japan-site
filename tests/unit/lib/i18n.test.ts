@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { isValidLocale, locales, defaultLocale } from "@/lib/i18n/config";
+import ja from "@/dictionaries/ja.json";
+import en from "@/dictionaries/en.json";
 
 describe("i18n config", () => {
   it("has ja and en locales", () => {
@@ -22,5 +24,21 @@ describe("i18n config", () => {
     expect(isValidLocale("fr")).toBe(false);
     expect(isValidLocale("")).toBe(false);
     expect(isValidLocale("JA")).toBe(false);
+  });
+});
+
+describe("dictionaries", () => {
+  function keyPaths(value: unknown, prefix = ""): string[] {
+    if (Array.isArray(value)) return [`${prefix}[${value.length}]`];
+    if (value && typeof value === "object") {
+      return Object.entries(value).flatMap(([k, v]) =>
+        keyPaths(v, prefix ? `${prefix}.${k}` : k)
+      );
+    }
+    return [prefix];
+  }
+
+  it("ja.json and en.json have identical key sets", () => {
+    expect(keyPaths(ja).sort()).toEqual(keyPaths(en).sort());
   });
 });

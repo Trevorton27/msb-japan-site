@@ -13,9 +13,53 @@ import {
 import { NewsletterForm } from "@/components/public/newsletter-form";
 import { getPublishedEvents } from "@/server/queries/events";
 import { getPublishedBooks } from "@/server/queries/books";
-import { getPublishedCenters } from "@/server/queries/centers";
 import { getCurrentDharmaMessage } from "@/server/queries/dharma-messages";
 import { BookSlider } from "@/components/public/book-slider";
+
+/** Outline list items are written "Label：text" (JA) or "Label: text" (EN). */
+function splitListItem(item: string): { label: string; sep: string; text: string } {
+  const match = item.match(/^(.+?)(：|: )(.*)$/);
+  return match
+    ? { label: match[1] ?? item, sep: match[2] ?? "", text: match[3] ?? "" }
+    : { label: item, sep: "", text: "" };
+}
+
+function LinkedList({
+  items,
+  hrefs,
+  learnMore,
+}: {
+  items: string[];
+  hrefs: string[];
+  learnMore: string;
+}) {
+  return (
+    <ul className="mt-8 space-y-4">
+      {items.map((item, idx) => {
+        const { label, sep, text } = splitListItem(item);
+        return (
+          <li key={item} className="border-b border-[#1e3560]/10 pb-4 text-[#1e3560]">
+            <span className="font-semibold">{label}</span>
+            {text && (
+              <span className="text-sm">
+                {sep}
+                {text}
+              </span>
+            )}
+            {hrefs[idx] && (
+              <Link
+                href={hrefs[idx]}
+                className="ml-2 whitespace-nowrap text-xs font-bold text-burgundy-600 transition-opacity hover:opacity-75"
+              >
+                {learnMore} ›
+              </Link>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
 
 export async function generateMetadata({
   params,
@@ -44,10 +88,9 @@ export default async function HomePage({
 
   const dict = await getDictionary(locale as Locale);
 
-  const [upcomingEvents, books, centers, dharmaMessage] = await Promise.all([
+  const [upcomingEvents, books, dharmaMessage] = await Promise.all([
     getPublishedEvents({ upcoming: true }),
     getPublishedBooks(),
-    getPublishedCenters(),
     getCurrentDharmaMessage(),
   ]);
   const nextEvent = upcomingEvents[0] ?? null;
@@ -117,6 +160,11 @@ export default async function HomePage({
       {/* Quote & Nav Buttons */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
+          {dict.home.rinpocheWordsTitle && (
+            <h2 className="mb-8 text-3xl font-semibold text-[#1e3560]">
+              {dict.home.rinpocheWordsTitle}
+            </h2>
+          )}
           <blockquote className="text-2xl italic leading-relaxed text-[#1e3560] sm:text-3xl">
             {dict.home?.rinpocheQuote}
           </blockquote>
@@ -143,19 +191,6 @@ export default async function HomePage({
               {dict.common?.programs}
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* MSB Description */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold text-[#1e3560]">
-            Mangala Shri Bhuti
-          </h2>
-          <div className="mx-auto mt-3 h-0.5 w-20 bg-saffron-500" />
-          <p className="mt-8 leading-relaxed text-[#1e3560]">
-            {dict.home?.msbDescription}
-          </p>
         </div>
       </section>
 
@@ -222,6 +257,40 @@ export default async function HomePage({
         );
       })()}
 
+      {/* Programs & Activities */}
+      <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center">
+            <h2 className="text-3xl font-semibold text-[#1e3560]">
+              {dict.home.programsTitle}
+            </h2>
+            <div className="mx-auto mt-3 h-0.5 w-20 bg-saffron-500" />
+          </div>
+          <blockquote className="mt-8 text-center text-lg italic leading-relaxed text-[#1e3560]">
+            {dict.home.programsQuote}
+            {dict.home.programsQuoteAttribution && (
+              <footer className="mt-3 text-xs font-bold uppercase not-italic tracking-widest">
+                {dict.home.programsQuoteAttribution}
+              </footer>
+            )}
+          </blockquote>
+          <p className="mt-8 leading-relaxed text-[#1e3560]">
+            {dict.home.programsIntro}
+          </p>
+          <LinkedList
+            items={dict.home.programsList}
+            hrefs={[
+              `/${locale}/programs#online-lineage-course`,
+              `/${locale}/programs#in-person`,
+              `/${locale}/programs#in-person`,
+              `/${locale}/programs#tsok`,
+              `/${locale}/programs#compassionate-activity`,
+            ]}
+            learnMore={dict.common.learnMore}
+          />
+        </div>
+      </section>
+
       {/* Weekly Dharma Message */}
       <section className="bg-[#dff0ee] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
@@ -253,52 +322,28 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Online Learning */}
+      {/* Teachings & Learning Resources */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-3xl">
           <div className="text-center">
             <h2 className="text-3xl font-semibold text-[#1e3560]">
-              {dict.home?.onlineLearning}
+              {dict.home.resourcesTitle}
             </h2>
             <div className="mx-auto mt-3 h-0.5 w-20 bg-saffron-500" />
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {[
-              {
-                title: dict.common?.lineageCourses ?? "",
-                desc: dict.home?.lineageCoursesDesc ?? "",
-                href: `/${locale}/programs#lineage-courses`,
-                linkLabel: dict.common?.learnMore ?? "",
-              },
-              {
-                title: dict.common?.onlineStudyGroup ?? "",
-                desc: dict.home?.onlineStudyGroupDesc ?? "",
-                href: `/${locale}/gatherings`,
-                linkLabel: dict.common?.learnMore ?? "",
-              },
-              {
-                title: dict.common?.booksAndPublications ?? "",
-                desc: dict.home?.booksAndPublicationsDesc ?? "",
-                href: `/${locale}/shop`,
-                linkLabel: dict.common?.learnMore ?? "",
-              },
-            ].map((card) => (
-              <div key={card.href} className="flex flex-col overflow-hidden rounded-sm">
-                <div className="flex flex-1 flex-col bg-[#c04535] p-8">
-                  <h3 className="text-lg font-bold text-white">{card.title}</h3>
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-white/90">
-                    {card.desc}
-                  </p>
-                  <Link
-                    href={card.href}
-                    className="mt-8 text-xs font-bold uppercase tracking-widest text-saffron-500 transition-opacity hover:opacity-75"
-                  >
-                    {card.linkLabel} &rsaquo;
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="mt-8 leading-relaxed text-[#1e3560]">
+            {dict.home.resourcesIntro}
+          </p>
+          <LinkedList
+            items={dict.home.resourcesList}
+            hrefs={[
+              `/${locale}/teachings/${locale === "en" ? "msbj-link-en" : "msbj-link"}`,
+              `/${locale}/blog`,
+              `/${locale}/videos`,
+              `/${locale}/shop`,
+            ]}
+            learnMore={dict.common.learnMore}
+          />
         </div>
       </section>
 
@@ -330,128 +375,50 @@ export default async function HomePage({
         </section>
       )}
 
-      {/* Dharma Centers Grid */}
-      {centers.length > 0 && (
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-10 text-center">
-              <h2 className="text-3xl font-semibold text-[#1e3560]">
-                {locale === "ja" ? "日本の法輪センター" : "Dharma Centers in Japan"}
-              </h2>
-              <div className="mx-auto mt-3 h-0.5 w-20 bg-saffron-500" />
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2">
-              {centers.slice(0, 2).map((center) => {
-                const name =
-                  locale === "en" && center.nameEn
-                    ? center.nameEn
-                    : center.nameJa;
-                const location =
-                  locale === "en" && center.locationEn
-                    ? center.locationEn
-                    : center.locationJa;
-                const slug =
-                  locale === "en" && center.slugEn
-                    ? center.slugEn
-                    : center.slugJa;
-                return (
-                  <Link
-                    key={center.id}
-                    href={`/${locale}/dharma-centers/${slug}`}
-                    className="group overflow-hidden rounded-sm shadow-md transition-shadow hover:shadow-lg"
-                  >
-                    {center.imageUrl ? (
-                      <div className="overflow-hidden">
-                        <img
-                          src={center.imageUrl}
-                          alt={name}
-                          className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                      </div>
-                    ) : (
-                      <div className="flex h-48 w-full items-center justify-center bg-[#1e3560]/10">
-                        <span className="text-2xl text-[#1e3560]/30">⛩</span>
-                      </div>
-                    )}
-                    <div className="bg-white p-5">
-                      <h3 className="font-semibold text-[#1e3560] group-hover:underline">
-                        {name}
-                      </h3>
-                      {(location || center.country) && (
-                        <p className="mt-1 text-sm text-charcoal-500">
-                          {[location, center.country].filter(Boolean).join(", ")}
-                        </p>
-                      )}
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
+      {/* Our Centers */}
+      <section className="bg-ivory-100 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl">
+          <div className="text-center">
+            <h2 className="text-3xl font-semibold text-[#1e3560]">
+              {dict.home.ourCentersTitle}
+            </h2>
+            <div className="mx-auto mt-3 h-0.5 w-20 bg-saffron-500" />
           </div>
-        </section>
-      )}
-
-      {/* Visitor Cards */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <Link href={`/${locale}/start`}>
-            <Card className="h-full transition-shadow hover:shadow-md">
-              <CardHeader>
-                <CardTitle className="text-burgundy-500">
-                  {dict.home?.forVisitors}
-                </CardTitle>
-                <CardDescription>
-                  {dict.home?.forVisitorsDesc}
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
-          <Link href={`/${locale}/events`}>
-            <Card className="h-full transition-shadow hover:shadow-md">
-              <CardHeader>
-                <CardTitle className="text-burgundy-500">
-                  {dict.home?.upcomingEvents}
-                </CardTitle>
-                <CardDescription>
-                  {dict.home?.upcomingEventsDesc}
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
-          <Link href={`/${locale}/teachings`}>
-            <Card className="h-full transition-shadow hover:shadow-md">
-              <CardHeader>
-                <CardTitle className="text-burgundy-500">
-                  {dict.home?.teachingsLibrary}
-                </CardTitle>
-                <CardDescription>
-                  {dict.home?.teachingsLibraryDesc}
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            {dict.home.ourCentersList.map((name, idx) => (
+              <Link key={name} href={`/${locale}/centres#${idx === 0 ? "kyoto" : "izu"}`}>
+                <Card className="h-full transition-shadow hover:shadow-md">
+                  <CardHeader>
+                    <CardTitle className="text-[#1e3560]">{name}</CardTitle>
+                    <CardDescription>{dict.common.learnMore} ›</CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-sm text-charcoal-500">
+            {dict.home.ourCentersReference}
+          </p>
         </div>
       </section>
 
-      {/* Centres */}
-      <section className="bg-ivory-100 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-2xl font-bold text-charcoal-900">
-            {dict.home?.ourCentres}
-          </h2>
-          <p className="mt-2 text-charcoal-600">{dict.home?.ourCentresDesc}</p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            <Link href={`/${locale}/centres#tashi-gachil`}>
-              <Card className="h-full transition-shadow hover:shadow-md">
-                <CardHeader>
-                  <CardTitle>{dict.centres?.tashiGachil}</CardTitle>
-                  <CardDescription>
-                    {dict.centres?.tashiGachilDesc}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
-          </div>
+      {/* Banners */}
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {dict.home.banners.map((banner, idx) => {
+            const { label, text } = splitListItem(banner);
+            const href = [`/${locale}/start`, `/${locale}/events`, `/${locale}/teachings`][idx];
+            return (
+              <Link key={banner} href={href ?? `/${locale}`}>
+                <Card className="h-full transition-shadow hover:shadow-md">
+                  <CardHeader>
+                    <CardTitle className="text-burgundy-500">{label}</CardTitle>
+                    {text && <CardDescription>{text}</CardDescription>}
+                  </CardHeader>
+                </Card>
+              </Link>
+            );
+          })}
         </div>
       </section>
 

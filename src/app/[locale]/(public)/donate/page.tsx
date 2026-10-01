@@ -14,11 +14,8 @@ export async function generateMetadata({
   if (!isValidLocale(locale)) return {};
   const dict = await getDictionary(locale);
   return {
-    title: `${dict.common?.donate} — MSB Japan`,
-    description:
-      locale === "ja"
-        ? "マンガラ・シュリー・ブーティ・ジャパンへのご寄付"
-        : "Support Mangala Shri Bhuti Japan with a donation",
+    title: `${dict.donate.title} — MSB Japan`,
+    description: dict.donate.description,
   };
 }
 
@@ -89,9 +86,9 @@ export default async function DonatePage({
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
       <div className="mb-10 text-center">
         <h1 className="text-charcoal-900 text-3xl font-bold">
-          {dict.home?.donateCta}
+          {dict.donate.title}
         </h1>
-        <p className="text-charcoal-600 mt-4">{dict.home?.donateDesc}</p>
+        <p className="text-charcoal-600 mt-4">{dict.donate.description}</p>
       </div>
 
       <DonationForm locale={locale} dict={donateDict} />

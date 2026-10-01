@@ -14,7 +14,10 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isValidLocale(locale)) return {};
   const dict = await getDictionary(locale);
-  return { title: `${dict.common?.videos ?? "Videos"} — MSB Japan` };
+  return {
+    title: `${dict.common.videoAudioArchive} — MSB Japan`,
+    description: dict.resources.videoArchiveIntro,
+  };
 }
 
 function extractYoutubeId(url: string): string | null {
@@ -44,13 +47,9 @@ export default async function VideosPage({
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold text-charcoal-900">
-        {dict.common?.videos ?? "Videos"}
+        {dict.common.videoAudioArchive}
       </h1>
-      <p className="mt-2 text-charcoal-600">
-        {locale === "ja"
-          ? "法話、瞑想ガイド、教えの動画をご覧ください。"
-          : "Watch dharma talks, meditation guides, and teachings."}
-      </p>
+      <p className="mt-2 text-charcoal-600">{dict.resources.videoArchiveIntro}</p>
 
       {videos.length === 0 ? (
         <p className="mt-8 text-charcoal-500">

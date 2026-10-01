@@ -34,8 +34,6 @@
     "prayerRequests": "Prayer Requests",
     "visionForJapan": "Vision for Japan",
     "sangha": "Sangha",
-    "lineageCourses": "Lineage Courses",
-    "onlineStudyGroup": "Online Study Group",
     "videos": "Videos",
     "booksAndPublications": "Books & Publications",
     "lineage": "Lineage & Teachers",
@@ -75,7 +73,7 @@
     "error": "Failed to send. Please try again."
   },
   "events": {
-    "title": "Events",
+    "title": "Calendar",
     "upcoming": "Upcoming Events",
     "past": "Past Events",
     "register": "Register",
@@ -114,7 +112,8 @@
     "joinWaitlist": "Join waitlist",
     "viewList": "List",
     "viewCalendar": "Calendar",
-    "today": "Today"
+    "today": "Today",
+    "description": "A calendar page listing information on meditation gatherings, teachings, retreats, and other events."
   },
   "home": {
     "heroTitle": "Tibetan Buddhist Wisdom & Practice",
@@ -122,60 +121,69 @@
     "heroCta": "New Visitors",
     "nextEvent": "Next Event",
     "rinpocheQuote": "“In the end, all teachings—traditional or informal—have one aim: to help reduce self-importance and make room for the truth.”",
-    "rinpocheQuoteAttribution": "Dzigar Kongtrul Rinpoche",
+    "rinpocheQuoteAttribution": "DZIGAR KONGTRUL RINPOCHE",
     "aboutRinpoche": "About Rinpoche",
     "visionOfMsb": "Vision of MSB",
-    "msbDescription": "Mangala Shri Bhuti is a non-profit organization under the direction of Venerable Dzigar Kongtrul Rinpoche, whose mission is to establish the Longchen Nyingtik tradition of the Nyingma lineage. MSB Japan provides a home for the study, contemplation, and practice of the Buddhist teachings through programs, gatherings, and retreat opportunities in Japanese.",
-    "upcomingProgram": "Upcoming Program",
+    "upcomingProgram": "Upcoming Programs",
     "learnMoreOrRegister": "Learn More or Register",
     "weeklyDharmaMessage": "Weekly Dharma Message",
     "weeklyDharmaQuote": "\"Do not always focus on fixing situations externally and thereby distract yourself from what is happening internally. If you go inward, no matter how challenging it may seem, you are going to become victorious.\"",
     "weeklyDharmaAttribution": "Dzigar Kongtrul Rinpoche",
-    "onlineLearning": "Online Learning",
-    "lineageCoursesDesc": "MSB Japan offers courses on the Nyingma lineage, foundational meditation techniques, and key topics on the Buddhist path.",
-    "onlineStudyGroupDesc": "Each week MSB Japan hosts an online gathering to explore the teachings, practice meditation together, and connect with the sangha.",
-    "booksAndPublicationsDesc": "Deepen your study with books, study sets, and publications from Dzigar Kongtrul Rinpoche and the Mangala Shri Bhuti tradition.",
-    "forVisitors": "New Visitors",
-    "forVisitorsDesc": "An introduction to Mangala Shri Bhuti for first-time visitors.",
-    "upcomingEvents": "Upcoming Events",
-    "upcomingEventsDesc": "Find information about meditation sessions, dharma talks, retreats, and more.",
-    "teachingsLibrary": "Teachings Library",
-    "teachingsLibraryDesc": "Explore articles, audio, and video on Tibetan Buddhist teachings.",
     "donateCta": "Support Our Activities",
-    "donateDesc": "Mangala Shri Bhuti Japan's activities are made possible by the generous support of donors.",
+    "donateDesc": "The activities of Mangala Shri Bhuti Japan are sustained by your generous donations.",
     "donateButton": "Donate",
-    "newsletterTitle": "Newsletter",
-    "newsletterDesc": "Receive event updates and the latest news by email.",
+    "newsletterTitle": "Newsletter Signup",
+    "newsletterDesc": "Receive event information and the latest news by email.",
     "newsletterPlaceholder": "Email address",
     "newsletterButton": "Subscribe",
     "newsletterSuccess": "Thank you for subscribing.",
-    "ourCentres": "Our Centres",
-    "ourCentresDesc": "Learn about Mangala Shri Bhuti Japan's practice locations."
+    "rinpocheWordsTitle": "",
+    "programsTitle": "Programs & Activities",
+    "programsQuote": "“Together, this culture of study, practice and service molds students into people who are, if it could be said in a word, more selfless than when they entered the path.”",
+    "programsQuoteAttribution": "— Dzigar Kongtrul Rinpoche",
+    "programsIntro": "The path we follow in Mangala Shri Bhuti culminates in the teachings on Dzogchen, which are only transmitted and practiced in retreat. All students orient their study and practice toward eventually receiving these teachings directly from Kongtrul Rinpoche, undertaking a progression of practices and mind training along with a comprehensive course of study. Service is also highly emphasized as an aspect of students' development and is a central ethos of our organization.",
+    "programsList": [
+      "Online Lineage Course: Foundational meditation techniques and other key topics relating to the Buddhist path, as pursued within the Nyingma lineage.",
+      "Study Group: Regular study gatherings, both online and in person.",
+      "One-Day Meditation Retreat: A monthly one-day retreat held at Tashi Gachil in Kameoka, Kyoto.",
+      "Tsok Offering: A bimonthly feast offering practice.",
+      "Life Release: An annual life-release ceremony."
+    ],
+    "resourcesTitle": "Teachings & Learning Resources",
+    "resourcesIntro": "Deepen your study with books and other learning materials drawn from teachings by Dzigar Kongtrul Rinpoche and others in the Mangala Shri Bhuti tradition.",
+    "resourcesList": [
+      "MSBJ Link: A collection of Rinpoche's short teachings.",
+      "Dharma Articles: Rinpoche's teachings and MSBJ activity reports.",
+      "Video Teachings: Video teachings with subtitles.",
+      "Books"
+    ],
+    "ourCentersTitle": "Our Centers",
+    "ourCentersList": [
+      "Tashi Gachil (Kameoka, Kyoto)",
+      "Tashi Choling (Izu)"
+    ],
+    "ourCentersReference": "(Reference — MSB centers in the U.S.: Colorado / Vermont / Crestone)",
+    "banners": [
+      "For Beginners: An introduction to Mangala Shri Bhuti Japan's activities for first-time visitors.",
+      "Upcoming Events: See information on meditation gatherings, teachings, and retreats.",
+      "Teaching Archives: Browse articles, audio recordings, and videos on the Tibetan Buddhist teachings."
+    ]
   },
   "about": {
     "title": "About Us",
-    "missionTitle": "Our Mission",
-    "missionText": "Mangala Shri Bhuti is a nonprofit organization providing a space for teachings and practice in the Nyingma tradition of Tibetan Buddhism.",
-    "historyTitle": "Our History",
-    "historyText": "Mangala Shri Bhuti was founded by Dzigar Kongtrul Rinpoche to establish and transmit the Longchen Nyingtik tradition. The Japan chapter was established to provide teachings in Japanese and nurture a local practice community.",
-    "valuesTitle": "Our Values",
-    "studyTitle": "Study",
-    "studyText": "We value deep study of traditional texts and teachings.",
-    "practiceTitle": "Practice",
-    "practiceText": "We emphasize meditation practice in daily life.",
-    "communityTitle": "Community",
-    "communityText": "We foster a warm community of learning and practice together.",
-    "serviceTitle": "Service",
-    "serviceText": "We aspire to share the teachings widely and contribute to society."
+    "visionLead": "“The Buddhist teachings ask us to examine all aspects of our experience and to question our preconceptions and habitual beliefs.”",
+    "visionForJapanLead": "“The Revival of Buddhism in Japan”",
+    "sanghaLead": "“Building a culture in harmony with the Dharma.”",
+    "centersList": [
+      "Tashi Gachil (Kyoto Center)",
+      "Tashi Choling (Minami-Izu Retreat Center)"
+    ],
+    "centersReference": "(Reference — MSB centers in the U.S.: Colorado / Vermont / Crestone)",
+    "supportText": "The activities of Mangala Shri Bhuti Japan are sustained by your generous donations.",
+    "organizationLead": "About Mangala Shri Bhuti Japan (General Incorporated Association)"
   },
   "centres": {
-    "title": "Centres",
-    "description": "Practice locations of Mangala Shri Bhuti Japan.",
-    "tashiGachil": "Tashi Gachil",
-    "tashiGachilDesc": "A meditation centre based in Kyoto Prefecture. Regular meditation sessions and dharma talks are held here.",
-    "location": "Location",
-    "activities": "Main Activities",
-    "schedule": "Regular Schedule"
+    "title": "Our Centers"
   },
   "teachers": {
     "title": "Teachers",
@@ -257,18 +265,18 @@
   "metadata": {
     "title": "Mangala Shri Bhuti Japan",
     "description": "Mangala Shri Bhuti Japan — Tibetan Buddhist teachings and meditation practice",
-    "aboutTitle": "About — MSB Japan",
-    "aboutDescription": "The mission, history, and values of Mangala Shri Bhuti",
-    "centresTitle": "Centres — MSB Japan",
+    "aboutTitle": "About Us — MSB Japan",
+    "aboutDescription": "Mangala Shri Bhuti Japan (MSBJ) is a sangha community that studies and practices the Buddhist path together under the guidance of Dzigar Kongtrul Rinpoche in accordance with the Longchen Nyingtik lineage of the Nyingma school of Tibetan Buddhism.",
+    "centresTitle": "Our Centers — MSB Japan",
     "centresDescription": "Practice locations of Mangala Shri Bhuti Japan",
     "teachersTitle": "Teachers — MSB Japan",
     "teachersDescription": "Meet the teachers of Mangala Shri Bhuti",
     "startTitle": "New Visitors — MSB Japan",
     "startDescription": "How to get involved with Mangala Shri Bhuti Japan",
-    "eventsTitle": "Events — MSB Japan",
-    "eventsDescription": "Meditation sessions, dharma talks, retreats, and more",
+    "eventsTitle": "Calendar — MSB Japan",
+    "eventsDescription": "A calendar page listing information on meditation gatherings, teachings, retreats, and other events.",
     "programsTitle": "Programs — MSB Japan",
-    "programsDescription": "Ongoing study and practice programs at Mangala Shri Bhuti Japan",
+    "programsDescription": "In Mangala Shri Bhuti, students learn through a variety of study courses while practicing Lojong (mind training) and a progression of practices, walking a path that culminates in the teachings on Dzogchen, transmitted only in retreat. Service to the sangha is likewise an essential element in developing one's own qualities. Together, this culture of study, practice and service molds students into people who are, if it could be said in a word, more selfless than when they entered the path.",
     "gatheringsTitle": "Weekly Gatherings — MSB Japan",
     "gatheringsDescription": "Regular weekly gatherings for meditation and dharma study",
     "memberProgramsTitle": "Member Programs — MSB Japan",
@@ -280,7 +288,7 @@
   },
   "donate": {
     "title": "Support Our Activities",
-    "description": "Mangala Shri Bhuti Japan's activities are made possible by the generous support of donors.",
+    "description": "The activities of Mangala Shri Bhuti Japan are sustained by your generous donations.",
     "amount": "Amount",
     "customAmount": "Custom Amount",
     "oneTime": "One-time",
@@ -324,16 +332,30 @@
   },
   "programs": {
     "title": "Programs",
-    "description": "Ongoing study and practice programs offered by Mangala Shri Bhuti Japan.",
-    "meditationTitle": "Meditation Sessions",
-    "meditationDesc": "Regular guided meditation sessions for all levels.",
-    "studyGroupTitle": "Study Groups",
-    "studyGroupDesc": "Study Tibetan Buddhist texts and teachings together in Japanese.",
-    "retreatsTitle": "Retreats",
-    "retreatsDesc": "Intensive practice retreats held at various times throughout the year.",
-    "onlineTitle": "Online Programs",
-    "onlineDesc": "Participate in teachings and practice sessions from anywhere.",
-    "noPrograms": "No programs are currently listed. Please check back or subscribe to our newsletter for updates."
+    "studyGroupTitle": "Study Group",
+    "quote": "“Together, this culture of study, practice and service molds students into people who are, if it could be said in a word, more selfless than when they entered the path.”",
+    "intro": "In Mangala Shri Bhuti, students learn through a variety of study courses while practicing Lojong (mind training) and a progression of practices, walking a path that culminates in the teachings on Dzogchen, transmitted only in retreat. Service to the sangha is likewise an essential element in developing one's own qualities. Together, this culture of study, practice and service molds students into people who are, if it could be said in a word, more selfless than when they entered the path.",
+    "teachingsRetreatsTitle": "Teachings & Retreats",
+    "annualTeachingTitle": "Annual Teaching",
+    "annualTeachingText": [
+      "Once a year, we hold a teaching gathering led by either Dzigar Kongtrul Rinpoche or Dungse Jampal Norbu.",
+      "We also hold the Nyingma Summer Seminar in Japan each year, in parallel with the U.S. program (recorded, with simultaneous Japanese interpretation)."
+    ],
+    "inPersonTitle": "In-Person Gatherings",
+    "studyGroupText": "We hold a monthly study group at Tashi Gachil in Kameoka, Kyoto. Its aim is to move beyond a purely conceptual understanding of the teachings, deepening our understanding through experience in daily life, and providing a space to share what we discover personally and inspire one another. Anyone interested in working with their mind is welcome to join, whether or not they are already interested in Buddhism.",
+    "retreatTitle": "One-Day Meditation Retreat",
+    "retreatText": "In the busyness of modern life, it has become difficult to find long stretches of time to sit and look inward. To address this, we hold a monthly one-day meditation retreat (five one-hour sitting sessions) in a quiet, green setting in Kameoka City. Many participants find that after sitting for an extended period, they carry a strength of mind that is less easily swept away by habitual reactions, even after the retreat ends. Anyone interested in meditation is welcome, and partial attendance for even a single session is also accepted.",
+    "onlineCourseTitle": "Online Lineage Course",
+    "onlineCourseText": [
+      "How can we bring the teachings into daily life? How can everyday experience nourish us along the path? How can we then progress through the stages of the Buddhist path, become a student under a single teacher, and continue Vajrayana teachings and practice while living an ordinary life? As one way of meeting these heartfelt questions, Mangala Shri Bhuti offers an Online Lineage Course.",
+      "Held over Zoom so that participants can join regardless of location, the Online Lineage Course draws on Kongtrul Rinpoche's teachings from around the world, selecting and organizing material suited to each theme as the basis for study, contemplation, and meditation. Sessions are held online every two weeks, giving participants a chance to share their experiences and insights with one another and deepen their understanding together."
+    ],
+    "tsokTitle": "Tsok Offering",
+    "tsokText": "Twice a month, we hold a tsok (feast offering) practice at Tashi Gachil in Kameoka City. Open only to those who have received empowerment from Rinpoche.",
+    "compassionateTitle": "Compassionate Activity",
+    "lifeReleaseTitle": "Life Release",
+    "lifeReleaseText": "Once a year, together with Kongtrul Rinpoche or Dungse Jampal Norbu, we hold a life-release ceremony (tsetar) in the sea off Minami-Izu, releasing fish and other sea creatures back into the wild. For those unable to attend in person, we accept donations toward this practice. (Life release is a ceremony in which captured creatures are released into a pond or the wild as an act of merit.) Please see the schedule page for the exact date.",
+    "lifeReleaseDonation": "Suggested donation: from ¥2,000 per share"
   },
   "footer": {
     "organizationInfo": "Organization Overview",
@@ -435,5 +457,9 @@
       "error": "Invalid email or password.",
       "accessDenied": "Access denied. Please contact MSB to request member access."
     }
+  },
+  "resources": {
+    "dharmaArticlesIntro": "Articles on Dzigar Kongtrul Rinpoche's teachings and MSBJ's recent activities.",
+    "videoArchiveIntro": "Video teachings by Rinpoche, with Japanese captions."
   }
 }

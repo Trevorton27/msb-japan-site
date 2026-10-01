@@ -36,6 +36,12 @@ export default async function LifeReleasePage({
       <p className="mt-4 text-charcoal-600 leading-relaxed">
         {dict.lifeRelease?.description}
       </p>
+      <Link
+        href={`/${locale}/programs#compassionate-activity`}
+        className="mt-4 inline-block text-sm font-semibold text-burgundy-600 transition-colors hover:text-burgundy-700"
+      >
+        {dict.common.programs} › {dict.common.compassionateActivity}
+      </Link>
 
       <div className="mt-12 rounded-lg border border-charcoal-200 bg-ivory-50 p-6">
         <h2 className="text-xl font-semibold text-charcoal-900">

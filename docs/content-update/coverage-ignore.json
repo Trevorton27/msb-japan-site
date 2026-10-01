@@ -1,6 +1,8 @@
 [
-  { "line": 350, "reason": "Footer JA label has an editorial note in parentheses; render label only: 団体概要 (or 法人概要 if merged)" },
-  { "line": 351, "reason": "Footer JA label has an editorial note in parentheses; render label only: 定款・規約" },
-  { "line": 352, "reason": "Footer JA label has an editorial note in brackets; render label only: プライバシーポリシー" },
-  { "line": 353, "reason": "Footer JA label; render as: MSB本部サイト（米国）" }
+  {"line": 350, "reason": "Footer JA label has an editorial note in parentheses; render label only: 団体概要 (or 法人概要 if merged)"},
+  {"line": 351, "reason": "Footer JA label has an editorial note in parentheses; render label only: 定款・規約"},
+  {"line": 352, "reason": "Footer JA label has an editorial note in brackets; render label only: プライバシーポリシー"},
+  {"line": 353, "reason": "Footer JA label; render as: MSB本部サイト（米国）"},
+  {"line": 325, "reason": "Guided Meditations (New) has no content yet (新規作成予定); no nav item or page until it does (D6)"},
+  {"line": 326, "reason": "Guided Meditations (New) has no content yet; no nav item or page until it does (D6)"}
 ]
