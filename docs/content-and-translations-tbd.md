@@ -29,6 +29,7 @@ be done, broken down by language (Japanese / English) and media assets.
 8. [Venues](#8-venues)
 9. [Member Resources](#9-member-resources)
 10. [Member Announcements](#10-member-announcements)
+11. [Outline v11 Content Update](#11-outline-v11-content-update)
 
 ---
 
@@ -186,7 +187,7 @@ All 4 teachers have both Japanese and English text (name, bio, slug).
 |---|-----------|-----------|:-----:|
 | 1 | ズィガー・コントゥル・リンポチェ | Dzigar Kongtrul Rinpoche | Yes |
 | 2 | ディルゴ・ケンツェ・リンポチェ | Dilgo Khyentse Rinpoche | Yes |
-| 3 | ドゥンセ・ジャンポール・ノルブ | Dungse Jampal Norbu | Yes |
+| 3 | ドゥンセ・ジャンパル・ノルブ | Dungse Jampal Norbu | Yes |
 
 ---
 
@@ -305,4 +306,66 @@ The member announcements section is empty. Each announcement supports:
 
 ### Translation Status
 
-All existing content has both Japanese and English translations complete. No translation work is currently outstanding.
+All existing content has both Japanese and English text. The English items
+flagged for native review in the outline v11 update are listed in
+[section 11](#11-outline-v11-content-update).
+
+---
+
+## 11. Outline v11 Content Update
+
+> Added on 2026-10-01 (branch `content/outline-v11`). Source:
+> `docs/content-update/source-outline-v11.txt`; plan: `docs/content-update/PLAN.md`.
+
+All public site text now follows outline v11, copied verbatim. Run
+`node scripts/check-content-coverage.mjs` to confirm every source line is on the
+site; deliberately unrendered lines are listed with reasons in
+`docs/content-update/coverage-ignore.json`.
+
+### English needing native review (新規英訳・要ネイティブチェック)
+
+- [ ] **Nyingma (outline 3-4)** — `/lineage/nyingma`. New MSBJ translation.
+- [ ] **Home page (outline section 1)** — the tag at the end of the Home section
+      (source line 71) marks the Home English as new MSBJ-original translation.
+
+### Missing English in the outline (nothing renders on `/en`)
+
+- [ ] Home: the heading 「リンポチェの言葉」 above the Rinpoche quote.
+- [ ] Vision for Japan: the attribution 「――ズィガー・コントゥル・リンポチェへのインタビュー（2001年11月25日）の抄訳」 (source line 154).
+- [ ] Lineage landing: an English rendering of the quote 「精神の道とは、精神修行と日常生活を融合させることにある」 (see D3).
+
+### Source text issues (left as written — confirm or correct in the outline)
+
+- [ ] Tsok frequency conflict (D1): Home JA 年次供養行, Home EN "bimonthly", Programs 月に2回 / "Twice a month".
+- [ ] Longchen Nyingtik reference: JA 『Masters of Meditation and Miracle』 vs EN "…Miracles" (published title is *Masters of Meditation and Miracles*).
+- [ ] Tashi Choling EN: stray comma in "Tashi Choling, means “Auspicious Place of Dharma.”"
+- [ ] Dilgo Khyentse letter EN: missing space in "…in America.You should go…".
+- [ ] 「英語版ウェブサイト」 / "his art website" (Dzigar Kongtrul Rinpoche bio) has no URL to link to.
+
+### Open decisions and how they were resolved
+
+| # | Decision | Resolution |
+|---|----------|------------|
+| D1 | Tsok frequency conflict | Programs page uses 月に2回 / "Twice a month"; Home lines left as written and flagged above. |
+| D2 | EN marked 要ネイティブチェック | Shipped as written; listed above for review. |
+| D3 | Lineage intro quote has no EN | EN title "A Spiritual Life in Modern Times" renders as a heading; quote shown on `/ja` only. |
+| D4 | Target of 「法人概要・沿革はこちら」 | `/history`. Organization Overview also links to `/bylaws`. |
+| D5 | Programs submenu labels | Section headings used for submenu and anchors (`#teachings-retreats`, `#in-person`, `#online-lineage-course`, `#tsok`, `#compassionate-activity`). |
+| D6 | Guided Meditations (New) | No nav item or page; lines 325–326 in the coverage ignore list. |
+| D7 | Pages outside the outline (`start`, `gatherings`, `member-programs`, `prayer-requests`, `keifu` post, Elizabeth Mattis Namgyel) | All kept and routable; removed from the main nav only. **No redirects added** — `keifu` → `/lineage` still awaits confirmation. |
+| D8 | Privacy Policy not in outline | Footer link kept. |
+
+### Pending actions
+
+- [ ] **Apply DB content:** `pnpm db:apply-outline-v11 --dry-run`, review, then
+      `pnpm db:apply-outline-v11`. Updates 3 teachers, event `zazenkai-2026-09`
+      and posts `msbj-link`, `dharma-article`, `video-howa`. Until then `/teachers`
+      and those posts show the old text.
+- [ ] Decide on the `keifu` → `/lineage` redirect (D7), via `/admin/redirects`.
+- [ ] Venue seed still lists Tashi Gachil at 京都東山 (法然院隣); the outline says 京都府亀岡市.
+- [ ] Dharma Centers (section 7 above) are placeholder rows (Tokyo, New York, London, Paris…) and no
+      longer appear on the home page; the `/dharma-centers/[slug]` pages still serve them.
+- [ ] Home hero title/subtitle are not in the outline (JA subtitle uses the old spelling マンガラ・シュリー・ブーティ).
+- [ ] `/life-release` body text predates the outline (describes "animals destined for slaughter"; the outline describes releasing fish at sea).
+- [ ] Remove test data visible on the home page: weekly Dharma message "test message / -Some Guy" and sample books in the slider.
+

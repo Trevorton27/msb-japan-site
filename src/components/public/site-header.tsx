@@ -96,6 +96,9 @@ export async function SiteHeader({
               membersHref={`/${locale}/members`}
             />
           </div>
+          <div className="absolute right-0 flex items-center md:hidden">
+            <LanguageSwitcher locale={locale} />
+          </div>
           <Link href={`/${locale}`}>
             <img
               src="/images/msbLogo.png"

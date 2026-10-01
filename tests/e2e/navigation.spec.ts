@@ -168,6 +168,15 @@ test.describe("Language switcher – anchors (14.12b)", () => {
   });
 });
 
+test.describe("Language switcher – mobile (14.12c)", () => {
+  test("14.12c mobile header has a language switcher that keeps the #anchor", async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto("/ja/programs#tsok");
+    await page.getByRole("link", { name: "Switch to English" }).click();
+    await expect(page).toHaveURL(`${BASE}/en/programs#tsok`);
+  });
+});
+
 test.describe("Admin locale toggle (14.13)", () => {
   test("14.13 admin locale toggle re-renders labels between ja and en", async ({ browser }) => {
     const ctx = await browser.newContext({
