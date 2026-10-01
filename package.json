@@ -17,6 +17,7 @@
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
+    "db:apply-outline-v11": "tsx prisma/scripts/apply-outline-v11.ts",
     "postinstall": "prisma generate"
   },
   "prisma": {

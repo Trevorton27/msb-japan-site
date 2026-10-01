@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { getTeachers } from "@/server/queries/content";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { parseBio } from "@/lib/content/bio";
 
 export async function generateMetadata({
   params,
@@ -54,7 +55,7 @@ export default async function TeachersPage({
               : teacher.imageUrl;
 
           return (
-            <Card key={teacher.id} id={anchor} className="scroll-mt-24">
+            <Card key={teacher.id} id={anchor} className="scroll-mt-48">
               <CardHeader>
                 <CardTitle className="text-2xl">{name}</CardTitle>
               </CardHeader>
@@ -68,9 +69,55 @@ export default async function TeachersPage({
                       className="h-40 w-40 flex-shrink-0 rounded-lg object-cover"
                     />
                   )}
-                  <p className="text-charcoal-600 text-sm leading-relaxed">
-                    {bio}
-                  </p>
+                  <div className="space-y-4">
+                    {parseBio(bio ?? "").map((block, idx) => {
+                      switch (block.kind) {
+                        case "tagline":
+                          return (
+                            <p
+                              key={idx}
+                              className="text-burgundy-600 text-sm font-medium"
+                            >
+                              {block.text}
+                            </p>
+                          );
+                        case "heading":
+                          return (
+                            <h3
+                              key={idx}
+                              className="text-charcoal-900 pt-2 text-lg font-semibold"
+                            >
+                              {block.text}
+                            </h3>
+                          );
+                        case "quote":
+                          return (
+                            <blockquote
+                              key={idx}
+                              className="border-burgundy-500 text-charcoal-700 space-y-3 border-l-4 pl-4 text-sm leading-relaxed italic"
+                            >
+                              {block.paragraphs.map((q) => (
+                                <p key={q}>{q}</p>
+                              ))}
+                              {block.source && (
+                                <footer className="text-charcoal-500 text-xs not-italic">
+                                  {block.source}
+                                </footer>
+                              )}
+                            </blockquote>
+                          );
+                        default:
+                          return (
+                            <p
+                              key={idx}
+                              className="text-charcoal-600 text-sm leading-relaxed"
+                            >
+                              {block.text}
+                            </p>
+                          );
+                      }
+                    })}
+                  </div>
                 </div>
               </CardContent>
             </Card>

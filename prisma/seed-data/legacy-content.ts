@@ -45,10 +45,46 @@ export const legacyTeachers: LegacyTeacher[] = [
     slugEn: "dzigar-kongtrul-rinpoche-en",
     nameJa: "ズィガー・コントゥル・リンポチェ",
     nameEn: "Dzigar Kongtrul Rinpoche",
-    bioJa:
-      "ズィガー・コントゥル・リンポチェは1964年、北インドのヒマチェル・プラデッシュ州でチベット人の両親のもとに生まれる。幼少時にジャムグン・コントゥル・ロドゥ・タイェの化身（トゥルク）として認定され、その後、僧院で仏教教義全般を修習、とりわけ、ニンマ派の教え、特にロンチェン・ニンティクの教えを彼の根本ラマ（導師）、ディルゴ・ケンツェ・リンポチェから伝授される。1989年、妻子と共に米国に移住、1990年からコロラド州ボールダーのナロパ大学で仏教哲学の教師として5年間教壇に立つ。この時期に、ケンツェ・リンポチェのサンスクリット名を冠したマンガラ・シュリ・ブティ・サンガを設立。コントゥル・リンポチェは、米国コロラド州を中心に、北米、南米、欧州、アジアなど、世界各地で精力的に仏法を説いている。",
-    bioEn:
-      "Dzigar Kongtrul Rinpoche was born in 1964 in Himachal Pradesh, northern India, to Tibetan parents. Recognized in childhood as the incarnation (tulku) of Jamgön Kongtrul Lodrö Thayé, he trained in the full range of Buddhist doctrine in a monastic setting, receiving the Nyingma teachings — in particular the Longchen Nyingtik — from his root lama, Dilgo Khyentse Rinpoche. In 1989 he moved to the United States with his family, and from 1990 taught Buddhist philosophy for five years at Naropa University in Boulder, Colorado. During this period he founded the Mangala Shri Bhuti sangha, named after Khyentse Rinpoche's Sanskrit name. Based in Colorado, Kongtrul Rinpoche teaches the Dharma energetically throughout North and South America, Europe, and Asia.",
+    bioJa: `+ チベット仏教ニンマ派に属するロンチェン・ニンティク系譜の師、ジャムゴン・コントゥル・ロドゥ・タイェの化身（トゥルク）
+
+ズィガー・コントゥル・リンポチェは1964年、北インドのヒマチェル・プラデッシュ州で、チベット人の両親のもとに生まれました。幼少時にジャムゴン・コントゥル・ロドゥ・タイェの化身（トゥルク）として認定され、僧院で仏教教義全般を修めるとともに、根本ラマであるディルゴ・ケンツェ・リンポチェからニンマ派、とりわけロンチェン・ニンティクの教えを伝授されました。ほかにも、トゥルク・ウジェン・リンポチェ、ニョシュル・ケン・リンポチェ、高僧ケンポ・リンチェンのもとで広く仏法を学んでいます。
+
+1989年に妻子とともに米国へ移住し、1990年からはコロラド州ボールダーのナロパ大学で5年間、仏教哲学を教えました。この時期に、根本ラマであるケンツェ・リンポチェのサンスクリット名を冠した「マンガラ・シュリ・ブティ・サンガ」を設立しています。マンガラ・シュリ・ブティは現在、世界7カ国14カ所のセンターに240人の生徒を擁し、ニンマ派ロンチェン・ニンティク法脈の智慧を伝承・実践する活動を続けています。コントゥル・リンポチェは米国コロラド州を拠点に、北米、南米、欧州、アジアなど世界各地で精力的に法を説いています。
+
+リンポチェの法話は、仏教を概念だけの理解にとどめず、困難な状況でどのように心に取り組めばよいかを、論理的かつ現代に即した形でわかりやすく説くことで世界各地で知られています。また、教えが表面的なものにならないよう、伝統的な仏教古典を学ぶことも重視しており、日本を含む世界各地で「シェダ」と呼ばれる伝統的な仏教学習プログラムを実施しています。近年は「現代における菩薩（MDB, Modern Day Bodhisattva）」という理念を提唱し、日々の生活の中で自己愛着を減らし利他心を強めることで、自らが灯火となり、家族や職場から少しずつその灯りを他者へ灯していく――そうした草の根的な菩薩の活動の大切さを説いています。
+
+弟子の一人であるペマ・チョドロンは、米国で多くの仏教書を手がけるベストセラー作家で、現在もリンポチェの指導のもと、コロラドのリトリートセンターでリトリートを行っています。またリンポチェの妻で修行者でもあるエリザベス・マチス・ナムギャルは、『The Power of an Open Question』の著者です。リンポチェは、『チベットの生と死の書』の著者ソギャル・リンポチェが率いるフランスのサンガ「リクパ」にも毎年招かれ、法話を行っています。
+
+リンポチェは抽象画家としても活動しており、創作のプロセスを瞑想修行と重ね合わせながら、アートを通じて仏教を伝えています。詳細は英語版ウェブサイトをご参照ください。
+
+> 「瞑想修行で最も重要なのは、五感を通じて認識する外側の事象と、思考や感情など内面の事象を、良い悪いの分別なく、自由に現れるのに任せることができるかにある。瞑想のプロセスを通じて、一見、脅かすように思えるものを拒絶したり、一見、頼りになりそうなものを引き寄せようとせず、何の手も加えることなく、現れてくる事象をあるがままに観じるとき、心の本来の裸のままの完全な状態を体験することになる。アートも同じで、美しい、醜い、「こうあるべき、こうあるべきでない」といった概念を被せることなく、心の本来のエネルギーを表現できるとき、そのような作品は見る者に、生来の無為で自然な目覚めた状態を体験させることができる」
+~ （ズィガー・コントゥル・リンポチェの書籍、『Natural Vitality』より）
+
+## 弟子としてのコントゥル・リンポチェ
+
+> 「私自身も、私の根本ラマであるディルゴ・ケンツェ・リンポチェにお会いするときはいつも、彼の落ち着きと、明晰さ、広大さから、自分の利己心が浮き彫りにされているような感覚を覚えた。自分では重要なことだと思って話してみると、自己中心的な心が見透かされているような気になったものだ。これは師弟間で交わされる無言のコミュニケーションであり、私が師から学んだ方便の一つでもある。
+> この種のやりとりは、他の人との間でも起こっていた。完全に心を取り乱し、錯乱状態になった人が、彼の存在に触れるだけで、すぐさま落ち着きを取り戻したこともあった。これが「師を鏡とする」の意味するところだ。師は私たちの心がどのように行き詰まっているかを映し出すだけでなく、同時に心の本来の健全さも示してくれる。これこそが師弟関係を築く最大の目的だと言えるだろう。」
+~ ――『心の鏡を見つめる』（ズィガー・コントゥル・リンポチェ著、PRAJNA PRESS）からの引用`,
+    bioEn: `+ A Nyingma lineage-holder of the Longchen Nyingtik tradition, recognized as the reincarnation of Jamgon Kongtrul Lodro Thaye.
+
+Venerable Dzigar Kongtrul Rinpoche was born in 1964 in the Northern Indian province of Himachal Pradesh to Tibetan parents. Recognized in childhood as an incarnation of Jamgon Kongtrul Lodro Thaye, he was raised in a monastic environment and received extensive training in all aspects of Buddhist doctrine—in particular the teachings of the Nyingma lineage, and especially the Longchen Nyingtik, from his root teacher, Kyabje Dilgo Khyentse Rinpoche. Rinpoche also studied extensively under Tulku Urgyen Rinpoche, Nyoshul Khen Rinpoche, and the great scholar Khenpo Rinchen.
+
+In 1989 Kongtrul Rinpoche moved to the United States with his family, and from 1990 taught Buddhist philosophy for five years at Naropa University in Boulder, Colorado. During this time he founded Mangala Shri Bhuti Sangha, named after the Sanskrit name of his root teacher, Kyabje Dilgo Khyentse Rinpoche. Mangala Shri Bhuti today has 240 students across 14 centers in 7 countries, and continues its work of transmitting and practicing the wisdom of the Nyingma Longchen Nyingtik lineage. Based in Colorado, U.S.A., Kongtrul Rinpoche teaches actively around the world, traveling throughout North and South America, Europe, and Asia.
+
+Rinpoche's teachings are known worldwide for going beyond a merely conceptual understanding of Buddhism, explaining in an accessible contemporary way how to work with the mind in difficult situations. To keep the teachings from becoming superficial, he also emphasizes study of the classical Buddhist texts, and runs traditional shedra programs in Japan and elsewhere around the world. In recent years he has proposed the concept of the “Modern Day Bodhisattva (MDB),” teaching the importance of grassroots bodhisattva activity in which each person works with their own mind in daily life, reducing self-attachment and strengthening altruism, so as to become a light that gradually spreads, family by family, and workplace by workplace, to others.
+
+One of Rinpoche’s students, Pema Chodron, is a bestselling author of numerous Buddhist books in the U.S. and continues to do retreat at Rinpoche's Colorado retreat center under his guidance. Rinpoche's wife and fellow practitioner, Elizabeth Mattis Namgyel, is the author of The Power of an Open Question. Rinpoche is also invited each year to teach at Rigpa, the French sangha founded by Sogyal Rinpoche, author of The Tibetan Book of Living and Dying.
+
+Rinpoche is also active as an abstract painter, relating the creative process to meditation practice, conveying the teachings of Buddhism through art. For more, please see his art website.
+
+> “What matters most in meditation practice is whether we can let outer phenomena perceived through the five senses, and inner phenomena such as thoughts and emotions, arise freely, without dividing them into good or bad. Through the process of meditation, when we neither reject what appears threatening nor try to draw in what appears reliable, but simply witness whatever arises just as it is, without adding anything, we come to experience the mind's naked, complete, original state. It is the same with art: when we can express the mind's natural energy without overlaying concepts of beautiful or ugly, of how things should or should not be, such work allows the viewer to experience an innate, effortless, natural state of wakefulness.”
+~ (From Natural Vitality by Dzigar Kongtrul Rinpoche)
+
+## Kongtrul Rinpoche on the Disciple-Teacher Relationship
+
+> “When I was in the presence of my teacher, Dilgo Khyentse Rinpoche, the very evenness, clarity, and spaciousness of his mind naturally exposed my self-importance. I knew he could always see through my self-absorption, no matter how significant or complex I thought my story was. This was an unspoken understanding we had as teacher and student. This kind of communication was one of the ways I learned from him.
+> I saw this kind of interaction take place with others too. Sometimes people whose minds were wild—really crazy—would become immediately tamed by his presence. This is what is meant by the teacher as mirror: the teacher is the mirror that reflects not only how we are stuck but our basic sanity as well. This is the main purpose of the teacher-student relationship.”
+~ — from It's Up to You: The Practice of Self-Reflection on the Buddhist Path by Dzigar Kongtrul Rinpoche, Shambhala Publications: 2005`,
     imageUrl: "/images/legacy/113185957.webp",
     sortOrder: 1,
   },
@@ -57,22 +93,56 @@ export const legacyTeachers: LegacyTeacher[] = [
     slugEn: "dilgo-khyentse-rinpoche-en",
     nameJa: "ディルゴ・ケンツェ・リンポチェ",
     nameEn: "Dilgo Khyentse Rinpoche",
-    bioJa:
-      "コントゥル・リンポチェの精神の父で根本ラマであるディルゴ・ケンツェ・リンポチェは、リメ（チベット仏教の超宗派）運動の偉大な指導者であるジャムヤン・ケンツェ・ワンポの化身でした。ディルゴ・ケンツェ・リンポチェの学識、理解、不断の慈愛、そして威厳ある風貌は、いまだ多くの人々の心に鮮明に記憶されています。コントゥル・リンポチェのサンガ「マンガラ・シュリ・ブティ」は、ケンツェ・リンポチェのサンスクリット名を冠しています。",
-    bioEn:
-      "Dilgo Khyentse Rinpoche, Kongtrul Rinpoche's spiritual father and root lama, was the incarnation of Jamyang Khyentse Wangpo, the great leader of the Rimé (non-sectarian) movement of Tibetan Buddhism. His learning, understanding, unceasing loving-kindness, and dignified presence remain vividly remembered by many. Kongtrul Rinpoche's sangha, Mangala Shri Bhuti, bears Khyentse Rinpoche's Sanskrit name.",
+    bioJa: `+ リメ（チベット仏教の超宗派）運動の偉大な指導者、ジャムヤン・ケンツェ・ワンポの化身
+
+コントゥル・リンポチェの精神の父であり根本ラマでもあるディルゴ・ケンツェ・リンポチェは、リメ（チベット仏教の超宗派）運動の偉大な指導者、ジャムヤン・ケンツェ・ワンポの化身でした。その深い学識と理解、絶えることのない慈愛、威厳ある佇まいは、いまも多くの人々の心に鮮やかに刻まれています。コントゥル・リンポチェのサンガ「マンガラ・シュリ・ブティ」は、ケンツェ・リンポチェのサンスクリット名を冠したものです。
+
+ディルゴ・ケンツェ・リンポチェについて詳しくは、公式ウェブサイトまたは伝記『The Spirit of Tibet』（Matthieu Ricard著）をご覧ください。`,
+    bioEn: `+ An incarnation of the great rimé, or non-sectarian, master Jamyang Khyentse Wangpo.
+
+His Holiness Dilgo Khyentse Rinpoche was Kongtrul Rinpoche's spiritual father and root teacher. An incarnation of the great rimé, or non-sectarian, master Jamyang Khyentse Wangpo, he is remembered for his scholarship, realization, unceasing warmth and kindness, and his majestic presence. Kongtrul Rinpoche took His Holiness' Sanskrit name, Mangala Shri Bhuti, as the namesake for our organization.
+
+For more information about His Holiness, please visit www.shechen.org. We also highly recommend the biography of His Holiness, The Spirit of Tibet, written by his close student, Matthieu Ricard.`,
     imageUrl: "/images/legacy/113185958.webp",
     sortOrder: 2,
   },
   {
     slugJa: "dungse-jampal-norbu",
     slugEn: "dungse-jampal-norbu-en",
-    nameJa: "ドゥンセ・ジャンポール・ノルブ",
+    nameJa: "ドゥンセ・ジャンパル・ノルブ",
     nameEn: "Dungse Jampal Norbu",
-    bioJa:
-      "ズィガー・コントゥル・リンポチェのご子息であり米国MSBの後継者であるドゥンセ・ジャンポール・ノルブ氏（ドゥンセラ）は、その人生のほとんどを米国コロラドで過ごしています。父コントゥル・リンポチェから様々な教えや伝授を授かり、インドや米国におけるシェダ（伝統的な学習課程）など様々な導きを受け、現在は、コロラド州にあるリトリートセンター『ロンチェン・ジグメ・サムテン・リン』にて毎年百日間のリトリートを行いながら、世界各地にて法話を説いています。彼のテーマは「仏教の教えがいかに日常生活に役立つのか」であり、その法話は智慧とユーモアに満ち溢れています。",
-    bioEn:
-      "Dungse Jampal Norbu (Dungse-la), son of Dzigar Kongtrul Rinpoche and his successor at MSB in the United States, has spent most of his life in Colorado. Having received teachings and transmissions from his father — including traditional shedra study in India and the US — he now undertakes a hundred-day retreat each year at the Longchen Jigme Samten Ling retreat centre in Colorado while teaching around the world. His theme is how the Buddhist teachings serve everyday life, and his talks are full of wisdom and humor.",
+    bioJa: `+ チベット仏教ニンマ派に属するロンチェン・ニンティク系譜の師、ズィガー・コントゥル・リンポチェの息子であり、法脈の継承者
+
+ズィガー・コントゥル・リンポチェのご子息であり、法脈の後継者であるドゥンセ・ジャンパル・ノルブ氏（ドゥンセ・ラ）は、アジアに長く滞在し旅を重ねてきたものの、幼少期の大半はコロラドで過ごしました。「いつから仏教を学んでいるのか」と尋ねられれば、彼はおそらく「生まれてすぐ」と答えるでしょう。父コントゥル・リンポチェのもとで、ときにはクレストンの山々を歩きながら、またインドで列車を共にしながら、さまざまな教えや伝授を授かってきたからです。
+
+コントゥル・リンポチェは、ドゥンセ・ラがまだ幼いころ、根本ラマであるキャブジェ・ディルゴ・ケンツェ・リンポチェから、ドゥンセ・ラを法脈の継承者として育てるよう託されました。その後ドゥンセ・ラは、インドや米国でのシェダ（伝統的な学習課程）をはじめ、コントゥル・リンポチェからさまざまな導きを受け、現在はコロラド州のリトリートセンター『ロンチェン・ジグメ・サムテン・リン』で毎年百日間のリトリートを行いながら、世界各地で法話を説いています。法話のテーマは「仏教の教えがいかに日常生活に役立つか」。自身の体験に根ざした語り口は、聴く者にまったく新しい視点をもたらし、智慧とユーモアに満ちています。
+
+キャブジェ・ディルゴ・ケンツェ・リンポチェは涅槃に入る三週間前、ドゥンセ・ラの将来について記した手紙をコントゥル・リンポチェに手渡しました。
+
+> 「コントゥルラ、お前のロンチェン・ニンティクの前行とその一連の修行を実践しようとする気持ちはとても素晴らしい。トゥクドゥプ・ジュンチ・コルチャンを毎日欠かさず行じるように。米国に仏法を学ぶ基盤を設立できるなら、それも素晴らしいことだ。
+> お前の父の故郷やお前の先代の僧院を何度も訪れ、よく見て回るといい。そこでシェダ（修学）やドゥプダ（修行）の伝統を再興できるのならそれも素晴らしい。そうすれば僧院も安泰だろう。
+> お前の息子については、僧侶でもンガッパ（在家行者）でもいい、お前の受け継いだ法脈を守る師となるように育てることだ。これには大きな利益がある。それが実現するよう、この年老いた父は決して忘れることなく、祈りを捧げている。どうか加持と加護があらんことを。」
+
+コントゥル・リンポチェは次のように述べています。
+
+> 「この手紙は、私が根本ラマであるケンツェ・リンポチェに最後にお会いしたときに頂いたものである。それは彼の最後のリトリートの最中のことで、彼は言葉を一言も発することなく突然この手紙をしたため、私に手渡してくれたのだ。私と妻のエリザベスは、その時以来、この師の最後の言葉を心に留め、ドゥンセ・ラとも話し合いながら、その助言の実現に努めてきた。
+> ドゥンセ・ラはこれまでに何人もの偉大なラマから彼らの師の化身（トゥルク）と認定されているが、私にとっては彼をケンツェ・リンポチェの伝統に則って訓練していくことが最優先と考えている。ドゥンセ・ラが示してきたように、まず正式な学びを修め、リトリートを重ねながら、自らの成長と悟りに深い情熱と責任感をもって歩んでいる姿を見ると、私は父としてではなく一人の師として、この法脈に対する自分の責任を、時が来たとき彼に委ねることに大きな安心を感じている。」`,
+    bioEn: `+ Dzigar Kongtrul Rinpoche's son and Dharma Heir within the Longchen Nyingtik lineage of the Nyingma school.
+
+Dungse Jampal Norbu is Dzigar Kongtrul Rinpoche's son and Dharma Heir. Dungse la has lived and traveled extensively in Asia, but spent much of his youth in Colorado. If you were to ask Dungse la how long he has been studying the Buddhist path, he would say, “Since I was born.” Under his father's wing he received many teachings and transmissions, sometimes while the two were walking in the mountains of Crestone or riding a train in India.
+
+When Dungse la was still an infant, Kyabje Dilgo Khyentse Rinpoche instructed Kongtrul Rinpoche to train Dungse la to uphold and continue Kongtrul Rinpoche's lineage, particularly that of Mangala Shri Bhuti. With the foundation of his life-long guidance and education from Kongtrul Rinpoche, Dungse la also teaches widely and engages in an annual 100-day retreat at Longchen Jigme Samten Ling. Dungse la's anecdotal style and first-hand curiosity about how Buddhism relates to actual experience imbue his teaching with a fresh perspective, and reveal a natural wisdom and humor.
+
+Kyabje Dilgo Khyentse Rinpoche communicated his vision for Dungse la in a letter to Kongtrul Rinpoche, given just three weeks before His Holiness' parinirvana.
+
+> “Kongtrul la, Your intention to practice Longchen Nyingtik Preliminaries as well as the cycles of the Longchen Nyingtik is very excellent. Practice Thukdrup Junchi Kolchang everyday.
+> It would be excellent if you could establish a center of buddhadharma in America.You should go to your father's homeland and your predecessor's monastery quite often, to have a look around. There, establishing the shedra and drupdra – the study and practice lineages – would be wonderful. So in the end, the monastery is more stable.
+> Your son, whether he becomes a monk or a ngakpa, in either case, you must intend him to become a Buddhist teacher who could hold your Dharma lineage. This will be excellent. For this to happen my blessings and protection – I the old father – without ever forgetting, am making prayers.”
+
+Kongtrul Rinpoche describes their exchange, which occurred just three weeks before His Holiness' parinirvana:
+
+> “This is what my root teacher, Kyabje Dilgo Khyentse Rinpoche, spontaneously wrote from his last retreat in my final meeting with him, during his practice session while he was not speaking. Although Dungse la was recognized by several important masters as the reincarnation of a teacher from their tradition, his training in Khyentse Rinpoche's tradition and fulfilling my Guru's command has been the priority.
+> In this day and age, for someone to find the interest and deep discipline that Dungse la has shown to follow up first with his formal studies and then personal retreats, with immense heart and responsibility over his own growth and realization, I feel, not as a father, but as a teacher, very secure to hand over and place in his care my responsibilities for this lineage, when the time comes.”`,
     imageUrl: "/images/legacy/113185959.webp",
     sortOrder: 3,
   },
@@ -354,15 +424,15 @@ export const legacyPosts: LegacyPost[] = [
     titleJa: "MSBJリンク",
     titleEn: "MSBJ Link",
     excerptJa:
-      "リンポチェの短編法話集。『パーソナルリンク』の要約を邦訳したものです。",
+      "『MSBJリンク』は、1996年から2000年にかけてリンポチェの法話を週一回、電話を介して配信していたプログラム、『パーソナルリンク』の要約を邦訳したものです。『パーソナルリンク』は、リンポチェの法話をライブ配信することで、忙しい生活の中でも仏法に触れる機会を提供する目的で行われていました。現在は、『Link』と名を変え、週1回（英語）ポッドキャストで配信しています。",
     excerptEn:
-      "Short dharma talks by Rinpoche — Japanese translations of summaries from the Personal Link program.",
+      "“MSBJ Link” is a Japanese translation of summaries from “Personal Link,” a program that delivered Rinpoche's teachings by phone once a week from 1996 to 2000, offering a way to connect with the Dharma even amid a busy life. The program continues today, in English, as the weekly “LINK” podcast.",
     type: "TEACHING",
     imageUrl: "/images/legacy/113185947.webp",
     teacherSlug: "dzigar-kongtrul-rinpoche",
     publishedAt: "2023-03-19",
     bodyJa: `<p>『MSBJリンク』は、1996年から2000年にかけてリンポチェの法話を週一回、電話を介して配信していたプログラム、『パーソナルリンク』の要約を邦訳したものです。『パーソナルリンク』は、リンポチェの法話をライブ配信することで、忙しい生活の中でも仏法に触れる機会を提供する目的で行われていました。現在は、『Link』と名を変え、週1回（英語）ポッドキャストで配信しています。</p>`,
-    bodyEn: `<p>MSBJ Link is a collection of Japanese translations of summaries from Personal Link, a program that broadcast Rinpoche's dharma talks weekly by telephone from 1996 to 2000. Personal Link offered a chance to connect with the Dharma amid busy lives through live talks. Today it continues as Link, a weekly podcast in English.</p>`,
+    bodyEn: `<p>“MSBJ Link” is a Japanese translation of summaries from “Personal Link,” a program that delivered Rinpoche's teachings by phone once a week from 1996 to 2000, offering a way to connect with the Dharma even amid a busy life. The program continues today, in English, as the weekly “LINK” podcast.</p>`,
   },
   {
     slugJa: "dharma-article",
@@ -370,16 +440,16 @@ export const legacyPosts: LegacyPost[] = [
     titleJa: "ダルマ・アーティクル",
     titleEn: "Dharma articles",
     excerptJa:
-      "ズィガー・コントゥル・リンポチェの法話や、最近のMSBJの活動に関する記事。",
+      "ズィガー・コントゥル・リンポチェの法話や、最近のMSBJの活動に関する記事を掲載します。",
     excerptEn:
-      "Articles on Dzigar Kongtrul Rinpoche's teachings and recent MSBJ activities.",
+      "Articles on Dzigar Kongtrul Rinpoche's teachings and MSBJ's recent activities.",
     type: "TEACHING",
     imageUrl: "/images/legacy/113185974.webp",
     teacherSlug: "dzigar-kongtrul-rinpoche",
     publishedAt: "2023-03-19",
     bodyJa: `<p>ズィガー・コントゥル・リンポチェの法話や、最近のMSBJの活動に関する記事を掲載します。</p>
 <p>これまでのダルマ・アーティクルには、『幸せの原理：「自我の権威」に立ち向かう』『「正直である」という道：世界と自分自身を欺かない』『優雅さと気品』（Part 1・2）『動揺する心に取り組む、Part 3: 真の強さを認識する』などがあります。</p>`,
-    bodyEn: `<p>This section carries articles on Dzigar Kongtrul Rinpoche's dharma talks and recent MSBJ activities.</p>
+    bodyEn: `<p>Articles on Dzigar Kongtrul Rinpoche's teachings and MSBJ's recent activities.</p>
 <p>Past dharma articles include "The Principle of Happiness: Confronting the Authority of Ego," "The Path of Honesty: Deceiving Neither the World Nor Yourself," "Grace and Dignity" (Parts 1 and 2), and "Working with an Agitated Mind, Part 3: Recognizing True Strength."</p>`,
   },
   {
@@ -387,8 +457,8 @@ export const legacyPosts: LegacyPost[] = [
     slugEn: "video-teachings",
     titleJa: "ビデオ法話",
     titleEn: "Video teachings",
-    excerptJa: "日本語キャプション付きのリンポチェのビデオ法話。",
-    excerptEn: "Video dharma talks by Rinpoche with Japanese captions.",
+    excerptJa: "リンポチェのビデオ法話（日本語キャプションあり）です。",
+    excerptEn: "Video teachings by Rinpoche, with Japanese captions.",
     type: "VIDEO",
     imageUrl: "/images/legacy/113185976.webp",
     teacherSlug: "dzigar-kongtrul-rinpoche",
@@ -398,7 +468,7 @@ export const legacyPosts: LegacyPost[] = [
 <h4>『進路を示す菩提心』（2011年9月）</h4>
 <h4>『精神の道の歩みを遅らせる罪悪感』（2019年1月再投稿）</h4>
 <h4>『概念の覆いを取り除く』（2019年1月再投稿）</h4>`,
-    bodyEn: `<p>Video dharma talks by Rinpoche, with Japanese captions.</p>
+    bodyEn: `<p>Video teachings by Rinpoche, with Japanese captions.</p>
 <h4>"The Modern Yogi" (August 2010)</h4>
 <h4>"Bodhicitta That Shows the Way" (September 2011)</h4>
 <h4>"Guilt That Slows the Spiritual Path" (reposted January 2019)</h4>
@@ -891,9 +961,9 @@ export const legacyEvents: LegacyEvent[] = [
     titleJa: "一日座禅会（9月）",
     titleEn: "Full-day zazen session (September)",
     descriptionJa:
-      "京都東山の緑に囲まれた静かな場所で、一日座禅会（1時間の座禅を5セッション）を行います。1セッション毎に裏山の庭で歩き禅を行い、昼食後には庭掃除など、修行を兼ねた作務を行います。瞑想や座禅に興味がある方なら、どなたでもご参加いただけます。1セッションからの部分的な参加も受け付けています。",
+      "亀岡の緑に囲まれた静かな場所で、一日座禅会（1時間の座禅を5セッション）を行います。1セッション毎に瞑想ホールで歩き禅を行い、昼食後には庭掃除など、修行を兼ねた作務を行います。瞑想や座禅に興味がある方なら、どなたでもご参加いただけます。1セッションからの部分的な参加も受け付けています。",
     descriptionEn:
-      "A full-day zazen session — five one-hour sittings — in a quiet, green corner of Higashiyama, Kyoto, with walking meditation between sessions and work practice after lunch. Anyone interested in meditation is welcome; partial participation from a single session is fine.",
+      "Join us for a one-day meditation retreat (five one-hour sitting sessions) in a quiet setting in Kameoka, Kyoto. Each session is followed by walking meditation in the meditation hall. After lunch, we practice mindful work such as garden cleaning as part of the retreat. Anyone interested in meditation is welcome to join, and partial attendance, even at a single session, is accepted.",
     status: "PUBLISHED",
     mode: "IN_PERSON",
     priceType: "FREE",
