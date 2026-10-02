@@ -25,7 +25,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
       className="text-sm font-medium text-charcoal-500 transition-colors hover:text-charcoal-900"
       aria-label={locale === "ja" ? "Switch to English" : "日本語に切り替え"}
     >
-      {locale === "ja" ? "EN" : "日本語"}
+      {locale === "ja" ? "English" : "日本語"}
     </Link>
   );
 }

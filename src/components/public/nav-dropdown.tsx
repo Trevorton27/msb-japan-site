@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export interface DropdownChild {
@@ -19,6 +19,25 @@ export function NavDropdown({
   items: DropdownChild[];
 }) {
   const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Delay closing so a slow or diagonal mouse move from the trigger into the
+  // panel doesn't dismiss the menu.
+  function cancelClose() {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }
+  function openNow() {
+    cancelClose();
+    setOpen(true);
+  }
+  function closeSoon() {
+    cancelClose();
+    closeTimer.current = setTimeout(() => setOpen(false), 400);
+  }
+  useEffect(() => cancelClose, []);
 
   const hasGroups = items.some((i) => i.children && i.children.length > 0);
 
@@ -44,8 +63,13 @@ export function NavDropdown({
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={openNow}
+      onMouseLeave={closeSoon}
+      onFocus={openNow}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null))
+          closeSoon();
+      }}
     >
       {href ? (
         <Link href={href} className={triggerClass}>
@@ -53,52 +77,61 @@ export function NavDropdown({
           {chevron}
         </Link>
       ) : (
-        <button type="button" className={triggerClass}>
+        <button
+          type="button"
+          className={triggerClass}
+          aria-expanded={open}
+          onClick={() => (open ? setOpen(false) : openNow())}
+        >
           {label}
           {chevron}
         </button>
       )}
       {open && (
-        <div
-          className={`absolute left-0 top-full z-50 mt-1 rounded-md border border-charcoal-200 bg-[#ede9dc] py-1 shadow-lg ${hasGroups ? "min-w-[220px]" : "min-w-[180px]"}`}
-        >
-          {items.map((item, idx) => {
-            const isGroup = item.children && item.children.length > 0;
-            const addDivider = idx > 0 && isGroup;
-            return (
-              <div
-                key={item.href}
-                className={addDivider ? "mt-1 border-t border-charcoal-100 pt-1" : ""}
-              >
-                {isGroup ? (
-                  <>
+        <div className="absolute top-full left-0 z-50 pt-1">
+          <div
+            className={`border-charcoal-200 rounded-md border bg-[#ede9dc] py-1 shadow-lg ${hasGroups ? "min-w-[220px]" : "min-w-[180px]"}`}
+          >
+            {items.map((item, idx) => {
+              const isGroup = item.children && item.children.length > 0;
+              const addDivider = idx > 0 && isGroup;
+              return (
+                <div
+                  key={item.href}
+                  className={
+                    addDivider ? "border-charcoal-100 mt-1 border-t pt-1" : ""
+                  }
+                >
+                  {isGroup ? (
+                    <>
+                      <Link
+                        href={item.href}
+                        className="text-charcoal-400 hover:text-charcoal-700 block px-4 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                      {item.children!.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="text-charcoal-600 hover:bg-ivory-100 hover:text-charcoal-900 block px-6 py-1.5 text-sm transition-colors"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </>
+                  ) : (
                     <Link
                       href={item.href}
-                      className="block px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-charcoal-400 transition-colors hover:text-charcoal-700"
+                      className="text-charcoal-600 hover:bg-ivory-100 hover:text-charcoal-900 block px-4 py-2 text-sm transition-colors"
                     >
                       {item.label}
                     </Link>
-                    {item.children!.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="block px-6 py-1.5 text-sm text-charcoal-600 transition-colors hover:bg-ivory-100 hover:text-charcoal-900"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className="block px-4 py-2 text-sm text-charcoal-600 transition-colors hover:bg-ivory-100 hover:text-charcoal-900"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
-            );
-          })}
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

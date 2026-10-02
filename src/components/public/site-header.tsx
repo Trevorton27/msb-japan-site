@@ -18,7 +18,6 @@ function getNavItems(locale: Locale, dict: Dictionary): NavItem[] {
   const l = (path: string) => `/${locale}${path}`;
   const postSlug = (ja: string, en: string) => (locale === "en" ? en : ja);
   return [
-    { label: c.home ?? "", href: l("") },
     {
       label: c.about ?? "",
       href: l("/about"),
@@ -63,9 +62,9 @@ function getNavItems(locale: Locale, dict: Dictionary): NavItem[] {
         },
         { label: c.dharmaArticles ?? "", href: l("/blog") },
         { label: c.videoAudioArchive ?? "", href: l("/videos") },
+        { label: c.storeAndPublications ?? "", href: l("/shop") },
       ],
     },
-    { label: c.storeAndPublications ?? "", href: l("/shop") },
     { label: c.calendar ?? "", href: l("/events") },
     { label: c.contact ?? "", href: l("/contact") },
   ];
