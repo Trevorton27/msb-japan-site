@@ -5,6 +5,10 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/public/site-header";
 import { SiteFooter } from "@/components/public/site-footer";
 
+// Serve public pages from the cache and re-render in the background at most
+// once a minute. Most admin actions don't revalidatePath the public routes,
+// so this bounds how long an edit takes to appear.
+export const revalidate = 60;
 
 export default async function PublicLayout({
   children,

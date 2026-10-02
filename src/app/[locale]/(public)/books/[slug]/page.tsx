@@ -6,6 +6,12 @@ import { isValidLocale } from "@/lib/i18n/config";
 import type { Locale } from "@/lib/i18n/config";
 import { getBookBySlug } from "@/server/queries/books";
 
+// No paths at build time; each page is rendered on first visit, then cached
+// and revalidated like the rest of the public section.
+export function generateStaticParams() {
+  return [];
+}
+
 export async function generateMetadata({
   params,
 }: {

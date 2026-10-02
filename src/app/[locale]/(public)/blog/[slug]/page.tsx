@@ -7,6 +7,12 @@ import { notFound } from "next/navigation";
 import { getPostBySlug } from "@/server/queries/content";
 import { PostBody } from "@/components/public/post-body";
 
+// No paths at build time; each page is rendered on first visit, then cached
+// and revalidated like the rest of the public section.
+export function generateStaticParams() {
+  return [];
+}
+
 export async function generateMetadata({
   params,
 }: {

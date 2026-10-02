@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { isValidLocale } from "@/lib/i18n/config";
+import { isValidLocale, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://msbjapan.org";
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params,

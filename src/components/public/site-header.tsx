@@ -5,7 +5,7 @@ import { LanguageSwitcher } from "./language-switcher";
 import { MobileNav } from "./mobile-nav";
 import { NavDropdown } from "./nav-dropdown";
 import type { DropdownChild } from "./nav-dropdown";
-import { auth } from "@/lib/auth";
+import { AdminLink } from "./admin-link";
 
 interface NavItem {
   label: string;
@@ -71,14 +71,13 @@ function getNavItems(locale: Locale, dict: Dictionary): NavItem[] {
   ];
 }
 
-export async function SiteHeader({
+export function SiteHeader({
   locale,
   dict,
 }: {
   locale: Locale;
   dict: Dictionary;
 }) {
-  const session = await auth();
   const navItems = getNavItems(locale, dict);
 
   return (
@@ -142,14 +141,7 @@ export async function SiteHeader({
             >
               {dict.common?.donate}
             </Link>
-            {session?.user && (
-              <Link
-                href="/admin"
-                className="rounded-md border border-charcoal-300 px-3 py-2 text-xs font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100"
-              >
-                Admin Dashboard
-              </Link>
-            )}
+            <AdminLink />
           </div>
         </nav>
       </div>

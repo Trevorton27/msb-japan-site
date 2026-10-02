@@ -9,6 +9,12 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { RegistrationForm } from "@/components/public/registration-form";
 
+// No paths at build time; each page is rendered on first visit, then cached
+// and revalidated like the rest of the public section.
+export function generateStaticParams() {
+  return [];
+}
+
 export async function generateMetadata({
   params,
 }: {
