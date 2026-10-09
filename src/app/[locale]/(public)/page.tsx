@@ -119,18 +119,24 @@ export default async function HomePage({
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[60vw] items-center justify-center overflow-hidden px-4 py-16 text-center text-white sm:min-h-0 sm:py-40">
-        <div
-          className="absolute inset-0 bg-cover bg-center sm:bg-top"
-          style={{ backgroundImage: "url('/images/rinpocheHeaderImage.png')" }}
+      {/* Hero image — nothing is laid over the photo of Rinpoche */}
+      <section className="bg-charcoal-900">
+        <img
+          src="/images/rinpocheHeader-cropped.png"
+          alt={dict.home?.weeklyDharmaAttribution ?? ""}
+          width={660}
+          height={356}
+          className="aspect-[660/356] max-h-[70vh] w-full object-cover object-[center_20%]"
         />
-        <div className="absolute inset-0 bg-charcoal-900/60" />
-        <div className="relative mx-auto max-w-3xl">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+      </section>
+
+      {/* Hero text, below the image */}
+      <section className="bg-[#1e3560] px-4 py-12 text-center text-white sm:px-6 sm:py-16 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">
             {dict.home?.heroTitle}
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-charcoal-200">
+          <p className="mx-auto mt-5 max-w-2xl text-base text-charcoal-200 sm:text-lg">
             {dict.home?.heroSubtitle}
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -142,7 +148,7 @@ export default async function HomePage({
             </Link>
             <Link
               href={`/${locale}/events`}
-              className="rounded-md border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              className="rounded-md border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               {dict.common?.events}
             </Link>
@@ -158,7 +164,7 @@ export default async function HomePage({
               {dict.home.rinpocheWordsTitle}
             </h2>
           )}
-          <blockquote className="text-2xl italic leading-relaxed text-[#1e3560] sm:text-3xl">
+          <blockquote className="text-2xl leading-relaxed text-[#1e3560] sm:text-3xl">
             {dict.home?.rinpocheQuote}
           </blockquote>
           <p className="mt-6 text-xs font-bold uppercase tracking-widest text-[#1e3560]">

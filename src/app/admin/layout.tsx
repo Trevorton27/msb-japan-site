@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
 import { AdminLocaleToggle } from "@/components/admin/admin-locale-toggle";
 import { ThemeToggle } from "@/components/admin/theme-toggle";
+import { AdminAssistant } from "@/components/admin/admin-assistant";
 import { getAdminLocale } from "@/lib/admin-locale";
 import { getLabels } from "@/lib/admin-labels";
 
@@ -58,6 +59,7 @@ export default async function AdminLayout({
           <div className="flex flex-1">
             <AdminSidebar />
             <main className="flex-1 p-6">{children}</main>
+            <AdminAssistant />
           </div>
         ) : (
           <main className="flex flex-1 items-center justify-center p-6">

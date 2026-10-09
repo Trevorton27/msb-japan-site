@@ -52,7 +52,9 @@
     "dharmaArticles": "ダルマ・アーティクル",
     "videoAudioArchive": "ビデオ・音声法話アーカイブ",
     "storeAndPublications": "ストア・出版物",
-    "calendar": "スケジュール"
+    "calendar": "スケジュール",
+    "adminDashboard": "管理ダッシュボード",
+    "menu": "メニュー"
   },
   "auth": {
     "signIn": "サインイン",
@@ -461,5 +463,20 @@
   "resources": {
     "dharmaArticlesIntro": "ズィガー・コントゥル・リンポチェの法話や、最近のMSBJの活動に関する記事を掲載します。",
     "videoArchiveIntro": "リンポチェのビデオ法話（日本語キャプションあり）です。"
+  },
+  "search": {
+    "label": "検索",
+    "placeholder": "サイト内を検索…",
+    "submit": "検索",
+    "title": "サイト内検索",
+    "resultsFor": "「{q}」の検索結果",
+    "noResults": "該当する結果が見つかりませんでした。別のキーワードでお試しください。",
+    "prompt": "キーワードを入力してサイト内を検索してください。",
+    "pages": "ページ",
+    "teachings": "教え・記事",
+    "events": "イベント",
+    "books": "書籍",
+    "videos": "動画",
+    "products": "ストア"
   }
 }

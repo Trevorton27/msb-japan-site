@@ -1,11 +1,18 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
-import { LanguageSwitcher } from "./language-switcher";
 import { MobileNav } from "./mobile-nav";
 import { NavDropdown } from "./nav-dropdown";
 import type { DropdownChild } from "./nav-dropdown";
-import { AdminLink } from "./admin-link";
+import { SecondaryMenuBar, SecondaryMenuHamburger } from "./secondary-menu";
+import type { SecondaryMenuLabels } from "./secondary-menu";
+import { SiteSearch } from "./site-search";
+import { StickyHeader } from "./sticky-header";
+
+// The organisation's names are shown together in the header lockup on both
+// locales, as on the US site.
+const BRAND_NAME = "Mangala Shri Bhuti Japan";
+const BRAND_LEGAL_NAME = "一般社団法人マンガラ・シュリ・ブティ・ジャパン";
 
 interface NavItem {
   label: string;
@@ -70,6 +77,27 @@ function getNavItems(locale: Locale, dict: Dictionary): NavItem[] {
   ];
 }
 
+function BrandText({ compact = false }: { compact?: boolean }) {
+  return (
+    <span className="flex flex-col items-center font-brand md:items-start">
+      <span
+        className={
+          compact
+            ? "text-base leading-tight text-[#1e3560]"
+            : "text-[1.35rem] leading-tight text-[#1e3560] md:text-[1.9rem]"
+        }
+      >
+        {BRAND_NAME}
+      </span>
+      {!compact && (
+        <span className="mt-1 text-[0.7rem] font-light tracking-[0.12em] text-charcoal-500 md:text-[0.8rem]">
+          {BRAND_LEGAL_NAME}
+        </span>
+      )}
+    </span>
+  );
+}
+
 export function SiteHeader({
   locale,
   dict,
@@ -78,36 +106,68 @@ export function SiteHeader({
   dict: Dictionary;
 }) {
   const navItems = getNavItems(locale, dict);
+  const c = dict.common;
+  const secondaryLabels: SecondaryMenuLabels = {
+    memberPortal: dict.members.nav.portal,
+    donate: c.donate,
+    adminDashboard: c.adminDashboard,
+    menu: c.menu,
+    search: {
+      label: dict.search.label,
+      placeholder: dict.search.placeholder,
+      submit: dict.search.submit,
+    },
+  };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-charcoal-200 bg-[#ede9dc]/95 backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Logo row */}
-        <div className="relative flex items-center justify-center py-4">
-          <div className="absolute left-0 flex items-center md:hidden">
-            <MobileNav
-              items={navItems}
-              siteName={dict.common?.siteNameShort ?? ""}
-              donateLabel={dict.common?.donate ?? ""}
-              donateHref={`/${locale}/donate`}
-              membersLabel={dict.members?.nav?.portal ?? ""}
-              membersHref={`/${locale}/members`}
-            />
-          </div>
-          <div className="absolute right-0 flex items-center md:hidden">
-            <LanguageSwitcher locale={locale} />
-          </div>
-          <Link href={`/${locale}`}>
+    <>
+      {/* Secondary menu + logo lockup: scroll away above the sticky bar */}
+      <div className="bg-[#ede9dc]">
+        <div className="hidden md:block">
+          <SecondaryMenuBar locale={locale} labels={secondaryLabels} />
+        </div>
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 md:py-6 lg:px-8">
+          <Link
+            href={`/${locale}`}
+            className="mx-auto flex w-fit flex-col items-center gap-3 md:flex-row md:gap-5"
+          >
             <img
               src="/images/msbLogo.png"
-              alt={dict.common?.siteNameShort ?? "MSB"}
-              className="h-24 w-auto"
+              alt=""
+              width={110}
+              height={117}
+              className="h-20 w-auto shrink-0 md:h-24"
             />
+            <BrandText />
           </Link>
         </div>
+      </div>
 
-        {/* Nav row */}
-        <nav className="hidden flex-wrap items-center justify-center gap-1 border-t border-charcoal-100 py-2 md:flex">
+      <StickyHeader
+        collapsedSlot={
+          <SecondaryMenuHamburger locale={locale} labels={secondaryLabels} />
+        }
+      >
+        {/* Mobile bar */}
+        <div className="flex items-center justify-between py-2 md:hidden">
+          <MobileNav
+            items={navItems}
+            siteName={BRAND_NAME}
+            locale={locale}
+            secondaryLabels={secondaryLabels}
+          />
+          <Link
+            href={`/${locale}`}
+            className="opacity-0 transition-opacity duration-300 group-data-collapsed/header:opacity-100"
+            tabIndex={-1}
+          >
+            <BrandText compact />
+          </Link>
+          <SiteSearch locale={locale} labels={secondaryLabels.search} />
+        </div>
+
+        {/* Desktop main menu */}
+        <nav className="hidden flex-wrap items-center justify-center gap-1 py-2 md:flex md:px-20">
           {navItems.map((item) =>
             item.children ? (
               <NavDropdown
@@ -126,24 +186,8 @@ export function SiteHeader({
               </Link>
             )
           )}
-          <div className="ml-auto flex items-center gap-3">
-            <LanguageSwitcher locale={locale} />
-            <Link
-              href={`/${locale}/members`}
-              className="rounded-md border border-charcoal-300 px-3 py-2 text-sm font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100"
-            >
-              {dict.members?.nav?.portal ?? "Members"}
-            </Link>
-            <Link
-              href={`/${locale}/donate`}
-              className="rounded-md bg-burgundy-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-burgundy-600"
-            >
-              {dict.common?.donate}
-            </Link>
-            <AdminLink />
-          </div>
         </nav>
-      </div>
-    </header>
+      </StickyHeader>
+    </>
   );
 }

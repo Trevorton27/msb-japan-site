@@ -32,7 +32,7 @@ export default async function ProgramsPage({
   const h2 = "text-2xl font-bold text-charcoal-900";
   const h3 = "mt-6 text-lg font-semibold text-burgundy-500";
   const para = "mt-3 leading-relaxed text-charcoal-600";
-  const section = "mt-16 scroll-mt-48 border-t border-charcoal-200 pt-12";
+  const section = "mt-16 scroll-mt-4 border-t border-charcoal-200 pt-12";
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
