@@ -1,8 +1,21 @@
 import type { Metadata } from "next";
+import { Noto_Serif_JP } from "next/font/google";
 import { notFound } from "next/navigation";
 import { isValidLocale, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
+import { FadeIn } from "@/components/public/fade-in";
+
+const brandSerif = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  variable: "--font-brand-serif",
+  display: "swap",
+});
+
+// Hides images and section headings until FadeIn reveals them. Added before
+// first paint so nothing flashes; removed again if FadeIn never starts.
+const fadeInBootstrap = `(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;d.classList.add("fade-pending");setTimeout(function(){if(!window.__fadeInReady)d.classList.remove("fade-pending")},3000)})();`;
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://msbjapan.org";
 
@@ -69,13 +82,21 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} className="h-full antialiased">
+    <html
+      lang={locale}
+      className={`${brandSerif.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: fadeInBootstrap }} />
+      </head>
       <body className="flex min-h-full flex-col bg-ivory-50 text-charcoal-900">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <FadeIn />
       </body>
     </html>
   );

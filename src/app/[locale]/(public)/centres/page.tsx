@@ -92,7 +92,7 @@ export default async function CentresPage({
 
       <div className="mt-12 space-y-12">
         {t.centres.map((centre) => (
-          <Card key={centre.id} id={centre.id} className="scroll-mt-48">
+          <Card key={centre.id} id={centre.id} className="scroll-mt-4">
             <CardHeader>
               <CardTitle className="text-2xl">{centre.name}</CardTitle>
             </CardHeader>

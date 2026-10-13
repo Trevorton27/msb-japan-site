@@ -76,7 +76,7 @@ export default async function DonatePage({
           designationDrupcho:
             dict.donate?.designationDrupcho ??
             "Drupchö sponsorship (from ¥2,000 per unit)",
-          prayerRequest: dict.donate?.prayerRequest ?? "Prayer request",
+          prayerRequest: dict.donate?.prayerRequest ?? "Prayer Request",
           prayerRequestHint:
             dict.donate?.prayerRequestHint ??
             "Please include specific wishes and your name.",

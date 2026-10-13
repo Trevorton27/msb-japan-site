@@ -55,7 +55,7 @@ export default async function TeachersPage({
               : teacher.imageUrl;
 
           return (
-            <Card key={teacher.id} id={anchor} className="scroll-mt-48">
+            <Card key={teacher.id} id={anchor} className="scroll-mt-4">
               <CardHeader>
                 <CardTitle className="text-2xl">{name}</CardTitle>
               </CardHeader>

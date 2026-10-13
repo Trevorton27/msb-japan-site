@@ -189,7 +189,7 @@ export function DonationForm({ locale, dict }: DonationFormProps) {
         </div>
         <div>
           <Label htmlFor="message">
-            {designation === "GENERAL" ? dict.message : dict.prayerRequest}{" "}
+            {dict.prayerRequest}{" "}
             <span className="text-charcoal-400 text-xs">
               ({dict.messageOptional})
             </span>

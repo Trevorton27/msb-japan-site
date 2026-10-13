@@ -53,7 +53,9 @@
     "dharmaArticles": "Dharma Articles",
     "videoAudioArchive": "Video & Audio Teachings Archive",
     "storeAndPublications": "Store / Publications",
-    "calendar": "Calendar"
+    "calendar": "Calendar",
+    "adminDashboard": "Admin Dashboard",
+    "menu": "Menu"
   },
   "auth": {
     "signIn": "Sign In",
@@ -308,7 +310,7 @@
     "designationGeneral": "General fund",
     "designationLifeRelease": "Life-release ceremony (from ¥2,000 per unit)",
     "designationDrupcho": "Drupchö sponsorship (from ¥2,000 per unit)",
-    "prayerRequest": "Prayer request",
+    "prayerRequest": "Prayer Request",
     "prayerRequestHint": "Please include specific wishes and your name. Requests are read aloud and prayed for during the ceremony."
   },
   "shop": {
@@ -462,5 +464,20 @@
   "resources": {
     "dharmaArticlesIntro": "Articles on Dzigar Kongtrul Rinpoche's teachings and MSBJ's recent activities.",
     "videoArchiveIntro": "Video teachings by Rinpoche, with Japanese captions."
+  },
+  "search": {
+    "label": "Search",
+    "placeholder": "Search the site…",
+    "submit": "Search",
+    "title": "Search",
+    "resultsFor": "Results for “{q}”",
+    "noResults": "No results found. Try a different keyword.",
+    "prompt": "Enter a keyword to search the site.",
+    "pages": "Pages",
+    "teachings": "Teachings & Articles",
+    "events": "Events",
+    "books": "Books",
+    "videos": "Videos",
+    "products": "Store"
   }
 }

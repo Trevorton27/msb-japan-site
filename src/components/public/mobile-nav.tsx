@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import type { Locale } from "@/lib/i18n/config";
+import { LanguageSwitcher } from "./language-switcher";
+import { AdminLink } from "./admin-link";
+import type { SecondaryMenuLabels } from "./secondary-menu";
 import {
   Sheet,
   SheetContent,
@@ -24,19 +28,13 @@ interface NavItem {
 export function MobileNav({
   items,
   siteName,
-  donateLabel,
-  donateHref,
-  membersLabel,
-  membersHref,
-  triggerClassName = "inline-flex items-center justify-center rounded-md p-2 text-charcoal-600 hover:bg-ivory-100 hover:text-charcoal-900 md:hidden",
+  locale,
+  secondaryLabels,
 }: {
   items: NavItem[];
   siteName: string;
-  donateLabel: string;
-  donateHref: string;
-  membersLabel: string;
-  membersHref: string;
-  triggerClassName?: string;
+  locale: Locale;
+  secondaryLabels: SecondaryMenuLabels;
 }) {
   const [open, setOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
@@ -56,8 +54,8 @@ export function MobileNav({
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        className={triggerClassName}
-        aria-label="Open menu"
+        className="inline-flex items-center justify-center rounded-md p-2 text-charcoal-600 hover:bg-ivory-100 hover:text-charcoal-900 md:hidden"
+        aria-label={secondaryLabels.menu}
       >
         <svg
           className="h-6 w-6"
@@ -169,21 +167,32 @@ export function MobileNav({
             </div>
           ))}
 
+          {/* Secondary menu, folded into the main menu on mobile */}
           <div className="mt-4 flex flex-col gap-2 border-t border-charcoal-200 pt-4">
+            <LanguageSwitcher
+              locale={locale}
+              onNavigate={() => setOpen(false)}
+              className="block rounded-md px-3 py-2 text-base font-medium text-charcoal-600 transition-colors hover:bg-ivory-100 hover:text-charcoal-900"
+            />
             <Link
-              href={membersHref}
+              href={`/${locale}/members`}
               onClick={() => setOpen(false)}
               className="block rounded-md border border-charcoal-300 px-3 py-2 text-center text-base font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100"
             >
-              {membersLabel}
+              {secondaryLabels.memberPortal}
             </Link>
             <Link
-              href={donateHref}
+              href={`/${locale}/donate`}
               onClick={() => setOpen(false)}
               className="block rounded-md bg-burgundy-500 px-3 py-2 text-center text-base font-medium text-white transition-colors hover:bg-burgundy-600"
             >
-              {donateLabel}
+              {secondaryLabels.donate}
             </Link>
+            <AdminLink
+              label={secondaryLabels.adminDashboard}
+              onClick={() => setOpen(false)}
+              className="block rounded-md border border-charcoal-300 px-3 py-2 text-center text-sm font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100"
+            />
           </div>
         </nav>
       </SheetContent>
