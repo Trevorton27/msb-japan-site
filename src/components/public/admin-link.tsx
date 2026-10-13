@@ -5,7 +5,11 @@ import Link from "next/link";
 
 // Checked in the browser rather than with auth() on the server: reading the
 // session cookie during render would make every public page dynamic.
-export function AdminLink() {
+export function AdminLink({
+  className = "rounded-md border border-charcoal-300 px-3 py-2 text-xs font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100",
+}: {
+  className?: string;
+}) {
   const [signedIn, setSignedIn] = useState(false);
 
   useEffect(() => {
@@ -26,7 +30,7 @@ export function AdminLink() {
   return (
     <Link
       href="/admin"
-      className="rounded-md border border-charcoal-300 px-3 py-2 text-xs font-medium text-charcoal-600 transition-colors hover:bg-charcoal-100"
+      className={className}
     >
       Admin Dashboard
     </Link>

@@ -15,6 +15,8 @@
   --color-burgundy-600: var(--burgundy-600);
   --color-saffron-500: var(--saffron-500);
   --color-saffron-600: var(--saffron-600);
+  --color-navy-700: var(--navy-700);
+  --color-navy-800: var(--navy-800);
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -129,6 +131,8 @@ body {
   --burgundy-600: #723030;
   --saffron-500: #c4942a;
   --saffron-600: #a57d22;
+  --navy-700: #2f3b75;
+  --navy-800: #273466;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

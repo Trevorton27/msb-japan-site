@@ -28,6 +28,7 @@ export function MobileNav({
   donateHref,
   membersLabel,
   membersHref,
+  triggerClassName = "inline-flex items-center justify-center rounded-md p-2 text-charcoal-600 hover:bg-ivory-100 hover:text-charcoal-900 md:hidden",
 }: {
   items: NavItem[];
   siteName: string;
@@ -35,6 +36,7 @@ export function MobileNav({
   donateHref: string;
   membersLabel: string;
   membersHref: string;
+  triggerClassName?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
@@ -54,7 +56,7 @@ export function MobileNav({
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        className="inline-flex items-center justify-center rounded-md p-2 text-charcoal-600 hover:bg-ivory-100 hover:text-charcoal-900 md:hidden"
+        className={triggerClassName}
         aria-label="Open menu"
       >
         <svg

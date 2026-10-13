@@ -42,7 +42,7 @@ export function NavDropdown({
   const hasGroups = items.some((i) => i.children && i.children.length > 0);
 
   const triggerClass =
-    "flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-charcoal-600 transition-colors hover:bg-ivory-100 hover:text-charcoal-900";
+    "flex items-center gap-1.5 rounded-md px-3 py-2 text-base text-charcoal-600 transition-colors hover:text-navy-800";
 
   const chevron = (
     <svg
@@ -90,7 +90,7 @@ export function NavDropdown({
       {open && (
         <div className="absolute top-full left-0 z-50 pt-1">
           <div
-            className={`border-charcoal-200 rounded-md border bg-[#ede9dc] py-1 shadow-lg ${hasGroups ? "min-w-[220px]" : "min-w-[180px]"}`}
+            className={`border-charcoal-200 rounded-md border bg-ivory-50 py-1 whitespace-nowrap shadow-lg ${hasGroups ? "min-w-[220px]" : "min-w-[180px]"}`}
           >
             {items.map((item, idx) => {
               const isGroup = item.children && item.children.length > 0;

@@ -4,7 +4,13 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { Locale } from "@/lib/i18n/config";
 
-export function LanguageSwitcher({ locale }: { locale: Locale }) {
+export function LanguageSwitcher({
+  locale,
+  className = "text-sm font-medium text-charcoal-500 transition-colors hover:text-charcoal-900",
+}: {
+  locale: Locale;
+  className?: string;
+}) {
   const pathname = usePathname();
   const router = useRouter();
   const otherLocale: Locale = locale === "ja" ? "en" : "ja";
@@ -22,7 +28,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
     <Link
       href={switchedPath}
       onClick={handleClick}
-      className="text-sm font-medium text-charcoal-500 transition-colors hover:text-charcoal-900"
+      className={className}
       aria-label={locale === "ja" ? "Switch to English" : "日本語に切り替え"}
     >
       {locale === "ja" ? "English" : "日本語"}
