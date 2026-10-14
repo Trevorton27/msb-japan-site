@@ -10,6 +10,7 @@ import {
   adminDisconnectUserCalendar,
 } from "@/server/actions/users";
 import { Button } from "@/components/ui/button";
+import { PasswordInput } from "@/components/ui/password-input";
 
 type Role = { id: string; name: string };
 type User = {
@@ -151,11 +152,11 @@ export function UserActions({ user, roles }: { user: User; roles: Role[] }) {
         <Modal onClose={() => setShowPasswordReset(false)}>
           <h3 className="mb-3 font-semibold">Reset Password — {user.email}</h3>
           <form onSubmit={handlePasswordReset} className="space-y-3">
-            <input
+            <PasswordInput
               name="password"
-              type="password"
               required
               minLength={8}
+              autoComplete="new-password"
               placeholder="New password (min 8 chars)"
               className="w-full rounded-md border px-3 py-2 text-sm"
             />

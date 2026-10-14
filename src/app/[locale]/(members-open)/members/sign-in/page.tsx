@@ -5,6 +5,7 @@ import { isValidLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
 import type { Metadata } from "next";
+import { PasswordInput } from "@/components/ui/password-input";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -89,12 +90,14 @@ export default async function MemberSignInPage({
             >
               {t.password}
             </label>
-            <input
+            <PasswordInput
               id="password"
               name="password"
-              type="password"
               required
-              className="mt-1 w-full rounded-md border border-charcoal-200 bg-white px-3 py-2 text-sm text-charcoal-900 focus:border-burgundy-500 focus:outline-none"
+              showLabel={t.showPassword}
+              hideLabel={t.hidePassword}
+              wrapperClassName="mt-1"
+              className="w-full rounded-md border border-charcoal-200 bg-white px-3 py-2 text-sm text-charcoal-900 focus:border-burgundy-500 focus:outline-none"
             />
           </div>
           <button

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { createUser } from "@/server/actions/users";
 import { Button } from "@/components/ui/button";
+import { PasswordInput } from "@/components/ui/password-input";
 
 type Role = { id: string; name: string };
 
@@ -69,11 +70,12 @@ export function AddUserForm({ roles }: { roles: Role[] }) {
             <label className="block text-sm font-medium text-gray-700">
               Password <span className="text-gray-400">(optional — leave blank for Google-only)</span>
             </label>
-            <input
+            <PasswordInput
               name="password"
-              type="password"
               minLength={8}
-              className="mt-1 w-full rounded-md border px-3 py-2 text-sm"
+              autoComplete="new-password"
+              wrapperClassName="mt-1"
+              className="w-full rounded-md border px-3 py-2 text-sm"
             />
           </div>
           <div>

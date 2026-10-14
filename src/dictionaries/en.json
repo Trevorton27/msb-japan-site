@@ -374,7 +374,8 @@
       "events": "Events & Retreats",
       "sangha": "Sangha",
       "account": "My Account",
-      "portal": "Member Portal"
+      "portal": "Member Portal",
+      "backToSite": "Back to Site"
     },
     "dashboard": {
       "welcome": "Welcome back",
@@ -458,7 +459,9 @@
       "signingIn": "Signing in...",
       "signInWithGoogle": "Sign in with Google",
       "error": "Invalid email or password.",
-      "accessDenied": "Access denied. Please contact MSB to request member access."
+      "accessDenied": "Access denied. Please contact MSB to request member access.",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password"
     }
   },
   "resources": {

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
+import { ArrowLeftIcon } from "lucide-react";
+import { LanguageSwitcher } from "@/components/public/language-switcher";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -87,7 +89,18 @@ export function MemberNav({
             ))}
           </nav>
 
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-3 md:flex">
+            <Link
+              href={`/${locale}`}
+              className="flex items-center gap-1 text-xs font-medium text-charcoal-600 hover:text-charcoal-900"
+            >
+              <ArrowLeftIcon className="h-3.5 w-3.5" aria-hidden="true" />
+              {n.backToSite}
+            </Link>
+            <LanguageSwitcher
+              locale={locale}
+              className="rounded-md border border-charcoal-200 px-2 py-1 text-xs font-medium text-charcoal-600 hover:bg-charcoal-200/50 hover:text-charcoal-900"
+            />
             <span className="text-xs text-charcoal-500">{user.name ?? user.email}</span>
             <button
               onClick={() => signOut({ callbackUrl: `/${locale}/members/sign-in` })}
@@ -134,6 +147,21 @@ export function MemberNav({
                   {item.label}
                 </Link>
               ))}
+            </div>
+            <div className="flex flex-col gap-1 border-t p-3">
+              <Link
+                href={`/${locale}`}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-1.5 rounded-md px-3 py-2.5 text-sm font-medium text-charcoal-600 hover:bg-charcoal-200/50"
+              >
+                <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
+                {n.backToSite}
+              </Link>
+              <LanguageSwitcher
+                locale={locale}
+                onNavigate={() => setMobileOpen(false)}
+                className="rounded-md px-3 py-2.5 text-sm font-medium text-charcoal-600 hover:bg-charcoal-200/50"
+              />
             </div>
             <div className="border-t p-4 text-xs text-charcoal-500">
               <p className="mb-2">{user.name ?? user.email}</p>

@@ -1,6 +1,7 @@
 import { AuthError } from "next-auth";
 import { auth, signIn } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { PasswordInput } from "@/components/ui/password-input";
 
 export default async function AdminLoginPage({
   searchParams,
@@ -66,12 +67,12 @@ export default async function AdminLoginPage({
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
               Password
             </label>
-            <input
+            <PasswordInput
               id="password"
               name="password"
-              type="password"
               required
-              className="mt-1 w-full rounded-md border px-3 py-2 text-sm"
+              wrapperClassName="mt-1"
+              className="w-full rounded-md border px-3 py-2 text-sm text-gray-900"
             />
           </div>
           <button

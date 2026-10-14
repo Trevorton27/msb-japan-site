@@ -374,7 +374,8 @@
       "events": "イベント・リトリート",
       "sangha": "サンガ",
       "account": "マイページ",
-      "portal": "会員ポータル"
+      "portal": "会員ポータル",
+      "backToSite": "サイトへ戻る"
     },
     "dashboard": {
       "welcome": "ようこそ",
@@ -458,7 +459,9 @@
       "signingIn": "ログイン中...",
       "signInWithGoogle": "Googleでログイン",
       "error": "メールアドレスまたはパスワードが正しくありません。",
-      "accessDenied": "アクセスが拒否されました。会員アクセスをご希望の場合はMSBにお問い合わせください。"
+      "accessDenied": "アクセスが拒否されました。会員アクセスをご希望の場合はMSBにお問い合わせください。",
+      "showPassword": "パスワードを表示",
+      "hidePassword": "パスワードを隠す"
     }
   },
   "resources": {
