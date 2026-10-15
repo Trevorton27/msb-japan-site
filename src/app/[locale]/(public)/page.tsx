@@ -130,25 +130,20 @@ export default async function HomePage({
         />
       </section>
 
-      {/* Hero text, below the image */}
-      <section className="bg-[#1e3560] px-4 py-12 text-center text-white sm:px-6 sm:py-16 lg:px-8">
+      {/* Hero buttons, below the image */}
+      <section className="bg-[#1e3560] px-4 py-8 text-center sm:px-6 sm:py-10 lg:px-8">
         <div className="mx-auto max-w-3xl">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">
-            {dict.home?.heroTitle}
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base text-charcoal-200 sm:text-lg">
-            {dict.home?.heroSubtitle}
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <h1 className="sr-only">{dict.home?.heroTitle}</h1>
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href={`/${locale}/start`}
-              className="rounded-md bg-saffron-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-saffron-600"
+              className="rounded-md bg-mist-200 px-6 py-3 text-sm font-semibold text-[#1e3560] transition-colors hover:bg-mist-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               {dict.home?.heroCta}
             </Link>
             <Link
               href={`/${locale}/events`}
-              className="rounded-md border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              className="rounded-md bg-mist-200 px-6 py-3 text-sm font-semibold text-[#1e3560] transition-colors hover:bg-mist-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               {dict.common?.events}
             </Link>
@@ -159,12 +154,7 @@ export default async function HomePage({
       {/* Quote & Nav Buttons */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          {dict.home.rinpocheWordsTitle && (
-            <h2 className="mb-8 text-3xl font-semibold text-[#1e3560]">
-              {dict.home.rinpocheWordsTitle}
-            </h2>
-          )}
-          <blockquote className="text-2xl leading-relaxed text-[#1e3560] sm:text-3xl">
+          <blockquote className="text-xl leading-relaxed text-[#1e3560] sm:text-2xl">
             {dict.home?.rinpocheQuote}
           </blockquote>
           <p className="mt-6 text-xs font-bold uppercase tracking-widest text-[#1e3560]">

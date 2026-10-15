@@ -15,6 +15,8 @@
   --color-burgundy-600: var(--burgundy-600);
   --color-saffron-500: var(--saffron-500);
   --color-saffron-600: var(--saffron-600);
+  --color-mist-200: var(--mist-200);
+  --color-mist-300: var(--mist-300);
   --color-navy-700: var(--navy-700);
   --color-navy-800: var(--navy-800);
   --font-heading: var(--font-sans);
@@ -167,6 +169,9 @@ body {
   --burgundy-600: #723030;
   --saffron-500: #c4942a;
   --saffron-600: #a57d22;
+  /* Homepage hero CTA light blue (client proposal, 2026-10) */
+  --mist-200: #b9dcf2;
+  --mist-300: #9fcbe9;
   --navy-700: #2f3b75;
   --navy-800: #273466;
   --background: oklch(1 0 0);
@@ -214,6 +219,8 @@ body {
   --burgundy-600: #e08a85;
   --saffron-500: #d4a84a;
   --saffron-600: #c4942a;
+  --mist-200: #b9dcf2;
+  --mist-300: #9fcbe9;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
